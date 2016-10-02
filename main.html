@@ -27,21 +27,57 @@
             <div class="col-xs-6">
               <div class="row">
                 <!--dimensions-->
-                <h3>dimensions</h3>
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">dimensions</h3>
+                    </div>
+                    <div class="panel-body center">
+                      Panel content
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <!--filters-->
-                <h3>fliters</h3>
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">filters</h3>
+                    </div>
+                    <div class="panel-body center">
+                      Panel content
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-xs-6">
               <div class="row">
                 <!--marks-->
-                <h3>marks</h3>
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">marks</h3>
+                    </div>
+                    <div class="panel-body center">
+                      Panel content
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <!--labels-->
-                <h3>labels</h3>
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">labels</h3>
+                    </div>
+                    <div class="panel-body center">
+                      Panel content
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -49,23 +85,27 @@
 
             <div class="col-xs-6">
               <!--choose and import file-->
-              <form class="" action="parse.asp" method="post"><!--post form to parse.asp-->
-                <input type="button" id="my-button"  class="btn btn-default btn-sm btn-block" value="Select Files">
-                <input type="file" name="my_file" id="my-file">
-                <button type="submit" class="btn btn-primary btn-lg btn-block"> import </button>
-              </form>
+              <div class="container-fluid">
+                <form class="" action="parse.asp" method="post"><!--post form to parse.asp-->
+                  <input type="button" id="my-button"  class="btn btn-default btn-sm btn-block" value="Select Files">
+                  <input type="file" name="my_file" id="my-file">
+                  <button type="submit" class="btn btn-secondary btn-block"> submit </button>
+                </form>
+              </div>
             </div>
             <div class="col-xs-6">
               <!--delete, share and code part-->
-              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-              </button>
-              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-              </button>
-              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-console" aria-hidden="true"></span>
-              </button>
+              <div class="container-fluid">
+                <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-console" aria-hidden="true"></span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -74,19 +114,58 @@
           <div class="row">
             <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/barChart.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/barChart.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/vertricalBar.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/horizontalBar.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/stackedBar.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/lineChart.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/lineChart.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/verticalLine.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/multiLine.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/scatterPlot.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default" type="button" id="dropdownMenu1" >
+                    <img src="icons/scatterPlot.png" alt="" class="icon-default"/>
+                  </button>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/northAmerica.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/northAmerica.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/map.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/mapwithPie.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/slideshow.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default" type="button" id="dropdownMenu1">
+                    <img src="icons/slideshow.png" alt="" class="icon-default"/>
+                  </button>
+                </div>
               </li>
             </ul>
           </div>
