@@ -20,7 +20,17 @@
     <![endif]-->
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <!--order matters: jquery, then jquery ui -->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+
+      <!--Handles drag and drop feature-->
+      <script type = "text/javascript" src="dragndrop.js"></script>
+    <!-- initialization can go here -->
+    <script> initDragnDrop(); //initialize drag n drop </script>
+
+
+
 
   </head>
   <body>
@@ -31,26 +41,67 @@
             <div class="col-xs-6">
               <div class="row">
                 <!--dimensions-->
-                <h3>dimensions</h3>
-                    <!--Dragging test-->
-                      <div id="drag"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
 
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">dimensions</h3>
+                    </div>
+                    <div class="panel-body center">
+                      <div class="makeMeDraggable" id="1"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
+                      <div class="makeMeDraggable" id="2"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
+                      <div class="makeMeDraggable" id="3"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
+                    </div>
+                  </div>
+                </div>
 
               </div>
               <div class="row">
                 <!--filters-->
-                <h3>fliters</h3>
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">filters</h3>
+                    </div>
+                    <div class="panel-body center">
+                      <div class="makeMeDraggable" id="4"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-xs-6">
               <div class="row">
                 <!--marks-->
+
                 <h3>marks</h3>
-                X - Axis <div id="drop"><button class="btn btn-default btn-sm btn-block"> Drop Here </button> </div>
+
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">marks</h3>
+                    </div>
+                    <div class="panel-body center">
+                      <div class="makeMeDraggable" id="5"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
+                        X - Axis <div class="dropMe"><button class="btn btn-default btn-sm btn-block"> Drop Here </button> </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
               <div class="row">
                 <!--labels-->
-                <h3>labels</h3>
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">labels</h3>
+                    </div>
+                    <div class="panel-body center">
+                      <div class="makeMeDraggable" id="makeMeDraggable1"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
+                      <div class="makeMeDraggable"><button class="btn btn-default btn-sm btn-block"> Test </button> </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -58,23 +109,27 @@
 
             <div class="col-xs-6">
               <!--choose and import file-->
-              <form class="" action="parse.asp" method="post"><!--post form to parse.asp-->
-                <input type="button" id="my-button"  class="btn btn-default btn-sm btn-block" value="Select Files">
-                <input type="file" name="my_file" id="my-file">
-                <button type="submit" class="btn btn-primary btn-lg btn-block"> import </button>
-              </form>
+              <div class="container-fluid">
+                <form class="" action="parse.asp" method="post"><!--post form to parse.asp-->
+                  <input type="button" id="my-button"  class="btn btn-default btn-sm btn-block" value="Select Files">
+                  <input type="file" name="my_file" id="my-file">
+                  <button type="submit" class="btn btn-secondary btn-block"> submit </button>
+                </form>
+              </div>
             </div>
             <div class="col-xs-6">
               <!--delete, share and code part-->
-              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-              </button>
-              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-              </button>
-              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-                <span class="glyphicon glyphicon-console" aria-hidden="true"></span>
-              </button>
+              <div class="container-fluid">
+                <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-console" aria-hidden="true"></span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -83,19 +138,58 @@
           <div class="row">
             <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/barChart.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/barChart.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/vertricalBar.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/horizontalBar.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/stackedBar.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/lineChart.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/lineChart.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/verticalLine.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/multiLine.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/scatterPlot.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default" type="button" id="dropdownMenu1" >
+                    <img src="icons/scatterPlot.png" alt="" class="icon-default"/>
+                  </button>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/northAmerica.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/northAmerica.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/map.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/mapwithPie.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><img src="icons/slideshow.png" alt="" class="icon-default"/></a>
+                <div class="dropdown">
+                  <button class="btn btn-default" type="button" id="dropdownMenu1">
+                    <img src="icons/slideshow.png" alt="" class="icon-default"/>
+                  </button>
+                </div>
               </li>
             </ul>
           </div>
@@ -117,17 +211,18 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
-    <script type = "text/javascript" src="dragndrop.js"></script>
 
 
-    <!-- initialization can go here -->
-    <script> initDragnDrop(); //initialize drag n drop </script>
+
+
 
     <script type="text/javascript">
       $('#my-button').click(function(){
         $('#my-file').click();
       });
     </script>
+
+
 
   </body>
 </html>
