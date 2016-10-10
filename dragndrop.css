@@ -1,0 +1,35 @@
+/*shapes of drag*/
+.dragndropShape {
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    padding: 20px;
+    padding-top:9px;
+    height: 15px;
+    object-fit: cover;
+    font: 12px Arial;
+    text-align: center;
+    vertical-align: center;
+    background-color: #ffffff;
+    cursor: default;
+}
+/*droppable shape*/
+.dropMe {
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    padding: 20px;
+    padding-top:9px;
+    height: 15px;
+    object-fit: cover;
+    font: 12px Arial;
+    text-align: center;
+    vertical-align: center;
+    background-color: #ffffff;
+    cursor:default;
+
+}
+
+/*color change on hover with a droppable*/
+.drop-area{
+    background: #F5F5F5 ;
+}
+
