@@ -12,6 +12,13 @@
     background-color: #ffffff;
     cursor: default;
 }
+/* changes upon hovering over the draggable */
+.dragndropShape:hover{
+    border-color: black;
+    cursor: pointer;
+
+}
+
 /*droppable shape*/
 .dropMe {
     border-radius: 5px;
@@ -23,13 +30,17 @@
     font: 12px Arial;
     text-align: center;
     vertical-align: center;
-    background-color: #ffffff;
+    background-color: #F5F5F5;
     cursor:default;
 
 }
 
-/*color change on hover with a droppable*/
+/*droppable color change on hover with a draggable*/
 .drop-area{
-    background: #F5F5F5 ;
+    background: #DDDDDD ;
+}
+/*border color change when hovering over a draggable*/
+.highlightBorder {
+    border: 1px solid black;
 }
 
