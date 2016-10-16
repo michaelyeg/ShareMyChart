@@ -7,11 +7,4 @@
       </webServer>
     </option>
   </component>
-  <context-param>
-    <description>Location to store uploaded file</description>
-    <param-name>file-upload</param-name>
-    <param-value>
-      /Library/Tomcat/webapps/data/
-    </param-value>
-  </context-param>
 </project>
