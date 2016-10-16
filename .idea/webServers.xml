@@ -14,14 +14,4 @@
       /Library/Tomcat/webapps/data/
     </param-value>
   </context-param>
-
-    <servlet>
-        <servlet-name>upload</servlet-name>
-        <servlet-class>upload</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>upload</servlet-name>
-        <url-pattern>/upload</url-pattern>
-    </servlet-mapping>
 </project>
