@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="baf839cc-081f-41b0-afaf-e2071bb34a2e" name="shareMyChart" url="http://localhost:8080/">
+        <fileTransfer port="0" mountedRoot="/Library/Tomcat/webapps" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+  <context-param>
+    <description>Location to store uploaded file</description>
+    <param-name>file-upload</param-name>
+    <param-value>
+      /Library/Tomcat/webapps/data/
+    </param-value>
+  </context-param>
+
+    <servlet>
+        <servlet-name>upload</servlet-name>
+        <servlet-class>upload</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>upload</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+</project>
