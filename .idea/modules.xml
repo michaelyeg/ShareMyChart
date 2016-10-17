@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/.idea.iml" filepath="$PROJECT_DIR$/.idea/.idea.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ShareMyChart.iml" filepath="$PROJECT_DIR$/.idea/ShareMyChart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShareMyChart.iml" filepath="$PROJECT_DIR$/ShareMyChart.iml" />
     </modules>
   </component>
 </project>
