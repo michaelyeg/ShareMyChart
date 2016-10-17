@@ -2,18 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab4e9c60-06e5-4147-ac83-9d617b592fb3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/ShareMyChart_war_exploded.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ShareMyChart.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/_idea_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cmput401/upload.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.iml" afterPath="$PROJECT_DIR$/.idea/.idea.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_fileupload_1_3_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_fileupload_1_3_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/servlet_api.xml" afterPath="$PROJECT_DIR$/.idea/libraries/servlet_api.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/.idea/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShareMyChart.iws" />
@@ -1015,7 +1003,7 @@
       <workItem from="1476661010848" duration="1525000" />
       <workItem from="1476664321518" duration="799000" />
       <workItem from="1476669663878" duration="7000" />
-      <workItem from="1476669722765" duration="1044000" />
+      <workItem from="1476669722765" duration="1083000" />
     </task>
     <task id="LOCAL-00001" summary="working on upload file">
       <created>1476577692291</created>
@@ -1059,11 +1047,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476586149981</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="being able to compile upload.java">
+      <created>1476670814151</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1476670814151</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88200000" />
+    <option name="totallyTimeSpent" value="88239000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="6" />
@@ -1114,7 +1109,8 @@
     <MESSAGE value="working on upload file" />
     <MESSAGE value="web.xml created by IntelliJ" />
     <MESSAGE value="web.xml edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="web.xml edited" />
+    <MESSAGE value="being able to compile upload.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="being able to compile upload.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
