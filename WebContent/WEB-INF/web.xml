@@ -7,9 +7,10 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            Library/Tomcat/webapps/data/
+            ./data/
         </param-value>
     </context-param>
+
     <servlet>
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>upload</servlet-class>

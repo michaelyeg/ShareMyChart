@@ -26,6 +26,7 @@ public class upload extends HttpServlet{
     public void init( ){
         // Get the file location where it would be stored.
         filePath = getServletContext().getInitParameter("file-upload");
+        System.out.print(filePath+"\n");
     }
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
@@ -49,7 +50,7 @@ public class upload extends HttpServlet{
         // maximum size that will be stored in memory
         factory.setSizeThreshold(maxMemSize);
         // Location to save data that is larger than maxMemSize.
-        factory.setRepository(new File("c:\\temp"));
+        factory.setRepository(new File("./data"));
 
         // Create a new file upload handler
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -80,12 +81,12 @@ public class upload extends HttpServlet{
                     boolean isInMemory = fi.isInMemory();
                     long sizeInBytes = fi.getSize();
                     // Write the file
-                    if( fileName.lastIndexOf("\\") >= 0 ){
+                    if( fileName.lastIndexOf("/") >= 0 ){
                         file = new File( filePath +
-                                fileName.substring( fileName.lastIndexOf("\\"))) ;
+                                fileName.substring( fileName.lastIndexOf("/"))) ;
                     }else{
                         file = new File( filePath +
-                                fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+                                fileName.substring(fileName.lastIndexOf("/")+1)) ;
                     }
                     fi.write( file ) ;
                     out.println("Uploaded Filename: " + fileName + "<br>");
