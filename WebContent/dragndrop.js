@@ -11,7 +11,8 @@ jQuery(document).ready(function initDragnDrop(event, ui){
                                      stack: ".dragndropShape",
                                      hoverClass: "highlightBorder",
         start: function(ev, ui) {
-
+//code from Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
+// http://stackoverflow.com/a/22211268
             $('.ui-droppable').each(function(i, el) {
 
                 console.log($(el).find('.ui-draggable').length);
@@ -31,7 +32,8 @@ jQuery(document).ready(function initDragnDrop(event, ui){
 
 
             drop: function(ev, ui) {
-
+//code from Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
+// http://stackoverflow.com/a/22211268
                 $(this).append($(ui.draggable));
                 //console.log($(this).find().length);
                 ui.draggable.position({of: $(this), my: 'left top', at: 'left top'});
