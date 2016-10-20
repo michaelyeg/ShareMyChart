@@ -1,0 +1,12 @@
+.icon-default{
+  width: 6em;
+  height: 6em;
+}
+
+.center{
+  text-align: center;
+}
+
+#my-file{
+  visibility: hidden;
+}
