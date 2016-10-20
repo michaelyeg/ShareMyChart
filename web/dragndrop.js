@@ -1,9 +1,7 @@
 /**
  * Created by User on 2016-10-01.
  */
-//    $( init );
 
-//var dropHelp = true;
 
 jQuery(document).ready(function initDragnDrop(event, ui){
     //drags and reverts to original position if its not dropped in a valid place
@@ -12,37 +10,42 @@ jQuery(document).ready(function initDragnDrop(event, ui){
                                      cursor: "move",
                                      stack: ".dragndropShape",
                                      hoverClass: "highlightBorder",
-                                     helper: "clone"}); /* function(){
-                                        //helper says the same as the thing it was dragged from
-                                            var dragText = getText(this);
+        start: function(ev, ui) {
+//code from Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
+// http://stackoverflow.com/a/22211268
+            $('.ui-droppable').each(function(i, el) {
 
-                                             return $("<div class=\"dragndropShape\" id=\"dragndropShape\"></div>");
-                                         }}); */
+                console.log($(el).find('.ui-draggable').length);
+                if (!($(el).find('.ui-draggable').length)){//&&($(el).find('ui-draggable').data("occupied") == false || undefined) ) {
+                    $(el).droppable('enable'); // ^^^ checks to make sure its unoccupied
+                    console.log("enabled");
+                }
+            })
+        }
+                                     //helper: "clone" //can decide if we want to use clones or not
+                                     });
 
-    $('.dropMe').droppable( {
-        drop: handleDrop,
-        hoverClass: "drop-area"
+    $('.dropMe').droppable({
+        //drop: handleDrop,
+        disabled: false,
+        hoverClass: "drop-area",
 
+
+            drop: function(ev, ui) {
+//code from Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
+// http://stackoverflow.com/a/22211268
+                $(this).append($(ui.draggable));
+                //console.log($(this).find().length);
+                ui.draggable.position({of: $(this), my: 'left top', at: 'left top'});
+                $(ev['target']).droppable('disable');
+            }
 
     } );
 });
 
 
 //receives the drop
-function handleDrop( event, ui ) {
-    var draggable = ui.draggable;
-    //$(this).append($(ui.helper.children()));
-    alert( 'The button with ID "' + draggable.attr('id') + '" was dropped onto me!' );
-    //event.dataTransfer.setData("Text", event.target.id);
-}
+function handleDrop( eve, ui ) {
 
 
-//returns the text inside the dragged object
-function getText(obj) {
-return obj.textContent;
-}
-
-//sets the text in an object
-function setText(obj, newtext){
-obj.textContent = newtext;
 }
