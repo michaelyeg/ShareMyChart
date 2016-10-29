@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bb1308f6-891a-4ea2-a040-86c56d0e36dc" name="ShareMyChart" url="http://localhost:8080/">
+        <fileTransfer port="0" mountedRoot="C:\Users\User\Documents\apache-tomcat-9.0.0.M11\apache-tomcat-9.0.0.M11\webapps" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
