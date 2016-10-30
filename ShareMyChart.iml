@@ -23,5 +23,6 @@
     <orderEntry type="library" name="commons-io-2.5" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
   </component>
 </module>
