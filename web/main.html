@@ -24,6 +24,9 @@
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!--old: 1.5.1 -->
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script> <!--old: 1.8.9 -->
 
+      <script src="http://malsup.github.com/jquery.form.js"></script>
+
+
     <link rel = "stylesheet" href = "dragndrop.css" type = "text/css">
 
   </head>
@@ -53,15 +56,14 @@
             <div class="col-xs-6">
               <div class="row">
                 <!--dimensions-->
-
                 <div class="container-fluid">
                   <div class="panel panel-default">
                     <div class="panel-heading">
                       <h3 class="panel-title center">dimensions</h3>
                     </div>
                     <div class="panel-body center">
-                      <div class="dragndropShape" id="1"> Test1  </div>
-                      <div class="dragndropShape" id="2">Test2 </div>
+                      <div class="dragndropShape" id="1">Test1</div>
+                      <div class="dragndropShape" id="2">Test2</div>
                       <div class="dragndropShape" id="3">Test3</div>
                     </div>
                   </div>
@@ -131,17 +133,17 @@
 
           <div class="row tabcontent" id="data"><!--tab for data-->
             <div class="col-xs-6">
-              <div class="row">
+              <div class="row" id="list">
 
               </div>
               <!--choose and import file-->
               <div class="row">
                 <div class="container-fluid">
-                  <form action="UploadServlet" method="post"
+                  <form id="form-submit" action="#" method="post"
                         enctype="multipart/form-data"><!--post form-->
-                    <input type="file" name="file" />
-                    <br />
-                    <input type="submit"class="btn btn-secondary btn-block" value="Upload File" />
+                    <input type="file" name="file"/>
+                    <br/>
+                    <input id="submit" type="submit" class="btn btn-secondary btn-block" value="Upload File" />
                   </form>
                 </div>
               </div>
