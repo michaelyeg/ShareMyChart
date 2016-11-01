@@ -24,5 +24,6 @@
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="d3.v4" level="application" />
   </component>
 </module>

@@ -9,8 +9,10 @@ $('#my-button').click(function(){
 
 //tab clicking
 $('li > a').click(function() {
-    $('li').removeClass();
-    $(this).parent().addClass('active');
+
+        $('li').removeClass();
+        $(this).parent().addClass('active');
+
 });
 
 //change tab

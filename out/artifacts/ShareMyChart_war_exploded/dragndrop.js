@@ -5,26 +5,7 @@
 
 $(document).ready(function initDragnDrop(event, ui){
     //drags and reverts to original position if its not dropped in a valid place
-    /*    $('.dragndropShape').draggable({cancel:false,
-     revert: "invalid",
-     cursor: "move",
-     stack: ".dragndropShape",
-     hoverClass: "highlightBorder",
-     start: function(ev, ui) {
-     //code from Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
-     // http://stackoverflow.com/a/22211268
-     $('.ui-droppable').each(function(i, el) {
 
-     console.log($(el).find('.ui-draggable').length);
-     if (!($(el).find('.ui-draggable').length)){//&&($(el).find('ui-draggable').data("occupied") == false || undefined) ) {
-     $(el).droppable('enable'); // ^^^ checks to make sure its unoccupied
-     console.log("enabled");
-     }
-     })
-     }
-     //helper: "clone" //can decide if we want to use clones or not
-     });
-     */
     $('.dropMe').droppable({
         disabled: false,
         hoverClass: "drop-area",
@@ -49,12 +30,12 @@ $(document).ready(function initDragnDrop(event, ui){
           //  var height = $(this).height();
 
 
-            dragged = $(ui.draggable);
+            //dragged = $(ui.draggable);
 
-            var id = dragged.attr("id");
-            var name = dragged[0].childNodes[0].nodeValue;
+            var id = $(ui.draggable).attr("id");
+            var name = $(ui.draggable)[0].childNodes[0].nodeValue;
 
-           $(dragged).remove(); //remove the sortable, create a draggable on the droppable
+            $(ui.draggable).remove(); //remove the sortable, create a draggable on the droppable
 
                 newdiv = document.createElement('div');   //create a div
                 newdiv.setAttribute('id', id);
@@ -70,7 +51,7 @@ $(document).ready(function initDragnDrop(event, ui){
                 stack: ".dragndropShape",
                 hoverClass: "highlightBorder",
                 connectToSortable: '.sortable',
-                appendTo: 'body'
+
                 //  start: function(ev, ui) {
                     //code from Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
                     // http://stackoverflow.com/a/22211268
