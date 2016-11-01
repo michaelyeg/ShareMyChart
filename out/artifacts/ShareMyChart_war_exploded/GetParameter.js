@@ -3,22 +3,23 @@
  */
 //maybe make this a class with private globals and getters
 //Globals for store and parameter array
+
 var graphStore;
 var parameterArray = [];
-console.log("poop");
-
 
 function init() {
     //need to modify to make dynamic URL entry as a parameter of the function
     //just not sure how much of the string will need to be hardcoded and what path will be
     rdfstore.create(function(err, store) {
-        store.execute('LOAD <http://localhost:8080/data/superstore-small.ttl> INTO GRAPH <http://example.org/rdfGraph>', function(err) {
+        store.execute('LOAD <http://localhost:8080/superstore-small.ttl> INTO GRAPH <http://example.org/rdfGraph>', function(err) {
 
             if (!err) {
                 // Store created
                 //potential async issue
                 graphStore = store;
                 console.log("Store Created");
+
+
             }
         });
     });
@@ -47,4 +48,9 @@ function GetparameterQuery() {
 
 console.log("Running Init!");
 init();
+/*
+console.log("Running Get Params");
+GetparameterQuery();
+*/
+
 

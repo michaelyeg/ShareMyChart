@@ -43,7 +43,6 @@ $(document).ready(function initDragnDrop(event, ui){
 
 // Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
 // http://stackoverflow.com/a/22211268
-            console.log("length: " + $(this).find(".dragndropShape").length);
             if ( $(this).find(".dragndropShape").length > 1 ){
                 replacedValue = $(this).find(".dragndropShape")[0];
 //newdiv is a new draggable sitting inside the droppable, li is the old value getting sent back into the sortable
@@ -86,7 +85,7 @@ $(document).ready(function createDrags(array_of_params){
         newdiv.appendChild(createdDrags); //put text node into draggable
         list.appendChild(newdiv); //put draggable into the list
     }
-    console.log(list);
+
     $(list).insertAfter(insertLocation);
     $('.sortable').sortable({
          connectWith: '.dragndropShape',
