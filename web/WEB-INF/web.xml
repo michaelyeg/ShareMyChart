@@ -5,7 +5,8 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            C:\Users\User\Documents\Files\
+            /Users/Margaret/Documents/workspace/test/smc/data/
+
         </param-value>
     </context-param>
 

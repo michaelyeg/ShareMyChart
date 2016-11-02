@@ -28,3 +28,36 @@ function openCity(evt, cityName) {
 
 }
 document.getElementById("defaultOpen").click();
+
+$(document).ready(function(){
+    $("#form-submit").ajaxForm({
+        type:"post",
+        url:"UploadServlet",
+        success:function(data){
+            console.log(data);
+            refreshData();
+        },
+        error:function(XmlHttpRequest,textStatus,errorThrown){
+            console.log(XmlHttpRequest);
+            console.log(textStatus);
+            console.log(errorThrown);
+        }
+    });
+
+    refreshData();
+});
+
+function refreshData(){
+   $.ajax({
+       url:"/data",
+       dataType:"json",
+       success:function (data) {
+           console.log(data);
+           $("#list").html("<ul>");
+           $.each(data, function (key,value) {
+                $("#list").append("<li>"+value+"</li>");
+           });
+           $("#list").append("</ul>");
+       }
+   });
+};

@@ -16,8 +16,8 @@ public class UploadServlet extends HttpServlet {
 
    private boolean isMultipart;
    private String filePath;
-   private int maxFileSize = 50 * 1024;
-   private int maxMemSize = 4 * 1024;
+   private int maxFileSize = 10000000 * 1024;
+   private int maxMemSize = 1000000 * 1024;
    private File file ;
 
    public void init( ){
@@ -47,7 +47,7 @@ public class UploadServlet extends HttpServlet {
       // maximum size that will be stored in memory
       factory.setSizeThreshold(maxMemSize);
       // Location to save data that is larger than maxMemSize.
-      factory.setRepository(new File("/Users/User/Documents/Files"));
+      factory.setRepository(new File("/Users/Margaret/Documents/workspace/test"));
 
       // Create a new file upload handler
       ServletFileUpload upload = new ServletFileUpload(factory);
@@ -61,11 +61,6 @@ public class UploadServlet extends HttpServlet {
          // Process the uploaded file items
          Iterator i = fileItems.iterator();
 
-         out.println("<html>");
-         out.println("<head>");
-         out.println("<title>Servlet upload</title>");
-         out.println("</head>");
-         out.println("<body>");
          while ( i.hasNext () )
          {
             FileItem fi = (FileItem)i.next();
@@ -86,11 +81,9 @@ public class UploadServlet extends HttpServlet {
                           fileName.substring(fileName.lastIndexOf("\\")+1)) ;
                }
                fi.write( file ) ;
-               out.println("Uploaded Filename: " + fileName + "<br>");
+
             }
          }
-         out.println("</body>");
-         out.println("</html>");
       }catch(Exception ex) {
          System.out.println(ex);
       }
