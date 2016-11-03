@@ -111,25 +111,8 @@ function GetPredicateQuery(graph_store,ClassObject){
     );
 }
 
-/**
- *
- * @constructor
- */
-function GetDataFromParam(graph){
-    graph.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-         PREFIX : <http://example.org/>\
-         select ?p ?o FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o; rdf:type <http://schema.org/Order>. ?s <http://schema.org/orderDate> ?o.  FILTER(?p != rdf:type). } }',
-        function(err, results) {
-            console.log("Results:");
-            console.log(results);
 
-            for (var i = 0; i < results.length; i++) {
-                var price = results[i].price;
-            }
-        }
-    );
-}
+
 
 
 /**
@@ -141,10 +124,11 @@ function GetName(uri){
     var temp_array = uri.split('/');
     var name = temp_array[temp_array.length-1];
     return name;
-
 }
+
 console.log("Running Init!");
 var new_Store = new GraphStore("URL");
+
 
 //gets the data type associated with the predicate
 function getDatatypes(theStore) {
@@ -171,14 +155,14 @@ function getDatatypes(theStore) {
                     if (result['type'] && result['type'].match('^http://www.w3.org/2001/XMLSchema#')){
                         var prefix = 'http://www.w3.org/2001/XMLSchema#';
                         type = result['type'].substr(prefix.length);
-                        console.log(type);
+                       // console.log(type);
 
                         //**TODO if there's time - check all values of the parameter to see if they're different
                         //example: there could be a string among numbers, but this is just recording the
                         //first time I see something - DOES HAPPEN - has recorded name as integer
                         if(pManager.checkExists(results[i]['p'].value) ){
                             pManager.addDatatype(results[i]['p'].value, type);
-                            console.log("1.Added value " + type + " to pManager");
+                           //    console.log("1.Added value " + type + " to pManager");
                         }
 
                     }
@@ -187,7 +171,7 @@ function getDatatypes(theStore) {
 
                         if(pManager.checkExists(results[i]['p'].value) ){
                             pManager.addDatatype(results[i]['p'].value, type);
-                            console.log("2.Added value" + type +" to pManager");
+                            //console.log("2.Added value" + type +" to pManager");
                         }
 
                     }
@@ -196,7 +180,7 @@ function getDatatypes(theStore) {
 
                         if(pManager.checkExists(results[i]['p'].value) ){
                             pManager.addDatatype(results[i]['p'].value, type);
-                            console.log("3.Added value " +type+ " to pManager");
+                           // console.log("3.Added value " +type+ " to pManager");
                         }
 
                     }
@@ -207,4 +191,5 @@ function getDatatypes(theStore) {
         });
 
 }
+
 
