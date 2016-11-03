@@ -3,11 +3,20 @@
  */
 //maybe make this a class with private globals and getters
 //Globals for store and parameter array
+//Call parameter manager
 
-var graphStore;
-var parameterArray = [];
+var TypeArray = [];
+var PredicateArray = [];
+var ParameterList = {};
 
-function init() {
+/**
+ *Creates a rdfstore for a given URL. The store ca then be queried.
+ * @param URL
+ * @constructor
+ */
+var GraphStore = function(URL){
+    this.Store;
+    this.URL = URL;
     //need to modify to make dynamic URL entry as a parameter of the function
     //just not sure how much of the string will need to be hardcoded and what path will be
     rdfstore.create(function(err, store) {
@@ -16,41 +25,115 @@ function init() {
             if (!err) {
                 // Store created
                 //potential async issue
-                graphStore = store;
+                this.Store = store;
                 console.log("Store Created");
-
-
+                var Confirm = confirm("Data will be loaded");
+                if (Confirm){
+                    GetParameterQuery(this);
+                }
             }
         });
     });
-}
+};
 
-function GetparameterQuery() {
+/**
+ * Takes an Rdf store object and gets all the type from the graph
+ * @param {GraphStore} graph_store
+ */
+function GetParameterQuery(graph_store) {
     console.log("Query executed");
-    graphStore.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+    /*
+     graphStore.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+     PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+     PREFIX : <http://example.org/>\
+     SELECT DISTINCT ?p FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o. FILTER(?p != rdf:type). } }',
+     */
+    graph_store.Store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
                         PREFIX : <http://example.org/>\
-                        SELECT DISTINCT ?type FROM NAMED :rdfGraph { GRAPH ?g { ?s rdf:type ?type } }',
-        function(err, results) {
-            console.log("Results:");
-            console.log(results);
+                        select distinct ?type FROM NAMED :rdfGraph { GRAPH ?g { ?s rdf:type ?type } }',
+        function(err, results_type) {
+            //Get the type for display as a draggable parameter
+            console.log("Results type:");
+            console.log(results_type);
+
             //Get the Name value from the object and push value to global array
-            for(var i = 0; i < results.length; i++){
-                var temp_name = results[i].type.value;
-                var temp_array = temp_name.split('/');
-                parameterArray.push(temp_array[temp_array.length-1]);
+            for(var i = 0; i < results_type.length; i++){
+                var name = GetName(results_type[i].type.value);
+                TypeArray.push(name);
+                //ParameterList.push(obj);
+                //For each Type find the predicates that belong to it
+                GetPredicateQuery(graph_store,results_type[i]);
             }
-            console.log("ParameterArray: ");
-            console.log(parameterArray);
+            console.log("TypeArray: ");
+            console.log(TypeArray);
         }
     );
 }
 
+/**
+ * Take a Rdf store and a type object and gets all the predicates associated with the Class
+ * @param {GraphStore} graph_store
+ * @param ClassObject
+ */
+function GetPredicateQuery(graph_store,ClassObject){
+    var uri = ClassObject.type.value;
+    graph_store.Store.execute(
+        'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+         PREFIX : <http://example.org/>\
+         select distinct ?p FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o; rdf:type <'+uri+'>. FILTER(?p != rdf:type). } }',
+        function(err, results_predicate) {
+            console.log("Results Predicates: " + uri);
+            console.log(results_predicate);
+            for (var i = 0; i < results_predicate.length; i++) {
+                //Send to the Parameter class to be added to global list.
+                //results_predicate[i] --> the predicate object
+                //ClassObject --> the object for the class ex. Order or Offer
+                //GetName(uri) --> will get the name in  reader
+                //TODO: Create a parameter object with he predicate and then add to parameter object
+            }
+        }
+    );
+}
+
+/**
+ *
+ * @constructor
+ */
+function GetDataFromParam(){
+    graphStore.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+                        PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+                        PREFIX schemaorg: <http://schema.org/>\
+                        PREFIX : <http://example.org/>\
+                        SELECT DISTINCT ?offer ?price ?date FROM NAMED :rdfGraph { GRAPH ?g { \
+                                        ?offer schemaorg:price ?price. \
+                                        ?offer schemaorg:orderDate ?date. } }',
+        function(err, results) {
+            console.log("Results:");
+            console.log(results);
+
+            for (var i = 0; i < results.length; i++) {
+                var price = results[i].price;
+            }
+        }
+    );
+}
+
+
+/**
+ * Helper function to Get a readable title from a uri
+ * @param {string} uri
+ * @returns {string}
+ */
+function GetName(uri){
+    var temp_array = uri.split('/');
+    var name = temp_array[temp_array.length-1];
+    return name;
+
+}
 console.log("Running Init!");
-init();
-/*
-console.log("Running Get Params");
-GetparameterQuery();
-*/
+var new_Store = new GraphStore("URL");
+
 
 
