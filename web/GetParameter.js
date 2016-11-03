@@ -9,6 +9,8 @@ var TypeArray = [];
 var PredicateArray = [];
 var ParameterList = {};
 
+var pManager = new ParameterManager();
+
 /**
  *Creates a rdfstore for a given URL. The store ca then be queried.
  * @param URL
@@ -30,6 +32,7 @@ var GraphStore = function(URL){
                 var Confirm = confirm("Data will be loaded");
                 if (Confirm){
                     GetParameterQuery(this);
+                    getDatatypes(this);
                 }
             }
         });
@@ -92,7 +95,11 @@ function GetPredicateQuery(graph_store,ClassObject){
                 //ClassObject --> the object for the class ex. Order or Offer
                 //GetName(uri) --> will get the name in  reader
                 //TODO: Create a parameter object with he predicate and then add to parameter object
+                var pam = new Parameter(results_predicate[i]['p'].value , uri);
+                pManager.addParameter(pam);
+
             }
+
         }
     );
 }
@@ -135,5 +142,65 @@ function GetName(uri){
 console.log("Running Init!");
 var new_Store = new GraphStore("URL");
 
+//gets the data type associated with the predicate
+function getDatatypes(theStore) {
+    theStore.Store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+                   PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+                   PREFIX : <http://example.org/>\
+                   PREFIX schemaorg: <http://schema.org/>\
+                   SELECT DISTINCT ?p ?o FROM NAMED :rdfGraph\
+                                  { GRAPH ?g {\
+                                               ?s ?p ?o. \
+                                                FILTER (\
+                                                ?p != rdf:type).\
+                                             }}',
+        function (err, results) {
+            console.log("Results: Jill's");
+            console.log(results);
+//                        result = results;
+            for (var i = 0; i < results.length; i++) {
+//                            console.log(results[i]['p'], results[i]['o']);
+                var result = results[i]['o'];
+                var type = 'unknown';
 
+                if (results[i]['o']['token'] == 'literal'){
+                    if (result['type'] && result['type'].match('^http://www.w3.org/2001/XMLSchema#')){
+                        var prefix = 'http://www.w3.org/2001/XMLSchema#';
+                        type = result['type'].substr(prefix.length);
+                        console.log(type);
+
+                        //**TODO if there's time - check all values of the parameter to see if they're different
+                        //example: there could be a string among numbers, but this is just recording the
+                        //first time I see something - DOES HAPPEN - has recorded name as integer
+                        if(pManager.checkExists(results[i]['p'].value) ){
+                            pManager.addDatatype(results[i]['p'].value, type);
+                            console.log("1.Added value " + type + " to pManager");
+                        }
+
+                    }
+                    else if (parseInt(result['value'])){
+                        type = 'integer';
+
+                        if(pManager.checkExists(results[i]['p'].value) ){
+                            pManager.addDatatype(results[i]['p'].value, type);
+                            console.log("2.Added value" + type +" to pManager");
+                        }
+
+                    }
+                    else if (parseFloat(result['value'])){
+                        type = 'float';
+
+                        if(pManager.checkExists(results[i]['p'].value) ){
+                            pManager.addDatatype(results[i]['p'].value, type);
+                            console.log("3.Added value " +type+ " to pManager");
+                        }
+
+                    }
+                }
+            }
+            pManager.simplifyTypes();
+
+        });
+
+}
 

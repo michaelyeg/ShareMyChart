@@ -3,11 +3,12 @@
  */
 
     //make an array of these I think
-var Parameter = function(name, type){
+var Parameter = function(name, class_value){
         this.name = name; //this is the full URI name for now, gotta change it for display to the user later
-        this.type = type;
+        this.class_value = class_value;
+        this.type = "Not known";
         //add shortened name for ui
-        //add class value to this when combined with Landon's code!
+
     };
 
 //an array of parameters - arrays in javascript are dynamic, don't need to tell it how big the array will be
@@ -30,6 +31,18 @@ ParameterManager.prototype.checkExists = function(value){
     return false;
 };
 
+//assigns the datatype to the provided predicate
+ParameterManager.prototype.addDatatype = function(predicate, dataType){
+
+    for(var i=0; i < $.pArray.length; i++) {
+        if ($.pArray[i].name.localeCompare(predicate) ==0 ){
+            $.pArray[i].type = dataType;
+            console.log("ASSIGNED!");
+        }
+    }
+
+}
+
 //simplifies the types into what we need for our program - carefully
 //lat/long identifiers will be set as: lat/long
 //date values will be set as: date (they already should be)
@@ -42,10 +55,10 @@ ParameterManager.prototype.simplifyTypes = function(){
 
 
         //checks for lat/long
-        if ($.pArray[i].name.indexOf("latitude") >= 1 || $.pArray[i].name.indexOf("longitude") >= 1) {
-            if ($.pArray[i].name.indexOf("latitude") == 1)
+        if ($.pArray[i].name.indexOf("latitude") >=1 || $.pArray[i].name.indexOf("longitude") >= 1) {
+            if ($.pArray[i].name.indexOf("latitude") >=1)
                 $.pArray[i].type = "lat";
-            else if ($.pArray[i].name.indexOf("longitude") == 1)
+            else if ($.pArray[i].name.indexOf("longitude") >=1 )
                 $.pArray[i].type = "long";
 
         }
