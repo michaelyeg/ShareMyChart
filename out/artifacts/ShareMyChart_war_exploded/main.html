@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>main</title>
+    <!--modify title later-->
+
+    <!--Removes favicon error. If you want to have an icon on the title bar, replace this line-->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/def.css"><!--don't add / before the name of folder-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> older version-->
+     <!--order matters: jquery, then jquery ui -->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!--old: 1.9.1 old: 1.11.0-->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script> <!--old: 1.8.9  also 1.11.0-->
+
+    <script src="https://d3js.org/d3.v4.min.js"></script> <!--D3-->
+
+    <link rel = "stylesheet" href = "dragndrop.css" type = "text/css">
+
+  </head>
+
+
+  <body>
+    <div class="container-fluid" style="padding-top: 0.4em;">
+      <div class="row">
+        <div class="col-md-3">
+
+
+          <div class="row">
+            <nav class="nav navbar-default">
+              <div class="container-fluid">
+                <ul class="nav nav-pills nav-justified">
+                  <li role="presentation" class="active"><a href="javascript:void(0)"
+                         onclick="openCity(event, 'visualizer')" id="defaultOpen" >Visualizer</a></li>
+                  <li role="presentation" ><a href="javascript:void(0)"
+                                             onclick="openCity(event, 'data')"> data </a></li>
+                </ul>
+              </div><!-- /.container-fluid -->
+            </nav>
+          </div>
+          <br>
+
+          <div class="row tabcontent" id="visualizer"> <!--tab for visualizer-->
+            <div class="col-xs-6">
+              <div class="row">
+                <!--dimensions-->
+
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center" >dimensions </h3>
+
+                    </div>
+                    <div class="panel-body center" id="drag_parameters">
+                        <!--Draggable objects are generated here-->
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <!--filters-->
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">filters</h3>
+                    </div>
+                    <div class="panel-body center">
+                     <!-- <div class="dragndropShape" id="4"> Test </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <!--marks-->
+
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">marks</h3>
+                    </div>
+                    <div class="panel-body center">
+                        X - Axis <div class="dropMe" id="dropx">Drop Here1</div>
+                      Y - Axis <div class="dropMe" id="dropy">Drop Here2</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <!--labels-->
+                <div class="container-fluid">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title center">labels</h3>
+                    </div>
+                    <div class="panel-body center">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!--delete, share-->
+            <div class="container-fluid">
+              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
+                <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+              </button>
+            </div>
+
+          </div>
+
+
+          <div class="row tabcontent" id="data"><!--tab for data-->
+            <div class="col-xs-6">
+              <div class="row">
+
+              </div>
+              <!--choose and import file-->
+              <div class="row">
+                <div class="container-fluid">
+                  <form action="UploadServlet" method="post"
+                        enctype="multipart/form-data"><!--post form-->
+                    <input type="file" name="file" />
+                    <br />
+                    <input type="submit"class="btn btn-secondary btn-block" value="Upload File" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-md-9">
+          <div class="row">
+            <ul class="nav nav-tabs" style="padding-bottom: 0.5em">
+              <li class="nav-item" style="padding-left: 1em">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/barChart.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/horizontalBar.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/stackedBar.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item"style="padding-left: 1em">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/lineChart.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/verticalLine.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/multiLine.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item" style="padding-left: 1em">
+                <div class="dropdown">
+                  <button class="btn btn-default" type="button" id="dropdownMenu1" >
+                    <img src="icons/scatterPlot.png" alt="" class="icon-default"/>
+                  </button>
+                </div>
+              </li>
+              <li class="nav-item" style="padding-left: 1em">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="icons/northAmerica.png" alt="" class="icon-default"/>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#"><img src="icons/map.png" alt="" class="icon-default"/></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><img src="icons/mapwithPie.png" alt="" class="icon-default"/></a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item" style="padding-left: 1em">
+                <div class="dropdown">
+                  <button class="btn btn-default" type="button" id="dropdownMenu1">
+                    <img src="icons/slideshow.png" alt="" class="icon-default"/>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="graphcontainer" id = "graph">
+            <span>
+              <div class="inner"></div>
+             <!-- <img src="icons/multilinepic.png" class="img-fluid" alt="Responsive image"/> -->
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='./node_modules/rdfstore/dist/rdfstore.js'></script>
+    <!--Handles drag and drop feature-->
+    <script type = "text/javascript" src="./GetParameter.js"></script>
+    <script type = "text/javascript" src="./dragndrop.js"></script>
+    <script type = "text/javascript" src="./func.js"></script>
+  <script type = 'text/javascript' src="BarChart.js"></script>
+  <script type = 'text/javascript' src = "./barGraph.css"></script>
+  </body>
+</html>
