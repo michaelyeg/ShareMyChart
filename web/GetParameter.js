@@ -8,7 +8,7 @@
 var TypeArray = [];
 var PredicateArray = [];
 var ParameterList = {};
-
+var GlobalStore;
 /**
  *Creates a rdfstore for a given URL. The store ca then be queried.
  * @param URL
@@ -26,6 +26,7 @@ var GraphStore = function(URL){
                 // Store created
                 //potential async issue
                 this.Store = store;
+                GlobalStore = store;
                 console.log("Store Created");
                 var Confirm = confirm("Data will be loaded");
                 if (Confirm){
@@ -35,6 +36,8 @@ var GraphStore = function(URL){
         });
     });
 };
+//TODO: Make a clear function to wipe the Store
+
 
 /**
  * Takes an Rdf store object and gets all the type from the graph
@@ -101,14 +104,11 @@ function GetPredicateQuery(graph_store,ClassObject){
  *
  * @constructor
  */
-function GetDataFromParam(){
-    graphStore.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-                        PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-                        PREFIX schemaorg: <http://schema.org/>\
-                        PREFIX : <http://example.org/>\
-                        SELECT DISTINCT ?offer ?price ?date FROM NAMED :rdfGraph { GRAPH ?g { \
-                                        ?offer schemaorg:price ?price. \
-                                        ?offer schemaorg:orderDate ?date. } }',
+function GetDataFromParam(graph){
+    graph.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+         PREFIX : <http://example.org/>\
+         select ?p ?o FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o; rdf:type <http://schema.org/Order>. ?s <http://schema.org/orderDate> ?o.  FILTER(?p != rdf:type). } }',
         function(err, results) {
             console.log("Results:");
             console.log(results);
