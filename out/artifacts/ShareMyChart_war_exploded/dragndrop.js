@@ -1,29 +1,31 @@
 /**
- * Created by User on 2016-10-01.
+ * Drag and Drop ui made from the Jquery UI library
+ * Utilizes Draggable, Droppable, and Sortable types
  */
+
 
 //hard-coded test data
 var array_of_paramnames = ["Stocks", "Employee Salaries", "Sales", "Budget Spent", "Months", "Orders", "Fahjkshdas"];
 
+/**
+ * initializes the droppables for parameters
+ */
 $(document).ready(function initDragnDrop(event, ui){
-    //drags and reverts to original position if its not dropped in a valid place
 
     $('.dropMe').droppable({
         disabled: false,
         hoverClass: "drop-area",
         connectToSortable: '.sortable',
-
         drop: (function(ev, ui) {
-
 
             var id = $(ui.draggable).attr("id");
             var name = $(ui.draggable)[0].childNodes[0].nodeValue;
 
             $(ui.draggable).remove(); //remove the sortable, create a draggable on the droppable
 
-                newdiv = document.createElement('div');   //create a div
+            //create a draggable object to sit on top of the droppable, since the sortable can't do that
+                newdiv = document.createElement('div');
                 newdiv.setAttribute('id', id);
-                // newdiv.setAttribute('class','sortable');
                 newdiv.id = id
                 newdiv.className = 'dragndropShape';
                 createdDrags = document.createTextNode(name);
@@ -35,18 +37,18 @@ $(document).ready(function initDragnDrop(event, ui){
                 stack: ".dragndropShape",
                 hoverClass: "highlightBorder",
                 connectToSortable: '.sortable'
-
-            });
+                });
 
             $(this).append($(newdiv));
             $('newdiv').position({of: $(this), my: 'left top', at: 'left top'});
 
 // Harrison Powers, Stack overflow: http://stackoverflow.com/users/2474735/harrison-powers
 // http://stackoverflow.com/a/22211268
+            //if there is already something in the droppable:
             if ( $(this).find(".dragndropShape").length > 1 ){
                 replacedValue = $(this).find(".dragndropShape")[0];
-//newdiv is a new draggable sitting inside the droppable, li is the old value getting sent back into the sortable
 
+// li is the old value getting sent back into the sortable
                 var li = $("<li class='dragndropShape'/>").text(replacedValue.childNodes[0].nodeValue);
                 li.id = replacedValue.id;
                 $(replacedValue).remove();
@@ -60,7 +62,10 @@ $(document).ready(function initDragnDrop(event, ui){
 });
 
 
-//creates the appropriate number of draggable elements after the user uploads a file
+/**
+ * Create a sortable list from an array of parameters.
+ * @param: String[]
+ */
 $(document).ready(function createDrags(array_of_params){
     /*
      Dynamically creating HTML elements using Javascript:
@@ -83,7 +88,7 @@ $(document).ready(function createDrags(array_of_params){
         newdiv.className = 'dragndropShape';
         createdDrags = document.createTextNode(array_of_params[i]);
         newdiv.appendChild(createdDrags); //put text node into draggable
-        list.appendChild(newdiv); //put draggable into the list
+        list.appendChild(newdiv); //put draggable into the sortable list
     }
 
     $(list).insertAfter(insertLocation);
@@ -91,8 +96,5 @@ $(document).ready(function createDrags(array_of_params){
          connectWith: '.dragndropShape',
          appendTo: 'body'
     });
-
-
-
 
 });
