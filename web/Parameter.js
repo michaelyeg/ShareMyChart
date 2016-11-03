@@ -2,27 +2,44 @@
  * Created by Jill - Offline on 2016-11-02.
  */
 
-    //make an array of these I think
+/*
+@constructor Parameter
+@param {string} name - URI name of the parameter
+@param {string} class_name - Class of the parameter
+@property {string} type - Datatype of the parameter
+@property {string} real_name - The real name of the parameter, for UI/display-use.
+ */
 var Parameter = function(name, class_value){
-        this.name = name; //this is the full URI name for now, gotta change it for display to the user later
+        this.name = name;
         this.class_value = class_value;
         this.type = "Not known";
-        //add shortened name for ui
+        this.real_name = name.substring(name.lastIndexOf("/") + 1);
 
     };
 
-//an array of parameters - arrays in javascript are dynamic, don't need to tell it how big the array will be
+    /*
+    @constructor ParameterManager
+    @property {array} $p.Array - The array for storing the parameters.
+     */
 var ParameterManager = function(){
     $.pArray = [];
     console.log("New Parameter manager created.");
 };
 
-//adds a predicate to the parameter manager
+/*
+@method addParameter
+@param {Parameter} Parameter - A parameter to add to the parameter manager.
+@description Adds parameter to the manager
+ */
 ParameterManager.prototype.addParameter = function(Parameter){
     $.pArray.push(Parameter);
 };
 
-//checks if the predicate is already in the parameter manager
+/*
+@method checkExists
+@param {string} value - Checks if the predicate value is already recorded in the parameter manager
+@description Checks if a predicate is already in the parameter manager
+ */
 ParameterManager.prototype.checkExists = function(value){
     for(var j=0; j < $.pArray.length; j++){
         if($.pArray[j].name.localeCompare(value) == 0)
@@ -31,7 +48,12 @@ ParameterManager.prototype.checkExists = function(value){
     return false;
 };
 
-//assigns the datatype to the provided predicate
+/*
+@method addDatatype
+@param {string} predicate - the predicate to recieve the datatype
+@param {string} dataType - the datatype to be assigned to the predicate
+@description Adds the datatype to the provided predicate
+ */
 ParameterManager.prototype.addDatatype = function(predicate, dataType){
 
     for(var i=0; i < $.pArray.length; i++) {
@@ -43,12 +65,16 @@ ParameterManager.prototype.addDatatype = function(predicate, dataType){
 
 }
 
-//simplifies the types into what we need for our program - carefully
-//lat/long identifiers will be set as: lat/long
-//date values will be set as: date (they already should be)
-//anything labelled string = nominal
-//any numbers = numeric
-//in implementation, note that numeric should be considered ordinal, ie, kind of like date
+
+/*
+@method simplifyTypes
+@description Simplifies the types into what we need for our program - carefully
+ lat/long identifiers will be set as: lat/long
+ date values will be set as: date (they already should be)
+ anything labelled string = nominal
+ any numbers = numeric
+ in implementation, note that numeric should be considered ordinal, ie, kind of like date
+ */
 ParameterManager.prototype.simplifyTypes = function(){
     console.log("We here and length = " + $.pArray.length);
     for(var i = 0; i < $.pArray.length; i++) {
