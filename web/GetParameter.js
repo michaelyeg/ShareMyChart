@@ -9,7 +9,11 @@ var TypeArray = [];
 var PredicateArray = [];
 var ParameterList = {};
 
+var GlobalStore;
+
+
 var pManager = new ParameterManager();
+
 
 /**
  *Creates a rdfstore for a given URL. The store ca then be queried.
@@ -28,6 +32,7 @@ var GraphStore = function(URL){
                 // Store created
                 //potential async issue
                 this.Store = store;
+                GlobalStore = store;
                 console.log("Store Created");
                 var Confirm = confirm("Data will be loaded");
                 if (Confirm){
@@ -38,6 +43,8 @@ var GraphStore = function(URL){
         });
     });
 };
+//TODO: Make a clear function to wipe the Store
+
 
 /**
  * Takes an Rdf store object and gets all the type from the graph
@@ -103,28 +110,8 @@ function GetPredicateQuery(graph_store,ClassObject){
     );
 }
 
-/**
- *
- * @constructor
- */
-function GetDataFromParam(){
-    graphStore.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-                        PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-                        PREFIX schemaorg: <http://schema.org/>\
-                        PREFIX : <http://example.org/>\
-                        SELECT DISTINCT ?offer ?price ?date FROM NAMED :rdfGraph { GRAPH ?g { \
-                                        ?offer schemaorg:price ?price. \
-                                        ?offer schemaorg:orderDate ?date. } }',
-        function(err, results) {
-            console.log("Results:");
-            console.log(results);
 
-            for (var i = 0; i < results.length; i++) {
-                var price = results[i].price;
-            }
-        }
-    );
-}
+
 
 
 /**
@@ -136,10 +123,11 @@ function GetName(uri){
     var temp_array = uri.split('/');
     var name = temp_array[temp_array.length-1];
     return name;
-
 }
+
 console.log("Running Init!");
 //var new_Store = new GraphStore("URL");
+
 
 //gets the data type associated with the predicate
 function getDatatypes(theStore) {
@@ -164,7 +152,7 @@ function getDatatypes(theStore) {
                     if (result['type'] && result['type'].match('^http://www.w3.org/2001/XMLSchema#')){
                         var prefix = 'http://www.w3.org/2001/XMLSchema#';
                         type = result['type'].substr(prefix.length);
-                        console.log(type);
+                       // console.log(type);
 
                         //**TODO if there's time - check all values of the parameter to see if they're different
                         //example: there could be a string among numbers, but this is just recording the
@@ -172,6 +160,7 @@ function getDatatypes(theStore) {
                         if(pManager.checkExists(results[i]['p'].value) ){
                             pManager.addDatatype(results[i]['p'].value, type);
                             //console.log("1.Added value " + type + " to pManager");
+
                         }
 
                     }
@@ -189,7 +178,9 @@ function getDatatypes(theStore) {
 
                         if(pManager.checkExists(results[i]['p'].value) ){
                             pManager.addDatatype(results[i]['p'].value, type);
-                            //console.log("3.Added value " +type+ " to pManager");
+
+                           // console.log("3.Added value " +type+ " to pManager");
+
                         }
 
                     }
@@ -200,4 +191,5 @@ function getDatatypes(theStore) {
         });
 
 }
+
 
