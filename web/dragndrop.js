@@ -17,16 +17,22 @@ $(document).ready(function initDragnDrop(event, ui){
         hoverClass: "drop-area",
         connectToSortable: '.sortable',
         drop: (function(ev, ui) {
+            //get the id of the object dropped onto the droppable and which droppable
+            var dropId = $(this).attr("id");
+            var dragid = $(ui.draggable).attr("id");
+console.log(dragid);
+            //doSomething(dropId, dragId); //use the Id's to do something to the graph
 
-            var id = $(ui.draggable).attr("id");
+            //next, deal with the draggables and sortable:
+
             var name = $(ui.draggable)[0].childNodes[0].nodeValue;
 
             $(ui.draggable).remove(); //remove the sortable, create a draggable on the droppable
 
             //create a draggable object to sit on top of the droppable, since the sortable can't do that
                 newdiv = document.createElement('div');
-                newdiv.setAttribute('id', id);
-                newdiv.id = id
+                newdiv.setAttribute('id', dragid);
+                newdiv.id = dragid
                 newdiv.className = 'dragndropShape';
                 createdDrags = document.createTextNode(name);
                 newdiv.appendChild(createdDrags);
@@ -50,7 +56,8 @@ $(document).ready(function initDragnDrop(event, ui){
 
 // li is the old value getting sent back into the sortable
                 var li = $("<li class='dragndropShape'/>").text(replacedValue.childNodes[0].nodeValue);
-                li.id = replacedValue.id;
+                var newId = replacedValue.getAttribute("id");
+                $(li).attr("id",newId);
                 $(replacedValue).remove();
                 $(".sortable").append(li);
                 $(".sortable").sortable('refresh');
@@ -77,19 +84,20 @@ function createDrags(array_of_params){ //document.ready
     var list = document.createElement('ul');
     list.setAttribute("id","sortable");
     list.className = "sortable";
-
+console.log(array_of_params);
     var createdDrags = "";
     var newdiv;
     var insertLocation =document.getElementById('drag_parameters');
+    var i = 0;
     for(var name in array_of_params){
         newdiv = document.createElement('li');   //create a li element
-        newdiv.setAttribute('id',array_of_params[name].name);
-        console.log(array_of_params);
-        newdiv.id = array_of_params[name].name;
+        newdiv.setAttribute('id',i);
+        //newdiv.id = array_of_params[name].name;
         newdiv.className = 'dragndropShape';
         createdDrags = document.createTextNode(array_of_params[name].name);
         newdiv.appendChild(createdDrags); //put text node into draggable
         list.appendChild(newdiv); //put draggable into the sortable list
+        i++;
     }
 
     $(list).insertAfter(insertLocation);
