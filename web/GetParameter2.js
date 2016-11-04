@@ -90,6 +90,7 @@ function GetParameterQuery(graph_store) {
 
                                             pManager.addParameter(pam);
                                             pManager.simplifyType(); //used to be a callback for the above, but still didnt work
+
                                         }
                                     }
 
@@ -97,6 +98,8 @@ function GetParameterQuery(graph_store) {
                 });
 
             }
+            var dict = pManager.getParameters();
+            createDrags(dict);
         }
     );
 }
