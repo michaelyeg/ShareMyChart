@@ -14,7 +14,7 @@ var Pam4 = new Parameter("http://schema.org/name", "http://schema.org/Person");
 var GlobalData = [];
 
 /**
- * This function Discovers the Link between two Parameters and then Retreives the data from the Path discovered
+ * @description This function Discovers the Link between two Parameters and then Retreives the data from the Path discovered
  * Global Parameters created for testing in the console
  * @param {Parameter Object} Param1 - The X variable for the chart
  * @param {Parameter Object} Param2 - The Y variable for the chart
@@ -61,7 +61,14 @@ function GetLink(Param1, Param2, graph){
     );
 
 }
-//TODO:Make this function to make a dynamic query based on how long the link is.
+
+/**
+ *
+ * @param uri1
+ * @param uri2
+ * @constructor
+ * @todo Make this function to make a dynamic query based on how long the link is.
+ */
 function QueryBuilder(uri1, uri2){
     var string1 = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                    PREFIX : <http://example.org/>';
@@ -72,14 +79,14 @@ function QueryBuilder(uri1, uri2){
     var stingx = '}}';
 }
 
-//TODO: Why does the function only work one way? try a reverse of the above function.
 /**
- * Takes Two uri's for the X and Y variables respectivley. And grabs the data from the Path defined in the GlobalLink
+ * @description Takes Two uri's for the X and Y variables respectivley. And grabs the data from the Path defined in the GlobalLink
  * Pushed data as an array of pairs, representing the X,Y data points. The Array is currently Stored in the GlobalData array
  *
  * @param uri1
  * @param uri2
  * @param graph
+ * @todo Why does the function only work one way? try a reverse of the above function.
  */
 function GetData(uri1, uri2, graph){
     graph.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\

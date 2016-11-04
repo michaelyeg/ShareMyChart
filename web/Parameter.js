@@ -9,6 +9,12 @@
 @property {string} type - Datatype of the parameter
 @property {string} real_name - The real name of the parameter, for UI/display-use.
  */
+/**
+ *
+ * @param name
+ * @param class_value
+ * @constructor
+ */
 var Parameter = function(name, class_value){
         this.name = name;
         this.class_value = class_value;
@@ -19,10 +25,10 @@ var Parameter = function(name, class_value){
 
     };
 
-    /*
-    @constructor ParameterManager
-    @property {array} $p.Array - The array for storing the parameters.
-     */
+/**
+ *
+ * @constructor
+ */
 var ParameterManager = function(){
     $.pArray = [];
     console.log("New Parameter manager created.");
@@ -31,7 +37,10 @@ var ParameterManager = function(){
 /*
 @method addParameter
 @param {Parameter} Parameter - A parameter to add to the parameter manager.
-@description Adds parameter to the manager
+@description Adds parameter to the manager*/
+/**
+ *
+ * @param Parameter
  */
 ParameterManager.prototype.addParameter = function(Parameter){
     $.pArray.push(Parameter);
@@ -39,6 +48,10 @@ ParameterManager.prototype.addParameter = function(Parameter){
 };
 
 //get the Parameters as an array of strings **TODO finish this for Nikki's parameters
+/**
+ *
+ * @returns {Array}
+ */
 ParameterManager.prototype.getParameters = function(){
     var dict = [];
     for(var i=0; i < $.pArray.length; i++){
@@ -53,19 +66,18 @@ ParameterManager.prototype.getParameters = function(){
     return dict;
 }
 
-//**TODO make a getType for Michael's stuff, for a specific parameter
-
-
-/*
-@method checkExists
-@param {string} pred - The predicate to check
-@param {string} class_val - Class to check
-@param {string} d_type - The datatype to check
-@description Checks if a predicate is already in the parameter manager. This is done by
-             checking the predicate, the class, and if there's a datatype already assigned.
-             If class and predicate are true and the datatype is anything but nominal,
-             the datatype will be overwritten (by returning true).
-             Returns true if already exists, false if it does not.
+/**
+ *
+ * @param pred
+ * @param class_val
+ * @param d_type
+ * @returns {boolean}
+ * @todo make a getType for Michael's stuff, for a specific parameter
+ * @description Checks if a predicate is already in the parameter manager. This is done by
+ * checking the predicate, the class, and if there's a datatype already assigned.
+ * If class and predicate are true and the datatype is anything but nominal,
+ * the datatype will be overwritten (by returning true).
+ * Returns true if already exists, false if it does not.
  */
 ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
     for(var j=0; j < $.pArray.length; j++){
@@ -84,31 +96,26 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
     return false;
 };
 
-/*
-@method addDatatype
-@param {string} predicate - the predicate to recieve the datatype
-@param {string} dataType - the datatype to be assigned to the predicate
-@description Adds the datatype to the provided predicate
+/**
+ *
+ * @param index
+ * @param dataType
+ * @description Adds the datatype to the provided predicate
  */
 ParameterManager.prototype.addDatatype = function(index, dataType){
     //will only add the datatype if it is "not know" aka not set, or it has any value that is not nominal
     if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("string") != 0){
         $.pArray[index].type = dataType;
     }
-
-
-
 }
 
-
-/*
-@method simplifyTypes
-@description Simplifies the types into what we need for our program - carefully
- lat/long identifiers will be set as: lat/long
- date values will be set as: date (they already should be)
- anything labelled string = nominal
- any numbers = numeric
- in implementation, note that numeric should be considered ordinal, ie, kind of like date
+/**
+ * @description Simplifies the types into what we need for our program - carefully
+ * lat/long identifiers will be set as: lat/long
+ * date values will be set as: date (they already should be)
+ * anything labelled string = nominal
+ * any numbers = numeric
+ * in implementation, note that numeric should be considered ordinal, ie, kind of like date
  */
 ParameterManager.prototype.simplifyType = function(){
 

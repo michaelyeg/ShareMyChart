@@ -8,7 +8,7 @@ How to make an abstract class in Javascript:
 
 
 /**
- * Graph is an abstract class that defines variables and functions for all other graphs
+ * @description Graph is an abstract class that defines variables and functions for all other graphs
  * @constructor
  */
 var Graph = function(){
@@ -22,7 +22,7 @@ var Graph = function(){
 
 
 /**
- * get the x axis value
+ * @description get the x axis value
  * @returns {xAxis}
  */
 Graph.prototype.getxAxis = function(){
@@ -30,7 +30,7 @@ Graph.prototype.getxAxis = function(){
 }
 
 /**
- * get the y axis value
+ * @description get the y axis value
  * @returns {yAxis}
  */
 Graph.prototype.getyAxis = function(){
@@ -38,7 +38,7 @@ Graph.prototype.getyAxis = function(){
 }
 
 /**
- * set the x axis value
+ * @description set the x axis value
  * @param xval
  */
 Graph.prototype.setxAxis = function(xval){
@@ -46,14 +46,14 @@ Graph.prototype.setxAxis = function(xval){
 }
 
 /**
- * set the y axis value
+ * @description set the y axis value
  * @param yval
  */
 Graph.prototype.setyaxis = function(yval){
     this.yAxis = yval;
 }
 /**
- * Inheriting classes define their own makeGraph function
+ * @description Inheriting classes define their own makeGraph function
  * @abstract
  */
 Graph.prototype.makeGraph = function(){
