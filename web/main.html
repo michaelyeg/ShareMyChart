@@ -8,6 +8,9 @@
     <title>main</title>
     <!--modify title later-->
 
+    <!--Removes favicon error. If you want to have an icon on the title bar, replace this line-->
+    <link rel="shortcut icon" href="favicon.ico">
+
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/def.css"><!--don't add / before the name of folder-->
@@ -21,8 +24,13 @@
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> older version-->
      <!--order matters: jquery, then jquery ui -->
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!--old: 1.5.1 -->
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script> <!--old: 1.8.9 -->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> <!--old: 1.9.1 old: 1.11.0-->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script> <!--old: 1.8.9  also 1.11.0-->
+
+    <script src="https://d3js.org/d3.v4.min.js"></script> <!--D3-->
+
+      <script src="http://malsup.github.com/jquery.form.js"></script>
+
 
     <link rel = "stylesheet" href = "dragndrop.css" type = "text/css">
 
@@ -53,16 +61,15 @@
             <div class="col-xs-6">
               <div class="row">
                 <!--dimensions-->
-
                 <div class="container-fluid">
                   <div class="panel panel-default">
                     <div class="panel-heading">
-                      <h3 class="panel-title center">dimensions</h3>
+                      <h3 class="panel-title center" >dimensions </h3>
+
                     </div>
-                    <div class="panel-body center">
-                      <div class="dragndropShape" id="1"> Test1  </div>
-                      <div class="dragndropShape" id="2">Test2 </div>
-                      <div class="dragndropShape" id="3">Test3</div>
+
+                    <div class="panel-body center" id="drag_parameters">
+                        <!--Draggable objects are generated here-->
                     </div>
                   </div>
                 </div>
@@ -76,7 +83,7 @@
                       <h3 class="panel-title center">filters</h3>
                     </div>
                     <div class="panel-body center">
-                      <div class="dragndropShape" id="4"> Test </div>
+                     <!-- <div class="dragndropShape" id="4"> Test </div> -->
                     </div>
                   </div>
                 </div>
@@ -92,8 +99,8 @@
                       <h3 class="panel-title center">marks</h3>
                     </div>
                     <div class="panel-body center">
-                        X - Axis <div class="dropMe">Drop Here1</div>
-                      Y - Axis <div class="dropMe">Drop Here2</div>
+                        X - Axis <div class="dropMe" id="dropx">Drop Here1</div>
+                      Y - Axis <div class="dropMe" id="dropy">Drop Here2</div>
                     </div>
                   </div>
                 </div>
@@ -107,8 +114,7 @@
                       <h3 class="panel-title center">labels</h3>
                     </div>
                     <div class="panel-body center">
-                      <div class="dragndropShape" id="makeMeDraggable1">Test4</div>
-                      <div class="dragndropShape">Test5</div>
+
                     </div>
                   </div>
                 </div>
@@ -131,17 +137,17 @@
 
           <div class="row tabcontent" id="data"><!--tab for data-->
             <div class="col-xs-6">
-              <div class="row">
+              <div class="row" id="list">
 
               </div>
               <!--choose and import file-->
               <div class="row">
                 <div class="container-fluid">
-                  <form action="UploadServlet" method="post"
+                  <form id="form-submit" action="#" method="post"
                         enctype="multipart/form-data"><!--post form-->
-                    <input type="file" name="file" />
-                    <br />
-                    <input type="submit"class="btn btn-secondary btn-block" value="Upload File" />
+                    <input type="file" name="file"/>
+                    <br/>
+                    <input id="submit" type="submit" class="btn btn-secondary btn-block" value="Upload File" />
                   </form>
                 </div>
               </div>
@@ -160,7 +166,7 @@
                     <img src="icons/barChart.png" alt="" class="icon-default"/>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#"><img src="icons/vertricalBar.png" alt="" class="icon-default"/></a></li>
+                    <li><a href="#"><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart"/></a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#"><img src="icons/horizontalBar.png" alt="" class="icon-default"/></a></li>
                     <li role="separator" class="divider"></li>
@@ -210,9 +216,10 @@
               </li>
             </ul>
           </div>
-          <div class="row">
+          <div class="graphcontainer" id = "graph">
             <span>
-              <img src="icons/multilinepic.png" class="img-fluid" alt="Responsive image"/>
+              <div class="inner"></div>
+             <!-- <img src="icons/multilinepic.png" class="img-fluid" alt="Responsive image"/> -->
             </span>
           </div>
         </div>
@@ -222,8 +229,17 @@
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='./node_modules/rdfstore/dist/rdfstore.js'></script>
     <!--Handles drag and drop feature-->
+    <script type = "text/javascript" src="./Parameter.js"></script>
+    <script type = "text/javascript" src="./GetParameter2.js"></script>
+    <script type = "text/javascript" src="./GetData.js"></script>
+    <!-- <script type = "text/javascript" src="./GetParameter.js"></script> -->
     <script type = "text/javascript" src="./dragndrop.js"></script>
     <script type = "text/javascript" src="./func.js"></script>
+    <script type = 'text/javascript' src="./Graph.js"></script>
+  <script type = 'text/javascript' src="./BarChart.js"></script>
+  <script type = 'text/javascript' src = "./barGraph.css"></script>
+
   </body>
 </html>
