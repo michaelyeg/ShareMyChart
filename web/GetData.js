@@ -9,7 +9,8 @@ var Prd2 = "http://schema.org/price";
 var Prd1 = "http://schema.org/orderDate";
 var Pam1 = new Parameter("http://schema.org/orderDate","http://schema.org/Order");
 var Pam2 = new Parameter("http://schema.org/price","http://schema.org/Offer");
-var Pam3 = new Parameter("http://schema.org/name", "http://schema.org/Product");
+var Pam3 = new Parameter("http://schema.org/name", "http://schema.org/Place");
+var Pam4 = new Parameter("http://schema.org/name", "http://schema.org/Person");
 var GlobalData = [];
 
 /**

@@ -16,7 +16,7 @@ var pManager = new ParameterManager();
 
 
 /**
- *Creates a rdfstore for a given URL. The store ca then be queried.
+ *Creates a rdfstore for a given URL. The store can then be queried.
  * @param URL
  * @constructor
  */
