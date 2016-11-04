@@ -16,9 +16,9 @@ var GlobalData = [];
 /**
  * @description This function Discovers the Link between two Parameters and then Retreives the data from the Path discovered
  * Global Parameters created for testing in the console
- * @param {Parameter Object} Param1 - The X variable for the chart
- * @param {Parameter Object} Param2 - The Y variable for the chart
- * @param {Graph Store Object} graph - The already made Store.
+ * @param Param1 - The X variable for the chart
+ * @param Param2 - The Y variable for the chart
+ * @param graph - The already made Store.
  * @constructor
  */
 function GetLink(Param1, Param2, graph){
