@@ -8,6 +8,7 @@
 var TypeArray = [];
 var PredicateArray = [];
 var ParameterList = {};
+var GlobalStore;
 
 var pManager = new ParameterManager();
 
@@ -28,6 +29,7 @@ var GraphStore = function(URL){
                 // Store created
                 //potential async issue
                 this.Store = store;
+                GlobalStore = store;
                 console.log("Store Created");
                 var Confirm = confirm("Data will be loaded");
                 if (Confirm){
@@ -167,4 +169,5 @@ function getDatatype(oneResult, callback) {
         //});
 
 //}
+
 

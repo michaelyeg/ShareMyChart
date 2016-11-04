@@ -16,7 +16,7 @@ var pManager = new ParameterManager();
 
 
 /**
- *Creates a rdfstore for a given URL. The store ca then be queried.
+ *Creates a rdfstore for a given URL. The store can then be queried.
  * @param URL
  * @constructor
  */
@@ -125,7 +125,7 @@ function GetName(uri){
     return name;
 }
 
-console.log("Running Init!");
+//console.log("Running Init!");
 //var new_Store = new GraphStore("URL");
 
 
