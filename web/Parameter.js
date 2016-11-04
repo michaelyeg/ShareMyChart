@@ -25,7 +25,7 @@ var Parameter = function(name, class_value){
      */
 var ParameterManager = function(){
     $.pArray = [];
-    console.log("New Parameter manager created.");
+    console.log("New Parameter manager created!!!!!!!");
 };
 
 /*
@@ -38,9 +38,14 @@ ParameterManager.prototype.addParameter = function(Parameter){
     //callback();
 };
 
-//get the Parameters as an array of strings **TODO finish this for Nikki's parameters
+
+/*
+    @method getParameters
+   get the Parameters as an array of strings
+ */
 ParameterManager.prototype.getParameters = function(){
     var dict = [];
+
     for(var i=0; i < $.pArray.length; i++){
 
         dict.push({
