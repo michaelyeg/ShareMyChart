@@ -19,7 +19,7 @@ public class DataServlet extends HttpServlet {
 
     List<String> results = new ArrayList<String>();
 
-        File[] files = new File("/Users/Margaret/Documents/workspace/test/smc/data/").listFiles();
+        File[] files = new File("C:\\Users\\Owner\\Downloads\\apache-tomcat-9.0.0.M11\\webapps\\data\\").listFiles();
 
         for (File file : files){
             if (file.isFile() && file.getName().contains(".ttl")){
