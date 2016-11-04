@@ -25,6 +25,7 @@ function pickGraphType(X,Y) {
 function aggregate(aggPar,par) {
     // Initialize an associated Array, like dictionary in python.
     var dictionary=new Array;
+    var count=new Number();
     for (key in dictionary){
         dictionary.key=value;
     }
