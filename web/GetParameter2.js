@@ -9,14 +9,10 @@ var TypeArray = [];
 var PredicateArray = [];
 var ParameterList = {};
 
-var GlobalStore;
-
-
 var pManager = new ParameterManager();
 
-
 /**
- *Creates a rdfstore for a given URL. The store can then be queried.
+ *Creates a rdfstore for a given URL. The store ca then be queried.
  * @param URL
  * @constructor
  */
@@ -32,19 +28,15 @@ var GraphStore = function(URL){
                 // Store created
                 //potential async issue
                 this.Store = store;
-                GlobalStore = store;
                 console.log("Store Created");
                 var Confirm = confirm("Data will be loaded");
                 if (Confirm){
                     GetParameterQuery(this);
-                    getDatatypes(this);
                 }
             }
         });
     });
 };
-//TODO: Make a clear function to wipe the Store
-
 
 /**
  * Takes an Rdf store object and gets all the type from the graph
@@ -69,48 +61,43 @@ function GetParameterQuery(graph_store) {
 
             //Get the Name value from the object and push value to global array
             for(var i = 0; i < results_type.length; i++){
-                var name = GetName(results_type[i].type.value);
-                TypeArray.push(name);
+                var name = GetName(results_type[i]['t'].value);
+                if(TypeArray.indexOf(name) ==-1) {
+                    TypeArray.push(name);
+                }
                 //ParameterList.push(obj);
                 //For each Type find the predicates that belong to it
-                GetPredicateQuery(graph_store,results_type[i]);
+                //GetPredicateQuery(graph_store,results_type[i]); COMMENTED OUT
             }
             console.log("TypeArray: ");
             console.log(TypeArray);
-        }
-    );
-}
 
-/**
- * Take a Rdf store and a type object and gets all the predicates associated with the Class
- * @param {GraphStore} graph_store
- * @param ClassObject
- */
-function GetPredicateQuery(graph_store,ClassObject){
-    var uri = ClassObject.type.value;
-    graph_store.Store.execute(
-        'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-         PREFIX : <http://example.org/>\
-         select distinct ?p FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o; rdf:type <'+uri+'>. FILTER(?p != rdf:type). } }',
-        function(err, results_predicate) {
-            console.log("Results Predicates: " + uri);
-            console.log(results_predicate);
-            for (var i = 0; i < results_predicate.length; i++) {
-                //Send to the Parameter class to be added to global list.
-                //results_predicate[i] --> the predicate object
-                //ClassObject --> the object for the class ex. Order or Offer
-                //GetName(uri) --> will get the name in  reader
-                var pam = new Parameter(results_predicate[i]['p'].value , uri);
-                pManager.addParameter(pam);
+            //get valid predicates, record their values, record final datatype
+                            for(var i=0; i < results_type.length; i++){
+                                var unknown=false;
+                                //figure out the datatype
+                                getDatatype(results_type[i], function(d_type){
+                                    if(!d_type.localeCompare("unknown")){
+                                        unknown=true;
+                                    }
+
+                                    if(!unknown) {
+                                        //check that the predicate isn't already in the manager
+                                        if (!pManager.checkExists(results_type[i]['p'].value, results_type[i]['t'].value, d_type)) {
+                                            var pam = new Parameter(results_type[i]['p'].value, results_type[i]['t'].value);
+
+                                            pManager.addParameter(pam);
+                                            pManager.simplifyType(); //used to be a callback for the above, but still didnt work
+                                        }
+                                    }
+
+
+                });
 
             }
-
         }
     );
 }
-
-
 
 
 
@@ -123,14 +110,14 @@ function GetName(uri){
     var temp_array = uri.split('/');
     var name = temp_array[temp_array.length-1];
     return name;
+
 }
-
 console.log("Running Init!");
-//var new_Store = new GraphStore("URL");
-
+var new_Store = new GraphStore("URL");
 
 //gets the data type associated with the predicate
-function getDatatypes(theStore) {
+function getDatatype(oneResult, callback) {
+    /*
     theStore.Store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
                    PREFIX : <http://example.org/>\
@@ -145,51 +132,39 @@ function getDatatypes(theStore) {
             console.log("Results: Jill's");
             console.log(results);
             for (var i = 0; i < results.length; i++) {
-                var result = results[i]['o'];
+            */
+                //var result = results[i]['o'];   var dataType = getDatatype(results_type[i]);
                 var type = 'unknown';
 
-                if (results[i]['o']['token'] == 'literal'){
-                    if (result['type'] && result['type'].match('^http://www.w3.org/2001/XMLSchema#')){
+                if (oneResult['o']['token'] == 'literal'){
+                    if (oneResult['o']['type'] && oneResult['o']['type'].match('^http://www.w3.org/2001/XMLSchema#')){
                         var prefix = 'http://www.w3.org/2001/XMLSchema#';
-                        type = result['type'].substr(prefix.length);
-                       // console.log(type);
-
-                        //**TODO if there's time - check all values of the parameter to see if they're different
-                        //example: there could be a string among numbers, but this is just recording the
-                        //first time I see something - DOES HAPPEN - has recorded name as integer
-                        if(pManager.checkExists(results[i]['p'].value) ){
-                            pManager.addDatatype(results[i]['p'].value, type);
-                            //console.log("1.Added value " + type + " to pManager");
-
-                        }
+                        type = oneResult['o']['type'].substr(prefix.length);
+                        //console.log(type);
 
                     }
-                    else if (parseInt(result['value'])){
+                    else if (parseInt(oneResult['value'])){
                         type = 'integer';
-
-                        if(pManager.checkExists(results[i]['p'].value) ){
-                            pManager.addDatatype(results[i]['p'].value, type);
-                            //console.log("2.Added value" + type +" to pManager");
-                        }
-
                     }
-                    else if (parseFloat(result['value'])){
+                    else if (parseFloat(oneResult['value'])){
                         type = 'float';
 
-                        if(pManager.checkExists(results[i]['p'].value) ){
-                            pManager.addDatatype(results[i]['p'].value, type);
+                    }else{
 
-                           // console.log("3.Added value " +type+ " to pManager");
+                        if(oneResult.p.value.localeCompare("http://schema.org/orderNumber") ==0)
+                            console.log("I am checking " + oneResult.o.value +" and I have type:" + type);
 
-                        }
-
+                        //in here if it is a string literal
+                        //could possibly be other things but I don't knoooow how you'd catch a string
+                        type = 'string';
                     }
                 }
+                callback(type);
             }
-            pManager.simplifyTypes(); //turn into a callback function!
 
-        });
+            //pManager.simplifyTypes(); //turn into a callback function!
 
-}
+        //});
 
+//}
 
