@@ -69,7 +69,7 @@ function GetParameterQuery(graph_store) {
 
             //Get the Name value from the object and push value to global array
             for(var i = 0; i < results_type.length; i++){
-                var name = GetName(results_type[i].type.value);
+                var name = GetName(results_type[i].t.value);
                 TypeArray.push(name);
                 //ParameterList.push(obj);
                 //For each Type find the predicates that belong to it
