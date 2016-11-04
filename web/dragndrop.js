@@ -64,16 +64,16 @@ $(document).ready(function initDragnDrop(event, ui){
 
 /**
  * Create a sortable list from an array of parameters.
- * @param: String[]
+ * @param: Dictionary[]
  */
-$(document).ready(function createDrags(array_of_params){
+function createDrags(array_of_params){ //document.ready
     /*
      Dynamically creating HTML elements using Javascript:
      KooiInc, Stack Overflow: http://stackoverflow.com/users/58186/kooiinc
      http://stackoverflow.com/a/5536711
      */
 
-    array_of_params = array_of_paramnames; //change after we have file reading correct
+    //array_of_params = array_of_paramnames; //change after we have file reading correct
     var list = document.createElement('ul');
     list.setAttribute("id","sortable");
     list.className = "sortable";
@@ -81,12 +81,13 @@ $(document).ready(function createDrags(array_of_params){
     var createdDrags = "";
     var newdiv;
     var insertLocation =document.getElementById('drag_parameters');
-    for(i=0;i<array_of_params.length;i++){
+    for(var name in array_of_params){
         newdiv = document.createElement('li');   //create a li element
-        newdiv.setAttribute('id',array_of_params[i]);
-        newdiv.id = array_of_params[i];
+        newdiv.setAttribute('id',array_of_params[name].name);
+        console.log(array_of_params);
+        newdiv.id = array_of_params[name].name;
         newdiv.className = 'dragndropShape';
-        createdDrags = document.createTextNode(array_of_params[i]);
+        createdDrags = document.createTextNode(array_of_params[name].name);
         newdiv.appendChild(createdDrags); //put text node into draggable
         list.appendChild(newdiv); //put draggable into the sortable list
     }
@@ -97,4 +98,4 @@ $(document).ready(function createDrags(array_of_params){
          appendTo: 'body'
     });
 
-});
+};
