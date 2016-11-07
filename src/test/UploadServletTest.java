@@ -1,3 +1,5 @@
+
+/*
 import com.meterware.httpunit.*;
 import com.meterware.httpunit.protocol.UploadFileSpec;
 import com.meterware.servletunit.ServletRunner;
@@ -6,7 +8,7 @@ import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
-
+*/
 /**
  * Created by M.Guo on 03/11/2016.
  */

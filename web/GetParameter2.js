@@ -6,8 +6,6 @@
 //Call parameter manager
 
 var TypeArray = [];
-var PredicateArray = [];
-var ParameterList = {};
 var GlobalStore;
 
 var pManager = new ParameterManager();
@@ -46,12 +44,6 @@ var GraphStore = function(URL){
  */
 function GetParameterQuery(graph_store) {
     console.log("Query executed");
-    /*
-     graphStore.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-     PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-     PREFIX : <http://example.org/>\
-     SELECT DISTINCT ?p FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o. FILTER(?p != rdf:type). } }',
-     */
     graph_store.Store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
                         PREFIX : <http://example.org/>\
@@ -76,26 +68,8 @@ function GetParameterQuery(graph_store) {
 
             //get valid predicates, record their values, record final datatype
                             for(var i=0; i < results_type.length; i++){
-                                var unknown=false;
                                 //figure out the datatype
-                                getDatatype(results_type[i], function(d_type){
-                                    if(!d_type.localeCompare("unknown")){
-                                        unknown=true;
-                                    }
-
-                                    if(!unknown) {
-                                        //check that the predicate isn't already in the manager
-                                        if (!pManager.checkExists(results_type[i]['p'].value, results_type[i]['t'].value, d_type)) {
-                                            var pam = new Parameter(results_type[i]['p'].value, results_type[i]['t'].value);
-
-                                            pManager.addParameter(pam);
-                                            pManager.simplifyType(); //used to be a callback for the above, but still didnt work
-
-                                        }
-                                    }
-
-
-                });
+                                getDatatype(results_type[i], gotDatatype);
 
             }
             var dict = pManager.getParameters();
@@ -105,6 +79,41 @@ function GetParameterQuery(graph_store) {
 }
 
 
+/*
+    Callback function for when it has checked the datatype from the parameter
+    @param {string} d_type - the datatype found from getDatatype()
+    @param {object} results_type - a single object found from the query
+ */
+function gotDatatype(d_type, results_type){
+    var unknown=false;
+
+    //if it's unknown, then it's a blank node. Ignore those ones (unknown stays false)
+        if(!d_type.localeCompare("unknown")){
+            unknown=true;
+        }
+
+        if(!unknown) {
+            //check that the predicate isn't already in the manager
+            if (!pManager.checkExists(results_type['p'].value, results_type['t'].value, d_type)) {
+                var pam = new Parameter(results_type['p'].value, results_type['t'].value);
+
+                pManager.addParameter(pam);
+                pManager.addDatatype(pManager.getLength() -1, d_type);
+                pManager.simplifyType(); //used to be a callback for the above, but still didnt work
+
+            }else{
+                //parameter already exists, but still want to try assigning the datatype if it's nominal
+                pManager.addDatatype(pManager.getLength() -1, d_type);
+                pManager.simplifyType();
+            }
+        }
+
+
+
+
+
+
+}
 
 /**
  * Helper function to Get a readable title from a uri
@@ -122,55 +131,29 @@ var new_Store = new GraphStore("URL");
 
 //gets the data type associated with the predicate
 function getDatatype(oneResult, callback) {
-    /*
-    theStore.Store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-                   PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-                   PREFIX : <http://example.org/>\
-                   PREFIX schemaorg: <http://schema.org/>\
-                   SELECT DISTINCT ?p ?o FROM NAMED :rdfGraph\
-                                  { GRAPH ?g {\
-                                               ?s ?p ?o.\
-                                                FILTER (\
-                                                ?p != rdf:type).\
-                                             }}',
-        function (err, results) {
-            console.log("Results: Jill's");
-            console.log(results);
-            for (var i = 0; i < results.length; i++) {
-            */
-                //var result = results[i]['o'];   var dataType = getDatatype(results_type[i]);
+
                 var type = 'unknown';
 
                 if (oneResult['o']['token'] == 'literal'){
                     if (oneResult['o']['type'] && oneResult['o']['type'].match('^http://www.w3.org/2001/XMLSchema#')){
                         var prefix = 'http://www.w3.org/2001/XMLSchema#';
                         type = oneResult['o']['type'].substr(prefix.length);
-                        //console.log(type);
 
                     }
-                    else if (parseInt(oneResult['value'])){
+                    else if (parseInt(oneResult['o']['value'])){ //this may have issue if the value parsed is negative!
                         type = 'integer';
                     }
-                    else if (parseFloat(oneResult['value'])){
+                    else if (parseFloat(oneResult['o']['value'])){ //same as above, but leave for now
                         type = 'float';
 
                     }else{
-
-                        if(oneResult.p.value.localeCompare("http://schema.org/orderNumber") ==0)
-                            console.log("I am checking " + oneResult.o.value +" and I have type:" + type);
-
                         //in here if it is a string literal
                         //could possibly be other things but I don't knoooow how you'd catch a string
                         type = 'string';
                     }
                 }
-                callback(type);
+                callback(type, oneResult);
             }
 
-            //pManager.simplifyTypes(); //turn into a callback function!
-
-        //});
-
-//}
 
 

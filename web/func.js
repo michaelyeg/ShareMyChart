@@ -15,8 +15,12 @@ $('li > a').click(function() {
 
 });
 
-//change tab
 //http://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_open
+/**
+ * @description change tab
+ * @param evt
+ * @param cityName
+ */
 function openCity(evt, cityName) {
     var i, tabcontent;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -47,6 +51,9 @@ $(document).ready(function(){
     refreshData();
 });
 
+/**
+ *
+ */
 function refreshData(){
    $.ajax({
        url:"/data",
