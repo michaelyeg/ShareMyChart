@@ -25,7 +25,7 @@ var Parameter = function(name, class_value){
      */
 var ParameterManager = function(){
     $.pArray = [];
-    console.log("New Parameter manager created!!!!!!!");
+    console.log("New Parameter manager created.");
 };
 
 /*
@@ -35,6 +35,8 @@ var ParameterManager = function(){
  */
 ParameterManager.prototype.addParameter = function(Parameter){
     $.pArray.push(Parameter);
+    //console.log("Added");
+    //console.log($.pArray);
     //callback();
 };
 
@@ -56,7 +58,7 @@ ParameterManager.prototype.getParameters = function(){
     }
 
     return dict;
-}
+};
 
 //**TODO make a getType for Michael's stuff, for a specific parameter
 
@@ -79,8 +81,7 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
                 //datatype aspect - can overwrite anything but nominal
                 //if someone was dumb and wrote in one date in the wrong format, then too bad
                 //youve changed them all
-                this.addDatatype(j, d_type);
-                return true; //right?
+                return true;
             }
 
         }
@@ -96,8 +97,8 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
 @description Adds the datatype to the provided predicate
  */
 ParameterManager.prototype.addDatatype = function(index, dataType){
-    //will only add the datatype if it is "not know" aka not set, or it has any value that is not nominal
-    if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("string") != 0){
+    //will only add the datatype if it is "not known" aka not set, or it has any value that is not nominal
+    if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("nominal") != 0){
         $.pArray[index].type = dataType;
     }
 

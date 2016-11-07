@@ -10,6 +10,8 @@ import java.io.IOException;
 /**
  * Created by M.Guo on 03/11/2016.
  */
+
+/*
 public class UploadServletTest {
 
     @Test
@@ -41,3 +43,4 @@ public class UploadServletTest {
 
     }
 }
+*/

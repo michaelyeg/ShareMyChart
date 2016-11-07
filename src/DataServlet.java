@@ -11,6 +11,8 @@ import java.util.List;
 /*
  * Created by M.Guo on 27/10/2016.
  */
+
+/*
 public class DataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req,
@@ -31,3 +33,4 @@ public class DataServlet extends HttpServlet {
     }
 
 }
+*/
