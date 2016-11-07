@@ -47,6 +47,7 @@ ParameterManager.prototype.addParameter = function(Parameter){
 
 };
 
+
 /*
     @method getLength
     @description Returns the length/number of items in the parameter manager
@@ -55,10 +56,12 @@ ParameterManager.prototype.getLength = function(){
     return $.pArray.length;
 }
 
-/*
-    @method getParameters
-   get the Parameters as an array of strings
-*/
+
+//get the Parameters as an array of strings **TODO finish this for Nikki's parameters
+/**
+ *
+ * @returns {Array}
+ */
 ParameterManager.prototype.getParameters = function(){
     var dict = [];
 
@@ -72,7 +75,9 @@ ParameterManager.prototype.getParameters = function(){
     }
 
     return dict;
+
 };
+
 
 /**
  *
