@@ -63,8 +63,35 @@ var testData = [
  *
  */
 $(document).ready(function(){
-    document.getElementById('verticalBarChart').addEventListener("click", BarChart.prototype.makeGraph);
+    document.getElementById('verticalBarChart').addEventListener("click", BarChart.prototype.verticalBC);
 })
+
+/**
+ * Listen for the click for the horizontal bar chart
+ *
+ */
+$(document).ready(function(){
+    document.getElementById('horizontalBarChart').addEventListener("click", BarChart.prototype.horizontalBC);
+})
+
+/**
+ * prepare the settings for the vertical barchart
+ */
+BarChart.prototype.verticalBC = function(){
+    BarChart.prototype.setHorizontal(false);
+    //something about stacked
+    BarChart.prototype.makeGraph();
+}
+
+/**
+ * prepare the settings for the vertical barchart
+ */
+BarChart.prototype.horizontalBC = function(){
+    BarChart.prototype.setHorizontal(true);
+    //something about stacked
+    BarChart.prototype.makeGraph();
+}
+
 
 /**
  * get the value of isHorizontal
@@ -101,66 +128,123 @@ BarChart.prototype.setStacked = function(sbool){
 /**
  * make a vertical bar chart from the data
  */
- BarChart.prototype.makeGraph = function(){
-   var graphLocation =document.getElementById('graph');
-   /*
-   How to create an svg tag with javascript:
-    http://stackoverflow.com/a/8215105
-    stackoverflow user Techn4k: http://stackoverflow.com/users/685450/techn4k
-    */
+ BarChart.prototype.makeGraph = function() {
+     var graphLocation = document.getElementById('graph');
+     //put some stuff in here about looking at horizontal and stacked
+     /*
+      How to create an svg tag with javascript:
+      http://stackoverflow.com/a/8215105
+      stackoverflow user Techn4k: http://stackoverflow.com/users/685450/techn4k
+      */
+//create the box that contains the graph
+     var svgg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+     svgg.setAttribute('style', 'border: 1px solid black');
+     svgg.setAttribute('width', '960');
+     svgg.setAttribute('height', '500');
+     svgg.setAttribute('overflow', 'auto');
+     svgg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+     $(graphLocation).append($(svgg));
 
-    var svgg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svgg.setAttribute('style', 'border: 1px solid black');
-    svgg.setAttribute('width', '960');
-    svgg.setAttribute('height', '500');
-   svgg.setAttribute('overflow', 'auto');
-    svgg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-   $(graphLocation).append($(svgg));
+
+     /*
+      Changes to the D3 example to accept array data instead of .tsv:
+      http://stackoverflow.com/a/21668952
+      stackoverflow user Teodor http://stackoverflow.com/users/840453/teodor
+      */
+
+     var svg = d3.select("svg"),
+         margin = {top: 20, right: 20, bottom: 30, left: 40},
+         width = +svg.attr("width") - margin.left - margin.right,
+         height = +svg.attr("height") - margin.top - margin.bottom;
+
+     var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+         y = d3.scaleLinear().rangeRound([height, 0]);
+
+     var g = svg.append("g")
+         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+     if (this.isHorizontal) {
+         //makes a horizontal bar chart
+         //-------------http://bl.ocks.org/kiranml1/6872226-----------------------------------
+         alert("bluhhh");
+         y.domain([d3.max(testData, function (d) {
+             return d.frequency;
+         }), 0]); //so that the order is from lowest to highest
+         x.domain(testData.map(function (d) {
+             return d.letter;
+         }));
+
+         g.append("g") //x axis
+             .attr("class", "axis axis--x")
+             .attr("transform", "translate(0," + height + ")")
+             .call(d3.axisBottom(y).ticks(10, "%"));
+
+         g.append("g") //y axis
+             .attr("class", "axis axis--y")
+             .call(d3.axisLeft(x))
+             .append("text")
+             .attr("transform", "rotate(-90)")
+             //.attr("x", 6)
+             .attr("dx", "0.71em")
+             .attr("text-anchor", "end")
+             .text("Letter");
+
+         g.selectAll(".bar")
+             .data(testData)
+             .enter().append("rect")
+             .attr("class", "bar")
+             .attr("y", function (d) {
+                 return y(d.frequency);
+             })
+             .attr("x", function (d) {
+                 return x(d.letter);
+             })
+             .attr("height", 200)//x.bandwidth())
+             .attr("width", function (d) {
+                 return height - y(d.frequency);
+             });
+
+     } else {
+         //makes a vertical bar chart
+
+         x.domain(testData.map(function (d) {
+             return d.letter;
+         }));
+         y.domain([0, d3.max(testData, function (d) {
+             return d.frequency;
+         })]);
+
+         g.append("g")
+             .attr("class", "axis axis--x")
+             .attr("transform", "translate(0," + height + ")")
+             .call(d3.axisBottom(x));
+
+         g.append("g")
+             .attr("class", "axis axis--y")
+             .call(d3.axisLeft(y).ticks(10, "%"))
+             .append("text")
+             .attr("transform", "rotate(-90)")
+             .attr("y", 6)
+             .attr("dy", "0.71em")
+             .attr("text-anchor", "end")
+             .text("Frequency");
+
+         g.selectAll(".bar")
+             .data(testData)
+             .enter().append("rect")
+             .attr("class", "bar")
+             .attr("x", function (d) {
+                 return x(d.letter);
+             })
+             .attr("y", function (d) {
+                 return y(d.frequency);
+             })
+             .attr("width", x.bandwidth())
+             .attr("height", function (d) {
+                 return height - y(d.frequency);
+             });
 
 
-    /*
-    Changes to the D3 example to accept array data instead of .tsv:
-    http://stackoverflow.com/a/21668952
-    stackoverflow user Teodor http://stackoverflow.com/users/840453/teodor
-     */
-
-    var svg = d3.select("svg"),
-        margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom;
-
-    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-        y = d3.scaleLinear().rangeRound([height, 0]);
-
-    var g = svg.append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        x.domain(testData.map(function(d) { return d.letter; }));
-        y.domain([0, d3.max(testData, function(d) { return d.frequency; })]);
-
-        g.append("g")
-            .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
-
-        g.append("g")
-            .attr("class", "axis axis--y")
-            .call(d3.axisLeft(y).ticks(10, "%"))
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", "0.71em")
-            .attr("text-anchor", "end")
-            .text("Frequency");
-
-        g.selectAll(".bar")
-            .data(testData)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function(d) { return x(d.letter); })
-            .attr("y", function(d) { return y(d.frequency); })
-            .attr("width", x.bandwidth())
-            .attr("height", function(d) { return height - y(d.frequency); });
-
+     }
  }
 
