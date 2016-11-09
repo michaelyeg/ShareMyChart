@@ -84,7 +84,7 @@ BarChart.prototype.verticalBC = function(){
 }
 
 /**
- * prepare the settings for the vertical barchart
+ * prepare the settings for the horizontal barchart
  */
 BarChart.prototype.horizontalBC = function(){
     BarChart.prototype.setHorizontal(true);
@@ -129,6 +129,7 @@ BarChart.prototype.setStacked = function(sbool){
  * make a vertical bar chart from the data
  */
  BarChart.prototype.makeGraph = function() {
+
      var graphLocation = document.getElementById('graph');
      //put some stuff in here about looking at horizontal and stacked
      /*
@@ -157,52 +158,58 @@ BarChart.prototype.setStacked = function(sbool){
          width = +svg.attr("width") - margin.left - margin.right,
          height = +svg.attr("height") - margin.top - margin.bottom;
 
-     var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-         y = d3.scaleLinear().rangeRound([height, 0]);
+     //var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    //     y = d3.scaleLinear().rangeRound([height, 0]);
 
      var g = svg.append("g")
          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+
+
      if (this.isHorizontal) {
          //makes a horizontal bar chart
          //-------------http://bl.ocks.org/kiranml1/6872226-----------------------------------
-         alert("bluhhh");
-         y.domain([d3.max(testData, function (d) {
-             return d.frequency;
-         }), 0]); //so that the order is from lowest to highest
-         x.domain(testData.map(function (d) {
-             return d.letter;
-         }));
 
-         g.append("g") //x axis
-             .attr("class", "axis axis--x")
-             .attr("transform", "translate(0," + height + ")")
-             .call(d3.axisBottom(y).ticks(10, "%"));
 
-         g.append("g") //y axis
-             .attr("class", "axis axis--y")
-             .call(d3.axisLeft(x))
-             .append("text")
-             .attr("transform", "rotate(-90)")
-             //.attr("x", 6)
-             .attr("dx", "0.71em")
-             .attr("text-anchor", "end")
-             .text("Letter");
+      /*   var svg = d3.select("svg"),
+             margin = {top: 20, right: 20, bottom: 30, left: 80},
+             width = +svg.attr("width") - margin.left - margin.right,
+             height = +svg.attr("height") - margin.top - margin.bottom; */
 
-         g.selectAll(".bar")
-             .data(testData)
-             .enter().append("rect")
-             .attr("class", "bar")
-             .attr("y", function (d) {
-                 return y(d.frequency);
-             })
-             .attr("x", function (d) {
-                 return x(d.letter);
-             })
-             .attr("height", 200)//x.bandwidth())
-             .attr("width", function (d) {
-                 return height - y(d.frequency);
-             });
+       //  var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+
+         var x = d3.scaleLinear().range([0, width]);
+         var y = d3.scaleBand().range([height, 0]);
+
+      //   var g = svg.append("g")
+      //       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // d3.json("data.json", function(error, data) {
+          //   if (error) throw error;
+
+            // data.sort(function(a, b) { return a.value - b.value; });
+
+             x.domain([0, d3.max(testData, function(d) { return d.frequency; })]);
+             y.domain(testData.map(function(d) { return d.letter; }));
+
+             g.append("g")
+                 .attr("class", "x axis")
+                 .attr("transform", "translate(0," + height + ")")
+                 .call(d3.axisBottom(x).ticks(5).tickFormat(function(d) { return d; }).tickSizeInner([-height]));
+
+             g.append("g")
+                 .attr("class", "y axis")
+                 .call(d3.axisLeft(y));
+
+             g.selectAll(".bar")
+                 .data(testData)
+                 .enter().append("rect")
+                 .attr("class", "bar")
+                 .attr("x", 0)
+                 .attr("height", y.bandwidth())
+                 .attr("y", function(d) { return y(d.letter); })
+                 .attr("width", function(d) { return x(d.frequency); });
+
 
      } else {
          //makes a vertical bar chart
