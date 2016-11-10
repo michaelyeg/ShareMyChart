@@ -76,20 +76,49 @@ $(document).ready(function(){
 
 /**
  * prepare the settings for the vertical barchart
+ * clear the old graph if there is one in the way
  */
 BarChart.prototype.verticalBC = function(){
-    BarChart.prototype.setHorizontal(false);
-    //something about stacked
-    BarChart.prototype.makeGraph();
+
+
+    if(($('#graph').find("svg").length) == 0){
+        //no graph currently exists, build this one
+        BarChart.prototype.setgraphType(0);
+        BarChart.prototype.setHorizontal(false);
+        //something about stacked
+        BarChart.prototype.makeGraph();
+    } else{
+        //otherwise, remove the old graph and build this one
+        d3.select("svg").remove();
+        BarChart.prototype.setgraphType(0);
+        BarChart.prototype.setHorizontal(false);
+        //something about stacked
+        BarChart.prototype.makeGraph();
+
+    }
+
 }
 
 /**
  * prepare the settings for the horizontal barchart
+ * clear the old graph if there is one in the way
  */
 BarChart.prototype.horizontalBC = function(){
-    BarChart.prototype.setHorizontal(true);
-    //something about stacked
-    BarChart.prototype.makeGraph();
+    if(($('#graph').find("svg").length) == 0){
+        //no graph currently exists, build this one
+        BarChart.prototype.setgraphType(1);
+        BarChart.prototype.setHorizontal(true);
+        //something about stacked
+        BarChart.prototype.makeGraph();
+    } else{
+        //otherwise, remove the old graph and build this one
+        d3.select("svg").remove();
+        BarChart.prototype.setgraphType(1);
+        BarChart.prototype.setHorizontal(true);
+        //something about stacked
+        BarChart.prototype.makeGraph();
+
+    }
 }
 
 
@@ -158,8 +187,7 @@ BarChart.prototype.setStacked = function(sbool){
          width = +svg.attr("width") - margin.left - margin.right,
          height = +svg.attr("height") - margin.top - margin.bottom;
 
-     //var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-    //     y = d3.scaleLinear().rangeRound([height, 0]);
+
 
      var g = svg.append("g")
          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -168,7 +196,8 @@ BarChart.prototype.setStacked = function(sbool){
 
      if (this.isHorizontal) {
          //makes a horizontal bar chart
-         //-------------http://bl.ocks.org/kiranml1/6872226-----------------------------------
+         //-------------http://bl.ocks.org/kiranml1/6872226-----------------------------------no
+         //http://bl.ocks.org/alandunning/7008d0332cc28a826b37b3cf6e7bd998 uses MIT license
 
 
       /*   var svg = d3.select("svg"),
@@ -179,7 +208,7 @@ BarChart.prototype.setStacked = function(sbool){
        //  var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
          var x = d3.scaleLinear().range([0, width]);
-         var y = d3.scaleBand().range([height, 0]);
+         var y = d3.scaleBand().range([0, height]); //reordered to make y axis in the right order
 
       //   var g = svg.append("g")
       //       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -213,6 +242,9 @@ BarChart.prototype.setStacked = function(sbool){
 
      } else {
          //makes a vertical bar chart
+
+         var  x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+              y = d3.scaleLinear().rangeRound([height, 0]);
 
          x.domain(testData.map(function (d) {
              return d.letter;
