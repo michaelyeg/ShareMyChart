@@ -196,8 +196,27 @@ BarChart.prototype.setStacked = function(sbool){
 
      if (this.isHorizontal) {
          //makes a horizontal bar chart
-         //-------------http://bl.ocks.org/kiranml1/6872226-----------------------------------no
-         //http://bl.ocks.org/alandunning/7008d0332cc28a826b37b3cf6e7bd998 uses MIT license
+         /*
+         The Horizontal bar chart code is from (http://bl.ocks.org/alandunning/7008d0332cc28a826b37b3cf6e7bd998) under the MIT licence,
+         which is compatible with the GPL v3 License.
+
+          Copyright (c) 2016 Nicole Lovas, Jillian Lovas, Margaret Guo, Landon Thys, Michael Xi, and Diego Serrano Suarez.
+
+          Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+           files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use,
+            copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+             and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+          The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+          the Software.
+
+          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+          INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+          FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+           IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+           WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+           OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+          */
 
 
       /*   var svg = d3.select("svg"),
@@ -210,16 +229,10 @@ BarChart.prototype.setStacked = function(sbool){
          var x = d3.scaleLinear().range([0, width]);
          var y = d3.scaleBand().range([0, height]); //reordered to make y axis in the right order
 
-      //   var g = svg.append("g")
-      //       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        // d3.json("data.json", function(error, data) {
-          //   if (error) throw error;
-
-            // data.sort(function(a, b) { return a.value - b.value; });
-
              x.domain([0, d3.max(testData, function(d) { return d.frequency; })]);
              y.domain(testData.map(function(d) { return d.letter; }));
+
+
 
              g.append("g")
                  .attr("class", "x axis")
@@ -230,6 +243,7 @@ BarChart.prototype.setStacked = function(sbool){
                  .attr("class", "y axis")
                  .call(d3.axisLeft(y));
 
+
              g.selectAll(".bar")
                  .data(testData)
                  .enter().append("rect")
@@ -239,9 +253,39 @@ BarChart.prototype.setStacked = function(sbool){
                  .attr("y", function(d) { return y(d.letter); })
                  .attr("width", function(d) { return x(d.frequency); });
 
+   /*   var   barOuterPad = .2
+       var  barPad = .1
 
+         y = d3.scaleBand()
+             .domain(testData.map(function(d){  d.letter}))
+             .rangeRound([0, g.selectAll(".bar").offsetHeight], barPad, barOuterPad)
+
+         svg.append('rect')
+             .data(testData)
+             .enter().append('rect')
+             .attr('y', function(d){ y(d.letter)})
+             .attr('width', y.bandwidth())
+*/
      } else {
-         //makes a vertical bar chart
+         /*
+Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL v3 license.
+ Copyright (C) 2016  Nicole Lovas, Jillian Lovas, Margaret Guo, Landon Thys, Michael Xi, and Diego Serrano Suarez.
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
 
          var  x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
               y = d3.scaleLinear().rangeRound([height, 0]);
