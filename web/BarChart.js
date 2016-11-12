@@ -42,19 +42,19 @@ BarChart.prototype = Object.create(Graph.prototype); //barchart inherits from Gr
 BarChart.prototype.constructor = BarChart;
 
 //hard-coded test data until we can access data from file
-var testData = [
-    {letter: "A", frequency: .034},
-    {letter: "B", frequency: .55},
-    {letter: "C", frequency: .321},
-    {letter: "D", frequency: .567},
-    {letter: "E", frequency: .998},
-    {letter: "F", frequency: .0222},
-    {letter: "G", frequency: .445},
-    {letter: "H", frequency: .765},
-    {letter: "I", frequency: .533},
-    {letter: "J", frequency: .034},
-    {letter: "K", frequency: .034},
-    {letter: "L", frequency: .533}
+var testDataBC = [
+    {letter: "A", frequency: 0.034},
+    {letter: "B", frequency: 0.55},
+    {letter: "C", frequency: 0.321},
+    {letter: "D", frequency: 0.567},
+    {letter: "E", frequency: 0.998},
+    {letter: "F", frequency: 0.0222},
+    {letter: "G", frequency: 0.445},
+    {letter: "H", frequency: 0.765},
+    {letter: "I", frequency: 0.533},
+    {letter: "J", frequency: 0.034},
+    {letter: "K", frequency: 0.034},
+    {letter: "L", frequency: 0.533}
 ];
 
 
@@ -229,8 +229,8 @@ BarChart.prototype.setStacked = function(sbool){
          var x = d3.scaleLinear().range([0, width]);
          var y = d3.scaleBand().range([0, height]); //reordered to make y axis in the right order
 
-             x.domain([0, d3.max(testData, function(d) { return d.frequency; })]);
-             y.domain(testData.map(function(d) { return d.letter; }));
+             x.domain([0, d3.max(testDataBC, function(d) { return d.frequency; })]);
+             y.domain(testDataBC.map(function(d) { return d.letter; }));
 
 
 
@@ -245,7 +245,7 @@ BarChart.prototype.setStacked = function(sbool){
 
 
              g.selectAll(".bar")
-                 .data(testData)
+                 .data(testDataBC)
                  .enter().append("rect")
                  .attr("class", "bar")
                  .attr("x", 0)
@@ -257,11 +257,11 @@ BarChart.prototype.setStacked = function(sbool){
        var  barPad = .1
 
          y = d3.scaleBand()
-             .domain(testData.map(function(d){  d.letter}))
+             .domain(testDataBC.map(function(d){  d.letter}))
              .rangeRound([0, g.selectAll(".bar").offsetHeight], barPad, barOuterPad)
 
          svg.append('rect')
-             .data(testData)
+             .data(testDataBC)
              .enter().append('rect')
              .attr('y', function(d){ y(d.letter)})
              .attr('width', y.bandwidth())
@@ -290,10 +290,10 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
          var  x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
               y = d3.scaleLinear().rangeRound([height, 0]);
 
-         x.domain(testData.map(function (d) {
+         x.domain(testDataBC.map(function (d) {
              return d.letter;
          }));
-         y.domain([0, d3.max(testData, function (d) {
+         y.domain([0, d3.max(testDataBC, function (d) {
              return d.frequency;
          })]);
 
@@ -313,7 +313,7 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
              .text("Frequency");
 
          g.selectAll(".bar")
-             .data(testData)
+             .data(testDataBC)
              .enter().append("rect")
              .attr("class", "bar")
              .attr("x", function (d) {
@@ -326,6 +326,8 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
              .attr("height", function (d) {
                  return height - y(d.frequency);
              });
+
+
 
 
      }
