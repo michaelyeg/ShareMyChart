@@ -126,7 +126,7 @@ function GetName(uri){
     return name;
 
 }
-console.log("Running Init!");
+//console.log("Running Init!");
 var new_Store = new GraphStore("URL");
 
 //gets the data type associated with the predicate

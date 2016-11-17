@@ -132,8 +132,6 @@ ParameterManager.prototype.addDatatype = function(index, dataType){
 ParameterManager.prototype.simplifyType = function(){
 
     var index = $.pArray.length-1;
-    console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
-        $.pArray[index].name);
 
         //checks for lat/long
         if ($.pArray[index].name.indexOf("latitude") >=1 || $.pArray[index].name.indexOf("longitude") >= 1) {
