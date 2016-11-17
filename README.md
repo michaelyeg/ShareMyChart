@@ -28,6 +28,3 @@ http://stackoverflow.com/a/21220964
 
 Inheritance in javascript:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
-
-**Jsdoc Location:**
-/web/doc/

@@ -14,7 +14,7 @@ var Pam4 = new Parameter("http://schema.org/name", "http://schema.org/Person");
 var GlobalData = [];
 
 /**
- * @description This function Discovers the Link between two Parameters and then Retreives the data from the Path discovered
+ * @description This function Discovers the Link between two Parameters and then Retrieves the data from the Path discovered
  * Global Parameters created for testing in the console
  * @param Param1 - The X variable for the chart
  * @param Param2 - The Y variable for the chart
@@ -80,7 +80,7 @@ function QueryBuilder(uri1, uri2){
 }
 
 /**
- * @description Takes Two uri's for the X and Y variables respectivley. And grabs the data from the Path defined in the GlobalLink
+ * @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink
  * Pushed data as an array of pairs, representing the X,Y data points. The Array is currently Stored in the GlobalData array
  *
  * @param uri1
