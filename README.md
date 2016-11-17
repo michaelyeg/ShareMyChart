@@ -22,4 +22,12 @@ Accepting Arrays of data in D3:
 Teodor, Stack Overflow: http://stackoverflow.com/users/840453/teodor
 http://stackoverflow.com/a/21668952
 
+Abstract classes in Javascript:
+Jordao, Stack Overflow: http://stackoverflow.com/users/31158/jord%C3%A3o
+http://stackoverflow.com/a/21220964
 
+Inheritance in javascript:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
+
+**Jsdoc Location:**
+/web/doc/

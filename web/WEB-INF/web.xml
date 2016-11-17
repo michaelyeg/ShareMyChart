@@ -5,7 +5,7 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            C:\Users\User\Documents\Files\
+            C:\Users\Owner\Downloads\apache-tomcat-9.0.0.M11\webapps\data\abc
         </param-value>
     </context-param>
 

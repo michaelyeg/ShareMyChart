@@ -1,4 +1,4 @@
-/*
+/**
 This file generates a bar graph from the user's data. Original code from (http://bl.ocks.org/mbostock/3885304)
 Bar Chart on D3's examples. Modifications include accepting an array instead of a .tsv file, and more in the future.
 
@@ -25,9 +25,21 @@ Bar Chart on D3's examples. Modifications include accepting an array instead of 
  Micheal Xi: xi@ualberta.ca
  Landon Thys: lthys@ualberta.ca */
 
-/*
-Inheritance from Graph will happen soon
+//var Graph = require("./Graph");
+
+/**
+ * Create a new BarChart that inherits from Graph
+ * @constructor
  */
+function BarChart() {
+    Graph.call(this);
+    var isHorizontal;
+    var stacked;
+}
+
+BarChart.prototype = Object.create(Graph.prototype); //barchart inherits from Graph
+
+BarChart.prototype.constructor = BarChart;
 
 //hard-coded test data until we can access data from file
 var testData = [
@@ -45,15 +57,51 @@ var testData = [
     {letter: "L", frequency: .533}
 ];
 
-var isHorizontal;
 
-//listen for the click for the vertical bar chart
+/**
+ * @description Listen for the click for the vertical bar chart
+ *
+ */
 $(document).ready(function(){
-    document.getElementById('verticalBarChart').addEventListener("click", makeGraph);
+    document.getElementById('verticalBarChart').addEventListener("click", BarChart.prototype.makeGraph);
 })
 
-//make a vertical bar chart from the data
- function makeGraph(){
+/**
+ * @description get the value of isHorizontal
+ * @returns {boolean}
+ */
+BarChart.prototype.getHorizontal = function(){
+    return this.isHorizontal;
+}
+
+/**
+ * @description set the value of isHorizontal
+ * @param hbool
+ */
+BarChart.prototype.setHorizontal = function(hbool){
+    this.isHorizontal = hbool;
+}
+
+/**
+ * @description get the value of stacked
+ * @returns {boolean}
+ */
+BarChart.prototype.getStacked = function(){
+    return this.stacked;
+}
+
+/**
+ * @description set the value of stacked
+ * @param sbool
+ */
+BarChart.prototype.setStacked = function(sbool){
+    this.stacked = sbool;
+}
+
+/**
+ * @description make a vertical bar chart from the data
+ */
+ BarChart.prototype.makeGraph = function(){
    var graphLocation =document.getElementById('graph');
    /*
    How to create an svg tag with javascript:
@@ -87,12 +135,6 @@ $(document).ready(function(){
     var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-   /* d3.tsv("data.tsv", function(d) {
-        d.frequency = +d.frequency;
-        return d;
-    }, function(error, data) {
-        if (error) throw error;
-*/
         x.domain(testData.map(function(d) { return d.letter; }));
         y.domain([0, d3.max(testData, function(d) { return d.frequency; })]);
 
