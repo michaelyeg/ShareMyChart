@@ -3,7 +3,7 @@
  */
 
 /**
- * Pick graph based on their data type.
+ * @description Pick graph based on their data type.
  */
 function pickGraphType(X,Y) {
     if (X.getType=="nominal" && (Y.getType=="numeric" || Y.getType=="date")){
@@ -19,7 +19,7 @@ function pickGraphType(X,Y) {
 }
 
 /**
- * Aggregate counts of specified parameters.
+ * @description Aggregate counts of specified parameters.
  * @returns {dictionary} Returns a dictionary of aggregateParameter: count.
  */
 function aggregate(aggPar,par) {
