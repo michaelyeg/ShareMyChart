@@ -19,11 +19,12 @@ var pManager = new ParameterManager();
  */
 var GraphStore = function(URL){
     this.Store;
-    this.URL = URL;
+    URLl = "http://localhost:8080/data/superstore-small.ttl";
     //need to modify to make dynamic URL entry as a parameter of the function
     //just not sure how much of the string will need to be hardcoded and what path will be
     rdfstore.create(function(err, store) {
-        store.execute('LOAD <http://localhost:8080/superstore-small.ttl> INTO GRAPH <http://example.org/rdfGraph>', function(err) {
+        console.log("GET THE URL: "+URL);
+        store.execute('LOAD <'+URL+'> INTO GRAPH <http://example.org/rdfGraph>', function(err) {
 
             if (!err) {
                 // Store created
@@ -118,7 +119,7 @@ function GetName(uri){
 
 }
 console.log("Running Init!");
-var new_Store = new GraphStore("URL");
+//var new_Store = new GraphStore("URL");
 
 //gets the data type associated with the predicate
 function getDatatype(oneResult, callback) {

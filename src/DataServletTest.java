@@ -32,7 +32,7 @@ public class DataServletTest {
         }
 
         ServletRunner servletRunner = new ServletRunner();
-        servletRunner.registerServlet("DataServlet",DataServlet.class.getName());
+        servletRunner.registerServlet("DataServlet", DataServlet.class.getName());
 
         ServletUnitClient servletUnitClient = servletRunner.newClient();
         WebRequest webRequest = new PostMethodWebRequest("http://localhost:8080/DataServlet");

@@ -87,10 +87,13 @@ function getContextPath() {
 
 function load(value){
     //var path = "/Users/Margaret/Documents/workspace/ShareMyChart/data/" + $(value).data("filename");
-    var path = "/" + "data/" + $(value).data("filename");
-    $.get(path,null,function(content){
-        console.log(content);
-    },'text');
-    //console.log(path);
+    var path = window.location.protocol + "//"  + window.location.host +"/" + "data/" + $(value).data("filename");
+    // $.get(path,null,function(content){
+    //     console.log(content);
+    // },'text');
+    console.log(path);
+
+    var new_Store = new GraphStore(path);
+
 
 }
