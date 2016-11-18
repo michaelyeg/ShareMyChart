@@ -10,17 +10,19 @@ var GlobalStore;
 
 var pManager = new ParameterManager();
 
+
+
 /**
  *Creates a rdfstore for a given URL. The store ca then be queried.
  * @param URL
  * @constructor
  */
-var GraphStore = function(URL){
+var GraphStore = function(URL){ //**TODO - make this into an actual function, or a class
     this.Store;
     this.URL = URL;
     //need to modify to make dynamic URL entry as a parameter of the function
     //just not sure how much of the string will need to be hardcoded and what path will be
-    rdfstore.create(function(err, store) {
+    rdfstore.create(function(err, store) { //http://localhost:8080/superstore-small.ttl was the loaded url
         store.execute('LOAD <http://localhost:8080/superstore-small.ttl> INTO GRAPH <http://example.org/rdfGraph>', function(err) {
 
             if (!err) {
@@ -44,6 +46,9 @@ var GraphStore = function(URL){
  */
 function GetParameterQuery(graph_store) {
     console.log("Query executed");
+
+
+
     graph_store.Store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
                         PREFIX : <http://example.org/>\
@@ -126,6 +131,8 @@ function GetName(uri){
     return name;
 
 }
+
+
 //console.log("Running Init!");
 var new_Store = new GraphStore("URL");
 
