@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="javanettasks:httpunit:1.7" type="repository">
+    <properties maven-id="javanettasks:httpunit:1.7" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/httpunit-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/nekohtml-0.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/xercesImpl-2.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/servlet-api-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/jtidy-4aug2000r7-dev.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -67,7 +67,6 @@ $(document).ready(function(){
 })
 
 /**
- * @description get the value of isHorizontal
  * Listen for the click for the horizontal bar chart
  *
  */

@@ -32,7 +32,7 @@ public class UploadServletTest {
         int num = files.length+1;
 
         ServletRunner servletRunner = new ServletRunner();
-        servletRunner.registerServlet("UploadServlet",UploadServlet.class.getName());
+        servletRunner.registerServlet("UploadServlet", UploadServlet.class.getName());
 
         WebConversation conversation = new WebConversation();
         WebRequest request = new GetMethodWebRequest("http://localhost:8080/main.html");

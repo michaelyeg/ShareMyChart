@@ -110,7 +110,7 @@ lineGraph.prototype.setHorizontal = function(hbool){
 /*
 !!!!!!!!!! remove this and put it into a new function once we have different kinds of line graphs
  */
-        
+
         if(($('#graph').find("svg").length) == 0){
             //no graph currently exists, build this one
             lineGraph.prototype.setgraphType(4);

@@ -8,4 +8,5 @@
 .idea/webServers.xml
 copyright/profiles_settings.xml
 ShareMyChart.iml
-
+out/production/*
+.idea/misc.xml
