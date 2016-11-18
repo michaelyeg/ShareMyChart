@@ -31,3 +31,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-O
 
 **Jsdoc Location:**
 /web/doc/
+
+Vertical Bar Chart in D3(under GPL v3):
+http://bl.ocks.org/mbostock/3885304
+
+Horizontal Bar Chart in D3(under MIT):
+http://bl.ocks.org/alandunning/7008d0332cc28a826b37b3cf6e7bd998
+
+Vertical Line graph in D3 (under GPL v3):
+https://bl.ocks.org/mbostock/3883245
+
+Scatterplot in D3 (under GPL v3):
+http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c

@@ -166,9 +166,9 @@
                     <img src="icons/barChart.png" alt="" class="icon-default"/>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#"><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart"/></a></li>
+                    <li><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart"/></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#"><img src="icons/horizontalBar.png" alt="" class="icon-default"/></a></li>
+                    <li><img src="icons/horizontalBar.png" alt="" class="icon-default" id = "horizontalBarChart"/></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#"><img src="icons/stackedBar.png" alt="" class="icon-default"/></a></li>
                   </ul>
@@ -180,7 +180,7 @@
                     <img src="icons/lineChart.png" alt="" class="icon-default"/>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#"><img src="icons/verticalLine.png" alt="" class="icon-default"/></a></li>
+                    <li><img src="icons/verticalLine.png" alt="" class="icon-default" id = "vlinegraph"/></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
                     <li role="separator" class="divider"></li>
@@ -191,7 +191,7 @@
               <li class="nav-item" style="padding-left: 1em">
                 <div class="dropdown">
                   <button class="btn btn-default" type="button" id="dropdownMenu1" >
-                    <img src="icons/scatterPlot.png" alt="" class="icon-default"/>
+                    <img src="icons/scatterPlot.png" alt="" class="icon-default" id = "scatterplot"/>
                   </button>
                 </div>
               </li>
@@ -233,13 +233,18 @@
     <!--Handles drag and drop feature-->
     <script type = "text/javascript" src="./Parameter.js"></script>
     <script type = "text/javascript" src="./GetParameter2.js"></script>
+    <script type = "text/javascript" src="./QueryBuilders.js"></script>
     <script type = "text/javascript" src="./GetData.js"></script>
     <!-- <script type = "text/javascript" src="./GetParameter.js"></script> -->
     <script type = "text/javascript" src="./dragndrop.js"></script>
     <script type = "text/javascript" src="./func.js"></script>
     <script type = 'text/javascript' src="./Graph.js"></script>
   <script type = 'text/javascript' src="./BarChart.js"></script>
-  <script type = 'text/javascript' src = "./barGraph.css"></script>
+    <link rel = "stylesheet" href = "barGraph.css">
+    <script type = 'text/javascript' src="./lineGraph.js"></script>
+    <link rel = "stylesheet" href = "lineGraph.css">
+    <script type = 'text/javascript' src="./scatterplot.js"></script>
+    <link rel = "stylesheet" href = "scatterplot.css">
 
   </body>
 </html>
