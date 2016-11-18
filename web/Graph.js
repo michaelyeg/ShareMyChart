@@ -18,15 +18,26 @@ var Graph = function(){
     var size;
     var aggregate;
     var colorscheme;
+
+    graphType.prototype = Object.create(graphType.prototype);
+
+    graphType.prototype.constructor = graphType;
+
 };
 
+/**
+ * create a graphType
+ */
+function graphType() {
+    graphType.call(this);
+}
 
 /**
  * get the x axis value
  * @returns {xAxis}
  */
 Graph.prototype.getxAxis = function(){
-    return xAxis;
+    return this.xAxis;
 }
 
 /**
@@ -34,7 +45,7 @@ Graph.prototype.getxAxis = function(){
  * @returns {yAxis}
  */
 Graph.prototype.getyAxis = function(){
-    return yAxis;
+    return this.yAxis;
 }
 
 /**
@@ -52,6 +63,23 @@ Graph.prototype.setxAxis = function(xval){
 Graph.prototype.setyaxis = function(yval){
     this.yAxis = yval;
 }
+
+/**
+ * set the enum
+ * @param type
+ */
+Graph.prototype.setgraphType = function(type){
+    this.graphType = type;
+}
+
+/**
+ * get the enum
+ * @param type
+ */
+Graph.prototype.getgraphType = function(){
+    return this.graphType;
+}
+
 /**
  * Inheriting classes define their own makeGraph function
  * @abstract

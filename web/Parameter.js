@@ -44,7 +44,7 @@ ParameterManager.prototype.getParameters = function(){
     for(var i=0; i < $.pArray.length; i++){
 
         dict.push({
-            name:   $.pArray[i].real_name,
+            name:   $.pArray[i].real_name+" - "+$.pArray[i].class_value.substring($.pArray[i].class_value.lastIndexOf("/") + 1),
             value: $.pArray[i]
         });
 
