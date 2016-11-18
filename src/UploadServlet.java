@@ -1,4 +1,3 @@
-
 // Import required java libraries
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -16,7 +15,9 @@ public class UploadServlet extends HttpServlet {
 
    private boolean isMultipart;
    private String filePath;
-   private int maxFileSize = 10000000 * 1024;
+
+   private int maxFileSize = 1000000 * 1024;
+
    private int maxMemSize = 1000000 * 1024;
    private File file ;
 

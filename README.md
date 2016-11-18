@@ -29,6 +29,7 @@ http://stackoverflow.com/a/21220964
 Inheritance in javascript:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 
+<<<<<<< HEAD
 Vertical Bar Chart in D3(under GPL v3):
 http://bl.ocks.org/mbostock/3885304
 
@@ -41,3 +42,7 @@ https://bl.ocks.org/mbostock/3883245
 Scatterplot in D3 (under GPL v3):
 http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
 
+=======
+**Jsdoc Location:**
+/web/doc/
+>>>>>>> e67e6778c7066c28911fd9ad2c58407d792798a8

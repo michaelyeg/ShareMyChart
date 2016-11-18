@@ -84,7 +84,9 @@ function createDrags(array_of_params){ //document.ready
     var list = document.createElement('ul');
     list.setAttribute("id","sortable");
     list.className = "sortable";
+
 //console.log(array_of_params);
+
     var createdDrags = "";
     var newdiv;
     var insertLocation =document.getElementById('drag_parameters');
