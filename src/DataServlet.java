@@ -8,10 +8,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.System.out;
 /*
  * Created by M.Guo on 27/10/2016.
  */
-
 
 public class DataServlet extends HttpServlet {
     @Override
@@ -19,10 +20,12 @@ public class DataServlet extends HttpServlet {
                          HttpServletResponse res)
             throws ServletException, IOException {
 
-    List<String> results = new ArrayList<String>();
 
-        File[] files = new File("C:\\Users\\Owner\\Downloads\\apache-tomcat-9.0.0.M11\\webapps\\data\\").listFiles();
+        List<String> results = new ArrayList<String>();
+        String path = getServletContext().getInitParameter("file-upload");
 
+        File[] files = new File(path).listFiles();
+        out.println(path);
         for (File file : files){
             if (file.isFile() && file.getName().contains(".ttl")){
                 results.add(file.getName());
@@ -33,3 +36,4 @@ public class DataServlet extends HttpServlet {
     }
 
 }
+
