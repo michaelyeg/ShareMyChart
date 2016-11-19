@@ -78,6 +78,10 @@ ParameterManager.prototype.getParameters = function(){
 
 };
 
+ParameterManager.prototype.getType = function(index){
+    return $.pArray[index].type;
+};
+
 
 /**
  *
@@ -85,7 +89,6 @@ ParameterManager.prototype.getParameters = function(){
  * @param class_val
  * @param d_type
  * @returns {boolean}
- * @todo make a getType for Michael's stuff, for a specific parameter
  * @description Checks if a predicate is already in the parameter manager. This is done by
  * checking the predicate, the class, and if there's a datatype already assigned.
  * If class and predicate are true and the datatype is anything but nominal,

@@ -27,10 +27,16 @@
     <orderEntry type="library" name="commons-io-2.5" level="project" />
     <orderEntry type="library" name="jquery-ui" level="application" />
     <orderEntry type="library" name="d3.v4" level="application" />
-    <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="gson-2.7" level="project" />
     <orderEntry type="library" name="httpunit:httpunit:1.7" level="project" />
     <orderEntry type="library" name="junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="d3.v4" level="application" />
+    <orderEntry type="library" name="gson-2.7" level="project" />
+    <orderEntry type="library" name="javanettasks:httpunit:1.7" level="project" />
+    <orderEntry type="library" name="junit-4.12" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>

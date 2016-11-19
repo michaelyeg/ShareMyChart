@@ -1,3 +1,4 @@
+
 <component name="libraryTable">
   <library name="httpunit:httpunit:1.7" type="repository">
     <properties maven-id="httpunit:httpunit:1.7" />
@@ -9,4 +10,5 @@
     <JAVADOC />
     <SOURCES />
   </library>
+
 </component>

@@ -34,7 +34,9 @@ module.exports = function(config) {
         'web/index.jsp',
         'web/superstore-small.ttl',
         'web/Graph.js',
-        'web/BarChart.js'
+        'web/BarChart.js',
+        'web/lineGraph.js',
+        'web/scatterplot.js'
     ],
 
 
