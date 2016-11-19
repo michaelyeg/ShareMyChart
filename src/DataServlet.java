@@ -18,8 +18,9 @@ public class DataServlet extends HttpServlet {
             throws ServletException, IOException {
 
         List<String> results = new ArrayList<String>();
+        String path = getServletContext().getInitParameter("file-upload");
 
-        File[] files = new File("/Users/Margaret/Documents/workspace/ShareMyChart/web/data/").listFiles();
+        File[] files = new File(path).listFiles();
 
         for (File file : files){
             if (file.isFile() && file.getName().contains(".ttl")){

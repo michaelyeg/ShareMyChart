@@ -136,10 +136,11 @@
 
 
           <div class="row tabcontent" id="data"><!--tab for data-->
-            <div class="col-xs-6">
-              <div class="row" id="list">
+            <div class="row checkboxes" id="list">
 
-              </div>
+            </div>
+            <div class="col-xs-6">
+
               <!--choose and import file-->
               <div class="row">
                 <div class="container-fluid">
@@ -149,6 +150,7 @@
                     <br/>
                     <input id="submit" type="submit" class="btn btn-secondary btn-block" value="Upload File" />
                   </form>
+                  <input id="delete" type="submit" class="btn btn-secondary btn-block" value="Delete" onclick="deleteFile()" />
                 </div>
               </div>
             </div>

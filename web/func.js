@@ -70,20 +70,22 @@ function refreshData(){
            console.log(data);
            var _html = "<ul>";
            $.each(data, function (key,value) {
-               _html += "<li><a href='javascript:void(0);' onclick='load(this)' data-filename='"+value+"'> "+ value +" </a></li>";
+               _html += "<li><input type='checkbox' name='checkfile'  data-filename='"+value+"'>" +
+                   "<a href='javascript:void(0);' onclick='load(this)' data-filename='"+value+"'> "+ value +" </a></li>";
                //$("#list").append("<li> <a id="+value+" href='javascript:void(0);' onclick='load(this.parentNode.getAttribute(id))'>"+value+"</a></li>");
            });
+           _html += "</ul>";
            $("#list").html(_html);
        }
    });
 };
 
 
-
-function getContextPath() {
-    var contextPath =window.location.protocol + "//"  + window.location.host + "" + window.location.pathname;
-    console.log(contextPath);
-}
+//
+// function getContextPath() {
+//     var contextPath =window.location.protocol + "//"  + window.location.host + "" + window.location.pathname;
+//     console.log(contextPath);
+// }
 
 function load(value){
     //var path = "/Users/Margaret/Documents/workspace/ShareMyChart/data/" + $(value).data("filename");
@@ -91,9 +93,34 @@ function load(value){
     // $.get(path,null,function(content){
     //     console.log(content);
     // },'text');
-    console.log(path);
+    //console.log(path);
 
     var new_Store = new GraphStore(path);
 
+}
 
+function deleteFile(){
+    var selected = [];
+    var checkbox = document.getElementsByName("checkfile");
+    for (var i = 0; i <checkbox.length; i++){
+        if (checkbox[i].checked){
+            selected.push(checkbox[i].getAttribute('data-filename'));
+        }
+    }
+    // $.ajax({
+    //     url:'/deleteFileServlet',
+    //     type:'GET',
+    //     data:{selected:selected},
+    //     datatype:'json',
+    //     success: function(){
+    //         console.log(selected);
+    //     },
+    //     error: function(){
+    //
+    //     }
+    // });
+    $.post('/deleteFileServlet',{selected:selected.join(',')},function(data){
+        console.log(data);
+    },'text');
+    refreshData();
 }

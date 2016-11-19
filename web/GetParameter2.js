@@ -23,7 +23,7 @@ var GraphStore = function(URL){
     //need to modify to make dynamic URL entry as a parameter of the function
     //just not sure how much of the string will need to be hardcoded and what path will be
     rdfstore.create(function(err, store) {
-        console.log("GET THE URL: "+URL);
+        //console.log("GET THE URL: "+URL);
         store.execute('LOAD <'+URL+'> INTO GRAPH <http://example.org/rdfGraph>', function(err) {
 
             if (!err) {
