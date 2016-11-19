@@ -14,12 +14,8 @@ var Pam4 = new Parameter("http://schema.org/name", "http://schema.org/Person");
 var Pam5 = new Parameter("http://schema.org/name", "http://schema.org/Product");
 var Pam6 = new Parameter("http://schema.org/longitude", "http://schema.org/GeoCoordinates");
 var GlobalData = [];
-
-
-var TwoLinkQuery = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-                   PREFIX : <http://example.org/>\
-                   select ?link1 ?midType ?link2 FROM NAMED :rdfGraph { GRAPH ?g  { \
-                   ?x ?link1 ?mid . ?mid ?link2 ?y ; rdf:type <http://schema.org/Order>. ?mid rdf:type ?midType . ?y rdf:type schemaorg:Offer }'
+var GlobalX;
+var GlobalY;
 
 //TODO: Attempt using data with more then one possible path to the data type. Will they be in order in the global list?
 //TODO: indicate that the Data has been Flipped and return the data back unflipped
@@ -34,55 +30,54 @@ var TwoLinkQuery = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
 function GetLink(Param1, Param2, graph){
     var uri1 = Param1.class_value;
     var uri2 = Param2.class_value;
+    GlobalX = Param1;
+    GlobalY = Param2;
     GlobalLink = [];
 
+    for (var link_length = 0; link_length < 4; link_length++) {
 
+        var query1 = QueryBuilderLink(uri1, uri2, link_length);
+        var query2 = QueryBuilderLink(uri2, uri1, link_length);
+        console.log(query1);
 
-    var query1 = QueryBuilderLink(uri1, uri2, 3);
-    console.log(query1);
-
-    //Try looking for link bewteen classes.
-
-    graph.execute(query1,
-        function (err, results) {
-            console.log("Get One Link Results:" );
-            console.log(results);
-            console.log(results[0]);
-            console.log(results[0].length);
-            var count=0;
-            for(var p = 0; p < results[0].length; p++){
-                count+=1;
-                console.log(results[0][p]);
-            }
-            //If results are empty try flip the parameters to match the triples in the turtle file.
-            if (results.length == 0){
-                console.log("here");
-                GetLinkFlip(Param2,Param1,GlobalStore);
-            }else {
-                for (var i = 0; i < results.length; i++) {
-                    var found = false;
-                    var temp = results[i].link1.value;
-                    for (var x = 0; x < GlobalLink.length; x++) {
-                        if (temp == GlobalLink[x]) {
-                            found = true;
-                        }
-                    }
-                    if (!found) {
-                        GlobalLink.push(temp);
-                    }
-                }
-                //If length is > 0 then a path exists and data will be retrived
-                if (GlobalLink.length > 0) {
-                    //TODO: have it just returnt he paths of all links
-                    console.log(uri1);
-                    GetData(Param1.name, Param2.name, GlobalStore);
-                }
-            }
-        }
-    );
-
+        //Try looking for link bewteen classes.
+        graph.execute(query1, GetLinkResult);
+        graph.execute(query2, GetLinkResult);
+    }
 
 }
+
+
+function GetLinkResult(err, results) {
+
+    console.log("Get One Link Results:");
+    console.log(results);
+    var temp_results = [{name:GlobalX.real_name,uri:GlobalX.name},
+                          {name:GetName(GlobalX.class_value), uri:GlobalX.class_value}];
+    var event = new Event('poop');
+
+
+    ;
+
+    if (results.length > 0) {
+        var object = results[0]
+        for (var key in object){
+            var ListItem  = {};
+            var x = object[key].value;
+            console.log(x);
+            ListItem.name = GetName(x);
+            ListItem.uri = x;
+            temp_results.push(ListItem);
+        }
+        ListItem = {name:GetName(GlobalY.class_value), uri:GlobalY.class_value};
+        temp_results.push(ListItem);
+        ListItem = {name:GlobalY.real_name, uri:GlobalY.name};
+        temp_results.push(ListItem);
+        //TODO: have it just return he paths of all links
+        GlobalLink.push(temp_results);
+    }
+}
+
 
 /**
  * Function is identical to the GetLink but it will be called and needs to have the parameters in the opposite order from the way the
