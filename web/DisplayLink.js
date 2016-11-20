@@ -10,7 +10,7 @@ once its posted there the use can choose it, we can have a small loading sign to
 After the link is chosen GetData(Array) will need to be called with the chosen Array passed into it
  */
 // The format for displaying is [ChosenX, type, link, type, link.....link, type, ChosenY] of arbitrary length
-//TODO: Modify GetData to accept the array and adjust the query. For Landon
+
 
 function DisplayLink(Array){
     //TODO: Make some UI magic happen For UI person.
