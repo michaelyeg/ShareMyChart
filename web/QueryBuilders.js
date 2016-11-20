@@ -12,17 +12,25 @@
 //TODO Make it take in a link_path and use that instead of the global list. link ath should be an array with the path of the
 //TODO Test with more links then one
 function QueryBuilderData(uri1, uri2, link_path){
+
+    var X = link_path[0].uri;
+    var Y = link_path[link_path.length-1].uri;
     var string1 = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                    PREFIX : <http://example.org/>\
-                   select ?subject ?data1 ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
-                   ?subject <'+uri1+'> ?data1.\
-                   ?subject <'+GlobalLink[0]+'> ?link1.  ';
-    for (var i = 1; i < GlobalLink.length; i++){
-        string1 += '?link'+i+' <'+GlobalLink[i]+'> ?link'+(i+1)+'.'
+                   select ?subject1 ?data1 ?subject2 ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
+                   ?subject1 <'+X+'> ?data1.\
+                   ?subject1 <'+link_path[2].uri+'> ?link3.  ';
+    for (var i = 3; i < link_path.length-1; i++){
+        console.log("i%2: "+(i%2));
+        if ((i%2)==1) {
+            string1 += '?link' + (i-2) + ' <' + link_path[i-1].uri + '> ?link' + i + '.';
+        }
     }
 
-    string1 += '?link'+(GlobalLink.length)+ ' <' +uri2+ '> ?data2. }}';
+    string1 += '?link'+(i-1)+ ' <' +Y+ '> ?data2.\ ' +
+               ' ?subject2 <'+Y+'> ?data2. }}';
 
+    console.log(string1);
     return string1;
 }
 

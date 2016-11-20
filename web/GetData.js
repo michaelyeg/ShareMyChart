@@ -16,7 +16,7 @@ var Pam6 = new Parameter("http://schema.org/longitude", "http://schema.org/GeoCo
 var GlobalData = [];
 var GlobalX;
 var GlobalY;
-
+//TODO: update all the Javadocs ive changed alot of parameters
 //TODO: Attempt using data with more then one possible path to the data type. Will they be in order in the global list?
 //TODO: indicate that the Data has been Flipped and return the data back unflipped
 /**
@@ -38,7 +38,7 @@ function GetLink(Param1, Param2, graph){
 
         var query1 = QueryBuilderLink(uri1, uri2, link_length);
         var query2 = QueryBuilderLink(uri2, uri1, link_length);
-        console.log(query1);
+        //console.log(query1);
 
         //Try looking for link bewteen classes.
         graph.execute(query1, GetLinkResult);
@@ -50,21 +50,16 @@ function GetLink(Param1, Param2, graph){
 
 function GetLinkResult(err, results) {
 
-    console.log("Get One Link Results:");
-    console.log(results);
+    //console.log("Get One Link Results:");
+    //console.log(results);
     var temp_results = [{name:GlobalX.real_name,uri:GlobalX.name},
                           {name:GetName(GlobalX.class_value), uri:GlobalX.class_value}];
-    var event = new Event('poop');
-
-
-    ;
 
     if (results.length > 0) {
         var object = results[0]
         for (var key in object){
             var ListItem  = {};
             var x = object[key].value;
-            console.log(x);
             ListItem.name = GetName(x);
             ListItem.uri = x;
             temp_results.push(ListItem);
@@ -73,8 +68,8 @@ function GetLinkResult(err, results) {
         temp_results.push(ListItem);
         ListItem = {name:GlobalY.real_name, uri:GlobalY.name};
         temp_results.push(ListItem);
-        //TODO: have it just return he paths of all links
         GlobalLink.push(temp_results);
+        GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
     }
 }
 
@@ -140,15 +135,20 @@ function GetLinkFlip(Param1, Param2, graph) {
  * @param uri2
  * @param graph
  */
-function GetData(uri1, uri2, graph){
+//TODO: Update the GetData to use the new link format.
+function GetData(uri1, uri2, graph, link_path){
+    var DataObject;
+    var DataArray = [];
 
-    var query = QueryBuilderData(uri1, uri2, GlobalStore );
+
+    var query = QueryBuilderData(uri1, uri2, link_path );
+    /*
     graph.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
          PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
          PREFIX : <http://example.org/>\
          select ?p ?o ?o3 FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o. \
         ?s <'+uri1+'> ?o.\
-        ?s <'+GlobalLink[0]+'> ?o2.\
+        ?s <'+GlobalLink[0][2].uri+'> ?o2.\
         ?o2 <'+uri2+'> ?o3.\
         FILTER(?p != rdf:type). } }',
         function(err, results) {
@@ -161,11 +161,24 @@ function GetData(uri1, uri2, graph){
             }
         }
     );
+    */
     //run suing query builder
     graph.execute(query,function(err, results) {
         console.log("Results using query Builder:");
-        console.log(results);
+        for(var i = 0; i < results.length; i++){
+            DataObject = {
+                nameX:GetName(uri1),
+                dataX:results[i].data1.value,
+                typeX:GlobalX.type,
+                nameY:GetName(uri2),
+                dataY:results[i].data2.value,
+                typeY:GlobalY.type
+            };
+            DataArray.push(DataObject);
 
+
+        }
+        console.log(DataArray);
     });
 
 
