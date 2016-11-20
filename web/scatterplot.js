@@ -33,14 +33,14 @@ Scatterplot.prototype.constructor = Scatterplot;
 
 //hard-coded test data until we can access data from file
 var testDataSP = [
-    {date: "1990-10-01", money: 1000.15},
-    {date: "1990-10-01", money: 324.56},
-    {date: "1990-11-23", money: 44.55},
-    {date: "1990-11-27", money: 1000.15},
-    {date: "1994-03-14", money: 156000.15},
-    {date: "1994-18-08", money: 444.65},
-    {date: "1995-07-05", money: 3.00},
-    {date: "1995-10-31", money: 1.99},
+  //  {date: "1990-10-01", money: 1000.15},
+ //   {date: "1990-10-01", money: 324.56},
+   // {date: "1990-11-23", money: 44.55},
+  //  {date: "1990-11-27", money: 1000.15},
+  //  {date: "1994-03-14", money: 156000.15},
+  //  {date: "1994-18-08", money: 444.65},
+  //  {date: "1995-07-05", money: 3.00},
+  //  {date: "1995-10-31", money: 1.99},
     {date: "2000-11-18", money: 10604.15},
     {date: "2001-12-12", money: 1000234.42},
     {date: "2002-04-02", money: 10.01},
@@ -65,9 +65,8 @@ $(document).ready(function(){
 })
 
 
-/**
- * make a scatterplot graph from the data
- */
+
+
 Scatterplot.prototype.makeGraph = function() {
 
     /*
@@ -94,151 +93,83 @@ Scatterplot.prototype.makeGraph = function() {
     }
 
     var graphLocation = document.getElementById('graph');
-    //put some stuff in here about looking at horizontal and stacked
-    /*
-     How to create an svg tag with javascript:
-     http://stackoverflow.com/a/8215105
-     stackoverflow user Techn4k: http://stackoverflow.com/users/685450/techn4k
-     */
-//create the box that contains the graph
-    var svgg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svgg.setAttribute('style', 'border: 1px solid black');
-    svgg.setAttribute('width', '960');
-    svgg.setAttribute('height', '500');
-    svgg.setAttribute('overflow', 'auto');
-    svgg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-    $(graphLocation).append($(svgg));
 
-    var svg = d3.select("svg"),
-        margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom;
-
-    var g = svg.append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    var parseTime = d3.timeParse("%Y-%m-%d"); //dates must be in the formate of yyyy-mm-dd
+    var margin = {top: 30, right: 20, bottom: 110, left: 80},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
 
-  //pasted in:
-
+    var parseDate = d3.timeParse("%Y-%m-%d"); //dates must be in the formate of yyyy-mm-dd
 
     var x = d3.scaleTime().range([0, width]),
-     //   x2 = d3.scaleTime().range([0, width]),
-        y = d3.scaleLinear().range([height, 0])
-      //  y2 = d3.scaleLinear().range([height, 0]);
+        y = d3.scaleLinear().range([height + 50, 0]);
+
 
     var xAxis = d3.axisBottom(x),
-       // xAxis2 = d3.axisBottom(x2),
         yAxis = d3.axisLeft(y);
 
-   /* var brush = d3.brushX()
-        .extent([[0, 0], [width, height2]])
-        .on("brush", brushed); */
 
-   /* var svg = d3.select("body").append("svg")
+    var svg = d3.select(graphLocation).append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom); */
+        .attr("height", height + margin.top + margin.bottom)
+        .attr('style','border: 1px solid black');
 
-  /*  svg.append("defs").append("clipPath")
+  /*  svg.append("defs").append("clipPath") //clips dots if theyre on the edge
         .attr("id", "clip")
         .append("rect")
         .attr("width", width)
         .attr("height", height); */
 
-   /* var focus = svg.append("g")
+    var focus = svg.append("g")
         .attr("class", "focus")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); */
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    /*var context = svg.append("g")
-        .attr("class", "context");
-        .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")"); */
 
-    //d3.csv("sp500.csv", type, function(error, data) {
-      //  if (error) throw error;
 
-        x.domain(d3.extent(testDataSP, function(d) { return parseTime(d.date); }));
-        y.domain([0, d3.max(testDataSP, function(d) { return d.money; })+200]);
-      //  x2.domain(x.domain());
-     //   y2.domain(y.domain());
+
+        x.domain(d3.extent(testDataSP, function(d) { return new Date(d.date); }));
+        y.domain([0, d3.max(testDataSP, function(d) { return d.money; })+200000]); //starts at 0, ends at max + a value
+     //y.domain(d3.extent(testDataSP, function(d) { return d.money; }));
+
 
 // append scatter plot to main chart area
-        var dots = svg.append("g");
-        dots.attr("clip-path", "url(#clip)");
+        var dots = focus.append("g");
+     //   dots.attr("clip-path", "url(#clip)"); //this causes the dots to be clipped if theyre on the edge
         dots.selectAll("dot")
             .data(testDataSP)
             .enter().append("circle")
             .attr('class', 'dot')
             .attr("r",5)
             .style("opacity", .5)
-            .attr("cx", function(d) { return x(parseTime(d.date)); })
+            .attr("cx", function(d) { return x(new Date(d.date)); })
             .attr("cy", function(d) { return y(d.money); })
 
-        svg.append("g")
+        focus.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(0," + (height + 60) + ")")
             .call(xAxis);
 
-        svg.append("g")
+        focus.append("g")
             .attr("class", "axis axis--y")
             .call(yAxis);
 
-        svg.append("text")
+        focus.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
             .attr("x",0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Price");
+            .text("Money");
 
         svg.append("text")
             .attr("transform",
                 "translate(" + ((width + margin.right + margin.left)/2) + " ," +
-                (height + margin.top + margin.bottom) + ")")
+                ((height + 50) + margin.bottom - margin.top) +  ")")
             .style("text-anchor", "middle")
             .text("Date");
 
-// append scatter plot to brush chart area
-   /*     var dots = context.append("g");
-        dots.attr("clip-path", "url(#clip)");
-        dots.selectAll("dot")
-            .data(data)
-            .enter().append("circle")
-            .attr('class', 'dotContext')
-            .attr("r",3)
-            .style("opacity", .5)
-            .attr("cx", function(d) { return x2(d.date); })
-            .attr("cy", function(d) { return y2(d.price); })
-
-        context.append("g")
-            .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height2 + ")")
-            .call(xAxis2);
-
-        context.append("g")
-            .attr("class", "brush")
-            .call(brush)
-            .call(brush.move, x.range());
-
-    }); */
-
-//create brush function redraw scatterplot with selection
- /*   function brushed() {
-        var selection = d3.event.selection;
-        x.domain(selection.map(x2.invert, x2));
-        focus.selectAll(".dot")
-            .attr("cx", function(d) { return x(d.date); })
-            .attr("cy", function(d) { return y(d.price); });
-        focus.select(".axis--x").call(xAxis);
-    }
-*/
-
-  /*  function type(d) {
-        d.date = parseDate(d.date);
-        d.price = +d.price;
-        return d;
-    }*/
 
 
 
-}
+
+    };
