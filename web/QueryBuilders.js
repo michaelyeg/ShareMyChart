@@ -9,8 +9,6 @@
  * @param {string} uri2 - used for the second uri in the query.
  * @return {string} - completed query to be used in sparql that connects all the links
  */
-//TODO Make it take in a link_path and use that instead of the global list. link ath should be an array with the path of the
-//TODO Test with more links then one
 function QueryBuilderData(uri1, uri2, link_path){
 
     var X = link_path[0].uri;
@@ -41,14 +39,6 @@ function QueryBuilderData(uri1, uri2, link_path){
  * @param uri2
  * @return {string} returns the query as a string
  */
-/*
- 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
- PREFIX : <http://example.org/>\
- SELECT ?link1 FROM NAMED :rdfGraph { GRAPH ?g { \
- ?s ?link1 ?y; \
- rdf:type <'+uri1+'>.\
- ?y rdf:type <'+uri2+'>.  } }'
- */
 function QueryBuilderLink(uri1, uri2, link_distance){
     var query = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                 PREFIX : <http://example.org/>\
@@ -67,17 +57,13 @@ function QueryBuilderLink(uri1, uri2, link_distance){
             query += '?y rdf:type <'+uri2+'>. '
         }else{
             query += '?x'+x+' ?link'+x+' ?x'+(x+1)+'. ';
-
         }
         if (x == 1){
             query += '?x1 rdf:type <'+uri1+'>. ' ;
         }else{
             query += '?x'+x+' rdf:type ?MidType'+(x-1)+'. ';
-
         }
     }
     query += '} }';
-
     return query;
-
 }
