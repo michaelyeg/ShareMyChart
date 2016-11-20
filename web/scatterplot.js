@@ -61,28 +61,37 @@ var testDataSP = [
  *
  */
 $(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.makeGraph);
+    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.normalscatterplot);
 })
 
 
+/**
+ * prepare the settings for the normal scatterplot
+ * clear the old graph if there is one in the way
+ */
+Scatterplot.prototype.normalscatterplot = function(){
 
 
-Scatterplot.prototype.makeGraph = function() {
-
-    /*
-     !!!!!!!!!! remove this and put it into a new function once we have different kinds of line graphs
-     */
     if(($('#graph').find("svg").length) == 0){
         //no graph currently exists, build this one
         Scatterplot.prototype.setgraphType(8);
-        //Scatterplot.prototype.makeGraph();
+        Scatterplot.prototype.makeGraph();
     } else{
         //otherwise, remove the old graph and build this one
         d3.select("svg").remove();
         Scatterplot.prototype.setgraphType(8);
-        //Scatterplot.prototype.makeGraph();
+        Scatterplot.prototype.makeGraph();
 
     }
+
+
+}
+
+/**
+ * creates a scatterplot based on the user's data
+ */
+Scatterplot.prototype.makeGraph = function() {
+
 
     /*
      !!!! remove this once we get real data from the files in here
