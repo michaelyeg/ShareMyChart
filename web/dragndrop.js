@@ -71,8 +71,11 @@ $(document).ready(function initDragnDrop(event, ui){
                 console.log("Both pams dropped - call visualizer for graphs here!");
 
                 //console.log( "This is: " + dropArray[0].attr('id') );
-                //have this function call to fill up the visualizer UI thingy
-                //put that function mentioned above here
+
+                /*
+                * FIRST call Landon's connection options thing, THEN call the graph visualizer!
+                * Both for now are just going with their first option, if UI is possible for the S4.
+                */
                 //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
                 pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
             }
