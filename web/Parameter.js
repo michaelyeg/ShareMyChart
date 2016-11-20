@@ -115,19 +115,19 @@ ParameterManager.prototype.simplifyType = function(){
     //for(var i = 0; i < $.pArray.length; i++) {
 
     var index = $.pArray.length-1;
-    console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
-        $.pArray[index].name);
+   // console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
+     //   $.pArray[index].name);
 
         //checks for lat/long
         if ($.pArray[index].name.indexOf("latitude") >=1 || $.pArray[index].name.indexOf("longitude") >= 1) {
             if ($.pArray[index].name.indexOf("latitude") >=1){
                 $.pArray[index].type = "lat";
-                console.log("Assigned lat to" + $.pArray[index].name);
+       //         console.log("Assigned lat to" + $.pArray[index].name);
             }
 
             else if ($.pArray[index].name.indexOf("longitude") >=1 ) {
                 $.pArray[index].type = "long";
-                console.log("Assigned long to" + $.pArray[index].name);
+         //       console.log("Assigned long to" + $.pArray[index].name);
             }
 
         }
@@ -138,7 +138,7 @@ ParameterManager.prototype.simplifyType = function(){
             || $.pArray[index].type == "nonPositiveInteger" || $.pArray[index].type == "negativeInteger"
             || $.pArray[index].type == "int" || $.pArray[index].type == "long" || $.pArray[index].type == "short" ){
             $.pArray[index].type = "numeric";
-            console.log("Set " + $.pArray[index].name + "as " + $.pArray[index].type);
+         //   console.log("Set " + $.pArray[index].name + "as " + $.pArray[index].type);
         }
         //any string values will be called nominal
         //categorical variables like booleans and the like will also be typed as nominal

@@ -25,5 +25,9 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
     <orderEntry type="library" name="d3.v4" level="application" />
+    <orderEntry type="library" name="httpunit:httpunit:1.7" level="project" />
+    <orderEntry type="library" name="junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="qunit" level="project" />
+    <orderEntry type="library" name="jasmine" level="project" />
   </component>
 </module>
