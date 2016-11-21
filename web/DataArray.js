@@ -52,3 +52,20 @@ DataArray.prototype.getInt = function(object){
     this.Array.push(object);
 
 }
+
+DataArray.prototype.duplicate = function(){
+    var copy = [];
+    var obj = {};
+    for(var i = 0; i < this.Array.length; i++) {
+        obj = new DataObject(
+            this.Array[i].dataX,
+            this.Array[i].dataY,
+            this.Array[i].nameX,
+            this.Array[i].nameY,
+            this.Array[i].typeX,
+            this.Array[i].typeY
+        );
+        copy.push(obj);
+    }
+    return copy;
+}
