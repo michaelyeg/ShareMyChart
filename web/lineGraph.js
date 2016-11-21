@@ -32,7 +32,7 @@
     lineGraph.prototype.constructor = lineGraph;
 
 //hard-coded test data until we can access data from file
-    var testDataLC = [
+ /*   var testDataLC = [
         {date: "1990-10-01", money: 1000.15},
         {date: "1990-10-01", money: 324.56},
         {date: "1990-11-23", money: 44.55},
@@ -73,7 +73,7 @@
         {meters: 43, engines: 4},
         {meters: 44, engines: 4},
         {meters: 59, engines: 5}
-    ]
+    ] */
 
     /**
      * Listen for the click for the vertical line graph
@@ -132,11 +132,6 @@ lineGraph.prototype.horizontalLG = function(){
      * make a vertical line graph from the data
      */
     lineGraph.prototype.makeGraph = function() {
-
-/*
-!!!!!!!!!! remove this and put it into a new function once we have different kinds of line graphs
- */
-
 
 
     /*

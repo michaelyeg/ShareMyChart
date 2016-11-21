@@ -29,31 +29,8 @@ function Scatterplot() {
 
 Scatterplot.prototype = Object.create(Graph.prototype); //scatterplot inherits from Graph
 
+Scatterplot.prototype = new Graph();
 Scatterplot.prototype.constructor = Scatterplot;
-
-//hard-coded test data until we can access data from file
-var testDataSP = [
-  //  {date: "1990-10-01", money: 1000.15},
- //   {date: "1990-10-01", money: 324.56},
-   // {date: "1990-11-23", money: 44.55},
-  //  {date: "1990-11-27", money: 1000.15},
-  //  {date: "1994-03-14", money: 156000.15},
-  //  {date: "1994-18-08", money: 444.65},
-  //  {date: "1995-07-05", money: 3.00},
-  //  {date: "1995-10-31", money: 1.99},
-    {date: "2000-11-18", money: 10604.15},
-    {date: "2001-12-12", money: 1000234.42},
-    {date: "2002-04-02", money: 10.01},
-    {date: "2003-09-12", money: 223533.15},
-    {date: "2004-12-20", money: 100.16},
-    {date: "2005-05-14", money: 1000.15},
-    {date: "2006-04-04", money: 1043500.15},
-    {date: "2007-02-11", money: 5567000.15},
-    {date: "2008-01-05", money: 0.00},
-    {date: "2009-01-07", money: 5.99},
-    {date: "2010-01-05", money: 69420.00}
-
-];
 
 
 /**
@@ -61,26 +38,30 @@ var testDataSP = [
  *
  */
 $(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.normalscatterplot);
+    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.makeGraph);
 })
+
+
+
+
 
 
 /**
  * prepare the settings for the normal scatterplot
  * clear the old graph if there is one in the way
  */
-Scatterplot.prototype.normalscatterplot = function(){
+Scatterplot.prototype.normalscatterplot = function(DataArray){
 
 
     if(($('#graph').find("svg").length) == 0){
         //no graph currently exists, build this one
         Scatterplot.prototype.setgraphType(8);
-        Scatterplot.prototype.makeGraph();
+        Scatterplot.prototype.makeGraph(DataArray);
     } else{
         //otherwise, remove the old graph and build this one
         d3.select("svg").remove();
         Scatterplot.prototype.setgraphType(8);
-        Scatterplot.prototype.makeGraph();
+        Scatterplot.prototype.makeGraph(DataArray);
 
     }
 
@@ -90,17 +71,22 @@ Scatterplot.prototype.normalscatterplot = function(){
 /**
  * creates a scatterplot based on the user's data
  */
-Scatterplot.prototype.makeGraph = function() {
+Scatterplot.prototype.makeGraph = function(DataArray) {
 
 
-    /*
-     !!!! remove this once we get real data from the files in here
-     this simulates the data type for the test data
-     */
-    for(i=0;i<testDataSP.length;i++){
-        testDataSP[i].date.type = "date";
-    }
-
+ //if this works it needs to be refactored by sprint 5
+  /*  var tempArray = [];
+    var t;
+    for(i =0;i<DataArray.length;i++) {
+        t = {
+            dataX: DataArray[i].dataX,
+            dataY: DataArray[i].dataY
+        };
+        tempArray.push(t);
+    }*/
+//console.log("temparraymax:");
+   // console.log(tempArray);
+  // console.log(d3.max(tempArray, function(d) { return d.dataY; }));
     var graphLocation = document.getElementById('graph');
 
     var margin = {top: 30, right: 20, bottom: 110, left: 80},
@@ -108,10 +94,36 @@ Scatterplot.prototype.makeGraph = function() {
         height = 500 - margin.top - margin.bottom;
 
 
-    var parseDate = d3.timeParse("%Y-%m-%d"); //dates must be in the formate of yyyy-mm-dd
+    var parseDate = d3.timeParse("%Y-%m-%d"); //dates must be in the format of yyyy-mm-dd
 
-    var x = d3.scaleTime().range([0, width]),
+    //--------------------------------------------------------------------
+
+
+    //Object.prototype.toString.call(date) === '[object Date]'
+    //console.log("is x a date? "+(DataArray.typeX == "date"));
+
+    var x, y;
+
+    //check to see if the data is a date value and use scaletime if it is
+    if(DataArray[0].typeX == "date"){
+        x = d3.scaleTime().range([0, width]);
+        x.domain(d3.extent(DataArray, function(d) { return new Date(d.dataX); }));
+    } else{
+        x = d3.scaleLinear().range([0, width]);
+        x.domain([0, d3.max(DataArray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+    }
+
+    if(DataArray[0].typeY == "date"){
+        y = d3.scaleTime().range([height + 50, 0]);
+        y.domain(d3.extent(DataArray, function(d) { return new Date(d.dataY); }));
+    }else{
         y = d3.scaleLinear().range([height + 50, 0]);
+        y.domain([0, d3.max(DataArray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+        console.log("y domain:" + y.domain());
+    }
+
+  /*  var x = d3.scaleTime().range([0, width]),
+        y = d3.scaleLinear().range([height + 50, 0]); */
 
 
     var xAxis = d3.axisBottom(x),
@@ -135,23 +147,65 @@ Scatterplot.prototype.makeGraph = function() {
 
 
 
-
+    /*
         x.domain(d3.extent(testDataSP, function(d) { return new Date(d.date); }));
         y.domain([0, d3.max(testDataSP, function(d) { return d.money; })+200000]); //starts at 0, ends at max + a value
+*/
+
      //y.domain(d3.extent(testDataSP, function(d) { return d.money; }));
 
 
-// append scatter plot to main chart area
+// append scatter plot dots to main chart area
         var dots = focus.append("g");
      //   dots.attr("clip-path", "url(#clip)"); //this causes the dots to be clipped if theyre on the edge
+
+    if( (DataArray[0].typeX == "date") && (DataArray[0].typeY == "date") ){
+        //if both are dates
         dots.selectAll("dot")
-            .data(testDataSP)
+            .data(DataArray)
             .enter().append("circle")
             .attr('class', 'dot')
             .attr("r",5)
             .style("opacity", .5)
-            .attr("cx", function(d) { return x(new Date(d.date)); })
-            .attr("cy", function(d) { return y(d.money); })
+            .attr("cx", function(d) { return x(new Date(d.dataX)); })
+            .attr("cy", function(d) { return y(new Date(d.dataY)); })
+
+    } else   if( (DataArray[0].typeX == "date") && (DataArray[0].typeY != "date") ){
+        //if x is a date only
+        dots.selectAll("dot")
+            .data(DataArray)
+            .enter().append("circle")
+            .attr('class', 'dot')
+            .attr("r",5)
+            .style("opacity", .5)
+            .attr("cx", function(d) { return x(new Date(d.dataX)); })
+            .attr("cy", function(d) { return y(d.dataY); })
+
+    }else   if( (DataArray[0].typeX != "date") && (DataArray[0].typeY == "date") ){
+        //if y is a date only
+        dots.selectAll("dot")
+            .data(DataArray)
+            .enter().append("circle")
+            .attr('class', 'dot')
+            .attr("r",5)
+            .style("opacity", .5)
+            .attr("cx", function(d) { return x(d.dataX); })
+            .attr("cy", function(d) { return y(new Date(d.dataY)); })
+
+    } else   if( (DataArray[0].typeX != "date") && (DataArray[0].typeY != "date") ){
+        //if neither are dates
+        dots.selectAll("dot")
+            .data(DataArray)
+            .enter().append("circle")
+            .attr('class', 'dot')
+            .attr("r",5)
+            .style("opacity", .5)
+            .attr("cx", function(d) { return x(d.dataX); })
+            .attr("cy", function(d) { return y(d.dataY); })
+
+    }
+
+//append the axis
 
         focus.append("g")
             .attr("class", "axis axis--x")
@@ -168,14 +222,14 @@ Scatterplot.prototype.makeGraph = function() {
             .attr("x",0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Money");
+            .text(DataArray[0].nameY);
 
         svg.append("text")
             .attr("transform",
                 "translate(" + ((width + margin.right + margin.left)/2) + " ," +
                 ((height + 50) + margin.bottom - margin.top) +  ")")
             .style("text-anchor", "middle")
-            .text("Date");
+            .text(DataArray[0].nameX);
 
 
 

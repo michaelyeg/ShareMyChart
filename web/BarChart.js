@@ -59,7 +59,7 @@ var testDataBC = [
 
 
 /**
- * Listen for the click for the vertical bar chart
+ * @description Listen for the click for the vertical bar chart
  *
  */
 $(document).ready(function(){
@@ -131,7 +131,7 @@ BarChart.prototype.getHorizontal = function(){
 }
 
 /**
- * set the value of isHorizontal
+ * @description set the value of isHorizontal
  * @param hbool
  */
 BarChart.prototype.setHorizontal = function(hbool){
@@ -139,7 +139,7 @@ BarChart.prototype.setHorizontal = function(hbool){
 }
 
 /**
- * get the value of stacked
+ * @description get the value of stacked
  * @returns {boolean}
  */
 BarChart.prototype.getStacked = function(){
@@ -147,7 +147,7 @@ BarChart.prototype.getStacked = function(){
 }
 
 /**
- * set the value of stacked
+ * @description set the value of stacked
  * @param sbool
  */
 BarChart.prototype.setStacked = function(sbool){
@@ -155,7 +155,7 @@ BarChart.prototype.setStacked = function(sbool){
 }
 
 /**
- * make a vertical bar chart from the data
+ * @description make a vertical bar chart from the data
  */
  BarChart.prototype.makeGraph = function() {
 

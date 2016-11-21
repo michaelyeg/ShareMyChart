@@ -4,9 +4,6 @@
  */
 
 
-//hard-coded test data
-var array_of_paramnames = ["Stocks", "Employee Salaries", "Sales", "Budget Spent", "Months", "Orders", "Fahjkshdas"];
-
 /**
  * initializes the droppables for parameters
  */
@@ -20,7 +17,7 @@ $(document).ready(function initDragnDrop(event, ui){
             //get the id of the object dropped onto the droppable and which droppable
             var dropId = $(this).attr("id");
             var dragid = $(ui.draggable).attr("id");
-console.log(dragid);
+//console.log(dragid);
             //doSomething(dropId, dragId); //use the Id's to do something to the graph
 
             //next, deal with the draggables and sortable:
@@ -32,7 +29,8 @@ console.log(dragid);
             //create a draggable object to sit on top of the droppable, since the sortable can't do that
                 newdiv = document.createElement('div');
                 newdiv.setAttribute('id', dragid);
-                newdiv.id = dragid
+                newdiv.id = dragid;
+            console.log("id is: " + newdiv.getAttribute("id"));
                 newdiv.className = 'dragndropShape';
                 createdDrags = document.createTextNode(name);
                 newdiv.appendChild(createdDrags);
@@ -63,6 +61,29 @@ console.log(dragid);
                 $(".sortable").sortable('refresh');
             }
 
+            var dropArray = document.getElementsByClassName("dropMe");
+            console.log(dropArray);
+            //console.log("Child0 is:" + dropArray[0].children.length + "Child1 is: " + dropArray[1].children.length)
+
+            //check for if both parameters have been dropped - cue the visualizer!
+            if(dropArray[0].children.length >= 1 && dropArray[1].children.length >= 1){
+                //inside the if-statement for both parameters have been dropped
+                console.log("Both pams dropped - call visualizer for graphs here!");
+                //remove this once visualizer is done:
+                //gets the data from the two parameters, then calls scatterplot:
+                GetLink(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue, GlobalStore);
+               // var Scatterplot = new Graph();
+               //Scatterplot.normalscatterplot(DataArray);
+                //console.log( "This is: " + dropArray[0].attr('id') );
+
+                /*
+                * FIRST call Landon's connection options thing, THEN call the graph visualizer!
+                * Both for now are just going with their first option, if UI is possible for the S4.
+                */
+                //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
+               // pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
+            }
+
         })
 
     } );
@@ -84,7 +105,9 @@ function createDrags(array_of_params){ //document.ready
     var list = document.createElement('ul');
     list.setAttribute("id","sortable");
     list.className = "sortable";
+
 //console.log(array_of_params);
+
     var createdDrags = "";
     var newdiv;
     var insertLocation =document.getElementById('drag_parameters');
@@ -103,7 +126,18 @@ function createDrags(array_of_params){ //document.ready
     $(list).insertAfter(insertLocation);
     $('.sortable').sortable({
          connectWith: '.dragndropShape',
-         appendTo: 'body'
+         appendTo: 'body',
+
+        /*
+        receive: function(event, ui) {
+            //console.log(ui);
+            var idback = ui.sender[0].attributes[0].nodeValue;
+            console.log('receiving id', idback);
+           // console.log("draggable: " + $(ui.item).id);
+            $(this).data().uiSortable.currentItem.id = idback;
+            //console.log("draggable: " + $(ui.item).id);
+        }
+        */
     });
 
 };
