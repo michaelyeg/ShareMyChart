@@ -22,30 +22,33 @@ var GlobalDataArray = new DataArray();
 //TODO: Attempt using data with more then one possible path to the data type. Will they be in order in the global list?
 //TODO: indicate that the Data has been Flipped and return the data back unflipped
 /**
- * This function Discovers the Link between two Parameters and then Retreives the data from the Path discovered
+ * @description This function Discovers the Link between two Parameters and then Retrieves the data from the Path discovered
  * Global Parameters created for testing in the console
- * @param {Parameter Object} Param1 - The X variable for the chart
- * @param {Parameter Object} Param2 - The Y variable for the chart
- * @param {Graph Store Object} graph - The already made Store.
+ * @param Param1 - The X variable for the chart
+ * @param Param2 - The Y variable for the chart
+ * @param graph - The already made Store.
  * @constructor
  */
 function GetLink(Param1, Param2, graph){
 
+/*
     var uri1 = Param1.class_value;
     var uri2 = Param2.class_value;
     GlobalX = Param1;
     GlobalY = Param2;
     GlobalLink = [];
     GlobalDataArray.clear();
-    /*
+    */
+
     var uri1 = pManager.getClass(Param1);
     var uri2 = pManager.getClass(Param2);
     GlobalX = pManager.getParameter(Param1);
     GlobalY = pManager.getParameter(Param2);
     GlobalLink = [];
-    */
+
 
     for (var link_length = 0; link_length < 4; link_length++) {
+
 
         if(uri1 !== uri2) {
             var query1 = QueryBuilderLink(uri1, uri2, link_length);
@@ -63,20 +66,73 @@ function GetLink(Param1, Param2, graph){
             break;
 
         }
+
     }
 
 }
 
 
+/**
+ * Function is identical to the GetLink but it will be called and needs to have the parameters in the opposite order from the way the
+ *
+ * @param Param1
+ * @param Param2
+ * @param graph
+ * @constructor
+ */
+function GetLinkFlip(Param1, Param2, graph) {
+        var uri1 = Param1.class_value;
+        var uri2 = Param2.class_value;
+        GlobalLink = [];
+
+        //Try looking for link bewteen classes.
+        graph.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+                   PREFIX : <http://example.org/>\
+                   SELECT ?link1 FROM NAMED :rdfGraph { GRAPH ?g { \
+                   ?s ?link1 ?y. \
+                   ?s rdf:type <'+uri1+'>.\
+                   ?y rdf:type <'+uri2+'>.  } }',
+            function (err, results) {
+                console.log("Get One Link Flipped Results:");
+                console.log(results);
+                if (results == []){
+                    return;
+                }else{
+                    for (var i = 0; i < results.length; i++) {
+                        var found = false;
+                        var temp = results[i].link1.value;
+                        for (var x = 0; x < GlobalLink.length; x++) {
+                            if (temp == GlobalLink[x]) {
+                                found = true;
+                            }
+                        }
+                        if (!found) {
+                            GlobalLink.push(temp);
+                        }
+                    }
+                    //If length is > 0 then a path exists and data will be retrived
+                    if (GlobalLink.length > 0) {
+                        //TODO: return paths of all links
+                        console.log(uri1);
+                        GetData(Param1.name, Param2.name, GlobalStore);
+                    }
+                }
+            });
+}
+
+
 function GetLinkResult(err, results) {
+
 
     console.log("Get One Link Results:");
     console.log(results);
+    console.log(GlobalX);
+    console.log(GlobalY);
     var temp_results = [{name:GlobalX.real_name,uri:GlobalX.name},
                           {name:GetName(GlobalX.class_value), uri:GlobalX.class_value}];
 
     if (results.length > 0) {
-        var object = results[0]
+        var object = results[0];
         for (var key in object){
             var ListItem  = {};
             var x = object[key].value;
@@ -93,6 +149,7 @@ function GetLinkResult(err, results) {
         console.log(temp_results)
         //TODO: send data to the prompt instead of skipping and going right to GetData
         GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
+
     }
 }
 
@@ -124,16 +181,20 @@ function GetLinkResultFlipped(err, results) {
 }
 
 
+
 /**
- * Takes Two uri's for the X and Y variables respectivley. And grabs the data from the Path defined in the GlobalLink
+ * @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink
  * Pushed data as an array of pairs, representing the X,Y data points. The Array is currently Stored in the GlobalData array
  *
  * @param uri1
  * @param uri2
  * @param graph
+ * @todo Why does the function only work one way? try a reverse of the above function.
  */
 //TODO: Update the GetData to use the new link format.
 function GetData(uri1, uri2, graph, link_path){
+
+
     var DataObject;
     var query = QueryBuilderData(uri1, uri2, link_path );
 
@@ -149,12 +210,19 @@ function GetData(uri1, uri2, graph, link_path){
                 dataY:results[i].data2.value,
                 typeY:GlobalY.type
             };
+
             //DataArray.push(DataObject);
+            console.log(DataObject);
             GlobalDataArray.addData(DataObject);
 
         }
         console.log(GlobalDataArray);
+
+
+        pickGraphTypes(GlobalX, GlobalY);
+
         console.log(Aggregate("X"));
+
     });
 
 
