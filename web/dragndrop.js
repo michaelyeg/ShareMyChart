@@ -69,6 +69,7 @@ $(document).ready(function initDragnDrop(event, ui){
             if(dropArray[0].children.length >= 1 && dropArray[1].children.length >= 1){
                 //inside the if-statement for both parameters have been dropped
                 console.log("Both pams dropped - call visualizer for graphs here!");
+
                 //remove this once visualizer is done:
                 //gets the data from the two parameters, then calls scatterplot:
                 GetLink(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue, GlobalStore);
@@ -85,6 +86,11 @@ $(document).ready(function initDragnDrop(event, ui){
                 //pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
 
 
+
+                var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
+                var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
+                initFilter();
+                getType(xType,yType);
             }
 
         })
