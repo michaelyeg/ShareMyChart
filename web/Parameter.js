@@ -44,8 +44,33 @@ var ParameterManager = function(){
  */
 ParameterManager.prototype.addParameter = function(Parameter){
     $.pArray.push(Parameter);
-    //callback();
+
 };
+
+/**
+
+ */
+ParameterManager.prototype.getClass = function(index){
+    return $.pArray[index].class_value;
+};
+
+/**
+
+ */
+ParameterManager.prototype.getParameter = function(index){
+  return $.pArray[index];
+};
+
+
+
+/*
+    @method getLength
+    @description Returns the length/number of items in the parameter manager
+ */
+ParameterManager.prototype.getLength = function(){
+    return $.pArray.length;
+}
+
 
 //get the Parameters as an array of strings **TODO finish this for Nikki's parameters
 /**
@@ -54,6 +79,7 @@ ParameterManager.prototype.addParameter = function(Parameter){
  */
 ParameterManager.prototype.getParameters = function(){
     var dict = [];
+
     for(var i=0; i < $.pArray.length; i++){
 
         dict.push({
@@ -64,7 +90,13 @@ ParameterManager.prototype.getParameters = function(){
     }
 
     return dict;
-}
+
+};
+
+ParameterManager.prototype.getType = function(index){
+    return $.pArray[index].type;
+};
+
 
 /**
  *
@@ -72,7 +104,6 @@ ParameterManager.prototype.getParameters = function(){
  * @param class_val
  * @param d_type
  * @returns {boolean}
- * @todo make a getType for Michael's stuff, for a specific parameter
  * @description Checks if a predicate is already in the parameter manager. This is done by
  * checking the predicate, the class, and if there's a datatype already assigned.
  * If class and predicate are true and the datatype is anything but nominal,
@@ -86,8 +117,7 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
                 //datatype aspect - can overwrite anything but nominal
                 //if someone was dumb and wrote in one date in the wrong format, then too bad
                 //youve changed them all
-                this.addDatatype(j, d_type);
-                return true; //right?
+                return true;
             }
 
         }
@@ -103,8 +133,8 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
  * @description Adds the datatype to the provided predicate
  */
 ParameterManager.prototype.addDatatype = function(index, dataType){
-    //will only add the datatype if it is "not know" aka not set, or it has any value that is not nominal
-    if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("string") != 0){
+    //will only add the datatype if it is "not known" aka not set, or it has any value that is not nominal
+    if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("nominal") != 0){
         $.pArray[index].type = dataType;
     }
 }
@@ -119,22 +149,26 @@ ParameterManager.prototype.addDatatype = function(index, dataType){
  */
 ParameterManager.prototype.simplifyType = function(){
 
-    //for(var i = 0; i < $.pArray.length; i++) {
-
     var index = $.pArray.length-1;
-    console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
-        $.pArray[index].name);
+
+   // console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
+     //   $.pArray[index].name);
+
 
         //checks for lat/long
         if ($.pArray[index].name.indexOf("latitude") >=1 || $.pArray[index].name.indexOf("longitude") >= 1) {
             if ($.pArray[index].name.indexOf("latitude") >=1){
                 $.pArray[index].type = "lat";
-                console.log("Assigned lat to" + $.pArray[index].name);
+
+                //console.log("Assigned lat to" + $.pArray[index].name);
+
             }
 
             else if ($.pArray[index].name.indexOf("longitude") >=1 ) {
                 $.pArray[index].type = "long";
-                console.log("Assigned long to" + $.pArray[index].name);
+
+                //console.log("Assigned long to" + $.pArray[index].name);
+
             }
 
         }
@@ -145,7 +179,9 @@ ParameterManager.prototype.simplifyType = function(){
             || $.pArray[index].type == "nonPositiveInteger" || $.pArray[index].type == "negativeInteger"
             || $.pArray[index].type == "int" || $.pArray[index].type == "long" || $.pArray[index].type == "short" ){
             $.pArray[index].type = "numeric";
-            console.log("Set " + $.pArray[index].name + "as " + $.pArray[index].type);
+
+            //console.log("Set " + $.pArray[index].name + "as " + $.pArray[index].type);
+
         }
         //any string values will be called nominal
         //categorical variables like booleans and the like will also be typed as nominal
@@ -160,5 +196,4 @@ ParameterManager.prototype.simplifyType = function(){
             || $.pArray[index].type == "gMonthDay" || $.pArray[index].type == "gDate" || $.pArray[index].type == "gMonth"){
             $.pArray[index].type = "date";
         }
-    //}
 };

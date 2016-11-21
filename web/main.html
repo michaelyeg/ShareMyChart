@@ -107,6 +107,42 @@
 
                     <div class="panel-body center">
                      <!-- <div class="dragndropShape" id="4"> Test </div> -->
+                        <form>
+                            OrderNumber
+                            <select>
+                                <option value="<"><</option>
+                                <option value="=">=</option>
+                                <option value=">">></option>
+                            </select>
+                            <input type="number" value="0" size="4"><br>
+
+                            OrderDate
+                            <select>
+                                <option value="<"><</option>
+                                <option value="=">=</option>
+                                <option value=">">></option>
+                            </select>
+                            <input type="date" size="4"><br>
+
+                            EligibleQuantityOffer
+                            <select>
+                                <option value="<"><</option>
+                                <option value="=">=</option>
+                                <option value=">">></option>
+                            </select>
+                            <input type="number" value="0" size="4"><br>
+
+                            Price
+                            <select>
+                                <option value="<"><</option>
+                                <option value="=">=</option>
+                                <option value=">">></option>
+                            </select>
+                            <input type="number" value="0" size="4"><br>
+
+                            <input type="submit" value="Update">
+                        </form>
+
                     </div>
                   </div>
                 </div>
@@ -258,18 +294,24 @@
     <!--Handles drag and drop feature-->
     <script type = "text/javascript" src="./Parameter.js"></script>
     <script type = "text/javascript" src="./GetParameter2.js"></script>
+    <script type = "text/javascript" src="./QueryBuilders.js"></script>
+    <script type = "text/javascript" src="./DataArray.js"></script>
+    <script type = "text/javascript" src="./Aggregate.js"></script>
     <script type = "text/javascript" src="./GetData.js"></script>
     <!-- <script type = "text/javascript" src="./GetParameter.js"></script> -->
     <script type = "text/javascript" src="./dragndrop.js"></script>
     <script type = "text/javascript" src="./func.js"></script>
     <script type = "text/javascript" src="./manageFilter.js"></script>
     <script type = 'text/javascript' src="./Graph.js"></script>
-  <script type = 'text/javascript' src="./BarChart.js"></script>
+    <script type = 'text/javascript' src="./BarChart.js"></script>
     <link rel = "stylesheet" href = "barGraph.css">
     <script type = 'text/javascript' src="./lineGraph.js"></script>
     <link rel = "stylesheet" href = "lineGraph.css">
     <script type = 'text/javascript' src="./scatterplot.js"></script>
     <link rel = "stylesheet" href = "scatterplot.css">
+    <script type = 'text/javascript' src="./possibleGraphManager.js"></script>
+    <script type = 'text/javascript' src="./graphPicker.js"></script>
+
 
   </body>
 </html>

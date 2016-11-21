@@ -17,6 +17,9 @@
      along with this program.  If not, see <http://www.gnu.org/licenses/>.
      */
 
+
+var dray = GlobalDataArray.getArray();
+
     /**
      * Create a new lineGraph that inherits from Graph
      * @constructor
@@ -32,7 +35,7 @@
     lineGraph.prototype.constructor = lineGraph;
 
 //hard-coded test data until we can access data from file
-    var testDataLC = [
+ /*   var testDataLC = [
         {date: "1990-10-01", money: 1000.15},
         {date: "1990-10-01", money: 324.56},
         {date: "1990-11-23", money: 44.55},
@@ -73,14 +76,14 @@
         {meters: 43, engines: 4},
         {meters: 44, engines: 4},
         {meters: 59, engines: 5}
-    ]
+    ] */
 
     /**
      * Listen for the click for the vertical line graph
      *
      */
     $(document).ready(function(){
-        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.makeGraph);
+        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.horizontalLG);
     })
 
 
@@ -101,38 +104,42 @@ lineGraph.prototype.setHorizontal = function(hbool){
     this.isHorizontal = hbool;
 }
 
+/**
+ * prepare the settings for the vertical linegraph
+ * clear the old graph if there is one in the way
+ */
+lineGraph.prototype.horizontalLG = function(){
+    if(dray.length ==0){
+        alert("Please select data parameters");
+    }else {
+
+        if (($('#graph').find("svg").length) == 0) {
+            //no graph currently exists, build this one
+            lineGraph.prototype.setgraphType(4);
+            lineGraph.prototype.setHorizontal(false);
+            lineGraph.prototype.makeGraph();
+        } else {
+            //otherwise, remove the old graph and build this one
+            d3.select("svg").remove();
+            lineGraph.prototype.setgraphType(4);
+            lineGraph.prototype.setHorizontal(false);
+            lineGraph.prototype.makeGraph();
+
+        }
+    }
+
+}
+
+
+
 
     /**
      * make a vertical line graph from the data
      */
     lineGraph.prototype.makeGraph = function() {
 
-/*
-!!!!!!!!!! remove this and put it into a new function once we have different kinds of line graphs
- */
-        if(($('#graph').find("svg").length) == 0){
-            //no graph currently exists, build this one
-            lineGraph.prototype.setgraphType(4);
-            lineGraph.prototype.setHorizontal(false);
-            //lineGraph.prototype.makeGraph();
-        } else{
-            //otherwise, remove the old graph and build this one
-            d3.select("svg").remove();
-            lineGraph.prototype.setgraphType(4);
-            lineGraph.prototype.setHorizontal(false);
-            //lineGraph.prototype.makeGraph();
-
-        }
 
 
-
-    /*
-    !!!! remove this once we get real data from the files in here
-    this simulates the data type for the test data
-     */
-    for(i=0;i<testDataLC.length;i++){
-        testDataLC[i].date.type = "date";
-    }
 
     var graphLocation = document.getElementById('graph');
     //put some stuff in here about looking at horizontal and stacked
@@ -151,14 +158,14 @@ lineGraph.prototype.setHorizontal = function(hbool){
     $(graphLocation).append($(svgg));
 
     var svg = d3.select("svg"),
-        margin = {top: 20, right: 20, bottom: 30, left: 40},
+        margin = {top: 20, right: 20, bottom: 30, left: 80},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
 
     var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-   var parseTime = d3.timeParse("%Y-%m-%d"); //dates must be in the formate of yyyy-mm-dd
+   //var parseTime = d3.timeParse("%Y-%m-%d"); //dates must be in the formate of yyyy-mm-dd
 
  /*   function getDate(d) {
         d.date = parseTime(d.date);
@@ -176,7 +183,7 @@ lineGraph.prototype.setHorizontal = function(hbool){
         .rangeRound([0, width]);
 
     var y = d3.scaleLinear()
-        .rangeRound([height, 0]);
+        .rangeRound([(height -20), 0]);
 
     var line = d3.line()
         .x(function(d) { return x(parseTime(d.date)); })
@@ -194,19 +201,34 @@ lineGraph.prototype.setHorizontal = function(hbool){
 
         g.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(0," + (height-20) + ")") //want 410
             .call(d3.axisBottom(x));
 
         g.append("g")
             .attr("class", "axis axis--y")
-            .call(d3.axisLeft(y))
-            .append("text")
+            .call(d3.axisLeft(y));
+           /* .append("text")
             .attr("fill", "#000")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", "0.71em")
             .style("text-anchor", "end")
-            .text("Money ($)");
+            .text("Money ($)");*/
+
+        g.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Money");
+
+        g.append("text")
+            .attr("transform",
+                "translate(" + ((width + margin.right + margin.left)/2) + " ," +
+                ((height +10) + margin.bottom - margin.top) +  ")")
+            .style("text-anchor", "middle")
+            .text("Date");
 
         g.append("path")
             .datum(testDataLC)

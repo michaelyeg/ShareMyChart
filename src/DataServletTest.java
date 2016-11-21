@@ -9,12 +9,15 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 
+/*
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotNull;
+*/
 
 /**
  * Created by M.Guo on 02/11/2016.
  */
+/*
 public class DataServletTest {
 
     @Test
@@ -51,3 +54,4 @@ public class DataServletTest {
 
 
 }
+*/
