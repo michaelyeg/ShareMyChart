@@ -142,6 +142,7 @@ function GetData(uri1, uri2, graph, link_path){
 
         }
         console.log(GlobalDataArray);
+        console.log(Aggregate("X"));
     });
 
 
