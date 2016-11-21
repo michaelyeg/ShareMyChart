@@ -17,6 +17,9 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var dray = GlobalDataArray.getArray();
+
+
 /**
  * Create a new lineGraph that inherits from Graph
  * @constructor
@@ -38,7 +41,7 @@ Scatterplot.prototype.constructor = Scatterplot;
  *
  */
 $(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.makeGraph);
+    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.normalscatterplot);
 })
 
 
@@ -50,28 +53,32 @@ $(document).ready(function(){
  * prepare the settings for the normal scatterplot
  * clear the old graph if there is one in the way
  */
-Scatterplot.prototype.normalscatterplot = function(DataArray){
+Scatterplot.prototype.normalscatterplot = function(){
+
+    if(dray.length ==0){
+        alert("Please select data parameters");
+    }else {
 
 
-    if(($('#graph').find("svg").length) == 0){
-        //no graph currently exists, build this one
-        Scatterplot.prototype.setgraphType(8);
-        Scatterplot.prototype.makeGraph(DataArray);
-    } else{
-        //otherwise, remove the old graph and build this one
-        d3.select("svg").remove();
-        Scatterplot.prototype.setgraphType(8);
-        Scatterplot.prototype.makeGraph(DataArray);
+        if (($('#graph').find("svg").length) == 0) {
+            //no graph currently exists, build this one
+            Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph();
+        } else {
+            //otherwise, remove the old graph and build this one
+            d3.select("svg").remove();
+            Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph();
 
+        }
     }
-
 
 }
 
 /**
  * creates a scatterplot based on the user's data
  */
-Scatterplot.prototype.makeGraph = function(DataArray) {
+Scatterplot.prototype.makeGraph = function() {
 
 
  //if this works it needs to be refactored by sprint 5
@@ -94,7 +101,7 @@ Scatterplot.prototype.makeGraph = function(DataArray) {
         height = 500 - margin.top - margin.bottom;
 
 
-    var parseDate = d3.timeParse("%Y-%m-%d"); //dates must be in the format of yyyy-mm-dd
+   // var parseDate = d3.timeParse("%Y-%m-%d"); //dates must be in the format of yyyy-mm-dd
 
     //--------------------------------------------------------------------
 
@@ -105,20 +112,20 @@ Scatterplot.prototype.makeGraph = function(DataArray) {
     var x, y;
 
     //check to see if the data is a date value and use scaletime if it is
-    if(DataArray[0].typeX == "date"){
+    if(dray[0].typeX == "date"){
         x = d3.scaleTime().range([0, width]);
-        x.domain(d3.extent(DataArray, function(d) { return new Date(d.dataX); }));
+        x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
     } else{
         x = d3.scaleLinear().range([0, width]);
-        x.domain([0, d3.max(DataArray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+        x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
     }
 
-    if(DataArray[0].typeY == "date"){
+    if(dray[0].typeY == "date"){
         y = d3.scaleTime().range([height + 50, 0]);
-        y.domain(d3.extent(DataArray, function(d) { return new Date(d.dataY); }));
+        y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
     }else{
         y = d3.scaleLinear().range([height + 50, 0]);
-        y.domain([0, d3.max(DataArray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+        y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
         console.log("y domain:" + y.domain());
     }
 
@@ -159,10 +166,10 @@ Scatterplot.prototype.makeGraph = function(DataArray) {
         var dots = focus.append("g");
      //   dots.attr("clip-path", "url(#clip)"); //this causes the dots to be clipped if theyre on the edge
 
-    if( (DataArray[0].typeX == "date") && (DataArray[0].typeY == "date") ){
+    if( (dray[0].typeX == "date") && (dray[0].typeY == "date") ){
         //if both are dates
         dots.selectAll("dot")
-            .data(DataArray)
+            .data(dray)
             .enter().append("circle")
             .attr('class', 'dot')
             .attr("r",5)
@@ -170,10 +177,10 @@ Scatterplot.prototype.makeGraph = function(DataArray) {
             .attr("cx", function(d) { return x(new Date(d.dataX)); })
             .attr("cy", function(d) { return y(new Date(d.dataY)); })
 
-    } else   if( (DataArray[0].typeX == "date") && (DataArray[0].typeY != "date") ){
+    } else   if( (dray[0].typeX == "date") && (dray[0].typeY != "date") ){
         //if x is a date only
         dots.selectAll("dot")
-            .data(DataArray)
+            .data(dray)
             .enter().append("circle")
             .attr('class', 'dot')
             .attr("r",5)
@@ -181,10 +188,10 @@ Scatterplot.prototype.makeGraph = function(DataArray) {
             .attr("cx", function(d) { return x(new Date(d.dataX)); })
             .attr("cy", function(d) { return y(d.dataY); })
 
-    }else   if( (DataArray[0].typeX != "date") && (DataArray[0].typeY == "date") ){
+    }else   if( (dray[0].typeX != "date") && (dray[0].typeY == "date") ){
         //if y is a date only
         dots.selectAll("dot")
-            .data(DataArray)
+            .data(dray)
             .enter().append("circle")
             .attr('class', 'dot')
             .attr("r",5)
@@ -192,10 +199,10 @@ Scatterplot.prototype.makeGraph = function(DataArray) {
             .attr("cx", function(d) { return x(d.dataX); })
             .attr("cy", function(d) { return y(new Date(d.dataY)); })
 
-    } else   if( (DataArray[0].typeX != "date") && (DataArray[0].typeY != "date") ){
+    } else   if( (dray[0].typeX != "date") && (dray[0].typeY != "date") ){
         //if neither are dates
         dots.selectAll("dot")
-            .data(DataArray)
+            .data(dray)
             .enter().append("circle")
             .attr('class', 'dot')
             .attr("r",5)
@@ -222,14 +229,14 @@ Scatterplot.prototype.makeGraph = function(DataArray) {
             .attr("x",0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text(DataArray[0].nameY);
+            .text(dray[0].nameY);
 
         svg.append("text")
             .attr("transform",
                 "translate(" + ((width + margin.right + margin.left)/2) + " ," +
                 ((height + 50) + margin.bottom - margin.top) +  ")")
             .style("text-anchor", "middle")
-            .text(DataArray[0].nameX);
+            .text(dray[0].nameX);
 
 
 

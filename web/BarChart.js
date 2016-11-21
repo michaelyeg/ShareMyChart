@@ -25,7 +25,8 @@ Bar Chart on D3's examples. Modifications include accepting an array instead of 
  Micheal Xi: xi@ualberta.ca
  Landon Thys: lthys@ualberta.ca */
 
-//var Graph = require("./Graph");
+
+var dray = GlobalDataArray.getArray();
 
 /**
  * Create a new BarChart that inherits from Graph
@@ -42,7 +43,7 @@ BarChart.prototype = Object.create(Graph.prototype); //barchart inherits from Gr
 BarChart.prototype.constructor = BarChart;
 
 //hard-coded test data until we can access data from file
-var testDataBC = [
+/*var testDataBC = [
     {letter: "A", frequency: 0.034},
     {letter: "B", frequency: 0.55},
     {letter: "C", frequency: 0.321},
@@ -56,7 +57,7 @@ var testDataBC = [
     {letter: "K", frequency: 0.034},
     {letter: "L", frequency: 0.533}
 ];
-
+*/
 
 /**
  * @description Listen for the click for the vertical bar chart
@@ -79,24 +80,26 @@ $(document).ready(function(){
  * clear the old graph if there is one in the way
  */
 BarChart.prototype.verticalBC = function(){
+    if(dray.length ==0){
+        alert("Please select data parameters");
+    }else {
 
+        if (($('#graph').find("svg").length) == 0) {
+            //no graph currently exists, build this one
+            BarChart.prototype.setgraphType(0);
+            BarChart.prototype.setHorizontal(false);
+            //something about stacked
+            BarChart.prototype.makeGraph();
+        } else {
+            //otherwise, remove the old graph and build this one
+            d3.select("svg").remove();
+            BarChart.prototype.setgraphType(0);
+            BarChart.prototype.setHorizontal(false);
+            //something about stacked
+            BarChart.prototype.makeGraph();
 
-    if(($('#graph').find("svg").length) == 0){
-        //no graph currently exists, build this one
-        BarChart.prototype.setgraphType(0);
-        BarChart.prototype.setHorizontal(false);
-        //something about stacked
-        BarChart.prototype.makeGraph();
-    } else{
-        //otherwise, remove the old graph and build this one
-        d3.select("svg").remove();
-        BarChart.prototype.setgraphType(0);
-        BarChart.prototype.setHorizontal(false);
-        //something about stacked
-        BarChart.prototype.makeGraph();
-
+        }
     }
-
 }
 
 /**
@@ -104,20 +107,25 @@ BarChart.prototype.verticalBC = function(){
  * clear the old graph if there is one in the way
  */
 BarChart.prototype.horizontalBC = function(){
-    if(($('#graph').find("svg").length) == 0){
-        //no graph currently exists, build this one
-        BarChart.prototype.setgraphType(1);
-        BarChart.prototype.setHorizontal(true);
-        //something about stacked
-        BarChart.prototype.makeGraph();
-    } else{
-        //otherwise, remove the old graph and build this one
-        d3.select("svg").remove();
-        BarChart.prototype.setgraphType(1);
-        BarChart.prototype.setHorizontal(true);
-        //something about stacked
-        BarChart.prototype.makeGraph();
+    if(dray.length ==0){
+        alert("Please select data parameters");
+    }else {
 
+        if (($('#graph').find("svg").length) == 0) {
+            //no graph currently exists, build this one
+            BarChart.prototype.setgraphType(1);
+            BarChart.prototype.setHorizontal(true);
+            //something about stacked
+            BarChart.prototype.makeGraph();
+        } else {
+            //otherwise, remove the old graph and build this one
+            d3.select("svg").remove();
+            BarChart.prototype.setgraphType(1);
+            BarChart.prototype.setHorizontal(true);
+            //something about stacked
+            BarChart.prototype.makeGraph();
+
+        }
     }
 }
 
@@ -175,6 +183,7 @@ BarChart.prototype.setStacked = function(sbool){
      svgg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
      $(graphLocation).append($(svgg));
 
+    // var parseDate = d3.timeParse("%Y-%m-%d"); //dates must be in the format of yyyy-mm-dd
 
      /*
       Changes to the D3 example to accept array data instead of .tsv:
@@ -226,11 +235,31 @@ BarChart.prototype.setStacked = function(sbool){
 
        //  var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
-         var x = d3.scaleLinear().range([0, width]);
-         var y = d3.scaleBand().range([0, height]); //reordered to make y axis in the right order
+         var x, y;
 
-             x.domain([0, d3.max(testDataBC, function(d) { return d.frequency; })]);
-             y.domain(testDataBC.map(function(d) { return d.letter; }));
+         //check to see if the data is a date value and use scaletime if it is
+         /*if(dray[0].typeX == "date"){
+             x = d3.scaleTime().range([0, width]);
+             x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+         } else{
+             x = d3.scaleLinear().range([0, width]);
+             x.domain([0, d3.max(dray, function(d) { return d.dataX; })]);
+         }*/
+
+         if(dray[0].typeY == "date"){
+             y = d3.scaleTime().range([0,height]);
+             y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+         }else{
+             y = d3.scaleBand().range([0, height]);
+             //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+             y.domain(dray.map(function(d) { return d.dataY; }));
+         }
+
+         var x = d3.scaleLinear().range([0, width]);
+         //var y = d3.scaleBand().range([0, height]);
+
+             x.domain([0, d3.max(dray, function(d) { return d.dataX; })]);
+           //  y.domain(dray.map(function(d) { return d.dataY; }));
 
 
 
@@ -249,24 +278,24 @@ BarChart.prototype.setStacked = function(sbool){
              .attr("x",0 - (height / 2))
              .attr("dy", "1em")
              .style("text-anchor", "middle")
-             .text("Letter");
+             .text(dray[0].nameY);
 
          g.append("text")
              .attr("transform",
                  "translate(" + ((width + margin.right + margin.left)/2) + " ," +
                  ((height +10) + margin.bottom - margin.top) +  ")")
              .style("text-anchor", "middle")
-             .text("%");
+             .text(dray[0].nameX);
 
 
              g.selectAll(".bar")
-                 .data(testDataBC)
+                 .data(dray)
                  .enter().append("rect")
                  .attr("class", "bar")
                  .attr("x", 0)
                  .attr("height", y.bandwidth())
-                 .attr("y", function(d) { return y(d.letter); })
-                 .attr("width", function(d) { return x(d.frequency); });
+                 .attr("y", function(d) { return y(d.dataY); })
+                 .attr("width", function(d) { return x(d.dataX); });
 
    /*   var   barOuterPad = .2
        var  barPad = .1
@@ -300,16 +329,35 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+         var x, y;
 
+         //check to see if the data is a date value and use scaletime if it is
+         if(dray[0].typeX == "date"){
+             x = d3.scaleTime().range([0, width]);
+             x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+         } else{
+             x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
+             //x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+             x.domain(dray.map(function (d) { return d.dataX; }));
+         }
 
-         var  x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+        /* if(dray[0].typeY == "date"){
+             y = d3.scaleTime().range([height + 50, 0]);
+             y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+         }else{
+             y = d3.scaleLinear().range([height + 50, 0]);
+             y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+             console.log("y domain:" + y.domain());
+         } */
+
+         //x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
               y = d3.scaleLinear().rangeRound([height, 0]);
 
-         x.domain(testDataBC.map(function (d) {
+         /*x.domain(testDataBC.map(function (d) {
              return d.letter;
-         }));
-         y.domain([0, d3.max(testDataBC, function (d) {
-             return d.frequency;
+         })); */
+         y.domain([0, d3.max(dray, function (d) {
+             return d.dataY;
          })]);
 
          g.append("g")
@@ -325,7 +373,7 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
              .attr("y", 6)
              .attr("dy", "0.71em")
              .attr("text-anchor", "end")
-             .text("Frequency");
+             .text(dray[0].nameX);
 
          g.append("text")
              .attr("transform", "rotate(-90)")
@@ -333,29 +381,29 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
              .attr("x",0 - (height / 2))
              .attr("dy", "1em")
              .style("text-anchor", "middle")
-             .text("%");
+             .text(dray[0].nameY);
 
          g.append("text")
              .attr("transform",
                  "translate(" + ((width + margin.right + margin.left)/2) + " ," +
                  ((height +10) + margin.bottom - margin.top) +  ")")
              .style("text-anchor", "middle")
-             .text("Letter");
+             .text(dray[0].nameX);
 
 
          g.selectAll(".bar")
-             .data(testDataBC)
+             .data(dray)
              .enter().append("rect")
              .attr("class", "bar")
              .attr("x", function (d) {
-                 return x(d.letter);
+                 return x(d.dataX);
              })
              .attr("y", function (d) {
-                 return y(d.frequency);
+                 return y(d.dataY);
              })
              .attr("width", x.bandwidth())
              .attr("height", function (d) {
-                 return height - y(d.frequency);
+                 return height - y(d.dataY);
              });
 
 

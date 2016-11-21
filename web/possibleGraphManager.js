@@ -1,8 +1,8 @@
 /**
  * Created by Jill - Offline on 2016-11-19.
- * This is a siiiiingleton!!
+ *
  */
-
+var scatterplot = new Scatterplot();
 
 var PossibleGraphManager = function(){
     $.pG = [];
@@ -33,4 +33,7 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
 
 
     }
+
+    scatterplot.normalscatterplot(GlobalDataArray.getArray());
+
 }

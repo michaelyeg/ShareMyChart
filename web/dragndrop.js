@@ -72,8 +72,9 @@ $(document).ready(function initDragnDrop(event, ui){
                 //remove this once visualizer is done:
                 //gets the data from the two parameters, then calls scatterplot:
                 GetLink(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue, GlobalStore);
-               // var Scatterplot = new Graph();
-               //Scatterplot.normalscatterplot(DataArray);
+
+               /* var scatterplot = new Scatterplot();
+               scatterplot.normalscatterplot(GlobalDataArray.getArray()); */
                 //console.log( "This is: " + dropArray[0].attr('id') );
 
                 /*
@@ -81,7 +82,7 @@ $(document).ready(function initDragnDrop(event, ui){
                 * Both for now are just going with their first option, if UI is possible for the S4.
                 */
                 //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
-               // pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
+
             }
 
         })

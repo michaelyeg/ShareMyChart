@@ -8,14 +8,16 @@ var Uri3 = "http://schema.org/Person";
 var Prd2 = "http://schema.org/price";
 var Prd1 = "http://schema.org/orderDate";
 var Pam1 = new Parameter("http://schema.org/orderDate","http://schema.org/Order");
+var Pam11 = new Parameter("http://schema.org/orderNumber","http://schema.org/Order");
 var Pam2 = new Parameter("http://schema.org/price","http://schema.org/Offer");
+Pam2.type = "numeric";
 var Pam3 = new Parameter("http://schema.org/name", "http://schema.org/Place");
 var Pam4 = new Parameter("http://schema.org/name", "http://schema.org/Person");
 var Pam5 = new Parameter("http://schema.org/name", "http://schema.org/Product");
 var Pam6 = new Parameter("http://schema.org/longitude", "http://schema.org/GeoCoordinates");
-var GlobalData = [];
 var GlobalX;
 var GlobalY;
+var GlobalDataArray = new DataArray();
 //TODO: update all the Javadocs ive changed alot of parameters
 //TODO: Attempt using data with more then one possible path to the data type. Will they be in order in the global list?
 //TODO: indicate that the Data has been Flipped and return the data back unflipped
@@ -29,11 +31,21 @@ var GlobalY;
  */
 function GetLink(Param1, Param2, graph){
 
-    var uri1 = pManager.getClass(Param1); //Param1.class_value;
-    var uri2 = pManager.getClass(Param2); //Param2.class_value;
-    GlobalX = pManager.getParameter(Param1); //Param1;
-    GlobalY = pManager.getParameter(Param2); //Param2;
+/*
+    var uri1 = Param1.class_value;
+    var uri2 = Param2.class_value;
+    GlobalX = Param1;
+    GlobalY = Param2;
     GlobalLink = [];
+    GlobalDataArray.clear();
+    */
+
+    var uri1 = pManager.getClass(Param1);
+    var uri2 = pManager.getClass(Param2);
+    GlobalX = pManager.getParameter(Param1);
+    GlobalY = pManager.getParameter(Param2);
+    GlobalLink = [];
+
 
     for (var link_length = 0; link_length < 4; link_length++) {
 
@@ -42,9 +54,9 @@ function GetLink(Param1, Param2, graph){
         console.log(query1);
 
         //Try looking for link bewteen classes.
-         graph.execute(query1, GetLinkResult);
-         graph.execute(query2, GetLinkResult);
 
+        graph.execute(query1, GetLinkResult);
+        graph.execute(query2, GetLinkResultFlipped);
 
     }
 
@@ -105,11 +117,13 @@ function GetLinkResult(err, results) {
 
     console.log("Get One Link Results:");
     console.log(results);
+    console.log(GlobalX);
+    console.log(GlobalY);
     var temp_results = [{name:GlobalX.real_name,uri:GlobalX.name},
                           {name:GetName(GlobalX.class_value), uri:GlobalX.class_value}];
 
     if (results.length > 0) {
-        var object = results[0]
+        var object = results[0];
         for (var key in object){
             var ListItem  = {};
             var x = object[key].value;
@@ -125,6 +139,33 @@ function GetLinkResult(err, results) {
         //TODO: send data to the prompt instead of skipping and going right to GetData
         GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
 
+    }
+}
+
+function GetLinkResultFlipped(err, results) {
+
+    console.log("Get One Link Results:");
+    console.log(results);
+    var temp_results = [{name:GlobalY.real_name,uri:GlobalY.name},
+        {name:GetName(GlobalY.class_value), uri:GlobalY.class_value}];
+
+    if (results.length > 0) {
+        var object = results[0]
+        for (var key in object){
+            var ListItem  = {};
+            var x = object[key].value;
+            ListItem.name = GetName(x);
+            ListItem.uri = x;
+            temp_results.push(ListItem);
+        }
+        ListItem = {name:GetName(GlobalX.class_value), uri:GlobalX.class_value};
+        temp_results.push(ListItem);
+        ListItem = {name:GlobalX.real_name, uri:GlobalX.name};
+        temp_results.push(ListItem);
+        GlobalLink.push(temp_results);
+        //TODO: send data to the prompt instead of skipping and going right to GetData
+        GlobalDataArray.flipper();
+        GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
     }
 }
 
@@ -144,7 +185,6 @@ function GetData(uri1, uri2, graph, link_path){
 
 
     var DataObject;
-    var DataArray = [];
     var query = QueryBuilderData(uri1, uri2, link_path );
 
     graph.execute(query,function(err, results) {
@@ -152,20 +192,21 @@ function GetData(uri1, uri2, graph, link_path){
         for(var i = 0; i < results.length; i++){
             DataObject = {
                 nameX:link_path[0].name,
-                dataX:parseFloat(results[i].data1.value),
+                dataX:results[i].data1.value,
                 typeX:GlobalX.type,
                 nameY:link_path[link_path.length-1].name,
-                dataY:parseFloat(results[i].data2.value),
+                dataY:results[i].data2.value,
                 typeY:GlobalY.type
             };
-            DataArray.push(DataObject);
+
+            //DataArray.push(DataObject);
+            console.log(DataObject);
+            GlobalDataArray.addData(DataObject);
 
         }
+        console.log(GlobalDataArray);
 
-        var scatterplot = new Scatterplot();
-        scatterplot.normalscatterplot(DataArray);
-
-        console.log(DataArray);
+        pickGraphTypes(GlobalX, GlobalY);
     });
 
 
