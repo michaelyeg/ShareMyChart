@@ -9,13 +9,14 @@
  * Use the parameter manager to locate and figure out their types!
  */
 
-
+var testpG;
 
 function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
+    testpG = pGMan;
 
-    if (pManager.getType(pam1)=="nominal" && (pManager.getType(pam2)=="numeric" || pManager.getType(pam2)=="date" || pManager.getType(pam2)=="nominal")){
+    if ( (pManager.getType(pam1)=="nominal" || pManager.getType(pam1)=="date" ) && (pManager.getType(pam2)=="numeric") ){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
 
@@ -24,7 +25,7 @@ function pickGraphTypes(pam1, pam2) {
     }
 
     //did this kinda quickly, might be wrong, very confusing
-    if ( (pManager.getType(pam1)=="numeric" || pManager.getType(pam1)=="date" || pManager.getType(pam1)=="nominal") && pManager.getType(pam2)=="nominal"){
+    if ( (pManager.getType(pam1)=="numeric" || pManager.getType(pam1)=="date") && pManager.getType(pam2)=="nominal"){
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
 

@@ -14,7 +14,7 @@ describe("Parameter Test", function() {
     });
 
     it("Creates a parameter with typical name and class_value", function(){
-       var testPam = new Parameter("stuuuff/myName2", "stuff/stuffstuff/desks");
+        var testPam = new Parameter("stuuuff/myName2", "stuff/stuffstuff/desks");
 
         expect(testPam.name).toBe("stuuuff/myName2");
         expect(testPam.class_value).toBe("stuff/stuffstuff/desks");
@@ -23,7 +23,7 @@ describe("Parameter Test", function() {
     });
 
     it("Tests if a parameter's info is created properly when there's a lot of /'s", function(){
-       var testPam = new Parameter("t/h/i/s/is/r/o/u/g/h/", "m/e/t/o/o/");
+        var testPam = new Parameter("t/h/i/s/is/r/o/u/g/h/", "m/e/t/o/o/");
 
         expect(testPam.name).toBe("t/h/i/s/is/r/o/u/g/h/");
         expect(testPam.class_value).toBe("m/e/t/o/o/");
