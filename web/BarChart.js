@@ -26,7 +26,7 @@ Bar Chart on D3's examples. Modifications include accepting an array instead of 
  Landon Thys: lthys@ualberta.ca */
 
 
-var dray = GlobalDataArray.getArray();
+var dray2 = GlobalDataArray.getArray();
 
 /**
  * Create a new BarChart that inherits from Graph
@@ -64,7 +64,7 @@ BarChart.prototype.constructor = BarChart;
  *
  */
 $(document).ready(function(){
-    document.getElementById('verticalBarChart').addEventListener("click", BarChart.prototype.verticalBC);
+    document.getElementById('verticalBarChart').addEventListener("click", BarChart.prototype.caller1);
 })
 
 /**
@@ -72,8 +72,29 @@ $(document).ready(function(){
  *
  */
 $(document).ready(function(){
-    document.getElementById('horizontalBarChart').addEventListener("click", BarChart.prototype.horizontalBC);
+    document.getElementById('horizontalBarChart').addEventListener("click", BarChart.prototype.caller2);
 })
+
+/**
+ * creates the aggregate and sets up graph-making
+ */
+BarChart.prototype.caller2 = function(){
+    dray = Aggregate("Y");
+    console.log(dray);
+    BarChart.prototype.horizontalBC(dray);
+
+}
+
+/**
+ * creates the aggregate and sets up graph-making
+ */
+BarChart.prototype.caller1 = function(){
+    dray = Aggregate("X");
+    console.log(dray);
+    BarChart.prototype.verticalBC(dray);
+
+}
+
 
 /**
  * prepare the settings for the vertical barchart

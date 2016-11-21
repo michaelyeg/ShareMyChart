@@ -18,7 +18,7 @@
      */
 
 
-var dray = GlobalDataArray.getArray();
+var dray2 = GlobalDataArray.getArray();
 
     /**
      * Create a new lineGraph that inherits from Graph
@@ -83,9 +83,18 @@ var dray = GlobalDataArray.getArray();
      *
      */
     $(document).ready(function(){
-        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.horizontalLG);
+        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.caller);
     })
 
+/**
+ * creates the aggregate and sets up graph-making
+ */
+lineGraph.prototype.caller = function(){
+    dray = Aggregate("X");
+    console.log(dray);
+    lineGraph.prototype.horizontalLG(dray);
+
+}
 
 
 /**

@@ -60,7 +60,7 @@ function GetLink(Param1, Param2, graph){
             graph.execute(query2, GetLinkResultFlipped);
 
         }else{
-            var specialArray = [{name:GlobalX.real_name, uri:GlobalX.name}, Param1, {name:GlobalY.real_name,uri:GlobalY.name}];
+            var specialArray = [{name:GlobalX.real_name, uri:GlobalX.name}, GlobalX, {name:GlobalY.real_name,uri:GlobalY.name}];
             console.log(specialArray);
             GetData(GlobalX.name, GlobalY.name, GlobalStore, specialArray);
             break;

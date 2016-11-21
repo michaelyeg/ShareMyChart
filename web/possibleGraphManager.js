@@ -44,9 +44,9 @@ console.log(dray);
     barchart.horizontalBC(dray);
 */
 
- dray = Aggregate("Y");
+ /*dray = Aggregate("X");
     console.log(dray);
-    linegraph.horizontalLG(dray);
+    linegraph.horizontalLG(dray); */
 
     //scatterplot.normalscatterplot(GlobalDataArray.getArray());
 
