@@ -16,6 +16,9 @@ function initFilter (){
     document.getElementById("dropup1").style.display = "block";
     document.getElementById("delete1").style.display = "block";
     document.getElementById("updatebutton").style.display = "block";
+
+    //var filterArray=filterArray();
+
 }
 
 $("#filterX").click(function(){
@@ -64,4 +67,5 @@ function deleteFilter() {
             filters[i].parentNode.removeChild(elem);
         }
     }
+
 }

@@ -69,3 +69,7 @@ DataArray.prototype.duplicate = function(){
     }
     return copy;
 }
+
+DataArray.prototype.delete=function(index){
+    this.Array.splice(index,1);
+}
