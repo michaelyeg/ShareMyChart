@@ -16,7 +16,7 @@ function pickGraphTypes(pam1, pam2) {
     var pGMan = new PossibleGraphManager();
     testpG = pGMan;
 
-    if ( (pManager.getType(pam1)=="nominal" || pManager.getType(pam1)=="date" ) && (pManager.getType(pam2)=="numeric") ){
+    if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
 
@@ -25,7 +25,7 @@ function pickGraphTypes(pam1, pam2) {
     }
 
     //did this kinda quickly, might be wrong, very confusing
-    if ( (pManager.getType(pam1)=="numeric" || pManager.getType(pam1)=="date") && pManager.getType(pam2)=="nominal"){
+    if ( (pam1.type=="numeric" || pam1.type=="date" || pam1.type=="nominal") && pam2.type=="nominal"){
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
 
@@ -33,17 +33,17 @@ function pickGraphTypes(pam1, pam2) {
         //displayBarchart(pam1,pam2);
     }
 
-    if( (pManager.getType(pam1)=="numeric" || pManager.getType(pam1)=="date") && (pManager.getType(pam2)=="date" || pManager.getType(pam2)=="numeric") ){
+    if( (pam1.type=="numeric" || pam1.type=="date") && (pam2.type=="date" || pam2.type=="numeric") ){
         console.log("It's a line graph!");
         pGMan.addToManager(2);
         //displayLineGraph(pam1,pam2);
     }
-    if( (pManager.getType(pam1)=="numeric" || pManager.getType(pam1)=="date") && (pManager.getType(pam2)=="numeric" || pManager.getType(pam2)=="date") ){
+    if( (pam1.type=="numeric" || pam1.type == "date") && (pam2.type=="numeric" || pam2.type=="date") ){
         //displayScatter(pam1,pam2);
         console.log("It's a scatter graph - v2!");
         pGMan.addToManager(3);
     }
-    if(pManager.getType(pam1)=="nominal" && pManager.getType(pam2)=="nominal"){
+    if(pam1.type=="nominal" && pam2.type=="nominal"){
         console.log("It's a scatter graph! Avoid prioritizing me because I look bad w/o jitter!");
         pGMan.addToManager(4);
         //needs to aggregate... something. I think apply to x axis a count.
@@ -53,11 +53,11 @@ function pickGraphTypes(pam1, pam2) {
 
 
     //wrote these for the future idk
-    if( pManager.getType(pam1)=="lat" && pManager.getType(pam1)=="long"){
+    if( pam1.type=="lat" && pam1.type=="long"){
         console.log("It's a map!");
         pGMan.addToManager(5);
     }
-    if( pManager.getType(pam1)=="long" && pManager.getType(pam1)=="lat"){
+    if( pam1.type=="long" && pam1.type=="lat"){
         console.log("It's a map v2!");
         pGMan.addToManager(5);
     }

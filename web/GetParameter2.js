@@ -53,6 +53,7 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
                 });
 
                 //});
+
             }
         });
     }else {
@@ -90,9 +91,8 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
  * @param {GraphStore} graph_store
  */
 function GetParameterQuery(graph_store) {
+
     console.log("Query executed");
-
-
 
     graph_store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
@@ -100,8 +100,8 @@ function GetParameterQuery(graph_store) {
                         select ?s ?p ?o ?t FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o; rdf:type ?t. FILTER(?p != rdf:type). } }',
         function(err, results_type) { //edited above from: select distinct ?type FROM NAMED :rdfGraph { GRAPH ?g { ?s rdf:type ?type } }',
             //Get the type for display as a draggable parameter
-            console.log("Results type:");
-            console.log(results_type);
+        //    console.log("Results type:");
+        //    console.log(results_type);
 
             //Get the Name value from the object and push value to global array
             for(var i = 0; i < results_type.length; i++){
@@ -113,8 +113,8 @@ function GetParameterQuery(graph_store) {
                 //For each Type find the predicates that belong to it
                 //GetPredicateQuery(graph_store,results_type[i]); COMMENTED OUT
             }
-            console.log("TypeArray: ");
-            console.log(TypeArray);
+        //    console.log("TypeArray: ");
+         //   console.log(TypeArray);
 
             //get valid predicates, record their values, record final datatype
                             for(var i=0; i < results_type.length; i++){
@@ -179,8 +179,10 @@ function GetName(uri){
 
 
 
+
 console.log("Running Init!");
 //var new_Store = new GraphStore("URL");
+
 
 
 //gets the data type associated with the predicate
@@ -201,6 +203,7 @@ function getDatatype(oneResult, callback) {
                         type = 'float';
 
                     }else{
+
                         //in here if it is a string literal
                         //could possibly be other things but I don't knoooow how you'd catch a string
                         type = 'string';

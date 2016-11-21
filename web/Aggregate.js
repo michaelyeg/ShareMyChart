@@ -38,7 +38,7 @@ function Aggregate(XY){
             Obj = new DataObject(0, data[object].dataY, data[object].nameX, data[object].nameY, data[object].typeX, data[object].typeY);
 
             for (var object2 = 0; object2 < data.length; object2++) {
-                if (Obj.dataY === data[object2].dataY) {
+                if (Obj.dataY == data[object2].dataY) {
                     Obj.dataX = Obj.dataX + 1
                 }
             }
@@ -47,7 +47,7 @@ function Aggregate(XY){
         for (var i = 0; i < NewArray.length; i++) {
             var found = false;
             for (var x = 0; x < ArrayFinal.length; x++) {
-                if (NewArray[i].dataY === ArrayFinal[x].dataY) {
+                if (NewArray[i].dataY == ArrayFinal[x].dataY) {
                     found = true;
                 }
             }

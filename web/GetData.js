@@ -31,45 +31,52 @@ var GlobalDataArray = new DataArray();
  */
 function GetLink(Param1, Param2, graph){
 
+/*
     var uri1 = Param1.class_value;
     var uri2 = Param2.class_value;
     GlobalX = Param1;
     GlobalY = Param2;
     GlobalLink = [];
     GlobalDataArray.clear();
-    /*
+    */
+
     var uri1 = pManager.getClass(Param1);
     var uri2 = pManager.getClass(Param2);
     GlobalX = pManager.getParameter(Param1);
     GlobalY = pManager.getParameter(Param2);
     GlobalLink = [];
-    */
+
 
     for (var link_length = 0; link_length < 4; link_length++) {
 
         var query1 = QueryBuilderLink(uri1, uri2, link_length);
         var query2 = QueryBuilderLink(uri2, uri1, link_length);
-        //console.log(query1);
+        console.log(query1);
 
         //Try looking for link bewteen classes.
+
         graph.execute(query1, GetLinkResult);
         graph.execute(query2, GetLinkResultFlipped);
+
     }
 
 }
 
 
 
+
 function GetLinkResult(err, results) {
+
 
     console.log("Get One Link Results:");
     console.log(results);
+    console.log(GlobalX);
+    console.log(GlobalY);
     var temp_results = [{name:GlobalX.real_name,uri:GlobalX.name},
                           {name:GetName(GlobalX.class_value), uri:GlobalX.class_value}];
 
-
     if (results.length > 0) {
-        var object = results[0]
+        var object = results[0];
         for (var key in object){
             var ListItem  = {};
             var x = object[key].value;
@@ -84,6 +91,7 @@ function GetLinkResult(err, results) {
         GlobalLink.push(temp_results);
         //TODO: send data to the prompt instead of skipping and going right to GetData
         GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
+
     }
 }
 
@@ -127,6 +135,8 @@ function GetLinkResultFlipped(err, results) {
  */
 //TODO: Update the GetData to use the new link format.
 function GetData(uri1, uri2, graph, link_path){
+
+
     var DataObject;
     var query = QueryBuilderData(uri1, uri2, link_path );
 
@@ -141,12 +151,19 @@ function GetData(uri1, uri2, graph, link_path){
                 dataY:results[i].data2.value,
                 typeY:GlobalY.type
             };
+
             //DataArray.push(DataObject);
+            console.log(DataObject);
             GlobalDataArray.addData(DataObject);
 
         }
         console.log(GlobalDataArray);
+
+
+        pickGraphTypes(GlobalX, GlobalY);
+
         console.log(Aggregate("X"));
+
     });
 
 

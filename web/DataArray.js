@@ -22,13 +22,13 @@ DataArray.prototype.addData = function(object){
     }else{
         var tempname = object.nameX;
         var tempdata = object.dataX;
-        var temptype = object.typeX;
+       // var temptype = object.typeX;
         object.dataX = object.dataY;
         object.nameX = object.nameY;
-        object.typeX = object.typeY;
+        //object.typeX = object.typeY;
         object.nameY = tempname;
         object.dataY = tempdata;
-        object.typeY = temptype;
+        //object.typeY = temptype;
         this.getInt(object);
     }
 };
