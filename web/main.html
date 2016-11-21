@@ -83,6 +83,29 @@
                       <h3 class="panel-title center">filters</h3>
                     </div>
                     <div class="panel-body center">
+                      <!-- <div class="dragndropShape" id="4"> Test </div> -->
+                      <form name="filter" id="filterForm">
+
+                      </form>
+                      <div class="dropup">
+                        <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          +
+                          <span class="caret"></span>
+                        </button>
+                        <button class="btn btn-default dropdown-toggle btn-block" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          -
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                          <li><a href="javascript:void(0);" id="xButton">X-axis</a></li>
+                          <li><a href="javascript:void(0);"  id="yButton">Y-axis</a></li>
+                          <li role="separator" class="divider"></li>
+                        </ul>
+                      </div>
+                      <br>
+                      <button class="btn btn-primary btn-lg btn-block" type="button" >update</button>
+                    </div>
+
+                    <div class="panel-body center">
                      <!-- <div class="dragndropShape" id="4"> Test </div> -->
                     </div>
                   </div>
@@ -150,6 +173,7 @@
                     <br/>
                     <input id="submit" type="submit" class="btn btn-secondary btn-block" value="Upload File" />
                   </form>
+                  <br>
                   <input id="delete" type="submit" class="btn btn-secondary btn-block" value="Delete" onclick="deleteFile()" />
                 </div>
               </div>
@@ -238,6 +262,7 @@
     <!-- <script type = "text/javascript" src="./GetParameter.js"></script> -->
     <script type = "text/javascript" src="./dragndrop.js"></script>
     <script type = "text/javascript" src="./func.js"></script>
+    <script type = "text/javascript" src="./manageFilter.js"></script>
     <script type = 'text/javascript' src="./Graph.js"></script>
   <script type = 'text/javascript' src="./BarChart.js"></script>
     <link rel = "stylesheet" href = "barGraph.css">

@@ -107,20 +107,9 @@ function deleteFile(){
             selected.push(checkbox[i].getAttribute('data-filename'));
         }
     }
-    // $.ajax({
-    //     url:'/deleteFileServlet',
-    //     type:'GET',
-    //     data:{selected:selected},
-    //     datatype:'json',
-    //     success: function(){
-    //         console.log(selected);
-    //     },
-    //     error: function(){
-    //
-    //     }
-    // });
     $.post('/deleteFileServlet',{selected:selected.join(',')},function(data){
         console.log(data);
     },'text');
     refreshData();
 }
+
