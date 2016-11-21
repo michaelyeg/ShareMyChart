@@ -5,7 +5,7 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            /Users/Margaret/Documents/workspace/ShareMyChart/web/data/
+            C:\Users\Owner\IdeaProjects\ShareMyChart\web\data\
         </param-value>
     </context-param>
 

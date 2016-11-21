@@ -8,6 +8,9 @@
  * @param pam2 - index of parameter two (y-axis)
  * Use the parameter manager to locate and figure out their types!
  */
+
+
+
 function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
@@ -67,7 +70,7 @@ function pickGraphTypes(pam1, pam2) {
         //would be nice to reset the parameters here, but I'm not sure if that'll clear their ids...
     }else{
         //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
-        pGman.prioritize(pam1, pam2);
+        pGMan.prioritize(pam1, pam2);
 
         //put UI option popup here!
         //*user makes a choice*

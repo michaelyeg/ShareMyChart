@@ -78,6 +78,7 @@ $(document).ready(function initDragnDrop(event, ui){
                 */
                 //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
                 pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
+
             }
 
         })
@@ -119,7 +120,8 @@ function createDrags(array_of_params){ //document.ready
         i++;
     }
 
-    $(list).insertAfter(insertLocation);
+    //$(list).insertAfter(insertLocation);
+    $(list).appendTo(insertLocation);
     $('.sortable').sortable({
          connectWith: '.dragndropShape',
          appendTo: 'body',
@@ -137,3 +139,29 @@ function createDrags(array_of_params){ //document.ready
     });
 
 };
+
+/**
+ * @description - clears the UI parameters shown
+ */
+function clearDrags(URL){
+console.log("call on meeeee");
+
+    //console.log(document.getElementById('sortable'));
+    //var p = document.getElementById('sortable');
+    //p.destroy();
+   // var c = document.getElementsByClassName('sortable ui-sortable');
+    //console.log(c);
+
+    var delLocation =document.getElementById('drag_parameters');
+
+    $('.sortable').empty();
+    //console.log($(delLocation).find(".sortable").length);
+     console.log(delLocation);
+
+    clear_callback(URL);
+    /*while (delLocation.hasChildNodes()) {
+        delLocation.removeChild(delLocation.lastChild);
+    }*/
+
+}
+
