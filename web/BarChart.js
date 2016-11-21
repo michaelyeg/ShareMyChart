@@ -79,7 +79,7 @@ $(document).ready(function(){
  * prepare the settings for the vertical barchart
  * clear the old graph if there is one in the way
  */
-BarChart.prototype.verticalBC = function(){
+BarChart.prototype.verticalBC = function(dray){
     if(dray.length ==0){
         alert("Please select data parameters");
     }else {
@@ -89,14 +89,14 @@ BarChart.prototype.verticalBC = function(){
             BarChart.prototype.setgraphType(0);
             BarChart.prototype.setHorizontal(false);
             //something about stacked
-            BarChart.prototype.makeGraph();
+            BarChart.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
             BarChart.prototype.setgraphType(0);
             BarChart.prototype.setHorizontal(false);
             //something about stacked
-            BarChart.prototype.makeGraph();
+            BarChart.prototype.makeGraph(dray);
 
         }
     }
@@ -106,7 +106,7 @@ BarChart.prototype.verticalBC = function(){
  * prepare the settings for the horizontal barchart
  * clear the old graph if there is one in the way
  */
-BarChart.prototype.horizontalBC = function(){
+BarChart.prototype.horizontalBC = function(dray){
     if(dray.length ==0){
         alert("Please select data parameters");
     }else {
@@ -116,14 +116,14 @@ BarChart.prototype.horizontalBC = function(){
             BarChart.prototype.setgraphType(1);
             BarChart.prototype.setHorizontal(true);
             //something about stacked
-            BarChart.prototype.makeGraph();
+            BarChart.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
             BarChart.prototype.setgraphType(1);
             BarChart.prototype.setHorizontal(true);
             //something about stacked
-            BarChart.prototype.makeGraph();
+            BarChart.prototype.makeGraph(dray);
 
         }
     }
@@ -165,7 +165,7 @@ BarChart.prototype.setStacked = function(sbool){
 /**
  * @description make a vertical bar chart from the data
  */
- BarChart.prototype.makeGraph = function() {
+ BarChart.prototype.makeGraph = function(dray) {
 
      var graphLocation = document.getElementById('graph');
      //put some stuff in here about looking at horizontal and stacked
@@ -367,7 +367,7 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
 
          g.append("g")
              .attr("class", "axis axis--y")
-             .call(d3.axisLeft(y).ticks(10, "%"))
+             .call(d3.axisLeft(y))//.ticks(10, "%"))
              .append("text")
              .attr("transform", "rotate(-90)")
              .attr("y", 6)

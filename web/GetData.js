@@ -206,7 +206,11 @@ function GetData(uri1, uri2, graph, link_path){
         }
         console.log(GlobalDataArray);
 
+
         pickGraphTypes(GlobalX, GlobalY);
+
+        console.log(Aggregate("X"));
+
     });
 
 

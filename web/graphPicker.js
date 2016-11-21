@@ -12,7 +12,7 @@ function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
 
-    if (pam1.type=="nominal" && (pam2.type=="numeric" || pam2.type=="date" || pam2.type=="nominal")){
+    if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
 

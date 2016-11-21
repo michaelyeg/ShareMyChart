@@ -3,6 +3,7 @@
  *
  */
 var scatterplot = new Scatterplot();
+var barchart = new BarChart();
 
 var PossibleGraphManager = function(){
     $.pG = [];
@@ -33,7 +34,14 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
 
 
     }
+   /* dray = Aggregate("X"); //aggregate on x axis for vertical BC
+console.log(dray);
+    barchart.verticalBC(dray); //currently wont work with the button!! :C
+*/
+   dray = Aggregate("Y");
+    console.log(dray);
+    barchart.horizontalBC(dray);
 
-    scatterplot.normalscatterplot(GlobalDataArray.getArray());
+    //scatterplot.normalscatterplot(GlobalDataArray.getArray());
 
 }

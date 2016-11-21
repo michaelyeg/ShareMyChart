@@ -43,12 +43,29 @@ DataArray.prototype.flipper = function(){
     this.flip = 1;
 };
 DataArray.prototype.getInt = function(object){
-    if (object.typeX == "nominal"){
+    if (object.typeX == "numeric"){
         object.dataX = parseFloat(object.dataX);
     }
-    if (object.typeY == "nominal"){
+    if (object.typeY == "numeric"){
         object.dataY = parseFloat(object.dataY);
     }
     this.Array.push(object);
 
+}
+
+DataArray.prototype.duplicate = function(){
+    var copy = [];
+    var obj = {};
+    for(var i = 0; i < this.Array.length; i++) {
+        obj = new DataObject(
+            this.Array[i].dataX,
+            this.Array[i].dataY,
+            this.Array[i].nameX,
+            this.Array[i].nameY,
+            this.Array[i].typeX,
+            this.Array[i].typeY
+        );
+        copy.push(obj);
+    }
+    return copy;
 }
