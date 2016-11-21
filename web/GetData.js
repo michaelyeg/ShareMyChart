@@ -47,13 +47,22 @@ function GetLink(Param1, Param2, graph){
 
     for (var link_length = 0; link_length < 4; link_length++) {
 
-        var query1 = QueryBuilderLink(uri1, uri2, link_length);
-        var query2 = QueryBuilderLink(uri2, uri1, link_length);
-        //console.log(query1);
+        if(uri1 !== uri2) {
+            var query1 = QueryBuilderLink(uri1, uri2, link_length);
+            var query2 = QueryBuilderLink(uri2, uri1, link_length);
+            //console.log(query1);
 
-        //Try looking for link bewteen classes.
-        graph.execute(query1, GetLinkResult);
-        graph.execute(query2, GetLinkResultFlipped);
+            //Try looking for link bewteen classes.
+            graph.execute(query1, GetLinkResult);
+            graph.execute(query2, GetLinkResultFlipped);
+
+        }else{
+            var specialArray = [{name:GlobalX.real_name, uri:GlobalX.name}, Param1, {name:GlobalY.real_name,uri:GlobalY.name}];
+            console.log(specialArray);
+            GetData(GlobalX.name, GlobalY.name, GlobalStore, specialArray);
+            break;
+
+        }
     }
 
 }
@@ -80,6 +89,8 @@ function GetLinkResult(err, results) {
         ListItem = {name:GlobalY.real_name, uri:GlobalY.name};
         temp_results.push(ListItem);
         GlobalLink.push(temp_results);
+        console.log("HERE:");
+        console.log(temp_results)
         //TODO: send data to the prompt instead of skipping and going right to GetData
         GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
     }
@@ -128,6 +139,7 @@ function GetData(uri1, uri2, graph, link_path){
 
     graph.execute(query,function(err, results) {
         console.log("Results using query Builder:");
+        console.log(results);
         for(var i = 0; i < results.length; i++){
             DataObject = {
                 nameX:link_path[0].name,
