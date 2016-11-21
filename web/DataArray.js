@@ -72,5 +72,4 @@ DataArray.prototype.duplicate = function(){
 
 DataArray.prototype.delete=function(index){
     this.Array.splice(index,1);
-    return;
 }
