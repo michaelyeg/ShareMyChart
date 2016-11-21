@@ -18,7 +18,7 @@
      */
 
 
-var dray = GlobalDataArray.getArray();
+var dray2 = GlobalDataArray.getArray();
 
     /**
      * Create a new lineGraph that inherits from Graph
@@ -83,9 +83,18 @@ var dray = GlobalDataArray.getArray();
      *
      */
     $(document).ready(function(){
-        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.horizontalLG);
+        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.caller);
     })
 
+/**
+ * creates the aggregate and sets up graph-making
+ */
+lineGraph.prototype.caller = function(){
+    dray = Aggregate("X");
+    console.log(dray);
+    lineGraph.prototype.horizontalLG(dray);
+
+}
 
 
 /**
@@ -108,7 +117,7 @@ lineGraph.prototype.setHorizontal = function(hbool){
  * prepare the settings for the vertical linegraph
  * clear the old graph if there is one in the way
  */
-lineGraph.prototype.horizontalLG = function(){
+lineGraph.prototype.horizontalLG = function(dray){
     if(dray.length ==0){
         alert("Please select data parameters");
     }else {
@@ -117,13 +126,13 @@ lineGraph.prototype.horizontalLG = function(){
             //no graph currently exists, build this one
             lineGraph.prototype.setgraphType(4);
             lineGraph.prototype.setHorizontal(false);
-            lineGraph.prototype.makeGraph();
+            lineGraph.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
             lineGraph.prototype.setgraphType(4);
             lineGraph.prototype.setHorizontal(false);
-            lineGraph.prototype.makeGraph();
+            lineGraph.prototype.makeGraph(dray);
 
         }
     }
@@ -136,7 +145,7 @@ lineGraph.prototype.horizontalLG = function(){
     /**
      * make a vertical line graph from the data
      */
-    lineGraph.prototype.makeGraph = function() {
+    lineGraph.prototype.makeGraph = function(dray) {
 
 
 
@@ -180,15 +189,63 @@ lineGraph.prototype.horizontalLG = function(){
 //http://stackoverflow.com/questions/39069892/d3-multi-line-chart-error-path-attribute-d-expected-number-mnan-nanlnan
 
 
-    var x = d3.scaleTime()
+        var x, y;
+
+        //check to see if the data is a date value and use scaletime if it is
+        if(dray[0].typeX == "date"){
+            x = d3.scaleTime().rangeRound([0, width]);
+            x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+        } else{
+            x = d3.scaleLinear().rangeRound([0, width]);
+            x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+        }
+
+        if(dray[0].typeY == "date"){
+            y = d3.scaleTime().rangeRound([height -20, 0]);
+            y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+        }else{
+            y = d3.scaleLinear().range([height -20, 0]);
+            y.domain(d3.extent(dray, function(d) { return d.dataY; }));
+        }
+
+
+   /* var x = d3.scaleTime()
         .rangeRound([0, width]);
 
     var y = d3.scaleLinear()
-        .rangeRound([(height -20), 0]);
+        .rangeRound([(height -20), 0]);*/
 
-    var line = d3.line()
-        .x(function(d) { return x(parseTime(d.date)); })
-        .y(function(d) { return y(d.money); });
+
+
+
+        if( (dray[0].typeX == "date") && (dray[0].typeY == "date") ){
+            //if both are dates
+            var line = d3.line()
+                .x(function(d) { return x(new Date(d.dataX)); })
+                .y(function(d) { return y(new Date(d.dataY)); });
+
+        } else   if( (dray[0].typeX == "date") && (dray[0].typeY != "date") ){
+            //if x is a date only
+            var line = d3.line()
+                .x(function(d) { return x(new Date(d.dataX)); })
+                .y(function(d) { return y(d.dataY); });
+
+        }else   if( (dray[0].typeX != "date") && (dray[0].typeY == "date") ){
+            //if y is a date only
+            var line = d3.line()
+                .x(function(d) { return x(d.dataX); })
+                .y(function(d) { return y(new Date(d.dataY)); });
+
+
+        } else   if( (dray[0].typeX != "date") && (dray[0].typeY != "date") ){
+            //if neither are dates
+            var line = d3.line()
+                .x(function(d) { return x(d.dataX); })
+                .y(function(d) { return y(d.dataY); });
+
+        }
+
+
 
   /*  d3.tsv("data.tsv", function(d) {
         d.date = parseTime(d.date);
@@ -197,8 +254,8 @@ lineGraph.prototype.horizontalLG = function(){
     }, function(error, data) {
         if (error) throw error; */
 
-        x.domain(d3.extent(testDataLC, function(d) { return new Date(d.date); }));
-        y.domain(d3.extent(testDataLC, function(d) { return d.money; }));
+      /*  x.domain(d3.extent(testDataLC, function(d) { return new Date(d.date); }));
+        y.domain(d3.extent(testDataLC, function(d) { return d.money; })); */
 
         g.append("g")
             .attr("class", "axis axis--x")
@@ -222,17 +279,17 @@ lineGraph.prototype.horizontalLG = function(){
             .attr("x",0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Money");
+            .text(dray[0].nameY);
 
         g.append("text")
             .attr("transform",
                 "translate(" + ((width + margin.right + margin.left)/2) + " ," +
                 ((height +10) + margin.bottom - margin.top) +  ")")
             .style("text-anchor", "middle")
-            .text("Date");
+            .text(dray[0].nameX);
 
         g.append("path")
-            .datum(testDataLC)
+            .datum(dray)
             .attr("class", "line")
             .attr("d", line);
 
