@@ -80,7 +80,7 @@
      *
      */
     $(document).ready(function(){
-        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.makeGraph);
+        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.horizontalLG);
     })
 
 
@@ -101,6 +101,32 @@ lineGraph.prototype.setHorizontal = function(hbool){
     this.isHorizontal = hbool;
 }
 
+/**
+ * prepare the settings for the vertical linegraph
+ * clear the old graph if there is one in the way
+ */
+lineGraph.prototype.horizontalLG = function(){
+
+
+    if(($('#graph').find("svg").length) == 0){
+        //no graph currently exists, build this one
+        lineGraph.prototype.setgraphType(4);
+        lineGraph.prototype.setHorizontal(false);
+        lineGraph.prototype.makeGraph();
+    } else{
+        //otherwise, remove the old graph and build this one
+        d3.select("svg").remove();
+        lineGraph.prototype.setgraphType(4);
+        lineGraph.prototype.setHorizontal(false);
+        lineGraph.prototype.makeGraph();
+
+}
+
+
+}
+
+
+
 
     /**
      * make a vertical line graph from the data
@@ -111,19 +137,6 @@ lineGraph.prototype.setHorizontal = function(hbool){
 !!!!!!!!!! remove this and put it into a new function once we have different kinds of line graphs
  */
 
-        if(($('#graph').find("svg").length) == 0){
-            //no graph currently exists, build this one
-            lineGraph.prototype.setgraphType(4);
-            lineGraph.prototype.setHorizontal(false);
-            //lineGraph.prototype.makeGraph();
-        } else{
-            //otherwise, remove the old graph and build this one
-            d3.select("svg").remove();
-            lineGraph.prototype.setgraphType(4);
-            lineGraph.prototype.setHorizontal(false);
-            //lineGraph.prototype.makeGraph();
-
-        }
 
 
 
@@ -152,7 +165,7 @@ lineGraph.prototype.setHorizontal = function(hbool){
     $(graphLocation).append($(svgg));
 
     var svg = d3.select("svg"),
-        margin = {top: 20, right: 20, bottom: 30, left: 40},
+        margin = {top: 20, right: 20, bottom: 30, left: 80},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -177,7 +190,7 @@ lineGraph.prototype.setHorizontal = function(hbool){
         .rangeRound([0, width]);
 
     var y = d3.scaleLinear()
-        .rangeRound([height, 0]);
+        .rangeRound([(height -20), 0]);
 
     var line = d3.line()
         .x(function(d) { return x(parseTime(d.date)); })
@@ -195,19 +208,34 @@ lineGraph.prototype.setHorizontal = function(hbool){
 
         g.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(0," + (height-20) + ")") //want 410
             .call(d3.axisBottom(x));
 
         g.append("g")
             .attr("class", "axis axis--y")
-            .call(d3.axisLeft(y))
-            .append("text")
+            .call(d3.axisLeft(y));
+           /* .append("text")
             .attr("fill", "#000")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", "0.71em")
             .style("text-anchor", "end")
-            .text("Money ($)");
+            .text("Money ($)");*/
+
+        g.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Money");
+
+        g.append("text")
+            .attr("transform",
+                "translate(" + ((width + margin.right + margin.left)/2) + " ," +
+                ((height +10) + margin.bottom - margin.top) +  ")")
+            .style("text-anchor", "middle")
+            .text("Date");
 
         g.append("path")
             .datum(testDataLC)

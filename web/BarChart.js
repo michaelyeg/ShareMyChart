@@ -183,7 +183,7 @@ BarChart.prototype.setStacked = function(sbool){
       */
 
      var svg = d3.select("svg"),
-         margin = {top: 20, right: 20, bottom: 30, left: 40},
+         margin = {top: 20, right: 20, bottom: 50, left: 80},
          width = +svg.attr("width") - margin.left - margin.right,
          height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -242,6 +242,21 @@ BarChart.prototype.setStacked = function(sbool){
              g.append("g")
                  .attr("class", "y axis")
                  .call(d3.axisLeft(y));
+
+         g.append("text")
+             .attr("transform", "rotate(-90)")
+             .attr("y", 0 - margin.left)
+             .attr("x",0 - (height / 2))
+             .attr("dy", "1em")
+             .style("text-anchor", "middle")
+             .text("Letter");
+
+         g.append("text")
+             .attr("transform",
+                 "translate(" + ((width + margin.right + margin.left)/2) + " ," +
+                 ((height +10) + margin.bottom - margin.top) +  ")")
+             .style("text-anchor", "middle")
+             .text("%");
 
 
              g.selectAll(".bar")
@@ -311,6 +326,22 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
              .attr("dy", "0.71em")
              .attr("text-anchor", "end")
              .text("Frequency");
+
+         g.append("text")
+             .attr("transform", "rotate(-90)")
+             .attr("y", 0 - margin.left)
+             .attr("x",0 - (height / 2))
+             .attr("dy", "1em")
+             .style("text-anchor", "middle")
+             .text("%");
+
+         g.append("text")
+             .attr("transform",
+                 "translate(" + ((width + margin.right + margin.left)/2) + " ," +
+                 ((height +10) + margin.bottom - margin.top) +  ")")
+             .style("text-anchor", "middle")
+             .text("Letter");
+
 
          g.selectAll(".bar")
              .data(testDataBC)

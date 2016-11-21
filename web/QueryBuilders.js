@@ -9,20 +9,26 @@
  * @param {string} uri2 - used for the second uri in the query.
  * @return {string} - completed query to be used in sparql that connects all the links
  */
-//TODO Make it take in a link_path and use that instead of the global list. link ath should be an array with the path of the
-//TODO Test with more links then one
 function QueryBuilderData(uri1, uri2, link_path){
+
+    var X = link_path[0].uri;
+    var Y = link_path[link_path.length-1].uri;
     var string1 = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                    PREFIX : <http://example.org/>\
-                   select ?subject ?data1 ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
-                   ?subject <'+uri1+'> ?data1.\
-                   ?subject <'+GlobalLink[0]+'> ?link1.  ';
-    for (var i = 1; i < GlobalLink.length; i++){
-        string1 += '?link'+i+' <'+GlobalLink[i]+'> ?link'+(i+1)+'.'
+                   select ?subject1 ?data1 ?subject2 ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
+                   ?subject1 <'+X+'> ?data1.\
+                   ?subject1 <'+link_path[2].uri+'> ?link3.  ';
+    for (var i = 3; i < link_path.length-1; i++){
+        console.log("i%2: "+(i%2));
+        if ((i%2)==1) {
+            string1 += '?link' + (i-2) + ' <' + link_path[i-1].uri + '> ?link' + i + '.';
+        }
     }
 
-    string1 += '?link'+(GlobalLink.length)+ ' <' +uri2+ '> ?data2. }}';
+    string1 += '?link'+(i-1)+ ' <' +Y+ '> ?data2.\ ' +
+               ' ?subject2 <'+Y+'> ?data2. }}';
 
+    console.log(string1);
     return string1;
 }
 
@@ -32,14 +38,6 @@ function QueryBuilderData(uri1, uri2, link_path){
  * @param uri1
  * @param uri2
  * @return {string} returns the query as a string
- */
-/*
- 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
- PREFIX : <http://example.org/>\
- SELECT ?link1 FROM NAMED :rdfGraph { GRAPH ?g { \
- ?s ?link1 ?y; \
- rdf:type <'+uri1+'>.\
- ?y rdf:type <'+uri2+'>.  } }'
  */
 function QueryBuilderLink(uri1, uri2, link_distance){
     var query = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
@@ -59,17 +57,13 @@ function QueryBuilderLink(uri1, uri2, link_distance){
             query += '?y rdf:type <'+uri2+'>. '
         }else{
             query += '?x'+x+' ?link'+x+' ?x'+(x+1)+'. ';
-
         }
         if (x == 1){
             query += '?x1 rdf:type <'+uri1+'>. ' ;
         }else{
             query += '?x'+x+' rdf:type ?MidType'+(x-1)+'. ';
-
         }
     }
     query += '} }';
-
     return query;
-
 }
