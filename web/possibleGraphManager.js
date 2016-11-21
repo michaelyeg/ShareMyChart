@@ -4,6 +4,7 @@
  */
 var scatterplot = new Scatterplot();
 var barchart = new BarChart();
+var linegraph = new lineGraph();
 
 var PossibleGraphManager = function(){
     $.pG = [];
@@ -38,9 +39,14 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
 console.log(dray);
     barchart.verticalBC(dray); //currently wont work with the button!! :C
 */
-   dray = Aggregate("Y");
+ /*  dray = Aggregate("Y");
     console.log(dray);
     barchart.horizontalBC(dray);
+*/
+
+ dray = Aggregate("Y");
+    console.log(dray);
+    linegraph.horizontalLG(dray);
 
     //scatterplot.normalscatterplot(GlobalDataArray.getArray());
 
