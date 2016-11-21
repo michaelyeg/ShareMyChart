@@ -64,5 +64,4 @@ function deleteFilter() {
             filters[i].parentNode.removeChild(elem);
         }
     }
-
 }
