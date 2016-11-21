@@ -18,7 +18,7 @@ var DataArray = function (){
 
 DataArray.prototype.addData = function(object){
     if (this.flip == 0) {
-        this.Array.push(object);
+        this.getInt(object);
     }else{
         var tempname = object.nameX;
         var tempdata = object.dataX;
@@ -29,7 +29,7 @@ DataArray.prototype.addData = function(object){
         object.nameY = tempname;
         object.dataY = tempdata;
         object.typeY = temptype;
-        this.Array.push(object);
+        this.getInt(object);
     }
 };
 DataArray.prototype.getArray = function(){
@@ -42,3 +42,13 @@ DataArray.prototype.clear = function(){
 DataArray.prototype.flipper = function(){
     this.flip = 1;
 };
+DataArray.prototype.getInt = function(object){
+    if (object.typeX == "numeric"){
+        object.dataX = parseFloat(object.dataX);
+    }
+    if (object.typeY == "numeric"){
+        object.dataY = parseFloat(object.dataY);
+    }
+    this.Array.push(object);
+
+}
