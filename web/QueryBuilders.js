@@ -13,21 +13,27 @@ function QueryBuilderData(uri1, uri2, link_path){
 
     var X = link_path[0].uri;
     var Y = link_path[link_path.length-1].uri;
-    var string1 = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+
+    if(link_path.length == 3) {
+        string1 = SpecialCase(X,Y,link_path);
+    }else {
+        var string1 = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                    PREFIX : <http://example.org/>\
                    select ?subject1 ?data1 ?subject2 ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
-                   ?subject1 <'+X+'> ?data1.\
-                   ?subject1 <'+link_path[2].uri+'> ?link3.  ';
-    for (var i = 3; i < link_path.length-1; i++){
-        console.log("i%2: "+(i%2));
-        if ((i%2)==1) {
-            string1 += '?link' + (i-2) + ' <' + link_path[i-1].uri + '> ?link' + i + '.';
+                   ?subject1 <' + X + '> ?data1.\
+                   ?subject1 <' + link_path[2].uri + '> ?link3.  ';
+        for (var i = 3; i < link_path.length - 1; i++) {
+            console.log("i%2: " + (i % 2));
+            if ((i % 2) == 1) {
+                string1 += '?link' + (i - 2) + ' <' + link_path[i - 1].uri + '> ?link' + i + '.';
+            }
         }
+
+        string1 += '?link' + (i - 1) + ' <' + Y + '> ?data2.\ ' +
+            ' ?subject2 <' + Y + '> ?data2. }}';
+
+        console.log(string1);
     }
-
-    string1 += '?link'+(i-1)+ ' <' +Y+ '> ?data2.\ ' +
-               ' ?subject2 <'+Y+'> ?data2. }}';
-
     console.log(string1);
     return string1;
 }
@@ -40,30 +46,49 @@ function QueryBuilderData(uri1, uri2, link_path){
  * @return {string} returns the query as a string
  */
 function QueryBuilderLink(uri1, uri2, link_distance){
-    var query = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+
+    if(uri1 === uri2){
+        query = SpecialCase();
+    }else {
+        var query = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                 PREFIX : <http://example.org/>\
                 SELECT DISTINCT ?link1 ';
-    //add the select statment based on the link_distance:
-    for (var i = 1; i < link_distance; i++ ){
-        query += '?MidType'+i+' ';
-        query += '?link'+(i+1)+' ';
-    }
-    query += 'FROM NAMED :rdfGraph { GRAPH ?g { ';
+        //add the select statment based on the link_distance:
+        for (var i = 1; i < link_distance; i++) {
+            query += '?MidType' + i + ' ';
+            query += '?link' + (i + 1) + ' ';
+        }
+        query += 'FROM NAMED :rdfGraph { GRAPH ?g { ';
 
-    //Add triple for each list length
-    for (var x = 1; x <= link_distance; x++){
-        if ( x >= link_distance){
-            query += '?x'+x+' ?link'+x+' ?y .';
-            query += '?y rdf:type <'+uri2+'>. '
-        }else{
-            query += '?x'+x+' ?link'+x+' ?x'+(x+1)+'. ';
+        //Add triple for each list length
+        for (var x = 1; x <= link_distance; x++) {
+            if (x >= link_distance) {
+                query += '?x' + x + ' ?link' + x + ' ?y .';
+                query += '?y rdf:type <' + uri2 + '>. '
+            } else {
+                query += '?x' + x + ' ?link' + x + ' ?x' + (x + 1) + '. ';
+            }
+            if (x == 1) {
+                query += '?x1 rdf:type <' + uri1 + '>. ';
+            } else {
+                query += '?x' + x + ' rdf:type ?MidType' + (x - 1) + '. ';
+            }
         }
-        if (x == 1){
-            query += '?x1 rdf:type <'+uri1+'>. ' ;
-        }else{
-            query += '?x'+x+' rdf:type ?MidType'+(x-1)+'. ';
-        }
+        query += '} }';
     }
-    query += '} }';
     return query;
+}
+
+function SpecialCase(X, Y, link_path){
+    console.log("special:");
+    console.log(X+"-----"+Y);
+    console.log(link_path);
+    var string = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+                   PREFIX : <http://example.org/>\
+                   select ?subject1 ?data1 ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
+                   ?subject1 rdf:type <' + link_path[1].class_value + '>;\
+                    <' + X + '> ?data1;\
+                    <' + Y + '> ?data2.\
+                   }}'
+    return string;
 }
