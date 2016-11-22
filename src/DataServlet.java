@@ -23,7 +23,7 @@ public class DataServlet extends HttpServlet {
 
         List<String> results = new ArrayList<String>();
         String path = getServletContext().getInitParameter("file-upload");
-
+        out.print(path);
         File[] files = new File(path).listFiles();
         out.println(path);
         for (File file : files){
