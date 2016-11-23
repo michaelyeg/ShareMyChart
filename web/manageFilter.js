@@ -16,7 +16,7 @@ function initFilter (){
     document.getElementById("dropup1").style.display = "block";
     document.getElementById("delete1").style.display = "block";
     document.getElementById("updatebutton").style.display = "block";
-    var filterArray=filterArray();
+    var filterArray=new filterArray();
 }
 
 $("#filterX").click(function(){
@@ -34,7 +34,7 @@ $("#filterX").click(function(){
     }
     else $("#filterForm").append(_html+num+"</div>");
     count++;
-
+    //TODO: Connect backend
 });
 
 $("#filterY").click(function(){
@@ -52,7 +52,8 @@ $("#filterY").click(function(){
     }
     else $("#filterForm").append(_html+num+"</div>");
     count++;
-
+    //TODO: Connect backend
+    //applyFilter(filterArray);
 });
 
 
@@ -66,4 +67,5 @@ function deleteFilter() {
         }
     }
 
+    applyFilter(filterArray);
 }

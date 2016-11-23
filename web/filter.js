@@ -1,7 +1,8 @@
 /**
  * Created by michaelximac on 2016-11-20.
  */
-function filter(parameter,condition,number,date){
+function filter(parameter,condition,type,number,date){
+    this.type=type;
     this.parameter=parameter;
     this.condition=condition;
     this.number=number;
@@ -26,4 +27,8 @@ filterArray.prototype.getArray=function () {
 
 filterArray.prototype.clear=function () {
     this.Array=[];
+}
+
+filterArray.prototype.size=function () {
+    return this.Array.length;
 }
