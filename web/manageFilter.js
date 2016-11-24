@@ -26,7 +26,7 @@ $("#filterX").click(function(){
         ' <option value=">">></option> </select>';
 
     var date = '<input type="date" value="0" size="4"><br>';
-    var num = '<input type="number" value="0" size="4"><br>';
+    var num = '<input type="numeric" value="0" size="4"><br>';
 
     if (xT == "date"){
         $("#filterForm").append(_html+date+"</div>");
@@ -44,7 +44,7 @@ $("#filterY").click(function(){
         ' <option value=">">></option> </select> ';
 
     var date = '<input type="date" value="0" size="4"><br>';
-    var num = '<input type="number" value="0" size="4"><br>';
+    var num = '<input type="numeric" value="0" size="4"><br>';
 
     if (yT == "date"){
         $("#filterForm").append(_html+date+"</div>");

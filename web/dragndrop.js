@@ -81,6 +81,11 @@ console.log(dragid);
                 //pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
                 var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
                 var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
+
+                if (xType == "nominal"){
+
+                }
+
                 initFilter();
                 getType(xType,yType);
             }
