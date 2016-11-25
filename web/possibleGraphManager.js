@@ -2,9 +2,9 @@
  * Created by Jill - Offline on 2016-11-19.
  *
  */
-var scatterplot = new Scatterplot();
-var barchart = new BarChart();
-var linegraph = new lineGraph();
+//var scatterplot = new Scatterplot();
+//var barchart = new BarChart();
+//var linegraph = new lineGraph();
 
 var PossibleGraphManager = function(){
     $.pG = [];

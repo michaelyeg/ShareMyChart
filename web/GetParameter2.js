@@ -30,27 +30,13 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
                 console.log(TypeArray);
                 console.log(GlobalStore);
 
-                deleteDrags();
+                clearDrags(URL, reload_function);
 
 
                 //rdfstore.create(function (err, store) {
 
                 console.log("GET THE URL: " + URL); //LOAD <'+URL+'>
-                GlobalStore.execute('LOAD <' + URL + '> INTO GRAPH <http://example.org/rdfGraph>', function (err) {
 
-                    if (!err) {
-                        // Store created
-                        //potential async issue
-                        this.Store = GlobalStore;
-                        //GlobalStore = store;
-
-                        var Confirm = confirm("Data will be loaded");
-                        if (Confirm) {
-                            //console.log(this);
-                            GetParameterQuery(this.Store);
-                        }
-                    }
-                });
 
                 //});
 
@@ -85,6 +71,25 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
 
     }//end of else
 };
+
+
+function reload_function(URL){
+    GlobalStore.execute('LOAD <' + URL + '> INTO GRAPH <http://example.org/rdfGraph>', function (err) {
+
+        if (!err) {
+            // Store created
+            //potential async issue
+            this.Store = GlobalStore;
+            //GlobalStore = store;
+
+            var Confirm = confirm("Data will be loaded");
+            if (Confirm) {
+                //console.log(this);
+                GetParameterQuery(this.Store);
+            }
+        }
+    });
+}
 
 /**
  * Takes an Rdf store object and gets all the type from the graph

@@ -155,7 +155,7 @@ function createDrags(array_of_params){ //document.ready
 /**
  * @description - clears the UI parameters shown
  */
-function clearDrags(URL){
+function clearDrags(URL, clear_callback){
 console.log("call on meeeee");
 
     //console.log(document.getElementById('sortable'));
