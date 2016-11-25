@@ -169,6 +169,23 @@ console.log("call on meeeee");
     $('.sortable').empty(); //**TODO make this clear the draggables again!! Somehow it was lost
     //console.log($(delLocation).find(".sortable").length);
      //console.log(delLocation);
+  /*  var dropMes = document.getElementsByClassName('.dropMe');
+    var droppedPams1 = $(dropMes[0]).find("dragndropShape");
+    var droppedPams2 = $(dropMes[1]).find("dragndropShape");
+
+    console.log(dropMes);
+
+    droppedPams1[0].remove();
+    droppedPams2[1].remove();
+*/
+  var dropp = document.getElementsByClassName("dropMe");
+    console.log(dropp);
+    var d1=$(dropp[0]).find('.dragndropShape');
+    var d2 = $(dropp[1]).find('.dragndropShape');
+
+    console.log(d1);
+        d1[0].remove();
+    d2[0].remove();
 
     clear_callback(URL);
     /*while (delLocation.hasChildNodes()) {
