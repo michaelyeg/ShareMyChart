@@ -164,11 +164,11 @@ console.log("call on meeeee");
    // var c = document.getElementsByClassName('sortable ui-sortable');
     //console.log(c);
 
-    var delLocation =document.getElementById('drag_parameters');
-
-    $('.sortable').empty();
+    //var delLocation =document.getElementById('drag_parameters');
+    console.log(document.getElementsByClassName('sortable'));
+    $('.sortable').empty(); //**TODO make this clear the draggables again!! Somehow it was lost
     //console.log($(delLocation).find(".sortable").length);
-     console.log(delLocation);
+     //console.log(delLocation);
 
     clear_callback(URL);
     /*while (delLocation.hasChildNodes()) {

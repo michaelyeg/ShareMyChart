@@ -103,6 +103,9 @@ ParameterManager.prototype.getType = function(index){
     return $.pArray[index].type;
 };
 
+ParameterManager.prototype.clearManager = function(){
+    $.pArray.splice(0, $.pArray.length);
+}
 
 /**
  *

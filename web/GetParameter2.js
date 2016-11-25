@@ -26,6 +26,7 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
 
             if(!err1) {
                 TypeArray.splice(0,TypeArray.length);
+                pManager.clearManager();
                 console.log("Cleared the graph. Here's TypeArray.");
                 console.log(TypeArray);
                 console.log(GlobalStore);
@@ -33,12 +34,6 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
                 clearDrags(URL, reload_function);
 
 
-                //rdfstore.create(function (err, store) {
-
-                console.log("GET THE URL: " + URL); //LOAD <'+URL+'>
-
-
-                //});
 
             }
         });
