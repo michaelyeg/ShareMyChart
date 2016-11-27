@@ -36,7 +36,8 @@ module.exports = function(config) {
         'web/Graph.js',
         'web/BarChart.js',
         'web/lineGraph.js',
-        'web/scatterplot.js'
+        'web/scatterplot.js',
+        'web/dragndrop.js'
     ],
 
 

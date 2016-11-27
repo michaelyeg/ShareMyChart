@@ -45,11 +45,11 @@ function pickGraphTypes(pam1, pam2) {
 
 
     //wrote these for the future idk
-    if( pam1.type=="lat" && pam1.type=="long"){
+    if( pam1.type=="lat" && pam2.type=="long"){
         console.log("It's a map!");
         pGMan.addToManager(5);
     }
-    if( pam1.type=="long" && pam1.type=="lat"){
+    if( pam1.type=="long" && pam2.type=="lat"){
         console.log("It's a map v2!");
         pGMan.addToManager(5);
     }
