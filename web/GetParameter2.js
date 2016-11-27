@@ -32,7 +32,7 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
                 console.log(GlobalStore);
 
                 clearDrags(URL, reload_function);
-
+                clearGraph();
 
 
             }

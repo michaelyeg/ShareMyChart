@@ -193,3 +193,10 @@ function clearDrags(URL, clear_callback){
 
 }
 
+/**
+ * @description - clears the graph from the UI
+ */
+function clearGraph(){
+    d3.select("svg").remove();
+}
+
