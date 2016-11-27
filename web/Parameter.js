@@ -20,7 +20,7 @@ var Parameter = function(name, class_value){
         this.class_value = class_value;
         this.type = "Not known";
         this.real_name = name.substring(name.lastIndexOf("/") + 1);
-        this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1)
+        this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1);
         //console.log("real_name is: " + this.real_name);
 
     };
@@ -136,6 +136,21 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
 };
 
 /**
+ * @desc - Returns the index for a name and class of a parameter. -1 if not found.
+ * @param name
+ * @param class_val
+ */
+ParameterManager.prototype.getIndexForNC = function(name, class_val){
+    for(var i =0; i < $.pArray.length; i++){
+        if($.pArray[i].name.localeCompare(name) ==0 && $.pArray[i].class_value.localeCompare(class_val) ==0){
+            return i;
+        }
+    }
+    console.log("Parameter not found");
+    return -1;
+};
+
+/**
  *
  * @param index
  * @param dataType
@@ -143,10 +158,11 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
  */
 ParameterManager.prototype.addDatatype = function(index, dataType){
     //will only add the datatype if it is "not known" aka not set, or it has any value that is not nominal
+
     if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("nominal") != 0){
         $.pArray[index].type = dataType;
     }
-}
+};
 
 /**
  * @description Simplifies the types into what we need for our program - carefully
@@ -156,12 +172,12 @@ ParameterManager.prototype.addDatatype = function(index, dataType){
  * any numbers = numeric
  * in implementation, note that numeric should be considered ordinal, ie, kind of like date
  */
-ParameterManager.prototype.simplifyType = function(){
+ParameterManager.prototype.simplifyType = function(index){
 
-    var index = $.pArray.length-1;
+    //var index = $.pArray.length-1;
 
-   // console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
-     //   $.pArray[index].name);
+    //console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
+    //    $.pArray[index].name);
 
 
         //checks for lat/long
