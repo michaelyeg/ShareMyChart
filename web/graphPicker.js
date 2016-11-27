@@ -19,35 +19,27 @@ function pickGraphTypes(pam1, pam2) {
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
-
-        //aggregate(pam2,pam1);
-        //displayBarchart(pam1,pam2);
     }
 
     //did this kinda quickly, might be wrong, very confusing
     if ( (pam1.type=="numeric" || pam1.type=="date" || pam1.type=="nominal") && pam2.type=="nominal"){
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
-
-        //aggregate(pam2,pam1);
-        //displayBarchart(pam1,pam2);
     }
 
     if( (pam1.type=="numeric" || pam1.type=="date") && (pam2.type=="date" || pam2.type=="numeric") ){
         console.log("It's a line graph!");
         pGMan.addToManager(2);
-        //displayLineGraph(pam1,pam2);
+
     }
     if( (pam1.type=="numeric" || pam1.type == "date") && (pam2.type=="numeric" || pam2.type=="date") ){
-        //displayScatter(pam1,pam2);
-        console.log("It's a scatter graph - v2!");
+        console.log("It's a scatter graph A!");
         pGMan.addToManager(3);
     }
     if(pam1.type=="nominal" && pam2.type=="nominal"){
-        console.log("It's a scatter graph! Avoid prioritizing me because I look bad w/o jitter!");
+        console.log("It's a scatter graph B! Avoid prioritizing me because I look bad w/o jitter!");
         pGMan.addToManager(4);
         //needs to aggregate... something. I think apply to x axis a count.
-        //displayScatter(pam1,pam2);
     }
 
 
