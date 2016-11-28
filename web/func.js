@@ -114,4 +114,3 @@ function deleteFile(){
     },'text');
     refreshData();
 }
-

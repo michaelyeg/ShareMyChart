@@ -60,7 +60,7 @@ function GetLink(Param1, Param2, graph){
             graph.execute(query2, GetLinkResultFlipped);
 
         }else{
-            var specialArray = [{name:GlobalX.real_name, uri:GlobalX.name}, Param1, {name:GlobalY.real_name,uri:GlobalY.name}];
+            var specialArray = [{name:GlobalX.real_name, uri:GlobalX.name}, GlobalX, {name:GlobalY.real_name,uri:GlobalY.name}];
             console.log(specialArray);
             GetData(GlobalX.name, GlobalY.name, GlobalStore, specialArray);
             break;
@@ -72,53 +72,6 @@ function GetLink(Param1, Param2, graph){
 }
 
 
-/**
- * Function is identical to the GetLink but it will be called and needs to have the parameters in the opposite order from the way the
- *
- * @param Param1
- * @param Param2
- * @param graph
- * @constructor
- */
-function GetLinkFlip(Param1, Param2, graph) {
-        var uri1 = Param1.class_value;
-        var uri2 = Param2.class_value;
-        GlobalLink = [];
-
-        //Try looking for link bewteen classes.
-        graph.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-                   PREFIX : <http://example.org/>\
-                   SELECT ?link1 FROM NAMED :rdfGraph { GRAPH ?g { \
-                   ?s ?link1 ?y. \
-                   ?s rdf:type <'+uri1+'>.\
-                   ?y rdf:type <'+uri2+'>.  } }',
-            function (err, results) {
-                console.log("Get One Link Flipped Results:");
-                console.log(results);
-                if (results == []){
-                    return;
-                }else{
-                    for (var i = 0; i < results.length; i++) {
-                        var found = false;
-                        var temp = results[i].link1.value;
-                        for (var x = 0; x < GlobalLink.length; x++) {
-                            if (temp == GlobalLink[x]) {
-                                found = true;
-                            }
-                        }
-                        if (!found) {
-                            GlobalLink.push(temp);
-                        }
-                    }
-                    //If length is > 0 then a path exists and data will be retrived
-                    if (GlobalLink.length > 0) {
-                        //TODO: return paths of all links
-                        console.log(uri1);
-                        GetData(Param1.name, Param2.name, GlobalStore);
-                    }
-                }
-            });
-}
 
 
 function GetLinkResult(err, results) {

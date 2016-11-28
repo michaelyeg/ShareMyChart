@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7b3f218-2669-4920-bcac-39d79903caab" name="Default" comment="">
+    <list default="true" id="d7b3f218-2669-4920-bcac-39d79903caab" name="Default" comment="Merge branch 'JillsBranch' of https://github.com/shadownater/ShareMyChart into booleanStable&#10;&#10;# Conflicts:&#10;#&#9;web/dragndrop.js&#10;#&#9;web/main.html&#10;#&#9;web/manageFilter.js&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/graphPicker.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/Tim_Berners-Lee.ttl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UML/401UML.dia" afterPath="$PROJECT_DIR$/UML/401UML.dia" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/getParameter2.test.js" afterPath="$PROJECT_DIR$/src/test/getParameter2.test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/parameter.test.js" afterPath="$PROJECT_DIR$/src/test/parameter.test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/BarChart.js" afterPath="$PROJECT_DIR$/web/BarChart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/GetData.js" afterPath="$PROJECT_DIR$/web/GetData.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/GetParameter2.js" afterPath="$PROJECT_DIR$/web/GetParameter2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/Parameter.js" afterPath="$PROJECT_DIR$/web/Parameter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dragndrop.js" afterPath="$PROJECT_DIR$/web/dragndrop.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/func.js" afterPath="$PROJECT_DIR$/web/func.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/graphPicker.js" afterPath="$PROJECT_DIR$/web/graphPicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/lineGraph.js" afterPath="$PROJECT_DIR$/web/lineGraph.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/main.html" afterPath="$PROJECT_DIR$/web/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/manageFilter.js" afterPath="$PROJECT_DIR$/web/manageFilter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/possibleGraphManager.js" afterPath="$PROJECT_DIR$/web/possibleGraphManager.js" />
     </list>
     <ignored path="ShareMyChart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +46,21 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
               <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="19" />
-              <folding />
+              <folding>
+                <marker date="1480300410000" expanded="true" signature="2716:3773" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="2863:2994" ph="[...]" />
+                <marker date="1480300410000" expanded="true" signature="3025:3771" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="3091:3284" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="3819:4774" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="3913:4026" ph="[...]" />
+                <marker date="1480300410000" expanded="true" signature="4057:4772" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="4122:4315" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="4778:5177" ph="/** @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink ...*/" />
+                <marker date="1480300410000" expanded="true" signature="5279:6119" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="5409:6113" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="5541:5986" ph="{...}" />
+                <marker date="1480300410000" expanded="true" signature="5568:5845" ph="{&quot;typeX&quot;: GlobalX.type...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,11 +95,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manageFilter.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manageFilter.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/manageFilter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="208">
+              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="karma.conf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/karma.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -138,8 +191,8 @@
         <option value="$PROJECT_DIR$/web/applyFilter.js" />
         <option value="$PROJECT_DIR$/src/test/filter.test.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/manageFilter.js" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       </list>
     </option>
   </component>
@@ -244,25 +297,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="out" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,7 +322,7 @@
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="/Library/tomcat/lib/servlet-api.jar!/" />
@@ -880,7 +915,7 @@
       <workItem from="1479876929240" duration="5024000" />
       <workItem from="1480291542647" duration="1644000" />
       <workItem from="1480294924957" duration="356000" />
-      <workItem from="1480295832851" duration="3575000" />
+      <workItem from="1480295832851" duration="4478000" />
     </task>
     <task id="LOCAL-00001" summary="merge with master">
       <created>1478235142436</created>
@@ -938,11 +973,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480299924504</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix some syntax issues">
+      <created>1480299968200</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1480299968200</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16921000" />
+    <option name="totallyTimeSpent" value="17824000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -959,7 +1001,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -976,7 +1018,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32739726" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34931508" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2003231" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
@@ -1060,19 +1102,25 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/applyFilter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="52" lean-forward="true" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/GetData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3420">
           <caret line="228" column="1" lean-forward="false" selection-start-line="228" selection-start-column="1" selection-end-line="228" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1480300410000" expanded="true" signature="2716:3773" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="2863:2994" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="3025:3771" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3091:3284" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3819:4774" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3913:4026" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="4057:4772" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4122:4315" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4778:5177" ph="/** @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink ...*/" />
+            <marker date="1480300410000" expanded="true" signature="5279:6119" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5409:6113" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5541:5986" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5568:5845" ph="{&quot;typeX&quot;: GlobalX.type...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1128,7 +1176,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1635">
           <caret line="109" column="1" lean-forward="false" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1480300410000" expanded="true" signature="2716:3773" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="2863:2994" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="3025:3771" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3091:3284" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3819:4774" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3913:4026" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="4057:4772" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4122:4315" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4778:5177" ph="/** @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink ...*/" />
+            <marker date="1480300410000" expanded="true" signature="5279:6119" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5409:6113" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5541:5986" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5568:5845" ph="{&quot;typeX&quot;: GlobalX.type...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1166,7 +1228,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1480300410000" expanded="true" signature="2716:3773" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="2863:2994" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="3025:3771" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3091:3284" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3819:4774" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3913:4026" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="4057:4772" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4122:4315" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4778:5177" ph="/** @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink ...*/" />
+            <marker date="1480300410000" expanded="true" signature="5279:6119" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5409:6113" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5541:5986" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5568:5845" ph="{&quot;typeX&quot;: GlobalX.type...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1242,7 +1318,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ShareMyChart.iml~HEAD" />
     <entry file="file://$PROJECT_DIR$/web/Graph.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -1373,14 +1448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/filter.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1409,7 +1476,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="19" />
-          <folding />
+          <folding>
+            <marker date="1480300410000" expanded="true" signature="2716:3773" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="2863:2994" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="3025:3771" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3091:3284" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3819:4774" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="3913:4026" ph="[...]" />
+            <marker date="1480300410000" expanded="true" signature="4057:4772" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4122:4315" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="4778:5177" ph="/** @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink ...*/" />
+            <marker date="1480300410000" expanded="true" signature="5279:6119" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5409:6113" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5541:5986" ph="{...}" />
+            <marker date="1480300410000" expanded="true" signature="5568:5845" ph="{&quot;typeX&quot;: GlobalX.type...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1433,8 +1514,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manageFilter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="208">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ShareMyChart.iml~HEAD">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
           <folding />
         </state>
       </provider>

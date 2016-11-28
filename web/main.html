@@ -31,13 +31,27 @@
 
   <script src="http://malsup.github.com/jquery.form.js"></script>
 
-
   <link rel = "stylesheet" href = "dragndrop.css" type = "text/css">
 
 </head>
 
 
 <body>
+
+<div class="modal fade" id="dialog"  tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="background: #FFFFFF;">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="gridModalLabel">Pick A Graph</h4>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid" id="show-graph">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid" style="padding-top: 0.4em;">
   <div class="row">
     <div class="col-md-3">
@@ -68,8 +82,10 @@
 
                 </div>
 
+
                 <div class="panel-body center" id="drag_parameters">
                   <!--Draggable objects are generated here-->
+
                 </div>
               </div>
             </div>
@@ -86,31 +102,6 @@
                   <!-- <div class="dragndropShape" id="4"> Test </div> -->
                   <form name="filter center" id="filterForm">
 
-                      </form>
-                      <div class="dropup">
-                        <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          +
-                          <span class="caret"></span>
-                        </button>
-                        <button class="btn btn-default dropdown-toggle btn-block" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          -
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                          <li><a href="javascript:void(0);" id="xButton">X-axis</a></li>
-                          <li><a href="javascript:void(0);"  id="yButton">Y-axis</a></li>
-                          <li role="separator" class="divider"></li>
-                        </ul>
-                      </div>
-                      <br>
-                      <button class="btn btn-primary btn-lg btn-block" type="button" >update</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="row">
-                <!--marks-->
                   </form>
                   <div class="dropup">
                     <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropup1"
@@ -165,17 +156,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-
-        <!--delete, share-->
-        <div class="container-fluid">
-          <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-            <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-          </button>
         </div>
 
       </div>
@@ -274,6 +254,7 @@
   </div>
 </div>
 
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='./node_modules/rdfstore/dist/rdfstore.js'></script>
@@ -298,24 +279,7 @@
     <script type = 'text/javascript' src="./possibleGraphManager.js"></script>
     <script type = 'text/javascript' src="./graphPicker.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script type='text/javascript' src='./node_modules/rdfstore/dist/rdfstore.js'></script>
-<!--Handles drag and drop feature-->
-<script type = "text/javascript" src="./Parameter.js"></script>
-<script type = "text/javascript" src="./GetParameter2.js"></script>
-<script type = "text/javascript" src="./GetData.js"></script>
-<!-- <script type = "text/javascript" src="./GetParameter.js"></script> -->
-<script type = "text/javascript" src="./dragndrop.js"></script>
-<script type = "text/javascript" src="./func.js"></script>
-<script type = "text/javascript" src="./manageFilter.js"></script>
-<script type = 'text/javascript' src="./Graph.js"></script>
-<script type = 'text/javascript' src="./BarChart.js"></script>
-<link rel = "stylesheet" href = "barGraph.css">
-<script type = 'text/javascript' src="./lineGraph.js"></script>
-<link rel = "stylesheet" href = "lineGraph.css">
-<script type = 'text/javascript' src="./scatterplot.js"></script>
-<link rel = "stylesheet" href = "scatterplot.css">
 
-</body>
+  </body>
+
 </html>
