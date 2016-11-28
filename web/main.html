@@ -61,9 +61,9 @@
         <nav class="nav navbar-default">
           <div class="container-fluid">
             <ul class="nav nav-pills nav-justified">
-              <li role="presentation" class="active"><a href="javascript:void(0)"
+              <li role="presentation" class="active"><a href="javascript:void(0)" id="clicktab1"
                                                         onclick="openCity(event, 'visualizer')" id="defaultOpen" >Visualizer</a></li>
-              <li role="presentation" ><a href="javascript:void(0)"
+              <li role="presentation" ><a href="javascript:void(0)" id="clicktab2"
                                           onclick="openCity(event, 'data')"> data </a></li>
             </ul>
           </div><!-- /.container-fluid -->
@@ -172,7 +172,7 @@
             <div class="container-fluid">
               <form id="form-submit" action="#" method="post"
                     enctype="multipart/form-data"><!--post form-->
-                <input type="file" name="file"/>
+                <input type="file" id="myfile" name="file"/>
                 <br/>
                 <input id="submit" type="submit" class="btn btn-secondary btn-block" value="Upload File" />
               </form>
