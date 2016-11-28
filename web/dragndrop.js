@@ -183,13 +183,14 @@ function clearDrags(URL, clear_callback){
     var d2 = $(dropp[1]).find('.dragndropShape');
 
     //only does these if draggables dragged
-    if(typeof d1 !== 'undefined' ) {
+    /*
+    if(typeof d1 != 'undefined' ) {
         d1[0].remove();
     }
-    if( typeof d2 !== 'undefined'){
+    if( typeof d2 != 'undefined'){
         d2[0].remove();
     }
-
+   */
     clear_callback(URL);
     /*while (delLocation.hasChildNodes()) {
         delLocation.removeChild(delLocation.lastChild);

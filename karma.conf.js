@@ -24,7 +24,8 @@ module.exports = function(config) {
       'web/*',
       //'web/bootstrap/**/*',
       'web/css/*',
-      'src/test/*.js'
+      'src/test/*.js',
+      'web/GetParameter2.js'
     ],
 
 
@@ -37,7 +38,10 @@ module.exports = function(config) {
         'web/BarChart.js',
         'web/lineGraph.js',
         'web/scatterplot.js',
-        'web/dragndrop.js'
+        'web/dragndrop.js',
+        'src/test/graphPicker.test.js',
+        'src/test/parameter.test.js',
+        'src/test/parameterManager.test.js'
     ],
 
 

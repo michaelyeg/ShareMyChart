@@ -188,9 +188,7 @@ console.log("Running Init!");
 
 //gets the data type associated with the predicate
 function getDatatype(oneResult, callback) {
-
                 var type = 'unknown';
-
                 if (oneResult['o']['token'] == 'literal'){
 
                     if (oneResult['o']['type'] && oneResult['o']['type'].match('^http://www.w3.org/2001/XMLSchema#')){

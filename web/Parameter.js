@@ -35,7 +35,11 @@ var ParameterManager = function(){
 };
 
 
-
+/**
+ * @description - Gets the type of the parameter at the specified index
+ * @param index
+ * @returns {*}
+ */
 ParameterManager.prototype.getType = function(index){
     return $.pArray[index].type;
 };
@@ -54,14 +58,16 @@ ParameterManager.prototype.addParameter = function(Parameter){
 };
 
 /**
-
+@description - Gets the class value of the parameter at the specified index
+ @param index - index of desired parameter
  */
 ParameterManager.prototype.getClass = function(index){
     return $.pArray[index].class_value;
 };
 
 /**
-
+@description - Gets the parameter at the specified index
+@param index - index of desired parameter
  */
 ParameterManager.prototype.getParameter = function(index){
   return $.pArray[index];
@@ -78,10 +84,9 @@ ParameterManager.prototype.getLength = function(){
 }
 
 
-//get the Parameters as an array of strings **TODO finish this for Nikki's parameters
 /**
- *
- * @returns {Array}
+ * @description - Return a dictionary of the parameter manager's array
+ * @returns {dictionary}
  */
 ParameterManager.prototype.getParameters = function(){
     var dict = [];
@@ -99,10 +104,9 @@ ParameterManager.prototype.getParameters = function(){
 
 };
 
-ParameterManager.prototype.getType = function(index){
-    return $.pArray[index].type;
-};
-
+/**
+ * @description - Clears the parameter manager's contents
+ */
 ParameterManager.prototype.clearManager = function(){
     $.pArray.splice(0, $.pArray.length);
 }
@@ -164,6 +168,8 @@ ParameterManager.prototype.addDatatype = function(index, dataType){
     }
 };
 
+
+
 /**
  * @description Simplifies the types into what we need for our program - carefully
  * lat/long identifiers will be set as: lat/long
@@ -174,25 +180,15 @@ ParameterManager.prototype.addDatatype = function(index, dataType){
  */
 ParameterManager.prototype.simplifyType = function(index){
 
-    //var index = $.pArray.length-1;
-
-    //console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
-    //    $.pArray[index].name);
-
-
         //checks for lat/long
         if ($.pArray[index].name.indexOf("latitude") >=1 || $.pArray[index].name.indexOf("longitude") >= 1) {
             if ($.pArray[index].name.indexOf("latitude") >=1){
                 $.pArray[index].type = "lat";
 
-                //console.log("Assigned lat to" + $.pArray[index].name);
-
             }
 
             else if ($.pArray[index].name.indexOf("longitude") >=1 ) {
                 $.pArray[index].type = "long";
-
-                //console.log("Assigned long to" + $.pArray[index].name);
 
             }
 
@@ -204,8 +200,6 @@ ParameterManager.prototype.simplifyType = function(index){
             || $.pArray[index].type == "nonPositiveInteger" || $.pArray[index].type == "negativeInteger"
             || $.pArray[index].type == "int" || $.pArray[index].type == "long" || $.pArray[index].type == "short" ){
             $.pArray[index].type = "numeric";
-
-            //console.log("Set " + $.pArray[index].name + "as " + $.pArray[index].type);
 
         }
         //any string values will be called nominal
