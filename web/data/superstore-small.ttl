@@ -1,0 +1,595 @@
+
+<http://example.ualberta.ca/orders/3> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "3" ;
+	<http://schema.org/orderDate> "2010-10-13"^^<http://www.w3.org/2001/XMLSchema#date> .
+
+_:node1asnlbnk9x1 a <http://schema.org/ParcelDelivery> ;
+	<http://schema.org/hasDeliveryMethod> <http://purl.org/goodrelations/v1#DeliveryModeMail> .
+
+<http://example.ualberta.ca/orders/3> <http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x2 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/3> <http://schema.org/acceptedOffer> _:node1asnlbnk9x2 .
+
+_:node1asnlbnk9x2 <http://schema.org/eligibleQuantity> "6"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "261.54"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x3 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Eldon Base for stackable storage shelf, platinum" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x2 <http://schema.org/itemOffered> _:node1asnlbnk9x3 .
+
+_:node1asnlbnk9x4 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Muhammed MacIntyre" .
+
+_:node1asnlbnk9x5 a <http://schema.org/Place> ;
+	<http://schema.org/name> "Nunavut" .
+
+_:node1asnlbnk9x6 a <http://schema.org/GeoCoordinates> .
+
+_:node1asnlbnk9x5 <http://schema.org/geo> _:node1asnlbnk9x6 .
+
+_:node1asnlbnk9x6 <http://schema.org/latitude> "70.2998"^^<http://www.w3.org/2001/XMLSchema#float> ;
+	<http://schema.org/longitude> "83.1076"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+_:node1asnlbnk9x4 <http://schema.org/homeLocation> _:node1asnlbnk9x5 .
+
+<http://example.ualberta.ca/orders/3> <http://schema.org/customer> _:node1asnlbnk9x4 .
+
+<http://example.ualberta.ca//orders/3> <http://schema.org/discount> "0.04"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/293> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "293" ;
+	<http://schema.org/orderDate> "2012-10-01"^^<http://www.w3.org/2001/XMLSchema#date> .
+
+_:node1asnlbnk9x7 a <http://schema.org/ParcelDelivery> ;
+	<http://schema.org/hasDeliveryMethod> <http://purl.org/goodrelations/v1#DHL> .
+
+<http://example.ualberta.ca/orders/293> <http://schema.org/orderDelivery> _:node1asnlbnk9x7 .
+
+_:node1asnlbnk9x8 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/293> <http://schema.org/acceptedOffer> _:node1asnlbnk9x8 .
+
+_:node1asnlbnk9x8 <http://schema.org/eligibleQuantity> "49"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "10123.02"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x9 a <http://schema.org/Product> ;
+	<http://schema.org/name> "1.7 Cubic Foot Compact Cube Office Refrigerators" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x8 <http://schema.org/itemOffered> _:node1asnlbnk9x9 .
+
+_:node1asnlbnk9x10 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Barry French" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x5 .
+
+<http://example.ualberta.ca/orders/293> <http://schema.org/customer> _:node1asnlbnk9x10 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "293" ;
+	<http://schema.org/orderDate> "2012-10-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x11 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/293> <http://schema.org/acceptedOffer> _:node1asnlbnk9x11 .
+
+_:node1asnlbnk9x11 <http://schema.org/eligibleQuantity> "27"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "244.57"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x12 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Cardinal Slant-D�� Ring Binder, Heavy Gauge Vinyl" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x11 <http://schema.org/itemOffered> _:node1asnlbnk9x12 .
+
+<http://example.ualberta.ca/orders/293> <http://schema.org/customer> _:node1asnlbnk9x10 .
+
+<http://example.ualberta.ca//orders/293> <http://schema.org/discount> "0.08"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/483> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "483" ;
+	<http://schema.org/orderDate> "2011-07-10"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x13 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/483> <http://schema.org/acceptedOffer> _:node1asnlbnk9x13 .
+
+_:node1asnlbnk9x13 <http://schema.org/eligibleQuantity> "30"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "4965.7593"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x14 a <http://schema.org/Product> ;
+	<http://schema.org/name> "R380" ;
+	<http://schema.org/category> "Technology" .
+
+_:node1asnlbnk9x13 <http://schema.org/itemOffered> _:node1asnlbnk9x14 .
+
+_:node1asnlbnk9x15 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Clay Rozendal" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x5 .
+
+<http://example.ualberta.ca/orders/483> <http://schema.org/customer> _:node1asnlbnk9x15 .
+
+<http://example.ualberta.ca//orders/483> <http://schema.org/discount> "0.08"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/515> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "515" ;
+	<http://schema.org/orderDate> "2010-08-28"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x16 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/515> <http://schema.org/acceptedOffer> _:node1asnlbnk9x16 .
+
+_:node1asnlbnk9x16 <http://schema.org/eligibleQuantity> "19"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "394.27"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x17 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Holmes HEPA Air Purifier" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x16 <http://schema.org/itemOffered> _:node1asnlbnk9x17 .
+
+_:node1asnlbnk9x18 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Carlos Soltero" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x5 .
+
+<http://example.ualberta.ca/orders/515> <http://schema.org/customer> _:node1asnlbnk9x18 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "515" ;
+	<http://schema.org/orderDate> "2010-08-28"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x19 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/515> <http://schema.org/acceptedOffer> _:node1asnlbnk9x19 .
+
+_:node1asnlbnk9x19 <http://schema.org/eligibleQuantity> "21"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "146.69"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x20 a <http://schema.org/Product> ;
+	<http://schema.org/name> "G.E. Longer-Life Indoor Recessed Floodlight Bulbs" ;
+	<http://schema.org/category> "Furniture" .
+
+_:node1asnlbnk9x19 <http://schema.org/itemOffered> _:node1asnlbnk9x20 .
+
+<http://example.ualberta.ca/orders/515> <http://schema.org/customer> _:node1asnlbnk9x18 .
+
+<http://example.ualberta.ca//orders/515> <http://schema.org/discount> "0.13"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/613> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "613" ;
+	<http://schema.org/orderDate> "2011-06-17"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x21 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/613> <http://schema.org/acceptedOffer> _:node1asnlbnk9x21 .
+
+_:node1asnlbnk9x21 <http://schema.org/eligibleQuantity> "12"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "93.54"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x22 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Angle-D Binders with Locking Rings, Label Holders" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x21 <http://schema.org/itemOffered> _:node1asnlbnk9x22 .
+
+_:node1asnlbnk9x23 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Carl Jackson" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x5 .
+
+<http://example.ualberta.ca/orders/613> <http://schema.org/customer> _:node1asnlbnk9x23 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "613" ;
+	<http://schema.org/orderDate> "2011-06-17"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x24 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/613> <http://schema.org/acceptedOffer> _:node1asnlbnk9x24 .
+
+_:node1asnlbnk9x24 <http://schema.org/eligibleQuantity> "22"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "905.08"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x25 a <http://schema.org/Product> ;
+	<http://schema.org/name> "SAFCO Mobile Desk Side File, Wire Frame" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x24 <http://schema.org/itemOffered> _:node1asnlbnk9x25 .
+
+<http://example.ualberta.ca/orders/613> <http://schema.org/customer> _:node1asnlbnk9x23 .
+
+<http://example.ualberta.ca//orders/613> <http://schema.org/discount> "0.120000005"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/21892> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "21892" ;
+	<http://schema.org/orderDate> "2010-07-04"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x26 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/21892> <http://schema.org/acceptedOffer> _:node1asnlbnk9x26 .
+
+_:node1asnlbnk9x26 <http://schema.org/eligibleQuantity> "6"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "34.88"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x27 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Pressboard Covers with Storage Hooks, 9 1/2 x 11, Light Blue" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x26 <http://schema.org/itemOffered> _:node1asnlbnk9x27 .
+
+_:node1asnlbnk9x28 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Justin Knight" .
+
+_:node1asnlbnk9x29 a <http://schema.org/Place> ;
+	<http://schema.org/name> "British Columbia" .
+
+_:node1asnlbnk9x30 a <http://schema.org/GeoCoordinates> .
+
+_:node1asnlbnk9x29 <http://schema.org/geo> _:node1asnlbnk9x30 .
+
+_:node1asnlbnk9x30 <http://schema.org/latitude> "53.7267"^^<http://www.w3.org/2001/XMLSchema#float> ;
+	<http://schema.org/longitude> "127.6476"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+_:node1asnlbnk9x28 <http://schema.org/homeLocation> _:node1asnlbnk9x29 .
+
+<http://example.ualberta.ca/orders/21892> <http://schema.org/customer> _:node1asnlbnk9x28 .
+
+<http://example.ualberta.ca//orders/21892> <http://schema.org/discount> "0.06"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/22980> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "22980" ;
+	<http://schema.org/orderDate> "2012-10-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x31 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/22980> <http://schema.org/acceptedOffer> _:node1asnlbnk9x31 .
+
+_:node1asnlbnk9x31 <http://schema.org/eligibleQuantity> "17"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "224.09"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x32 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Eldon Simplefile�� Box Office��" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x31 <http://schema.org/itemOffered> _:node1asnlbnk9x32 .
+
+_:node1asnlbnk9x33 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Rob Haberlin" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x29 .
+
+<http://example.ualberta.ca/orders/22980> <http://schema.org/customer> _:node1asnlbnk9x33 .
+
+<http://example.ualberta.ca//orders/22980> <http://schema.org/discount> "0.0"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/23907> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "23907" ;
+	<http://schema.org/orderDate> "2011-07-14"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x34 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/23907> <http://schema.org/acceptedOffer> _:node1asnlbnk9x34 .
+
+_:node1asnlbnk9x34 <http://schema.org/eligibleQuantity> "7"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "384.2"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x35 a <http://schema.org/Product> ;
+	<http://schema.org/name> "6190" ;
+	<http://schema.org/category> "Technology" .
+
+_:node1asnlbnk9x34 <http://schema.org/itemOffered> _:node1asnlbnk9x35 .
+
+_:node1asnlbnk9x36 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Julie Creighton" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x29 .
+
+<http://example.ualberta.ca/orders/23907> <http://schema.org/customer> _:node1asnlbnk9x36 .
+
+<http://example.ualberta.ca//orders/23907> <http://schema.org/discount> "0.05"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/24064> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "24064" ;
+	<http://schema.org/orderDate> "2010-07-25"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x7 .
+
+_:node1asnlbnk9x37 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/24064> <http://schema.org/acceptedOffer> _:node1asnlbnk9x37 .
+
+_:node1asnlbnk9x37 <http://schema.org/eligibleQuantity> "23"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "6366.52"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x38 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Panasonic KX-P3200 Dot Matrix Printer" ;
+	<http://schema.org/category> "Technology" .
+
+_:node1asnlbnk9x37 <http://schema.org/itemOffered> _:node1asnlbnk9x38 .
+
+_:node1asnlbnk9x39 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Sanjit Chand" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x29 .
+
+<http://example.ualberta.ca/orders/24064> <http://schema.org/customer> _:node1asnlbnk9x39 .
+
+<http://example.ualberta.ca//orders/24064> <http://schema.org/discount> "0.07"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/24132> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "24132" ;
+	<http://schema.org/orderDate> "2009-07-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x40 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/acceptedOffer> _:node1asnlbnk9x40 .
+
+_:node1asnlbnk9x40 <http://schema.org/eligibleQuantity> "4"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "31.01"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x41 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Wilson Jones DublLock�� D-Ring Binders" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x40 <http://schema.org/itemOffered> _:node1asnlbnk9x41 .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/customer> _:node1asnlbnk9x28 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "24132" ;
+	<http://schema.org/orderDate> "2009-07-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x42 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/acceptedOffer> _:node1asnlbnk9x42 .
+
+_:node1asnlbnk9x42 <http://schema.org/eligibleQuantity> "46"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "331.83"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x43 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Wilson Jones Hanging View Binder, White, 1" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x42 <http://schema.org/itemOffered> _:node1asnlbnk9x43 .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/customer> _:node1asnlbnk9x28 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "24132" ;
+	<http://schema.org/orderDate> "2009-07-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x44 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/acceptedOffer> _:node1asnlbnk9x44 .
+
+_:node1asnlbnk9x44 <http://schema.org/eligibleQuantity> "22"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "446.46"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x45 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Fellowes Basic 104-Key Keyboard, Platinum" ;
+	<http://schema.org/category> "Technology" .
+
+_:node1asnlbnk9x44 <http://schema.org/itemOffered> _:node1asnlbnk9x45 .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/customer> _:node1asnlbnk9x28 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "24132" ;
+	<http://schema.org/orderDate> "2009-07-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x46 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/acceptedOffer> _:node1asnlbnk9x46 .
+
+_:node1asnlbnk9x46 <http://schema.org/eligibleQuantity> "31"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "1252.89"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x47 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Ibico Recycled Linen-Style Covers" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x46 <http://schema.org/itemOffered> _:node1asnlbnk9x47 .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/customer> _:node1asnlbnk9x28 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "24132" ;
+	<http://schema.org/orderDate> "2009-07-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x48 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/acceptedOffer> _:node1asnlbnk9x48 .
+
+_:node1asnlbnk9x48 <http://schema.org/eligibleQuantity> "12"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "47.79"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x49 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Self-Adhesive Ring Binder Labels" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x48 <http://schema.org/itemOffered> _:node1asnlbnk9x49 .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/customer> _:node1asnlbnk9x28 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "24132" ;
+	<http://schema.org/orderDate> "2009-07-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x50 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/acceptedOffer> _:node1asnlbnk9x50 .
+
+_:node1asnlbnk9x50 <http://schema.org/eligibleQuantity> "3"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "63.84"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x51 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Tenex File Box, Personal Filing Tote with Lid, Black" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x50 <http://schema.org/itemOffered> _:node1asnlbnk9x51 .
+
+<http://example.ualberta.ca/orders/24132> <http://schema.org/customer> _:node1asnlbnk9x28 .
+
+<http://example.ualberta.ca//orders/24132> <http://schema.org/discount> "0.23"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/54279> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "54279" ;
+	<http://schema.org/orderDate> "2011-07-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x7 .
+
+_:node1asnlbnk9x52 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/54279> <http://schema.org/acceptedOffer> _:node1asnlbnk9x52 .
+
+_:node1asnlbnk9x52 <http://schema.org/eligibleQuantity> "41"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "10071.09"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x53 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Panasonic KX-P1131 Dot Matrix Printer" ;
+	<http://schema.org/category> "Technology" .
+
+_:node1asnlbnk9x52 <http://schema.org/itemOffered> _:node1asnlbnk9x53 .
+
+_:node1asnlbnk9x54 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Harry Greene" .
+
+_:node1asnlbnk9x55 a <http://schema.org/Place> ;
+	<http://schema.org/name> "Alberta" .
+
+_:node1asnlbnk9x56 a <http://schema.org/GeoCoordinates> .
+
+_:node1asnlbnk9x55 <http://schema.org/geo> _:node1asnlbnk9x56 .
+
+_:node1asnlbnk9x56 <http://schema.org/latitude> "53.9333"^^<http://www.w3.org/2001/XMLSchema#float> ;
+	<http://schema.org/longitude> "116.5765"^^<http://www.w3.org/2001/XMLSchema#float> .
+
+_:node1asnlbnk9x54 <http://schema.org/homeLocation> _:node1asnlbnk9x55 .
+
+<http://example.ualberta.ca/orders/54279> <http://schema.org/customer> _:node1asnlbnk9x54 .
+
+<http://example.ualberta.ca//orders/54279> <http://schema.org/discount> "0.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/55558> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "55558" ;
+	<http://schema.org/orderDate> "2010-08-09"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x7 .
+
+_:node1asnlbnk9x57 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/55558> <http://schema.org/acceptedOffer> _:node1asnlbnk9x57 .
+
+_:node1asnlbnk9x57 <http://schema.org/eligibleQuantity> "8"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "1294.04"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x58 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Bush Mission Pointe Library" ;
+	<http://schema.org/category> "Furniture" .
+
+_:node1asnlbnk9x57 <http://schema.org/itemOffered> _:node1asnlbnk9x58 .
+
+_:node1asnlbnk9x59 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Mick Brown" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x55 .
+
+<http://example.ualberta.ca/orders/55558> <http://schema.org/customer> _:node1asnlbnk9x59 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "55558" ;
+	<http://schema.org/orderDate> "2010-08-09"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x60 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/55558> <http://schema.org/acceptedOffer> _:node1asnlbnk9x60 .
+
+_:node1asnlbnk9x60 <http://schema.org/eligibleQuantity> "23"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "392.57"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x61 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Recycled Interoffice Envelopes with Re-Use-A-Seal�� Closure, 10 x 13" ;
+	<http://schema.org/category> "Office Supplies" .
+
+_:node1asnlbnk9x60 <http://schema.org/itemOffered> _:node1asnlbnk9x61 .
+
+<http://example.ualberta.ca/orders/55558> <http://schema.org/customer> _:node1asnlbnk9x59 .
+
+<http://example.ualberta.ca//orders/55558> <http://schema.org/discount> "0.09"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/56550> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "56550" ;
+	<http://schema.org/orderDate> "2011-04-08"^^<http://www.w3.org/2001/XMLSchema#date> .
+
+_:node1asnlbnk9x62 a <http://schema.org/ParcelDelivery> ;
+	<http://schema.org/hasDeliveryMethod> <http://purl.org/goodrelations/v1#UPS> .
+
+<http://example.ualberta.ca/orders/56550> <http://schema.org/orderDelivery> _:node1asnlbnk9x62 .
+
+_:node1asnlbnk9x63 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/56550> <http://schema.org/acceptedOffer> _:node1asnlbnk9x63 .
+
+_:node1asnlbnk9x63 <http://schema.org/eligibleQuantity> "37"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "823.78"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x64 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Executive Impressions 14" ;
+	<http://schema.org/category> "Furniture" .
+
+_:node1asnlbnk9x63 <http://schema.org/itemOffered> _:node1asnlbnk9x64 .
+
+_:node1asnlbnk9x65 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Frank Hawley" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x55 .
+
+<http://example.ualberta.ca/orders/56550> <http://schema.org/customer> _:node1asnlbnk9x65 ;
+	a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "56550" ;
+	<http://schema.org/orderDate> "2011-04-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x1 .
+
+_:node1asnlbnk9x66 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/56550> <http://schema.org/acceptedOffer> _:node1asnlbnk9x66 .
+
+_:node1asnlbnk9x66 <http://schema.org/eligibleQuantity> "8"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "469.8375"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x67 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Talkabout T8367" ;
+	<http://schema.org/category> "Technology" .
+
+_:node1asnlbnk9x66 <http://schema.org/itemOffered> _:node1asnlbnk9x67 .
+
+<http://example.ualberta.ca/orders/56550> <http://schema.org/customer> _:node1asnlbnk9x65 .
+
+<http://example.ualberta.ca//orders/56550> <http://schema.org/discount> "0.03"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+<http://example.ualberta.ca/orders/56581> a <http://schema.org/Order> ;
+	<http://schema.org/orderNumber> "56581" ;
+	<http://schema.org/orderDate> "2009-02-08"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	<http://schema.org/orderDelivery> _:node1asnlbnk9x62 .
+
+_:node1asnlbnk9x68 a <http://schema.org/Offer> .
+
+<http://example.ualberta.ca/orders/56581> <http://schema.org/acceptedOffer> _:node1asnlbnk9x68 .
+
+_:node1asnlbnk9x68 <http://schema.org/eligibleQuantity> "20"^^<http://www.w3.org/2001/XMLSchema#integer> ;
+	<http://schema.org/price> "2026.01"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+
+_:node1asnlbnk9x69 a <http://schema.org/Product> ;
+	<http://schema.org/name> "Tenex 46 x 60 Computer Anti-Static Chairmat, Rectangular Shaped" ;
+	<http://schema.org/category> "Furniture" .
+
+_:node1asnlbnk9x68 <http://schema.org/itemOffered> _:node1asnlbnk9x69 .
+
+_:node1asnlbnk9x70 a <http://schema.org/Person> ;
+	<http://schema.org/name> "Grant Donatelli" ;
+	<http://schema.org/homeLocation> _:node1asnlbnk9x55 .
+
+<http://example.ualberta.ca/orders/56581> <http://schema.org/customer> _:node1asnlbnk9x70 .
+
+<http://example.ualberta.ca//orders/56581> <http://schema.org/discount> "0.1"^^<http://www.w3.org/2001/XMLSchema#decimal> .
