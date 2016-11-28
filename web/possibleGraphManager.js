@@ -32,7 +32,6 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
         ;
     }else{
         //check their data types in regards to the graph choices, decide that way?
-
         var graphPoints = [
             {name: "vbar", points: 0, number: 0},
             {name: "hbar", points: 0, number: 1},

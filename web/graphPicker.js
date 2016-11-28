@@ -14,7 +14,6 @@ var testpG;
 function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
-    testpG = pGMan;
 
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
@@ -22,7 +21,8 @@ function pickGraphTypes(pam1, pam2) {
     }
 
     //did this kinda quickly, might be wrong, very confusing
-    if ( (pam1.type=="numeric" || pam1.type=="date" || pam1.type=="nominal") && pam2.type=="nominal"){
+    if ( (pam1.type=="numeric" || pam1.type=="date" || pam1.type=="nominal") && pam2.type=="nominal")
+    {
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
     }
@@ -51,15 +51,16 @@ function pickGraphTypes(pam1, pam2) {
     }
     if( pam1.type=="long" && pam2.type=="lat"){
         console.log("It's a map v2!");
-        pGMan.addToManager(5);
+        pGMan.addToManager(6);
     }
     //idke about slideshow yet
 
-    console.log("pG:" + pGMan.getAll());
-
+    testpG = pGMan;
+    console.log("pG:" + testpG.getAll());
+    visPG(pGMan);
     //if combo makes nothing
     if(pGMan.getLength() == 0){
-        alert("Parameters chosen do not make any valid graphs. Please try again.");
+        //alert("Parameters chosen do not make any valid graphs. Please try again.");
         //would be nice to reset the parameters here, but I'm not sure if that'll clear their ids...
     }else{
         //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
@@ -97,4 +98,55 @@ function aggregate(aggPar,par) {
     }
 
     return dictionary;
+}
+
+function visPG(pGMan){
+    console.log("start picking graph");
+    console.log(pGMan.getAll());
+    var graph = pGMan.getAll();
+    //graphArr = graph.split(",");
+    var k = 0, i;
+    var _html;
+    $("#show-graph").empty();
+    for (i = 0; i < 6; i++){
+        if (i == graph[k]) {
+            _html = '<div class="row">';
+            _html += '<div class="col-md-4 col-md-offset-4">';
+            k++;
+            console.log(i);
+            switch (i) {
+                case 0:
+                    _html += '<a href="javascript:void(0);" class="thumbnail">';
+                    _html += '<img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="BarChart.prototype.caller1()"></a></div></div>';
+                    break;
+                case 1:
+                    _html += '<a href="javascript:void(0);" class="thumbnail">';
+                    _html += '<img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="BarChart.prototype.caller2()"></a></div></div>';
+                    break;
+                case 2:
+                    _html += '<a href="javascript:void(0);" class="thumbnail">';
+                    _html += '<img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="lineGraph.prototype.caller()"></a></div></div>';
+                    break;
+                case 3:
+                    _html += '<a href="javascript:void(0);" class="thumbnail">';
+                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="Scatterplot.prototype.normalscatterplot()"></a></div></div>';
+                    break;
+                case 4:
+                    _html += '<a href="javascript:void(0);" class="thumbnail">';
+                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="Scatterplot.prototype.normalscatterplot()"></a></div></div>';
+                    break;
+                case 5:
+                    _html += '<a href="javascript:void(0);" class="thumbnail">';
+                    _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map1"></a></div></div>';
+                    break;
+                case 6:
+                    _html += '<a href="javascript:void(0);" class="thumbnail">';
+                    _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map2"></a></div></div>';
+                    break;
+            }
+            $("#show-graph").append(_html);
+        }
+    }
+    $("#dialog").modal('show');
+    console.log("finish picking graph");
 }
