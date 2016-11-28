@@ -70,13 +70,13 @@ function addContents(array_of_parameters,classval){
             //put in x and y buttons
             btnx = document.createElement('button');
             btnx.appendChild(document.createTextNode("X"));
-            btnx.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name);
+            btnx.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name + "-x");
             btnx.setAttribute('class','xButton');
            // btnx.onclick = xClick;
 
             btny = document.createElement('button');
             btny.appendChild(document.createTextNode("Y"));
-            btny.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name);
+            btny.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name + "-y");
             btny.setAttribute('class','yButton');
            // btny.onclick = yClick;
 
@@ -100,7 +100,8 @@ function addContents(array_of_parameters,classval){
  * @param event
  */
 $(document).on('click',".xButton",function(event){
-    console.log(this.id);
+    button = document.getElementById(this.id);
+    button.style.backgroundColor='#337ab7';
 });
 
 /**
@@ -108,7 +109,8 @@ $(document).on('click',".xButton",function(event){
  * @param event
  */
 $(document).on('click',".yButton",function(event){
-    console.log(this.id);
+    button = document.getElementById(this.id);
+    button.style.backgroundColor='#337ab7';
 });
 
 /**
