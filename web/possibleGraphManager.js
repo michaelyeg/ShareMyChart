@@ -33,7 +33,6 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
     }else{
         //check their data types in regards to the graph choices, decide that way?
 
-
     }
    /* dray = Aggregate("X"); //aggregate on x axis for vertical BC
 console.log(dray);

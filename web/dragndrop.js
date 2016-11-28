@@ -83,10 +83,7 @@ $(document).ready(function initDragnDrop(event, ui){
                 * Both for now are just going with their first option, if UI is possible for the S4.
                 */
                 //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
-                //pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
-
-
-
+                pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
                 var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
                 var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
                 initFilter();
@@ -184,8 +181,8 @@ console.log("call on meeeee");
     var d2 = $(dropp[1]).find('.dragndropShape');
 
     console.log(d1);
-        d1[0].remove();
-    d2[0].remove();
+        //d1[0].remove();
+    //d2[0].remove();
 
     clear_callback(URL);
     /*while (delLocation.hasChildNodes()) {
