@@ -4,6 +4,9 @@
  */
 
 
+//hard-coded test data
+var array_of_paramnames = ["Stocks", "Employee Salaries", "Sales", "Budget Spent", "Months", "Orders", "Fahjkshdas"];
+
 /**
  * initializes the droppables for parameters
  */
@@ -17,7 +20,7 @@ $(document).ready(function initDragnDrop(event, ui){
             //get the id of the object dropped onto the droppable and which droppable
             var dropId = $(this).attr("id");
             var dragid = $(ui.draggable).attr("id");
-//console.log(dragid);
+console.log(dragid);
             //doSomething(dropId, dragId); //use the Id's to do something to the graph
 
             //next, deal with the draggables and sortable:
@@ -29,8 +32,7 @@ $(document).ready(function initDragnDrop(event, ui){
             //create a draggable object to sit on top of the droppable, since the sortable can't do that
                 newdiv = document.createElement('div');
                 newdiv.setAttribute('id', dragid);
-                newdiv.id = dragid;
-            console.log("id is: " + newdiv.getAttribute("id"));
+                newdiv.id = dragid
                 newdiv.className = 'dragndropShape';
                 createdDrags = document.createTextNode(name);
                 newdiv.appendChild(createdDrags);
@@ -60,7 +62,6 @@ $(document).ready(function initDragnDrop(event, ui){
                 $(".sortable").append(li);
                 $(".sortable").sortable('refresh');
             }
-
             var dropArray = document.getElementsByClassName("dropMe");
             console.log(dropArray);
             //console.log("Child0 is:" + dropArray[0].children.length + "Child1 is: " + dropArray[1].children.length)
@@ -69,22 +70,20 @@ $(document).ready(function initDragnDrop(event, ui){
             if(dropArray[0].children.length >= 1 && dropArray[1].children.length >= 1){
                 //inside the if-statement for both parameters have been dropped
                 console.log("Both pams dropped - call visualizer for graphs here!");
-                //remove this once visualizer is done:
-                //gets the data from the two parameters, then calls scatterplot:
-                GetLink(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue, GlobalStore);
 
-               /* var scatterplot = new Scatterplot();
-               scatterplot.normalscatterplot(GlobalDataArray.getArray()); */
                 //console.log( "This is: " + dropArray[0].attr('id') );
 
                 /*
-                * FIRST call Landon's connection options thing, THEN call the graph visualizer!
-                * Both for now are just going with their first option, if UI is possible for the S4.
-                */
+                 * FIRST call Landon's connection options thing, THEN call the graph visualizer!
+                 * Both for now are just going with their first option, if UI is possible for the S4.
+                 */
                 //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
-
+                //pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
+                var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
+                var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
+                initFilter();
+                getType(xType,yType);
             }
-
         })
 
     } );
@@ -127,18 +126,7 @@ function createDrags(array_of_params){ //document.ready
     $(list).insertAfter(insertLocation);
     $('.sortable').sortable({
          connectWith: '.dragndropShape',
-         appendTo: 'body',
-
-        /*
-        receive: function(event, ui) {
-            //console.log(ui);
-            var idback = ui.sender[0].attributes[0].nodeValue;
-            console.log('receiving id', idback);
-           // console.log("draggable: " + $(ui.item).id);
-            $(this).data().uiSortable.currentItem.id = idback;
-            //console.log("draggable: " + $(ui.item).id);
-        }
-        */
+         appendTo: 'body'
     });
 
 };
