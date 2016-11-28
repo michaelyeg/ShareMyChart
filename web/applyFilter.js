@@ -15,6 +15,7 @@ function applyFilter(filterArray) {
                 break;
             case 'date':
                 dateFilter(filter, DataCopy);
+                break;
         }
     }
 
@@ -27,6 +28,7 @@ function numericFilter(filter, DataCopy){
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
+                // Question for Landon: How am i supposed to acquire the data below?
                 if (!DataCopy[i]>number){
                     DataCopy.prototype.delete(i);
                 }
