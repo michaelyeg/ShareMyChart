@@ -150,6 +150,7 @@ lineGraph.prototype.horizontalLG = function(dray){
 
 
 
+
     var graphLocation = document.getElementById('graph');
     //put some stuff in here about looking at horizontal and stacked
     /*

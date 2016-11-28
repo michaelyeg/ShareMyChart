@@ -27,6 +27,6 @@ public class deleteFileServlet extends HttpServlet {
             file.delete();
         }
 
-        response.getWriter().write("success");
+        response.getWriter().write("delete success");
     }
 }

@@ -8,9 +8,13 @@
  * @param pam2 - index of parameter two (y-axis)
  * Use the parameter manager to locate and figure out their types!
  */
+
+var testpG;
+
 function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
+    testpG = pGMan;
 
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");

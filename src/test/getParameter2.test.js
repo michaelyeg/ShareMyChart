@@ -41,11 +41,12 @@ describe("getParameter2 Tests", function() {
     });
 
     it("Tests getParameterQuery - check TypeArray correctness", function(){
-        expect(GlobalStore.Store).not.toBe(undefined);
-        //GetParameterQuery(GlobalStore); //Error problem with: TypeError: graph_store.Store.execute is not a function in web/GetParameter2.js (line 47)
+        expect(GlobalStore).not.toBe(undefined);
+        //GetParameterQuery(GlobalStore.Store); //Error problem with: TypeError: graph_store.Store.execute is not a function in web/GetParameter2.js (line 47)
         //I have no idea why it cannot find rdfstore's functions when it can find them for the above
 
     });
+
 
 
 });

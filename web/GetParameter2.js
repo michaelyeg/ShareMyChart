@@ -18,29 +18,73 @@ var pManager = new ParameterManager();
  * @constructor
  */
 var GraphStore = function(URL){ //**TODO - make this into an actual function, or a class
-    this.Store;
-    URLl = "http://localhost:8080/data/superstore-small.ttl";
-    //need to modify to make dynamic URL entry as a parameter of the function
-    //just not sure how much of the string will need to be hardcoded and what path will be
 
-    rdfstore.create(function(err, store) {
-        console.log("GET THE URL: "+URL); //LOAD <'+URL+'>
-        store.execute('LOAD <'+URL+'> INTO GRAPH <http://example.org/rdfGraph>', function(err) {
+    //clear stuff if there's any upon switching to another file
+    if(typeof GlobalStore !== 'undefined') {
+        console.log(GlobalStore);
+        GlobalStore.clear('http://example.org/rdfGraph', function (err1) {
 
-            if (!err) {
-                // Store created
-                //potential async issue
-                this.Store = store;
-                GlobalStore = store;
-              //  console.log("Store Created");
-                var Confirm = confirm("Data will be loaded");
-                if (Confirm){
-                    GetParameterQuery(this);
-                }
+            if(!err1) {
+                TypeArray.splice(0,TypeArray.length);
+                pManager.clearManager();
+                console.log("Cleared the graph. Here's TypeArray.");
+                console.log(TypeArray);
+                console.log(GlobalStore);
+
+                clearDrags(URL, reload_function);
+
+
+
             }
         });
-    });
+    }else {
+
+        this.Store;
+        URLl = "http://localhost:8080/data/superstore-small.ttl";
+        //need to modify to make dynamic URL entry as a parameter of the function
+        //just not sure how much of the string will need to be hardcoded and what path will be
+
+        rdfstore.create(function (err, store) {
+            console.log("GET THE URL: " + URL); //LOAD <'+URL+'>
+            store.execute('LOAD <' + URL + '> INTO GRAPH <http://example.org/rdfGraph>', function (err) {
+
+                if (!err) {
+                    // Store created
+                    //potential async issue
+                    this.Store = store;
+                    GlobalStore = store;
+                    console.log("Store Created");
+                    var Confirm = confirm("Data will be loaded");
+                    if (Confirm) {
+                        //console.log(this);
+                        GetParameterQuery(this.Store);
+                    }
+                }
+            });
+        });
+
+
+    }//end of else
 };
+
+
+function reload_function(URL){
+    GlobalStore.execute('LOAD <' + URL + '> INTO GRAPH <http://example.org/rdfGraph>', function (err) {
+
+        if (!err) {
+            // Store created
+            //potential async issue
+            this.Store = GlobalStore;
+            //GlobalStore = store;
+
+            var Confirm = confirm("Data will be loaded");
+            if (Confirm) {
+                //console.log(this);
+                GetParameterQuery(this.Store);
+            }
+        }
+    });
+}
 
 /**
  * Takes an Rdf store object and gets all the type from the graph
@@ -50,7 +94,7 @@ function GetParameterQuery(graph_store) {
 
     console.log("Query executed");
 
-    graph_store.Store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+    graph_store.execute('PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                         PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
                         PREFIX : <http://example.org/>\
                         select ?s ?p ?o ?t FROM NAMED :rdfGraph { GRAPH ?g { ?s ?p ?o; rdf:type ?t. FILTER(?p != rdf:type). } }',
@@ -79,7 +123,7 @@ function GetParameterQuery(graph_store) {
 
             }
             var dict = pManager.getParameters();
-            createDrags(dict);
+            createAccordions(dict);
         }
     );
 }
