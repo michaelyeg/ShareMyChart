@@ -124,7 +124,7 @@ function GetParameterQuery(graph_store) {
 
             }
             var dict = pManager.getParameters();
-            createDrags(dict);
+            createAccordions(dict);
         }
     );
 }

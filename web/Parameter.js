@@ -20,11 +20,14 @@ var Parameter = function(name, class_value){
         this.class_value = class_value;
         this.type = "Not known";
         this.real_name = name.substring(name.lastIndexOf("/") + 1);
-        this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1);
+       // this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1)
         //console.log("real_name is: " + this.real_name);
 
     };
 
+    Parameter.prototype.getClassName = function(){
+      return this.class_value.substring(this.class_value.lastIndexOf("/") + 1);
+    };
 /**
  *
  * @constructor
@@ -94,7 +97,7 @@ ParameterManager.prototype.getParameters = function(){
     for(var i=0; i < $.pArray.length; i++){
 
         dict.push({
-            name:   $.pArray[i].real_name+" - "+$.pArray[i].class_value.substring($.pArray[i].class_value.lastIndexOf("/") + 1),
+            name:   $.pArray[i].real_name,//+" - "+$.pArray[i].class_value.substring($.pArray[i].class_value.lastIndexOf("/") + 1),
             value: $.pArray[i]
         });
 
