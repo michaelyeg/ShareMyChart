@@ -11,7 +11,7 @@ public class uploadTest {
     public static void main(String[] args) {
         ChromeDriver driver = new ChromeDriver();
         driver.get("http://localhost:8080/main.html");
-        WebElement element = driver.findElement(By.id("clicktab1"));
+        WebElement element = driver.findElement(By.id("clicktab2"));
         element.click();
         driver.findElement(By.id("myfile")).sendKeys("/Users/Margaret/test.ttl");
         driver.findElement(By.id("form-submit")).submit();
