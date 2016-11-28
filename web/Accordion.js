@@ -6,6 +6,7 @@
  * @param array_of_params
  */
 function createAccordions(array_of_params){
+    deletePlaceholder();
     var insertLocation =document.getElementById('putAccordionHere');
     var newdiv = document.createElement('div');
     newdiv.setAttribute('id','accordion');
@@ -32,7 +33,6 @@ function createAccordions(array_of_params){
         }
 
         if(called == false){
-            console.log("jiffdsf");
             title = document.createTextNode(array_of_params[name].value.getClassName());
             temp.appendChild(title); //put text node into it
             //temp.appendChild(addContents(array_of_params, array_of_params[name].value.class_value));
@@ -40,7 +40,7 @@ function createAccordions(array_of_params){
             $(addContents(array_of_params, array_of_params[name].value.class_value)).insertAfter(temp);
             called = true;
         }
-    console.log("nooo");
+
 
     }
 
@@ -48,7 +48,9 @@ function createAccordions(array_of_params){
     $(newdiv).appendTo(insertLocation);
 
     $( "#accordion" ).accordion({
-        collapsible: true
+        collapsible: true,
+        heightStyle: "content",
+        active: false
     });
 }
 /**
@@ -65,9 +67,25 @@ function addContents(array_of_parameters,classval){
     for(name in array_of_parameters){
         if(array_of_parameters[name].value.class_value == classval){
             p = document.createElement('p');
-            title = document.createTextNode(array_of_parameters[name].value.real_name.charAt(0).toUpperCase() + array_of_parameters[name].value.real_name.slice(1));
+            //put in x and y buttons
+            btnx = document.createElement('button');
+            btnx.appendChild(document.createTextNode("X"));
+            btnx.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name);
+            btnx.setAttribute('class','xButton');
+           // btnx.onclick = xClick;
+
+            btny = document.createElement('button');
+            btny.appendChild(document.createTextNode("Y"));
+            btny.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name);
+            btny.setAttribute('class','yButton');
+           // btny.onclick = yClick;
+
+            //put in each parameter
+            title = document.createTextNode(" " + array_of_parameters[name].value.real_name.charAt(0).toUpperCase() + array_of_parameters[name].value.real_name.slice(1));
             //console.log(title);
-            p.appendChild(title); //put text node into it
+            p.appendChild(btnx);
+            p.appendChild(btny);
+            p.appendChild(title); //put text into it
             contents.appendChild(p);
         }
 
@@ -75,4 +93,31 @@ function addContents(array_of_parameters,classval){
     }
 //console.log(contents);
     return contents;
+}
+
+/**
+ * deals with all clicks of all x buttons
+ * @param event
+ */
+$(document).on('click',".xButton",function(event){
+    console.log(this.id);
+});
+
+/**
+ * deals with all clicks of all y buttons
+ * @param event
+ */
+$(document).on('click',".yButton",function(event){
+    console.log(this.id);
+});
+
+/**
+ * removes the placeholder or old contents once the new data file is selected
+ * deletes all children of the div
+ */
+function deletePlaceholder(){
+    var deleteLocation =document.getElementById('putAccordionHere');
+    //var children = deleteLocation.children;
+  $(deleteLocation).empty();
+
 }

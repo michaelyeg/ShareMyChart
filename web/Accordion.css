@@ -1,3 +1,62 @@
+/* all css for the accordion  */
+
+/* The div that holds the accordion */
+#putAccordionHere{
+    height: 300px;
+    overflow:auto;
+    border-radius:5px;
+    border: 1px solid #DDDDDD;
+}
+
+/*placeholder before the accordion is created*/
+#placeholder{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 290px;
+}
+
+/* x and y buttons css  */
+.yButton{
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    padding: 5px;
+    object-fit: cover;
+    font: 12px Arial;
+    text-align: center;
+    vertical-align: center;
+    background-color: #ffffff;
+
+}
+
+.yButton:hover{
+    background-color: #F1F1F1;
+}
+
+.yButton:active{
+    background-color: #337ab7;
+}
+
+.xButton{
+    border-radius: 5px;
+    border: 1px solid #DDDDDD;
+    padding: 5px;
+    object-fit: cover;
+    font: 12px Arial;
+    text-align: center;
+    vertical-align: center;
+    background-color: #ffffff;
+
+}
+
+.xButton:hover{
+    background-color: #F1F1F1;
+}
+
+.xButton:active{
+    background-color: #337ab7;
+}
+
+/* The following css is from jquery ui's website with the Base theme, with a couple of color changes*/
 /*! jQuery UI - v1.11.4 - 2016-11-27
 * http://jqueryui.com
 * Includes: core.css, accordion.css, theme.css
@@ -188,8 +247,8 @@
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-    border: 1px solid #003eff;
-    background: #007fff;
+    border: 1px solid #374c5e;
+    background: #337ab7;
     font-weight: normal;
     color: #ffffff;
 }
