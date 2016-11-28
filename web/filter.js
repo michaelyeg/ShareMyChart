@@ -1,12 +1,10 @@
 /**
  * Created by michaelximac on 2016-11-20.
  */
-function filter(parameter,condition,type,number,date){
-    this.type=type;
+function filter(parameter,condition,value){
     this.parameter=parameter;
     this.condition=condition;
-    this.number=number;
-    this.date=date;
+    this.value=value;
 }
 
 var filterArray=function(){
