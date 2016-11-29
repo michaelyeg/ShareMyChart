@@ -38,28 +38,29 @@ function collectFilter(currentArray,count) {
     return currentArray;
 }
 
-function xFilter(filter, DataCopy){
-    var condition=filter.condition;
-    var value=filter.value;
+function xFilter(fil, DataCopy){
+    var condition=fil.condition;
+    var value=Number(fil.value);
+    console.log("Before:"+DataCopy.length);
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy.Array[i].dataX>value){
-                    DataCopy.delete(i);
+                if (!DataCopy[i].dataX>value){
+                    DataCopy.splice(i,1);
                 }
             };
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy.Array[i].dataX==value){
-                    DataCopy.delete(i);
+                if (!DataCopy[i].dataX==value){
+                    DataCopy.splice(i,1);
                 }
             };
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy.Array[i].dataX<value){
-                    DataCopy.delete(i);
+                if (!Number(DataCopy[i].dataX<value)){
+                    DataCopy.splice(i,1);
                 }
             };
             break;
@@ -68,29 +69,29 @@ function xFilter(filter, DataCopy){
 }
 
 function yFilter(fil, DataCopy) {
-    console.log("Y filter!");
     var condition=fil.condition;
     var value=Number(fil.value);
+    console.log("Before:"+DataCopy.length);
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy.Array[i].dataY>value){
-                    DataCopy.delete(i);
+                if (!DataCopy[i].dataY>value){
+                    DataCopy.splice(i,1);
                 }
             };
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy.Array[i].dataY==value){
-                    DataCopy.delete(i);
+                if (!DataCopy[i].dataY==value){
+                    DataCopy.splice(i,1);
                 }
             };
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
-                console.log(DataCopy.Array[i].dataY);
-                if (!(Number(DataCopy.Array[i].dataY)<value)){
-                    DataCopy.delete(i);
+                if (!Number(DataCopy[i].dataY<value)){
+                    // Delete that object
+                    DataCopy.splice(i,1);
                 }
             };
             break;
