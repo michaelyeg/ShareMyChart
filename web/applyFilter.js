@@ -11,14 +11,14 @@ function applyFilter() {
     var Data=GlobalDataArray.getArray();
     // Question for Landon: How am i supposed to get the ORIGINAL (unmodified) dataarray in case i want to reset the filter?
     var DataCopy=GlobalDataArray.duplicate();
-    for (var filter in filterArray){
-        var axis=filter.axis;
-        switch (axis){
+    for (var i=0; i<currentArray.size();i++){
+        var ax=currentArray.Array[i].axis;
+        switch (ax){
             case 'X':
-                xFilter(filter, DataCopy);
+                xFilter(currentArray.Array[i], DataCopy);
                 break;
             case 'Y':
-                yFilter(filter, DataCopy);
+                yFilter(currentArray.Array[i], DataCopy);
                 break;
         }
     }
@@ -27,7 +27,6 @@ function applyFilter() {
 }
 
 function collectFilter(currentArray,count) {
-    //TODO: acquire filter data from frontend
     var axis, condition, value;
     axis=document.getElementById("sizing-addon"+count).innerHTML;
     var s=document.getElementById("condition"+count);
@@ -46,21 +45,21 @@ function xFilter(filter, DataCopy){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
                 if (!DataCopy.Array[i].dataX>value){
-                    DataCopy.prototype.delete(i);
+                    DataCopy.delete(i);
                 }
             };
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
                 if (!DataCopy.Array[i].dataX==value){
-                    DataCopy.prototype.delete(i);
+                    DataCopy.delete(i);
                 }
             };
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
                 if (!DataCopy.Array[i].dataX<value){
-                    DataCopy.prototype.delete(i);
+                    DataCopy.delete(i);
                 }
             };
             break;
@@ -68,28 +67,30 @@ function xFilter(filter, DataCopy){
     return;
 }
 
-function yFilter(filter, DataCopy) {
-    var condition=filter.condition;
-    var value=filter.value;
+function yFilter(fil, DataCopy) {
+    console.log("Y filter!");
+    var condition=fil.condition;
+    var value=Number(fil.value);
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
                 if (!DataCopy.Array[i].dataY>value){
-                    DataCopy.prototype.delete(i);
+                    DataCopy.delete(i);
                 }
             };
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
                 if (!DataCopy.Array[i].dataY==value){
-                    DataCopy.prototype.delete(i);
+                    DataCopy.delete(i);
                 }
             };
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy.Array[i].dataY<value){
-                    DataCopy.prototype.delete(i);
+                console.log(DataCopy.Array[i].dataY);
+                if (!(Number(DataCopy.Array[i].dataY)<value)){
+                    DataCopy.delete(i);
                 }
             };
             break;

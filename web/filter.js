@@ -1,7 +1,7 @@
 /**
  * Created by michaelximac on 2016-11-20.
  */
-function filter(axis,condition,value){
+var filter=function(axis,condition,value){
     // x or y
     this.axis=axis;
     this.condition=condition;
@@ -11,9 +11,6 @@ function filter(axis,condition,value){
 var filterArray=function(){
     this.Array=[];
 }
-/**function filterArray(){
-    this.Array=[];
-}**/
 
 filterArray.prototype.addData=function(filter){
     this.Array.push(filter);
