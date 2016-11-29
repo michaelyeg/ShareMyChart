@@ -1,8 +1,9 @@
 /**
  * Created by michaelximac on 2016-11-20.
  */
-function filter(parameter,condition,value){
-    this.parameter=parameter;
+function filter(axis,condition,value){
+    // x or y
+    this.axis=axis;
     this.condition=condition;
     this.value=value;
 }

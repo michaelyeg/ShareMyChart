@@ -87,7 +87,7 @@ $(document).ready(function initDragnDrop(event, ui){
                 var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
                 var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
                 initFilter();
-                getType(xType,yType);
+                getParaType(xType,yType);
             }
 
         })

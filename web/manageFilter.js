@@ -1,5 +1,5 @@
 /**
- * Created by michaelximac on 2016-11-20.
+ * Created by michaelximac on i20.
  */
 
 var xT,yT;
@@ -17,37 +17,34 @@ function initFilter (){
     document.getElementById("delete1").style.display = "block";
     document.getElementById("updatebutton").style.display = "block";
 
-    //var filterArray=filterArray();
-
 }
 
 $("#filterX").click(function(){
 
     var _html = '<div class="input-group filter" id='+ count +'> <span class="input-group-addon"> <input type="checkbox" class="check"> </span> ' +
-        '<span class="input-group-addon" id="sizing-addon3">X - axis</span> ';
-    _html += '<select name="priceCondition"> <option value="<"><</option> <option value="=">=</option>' +
+        '<span class="input-group-addon" id="sizing-addon'+count+'">X</span> ';
+    _html += '<select name="priceCondition" id="condition'+count+'"> <option value="<"><</option> <option value="=">=</option>' +
         ' <option value=">">></option> </select>';
 
-    var date = '<input type="date" value="0" size="4"><br>';
-    var num = '<input type="number" value="0" size="4"><br>';
+    var date = '<input type="date" id="value'+count+'" value="0" size="4"><br>';
+    var num = '<input type="number" id="value'+count+'" value="0" size="4"><br>';
 
     if (xT == "date"){
         $("#filterForm").append(_html+date+"</div>");
     }
     else $("#filterForm").append(_html+num+"</div>");
     count++;
-
 });
 
 $("#filterY").click(function(){
 
     var _html = '<div class="input-group filter" id='+ count +'> <span class="input-group-addon"> <input type="checkbox" class="check"> </span> ' +
-        '<span class="input-group-addon" id="sizing-addon3">Y - axis</span>';
-    _html += '<select name="priceCondition"> <option value="<"><</option> <option value="=">=</option>' +
+        '<span class="input-group-addon" id="sizing-addon'+count+'">Y</span>';
+    _html += '<select name="priceCondition" id="condition'+count+'"> <option value="<"><</option> <option value="=">=</option>' +
         ' <option value=">">></option> </select> ';
 
-    var date = '<input type="date" value="0" size="4"><br>';
-    var num = '<input type="number" value="0" size="4"><br>';
+    var date = '<input type="date" id="value'+count+'" value="0" size="4"><br>';
+    var num = '<input type="number" id="value'+count+'" value="0" size="4"><br>';
 
     if (yT == "date"){
         $("#filterForm").append(_html+date+"</div>");
