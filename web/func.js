@@ -72,8 +72,8 @@ function refreshData(){
            console.log(data);
            var _html = "<ul>";
            $.each(data, function (key,value) {
-               _html += "<li><input type='checkbox' name='checkfile'  data-filename='"+value+"'>" +
-                   "<a href='javascript:void(0);' onclick='load(this)' data-filename='"+value+"'> "+ value +" </a></li>";
+               _html += "<li><input type='checkbox' name='checkfile'  data-filename='"+value+"' id='"+value+"'>" +
+                   "<a href='javascript:void(0);' onclick='load(this)' data-filename='"+value+"' id='file"+value+"'> "+ value +" </a></li>";
                //$("#list").append("<li> <a id="+value+" href='javascript:void(0);' onclick='load(this.parentNode.getAttribute(id))'>"+value+"</a></li>");
            });
            _html += "</ul>";
