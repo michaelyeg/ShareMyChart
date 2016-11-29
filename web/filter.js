@@ -11,6 +11,9 @@ function filter(axis,condition,value){
 var filterArray=function(){
     this.Array=[];
 }
+/**function filterArray(){
+    this.Array=[];
+}**/
 
 filterArray.prototype.addData=function(filter){
     this.Array.push(filter);

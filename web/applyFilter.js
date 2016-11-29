@@ -2,16 +2,15 @@
  * Created by michaelximac on 2016-11-19.
  */
 function applyFilter() {
-    // Grab the data array and make a copy
     var c=count;
-    var filterArray=new filterArray;
+    var currentArray=new filterArray();
     while(c--){
-        filterArray=collectFilter(filterArray,c);
-
+        currentArray=collectFilter(currentArray,c);
     }
+    // Grab the data array and make a copy
     var Data=GlobalDataArray.getArray();
-    // Question for Landon: How am i supposde to get the ORIGINAL (unmodified) dataarray in case i want to reset the filter?
-    var DataCopy=Data.prototype.duplicate();
+    // Question for Landon: How am i supposed to get the ORIGINAL (unmodified) dataarray in case i want to reset the filter?
+    var DataCopy=GlobalDataArray.duplicate();
     for (var filter in filterArray){
         var axis=filter.axis;
         switch (axis){
@@ -27,14 +26,17 @@ function applyFilter() {
 
 }
 
-function collectFilter(filterArray,count) {
+function collectFilter(currentArray,count) {
     //TODO: acquire filter data from frontend
     var axis, condition, value;
     axis=document.getElementById("sizing-addon"+count).innerHTML;
-    console.log(axis);
-    var filter = new filter(axis,condition,value);
-    filterArray.prototype.addData(filter);
-    return filterArray;
+    var s=document.getElementById("condition"+count);
+    condition=selectValue(s);
+    value=document.getElementById("value"+count).value;
+
+    var newfilter = new filter(axis,condition,value);
+    currentArray.addData(newfilter);
+    return currentArray;
 }
 
 function xFilter(filter, DataCopy){
@@ -95,10 +97,10 @@ function yFilter(filter, DataCopy) {
     return;
 }
 /**
- * @description return selected item in dropdown list
+ * @description return selected value in dropdown list
  * @param selectElement
  * @returns {*}
  */
 function selectValue(selectElement) {
-    return selectElement.options[selectElement.selectedIndex];
+    return selectElement.options[selectElement.selectedIndex].value;
 }
