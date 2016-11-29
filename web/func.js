@@ -45,7 +45,7 @@ document.getElementById("defaultOpen").click();
 $(document).ready(function(){
     $("#form-submit").ajaxForm({
         type:"post",
-        url:"UploadServlet",
+        url:"/UploadServlet",
         success:function(data){
             console.log(data);
             refreshData();
@@ -58,6 +58,8 @@ $(document).ready(function(){
     });
     refreshData();
 });
+
+
 
 /**
  * refresh the list of files
@@ -112,4 +114,3 @@ function deleteFile(){
     },'text');
     refreshData();
 }
-

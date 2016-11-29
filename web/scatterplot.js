@@ -17,6 +17,9 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var dray = GlobalDataArray.getArray();
+
+
 /**
  * Create a new lineGraph that inherits from Graph
  * @constructor
@@ -29,31 +32,8 @@ function Scatterplot() {
 
 Scatterplot.prototype = Object.create(Graph.prototype); //scatterplot inherits from Graph
 
+Scatterplot.prototype = new Graph();
 Scatterplot.prototype.constructor = Scatterplot;
-
-//hard-coded test data until we can access data from file
-var testDataSP = [
-    {date: "1990-10-01", money: 1000.15},
-    {date: "1990-10-01", money: 324.56},
-    {date: "1990-11-23", money: 44.55},
-    {date: "1990-11-27", money: 1000.15},
-    {date: "1994-03-14", money: 156000.15},
-    {date: "1994-18-08", money: 444.65},
-    {date: "1995-07-05", money: 3.00},
-    {date: "1995-10-31", money: 1.99},
-    {date: "2000-11-18", money: 10604.15},
-    {date: "2001-12-12", money: 1000234.42},
-    {date: "2002-04-02", money: 10.01},
-    {date: "2003-09-12", money: 223533.15},
-    {date: "2004-12-20", money: 100.16},
-    {date: "2005-05-14", money: 1000.15},
-    {date: "2006-04-04", money: 1043500.15},
-    {date: "2007-02-11", money: 5567000.15},
-    {date: "2008-01-05", money: 0.00},
-    {date: "2009-01-07", money: 5.99},
-    {date: "2010-01-05", money: 69420.00}
-
-];
 
 
 /**
@@ -61,184 +41,205 @@ var testDataSP = [
  *
  */
 $(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.makeGraph);
+    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.normalscatterplot);
 })
 
 
+
+
+
+
 /**
- * make a scatterplot graph from the data
+ * prepare the settings for the normal scatterplot
+ * clear the old graph if there is one in the way
+ */
+Scatterplot.prototype.normalscatterplot = function(){
+
+    if(dray.length ==0){
+        alert("Please select data parameters");
+    }else {
+
+
+        if (($('#graph').find("svg").length) == 0) {
+            //no graph currently exists, build this one
+            Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph();
+        } else {
+            //otherwise, remove the old graph and build this one
+            d3.select("svg").remove();
+            Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph();
+
+        }
+    }
+
+}
+
+/**
+ * creates a scatterplot based on the user's data
  */
 Scatterplot.prototype.makeGraph = function() {
 
-    /*
-     !!!!!!!!!! remove this and put it into a new function once we have different kinds of line graphs
-     */
-    if(($('#graph').find("svg").length) == 0){
-        //no graph currently exists, build this one
-        Scatterplot.prototype.setgraphType(8);
-        //Scatterplot.prototype.makeGraph();
-    } else{
-        //otherwise, remove the old graph and build this one
-        d3.select("svg").remove();
-        Scatterplot.prototype.setgraphType(8);
-        //Scatterplot.prototype.makeGraph();
 
-    }
-
-    /*
-     !!!! remove this once we get real data from the files in here
-     this simulates the data type for the test data
-     */
-    for(i=0;i<testDataSP.length;i++){
-        testDataSP[i].date.type = "date";
-    }
-
+ //if this works it needs to be refactored by sprint 5
+  /*  var tempArray = [];
+    var t;
+    for(i =0;i<DataArray.length;i++) {
+        t = {
+            dataX: DataArray[i].dataX,
+            dataY: DataArray[i].dataY
+        };
+        tempArray.push(t);
+    }*/
+//console.log("temparraymax:");
+   // console.log(tempArray);
+  // console.log(d3.max(tempArray, function(d) { return d.dataY; }));
     var graphLocation = document.getElementById('graph');
-    //put some stuff in here about looking at horizontal and stacked
-    /*
-     How to create an svg tag with javascript:
-     http://stackoverflow.com/a/8215105
-     stackoverflow user Techn4k: http://stackoverflow.com/users/685450/techn4k
-     */
-//create the box that contains the graph
-    var svgg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svgg.setAttribute('style', 'border: 1px solid black');
-    svgg.setAttribute('width', '960');
-    svgg.setAttribute('height', '500');
-    svgg.setAttribute('overflow', 'auto');
-    svgg.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
-    $(graphLocation).append($(svgg));
 
-    var svg = d3.select("svg"),
-        margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom;
-
-    var g = svg.append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    var parseTime = d3.timeParse("%Y-%m-%d"); //dates must be in the formate of yyyy-mm-dd
+    var margin = {top: 30, right: 20, bottom: 110, left: 80},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
 
-  //pasted in:
+   // var parseDate = d3.timeParse("%Y-%m-%d"); //dates must be in the format of yyyy-mm-dd
+
+    //--------------------------------------------------------------------
 
 
-    var x = d3.scaleTime().range([0, width]),
-     //   x2 = d3.scaleTime().range([0, width]),
-        y = d3.scaleLinear().range([height, 0])
-      //  y2 = d3.scaleLinear().range([height, 0]);
+    //Object.prototype.toString.call(date) === '[object Date]'
+    //console.log("is x a date? "+(DataArray.typeX == "date"));
+
+    var x, y;
+
+    //check to see if the data is a date value and use scaletime if it is
+    if(dray[0].typeX == "date"){
+        x = d3.scaleTime().range([0, width]);
+        x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+    } else{
+        x = d3.scaleLinear().range([0, width]);
+        x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+    }
+
+    if(dray[0].typeY == "date"){
+        y = d3.scaleTime().range([height + 50, 0]);
+        y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+    }else{
+        y = d3.scaleLinear().range([height + 50, 0]);
+        y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+        console.log("y domain:" + y.domain());
+    }
+
+  /*  var x = d3.scaleTime().range([0, width]),
+        y = d3.scaleLinear().range([height + 50, 0]); */
+
 
     var xAxis = d3.axisBottom(x),
-       // xAxis2 = d3.axisBottom(x2),
         yAxis = d3.axisLeft(y);
 
-   /* var brush = d3.brushX()
-        .extent([[0, 0], [width, height2]])
-        .on("brush", brushed); */
 
-   /* var svg = d3.select("body").append("svg")
+    var svg = d3.select(graphLocation).append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom); */
+        .attr("height", height + margin.top + margin.bottom)
+        .attr('style','border: 1px solid black');
 
-  /*  svg.append("defs").append("clipPath")
+  /*  svg.append("defs").append("clipPath") //clips dots if theyre on the edge
         .attr("id", "clip")
         .append("rect")
         .attr("width", width)
         .attr("height", height); */
 
-   /* var focus = svg.append("g")
+    var focus = svg.append("g")
         .attr("class", "focus")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); */
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    /*var context = svg.append("g")
-        .attr("class", "context");
-        .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")"); */
 
-    //d3.csv("sp500.csv", type, function(error, data) {
-      //  if (error) throw error;
 
-        x.domain(d3.extent(testDataSP, function(d) { return parseTime(d.date); }));
-        y.domain([0, d3.max(testDataSP, function(d) { return d.money; })+200]);
-      //  x2.domain(x.domain());
-     //   y2.domain(y.domain());
+    /*
+        x.domain(d3.extent(testDataSP, function(d) { return new Date(d.date); }));
+        y.domain([0, d3.max(testDataSP, function(d) { return d.money; })+200000]); //starts at 0, ends at max + a value
+*/
 
-// append scatter plot to main chart area
-        var dots = svg.append("g");
-        dots.attr("clip-path", "url(#clip)");
+     //y.domain(d3.extent(testDataSP, function(d) { return d.money; }));
+
+
+// append scatter plot dots to main chart area
+        var dots = focus.append("g");
+     //   dots.attr("clip-path", "url(#clip)"); //this causes the dots to be clipped if theyre on the edge
+
+    if( (dray[0].typeX == "date") && (dray[0].typeY == "date") ){
+        //if both are dates
         dots.selectAll("dot")
-            .data(testDataSP)
+            .data(dray)
             .enter().append("circle")
             .attr('class', 'dot')
             .attr("r",5)
             .style("opacity", .5)
-            .attr("cx", function(d) { return x(parseTime(d.date)); })
-            .attr("cy", function(d) { return y(d.money); })
+            .attr("cx", function(d) { return x(new Date(d.dataX)); })
+            .attr("cy", function(d) { return y(new Date(d.dataY)); })
 
-        svg.append("g")
+    } else   if( (dray[0].typeX == "date") && (dray[0].typeY != "date") ){
+        //if x is a date only
+        dots.selectAll("dot")
+            .data(dray)
+            .enter().append("circle")
+            .attr('class', 'dot')
+            .attr("r",5)
+            .style("opacity", .5)
+            .attr("cx", function(d) { return x(new Date(d.dataX)); })
+            .attr("cy", function(d) { return y(d.dataY); })
+
+    }else   if( (dray[0].typeX != "date") && (dray[0].typeY == "date") ){
+        //if y is a date only
+        dots.selectAll("dot")
+            .data(dray)
+            .enter().append("circle")
+            .attr('class', 'dot')
+            .attr("r",5)
+            .style("opacity", .5)
+            .attr("cx", function(d) { return x(d.dataX); })
+            .attr("cy", function(d) { return y(new Date(d.dataY)); })
+
+    } else   if( (dray[0].typeX != "date") && (dray[0].typeY != "date") ){
+        //if neither are dates
+        dots.selectAll("dot")
+            .data(dray)
+            .enter().append("circle")
+            .attr('class', 'dot')
+            .attr("r",5)
+            .style("opacity", .5)
+            .attr("cx", function(d) { return x(d.dataX); })
+            .attr("cy", function(d) { return y(d.dataY); })
+
+    }
+
+//append the axis
+
+        focus.append("g")
             .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(0," + (height + 60) + ")")
             .call(xAxis);
 
-        svg.append("g")
+        focus.append("g")
             .attr("class", "axis axis--y")
             .call(yAxis);
 
-        svg.append("text")
+        focus.append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
             .attr("x",0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Price");
+            .text(dray[0].nameY);
 
         svg.append("text")
             .attr("transform",
                 "translate(" + ((width + margin.right + margin.left)/2) + " ," +
-                (height + margin.top + margin.bottom) + ")")
+                ((height + 50) + margin.bottom - margin.top) +  ")")
             .style("text-anchor", "middle")
-            .text("Date");
-
-// append scatter plot to brush chart area
-   /*     var dots = context.append("g");
-        dots.attr("clip-path", "url(#clip)");
-        dots.selectAll("dot")
-            .data(data)
-            .enter().append("circle")
-            .attr('class', 'dotContext')
-            .attr("r",3)
-            .style("opacity", .5)
-            .attr("cx", function(d) { return x2(d.date); })
-            .attr("cy", function(d) { return y2(d.price); })
-
-        context.append("g")
-            .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height2 + ")")
-            .call(xAxis2);
-
-        context.append("g")
-            .attr("class", "brush")
-            .call(brush)
-            .call(brush.move, x.range());
-
-    }); */
-
-//create brush function redraw scatterplot with selection
- /*   function brushed() {
-        var selection = d3.event.selection;
-        x.domain(selection.map(x2.invert, x2));
-        focus.selectAll(".dot")
-            .attr("cx", function(d) { return x(d.date); })
-            .attr("cy", function(d) { return y(d.price); });
-        focus.select(".axis--x").call(xAxis);
-    }
-*/
-
-  /*  function type(d) {
-        d.date = parseDate(d.date);
-        d.price = +d.price;
-        return d;
-    }*/
+            .text(dray[0].nameX);
 
 
 
-}
+
+
+    };
