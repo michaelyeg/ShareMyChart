@@ -59,7 +59,7 @@ function xFilter(fil, DataCopy){
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataX>value){
+                if (!DataCopy[i].dataX>value || DataCopy[i].dataX==value){
                     DataCopy.splice(i,1);
                 }
             };
@@ -73,7 +73,21 @@ function xFilter(fil, DataCopy){
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
-                if (!Number(DataCopy[i].dataX<value)){
+                if (!DataCopy[i].dataX<value || DataCopy[i].dataX==value){
+                    DataCopy.splice(i,1);
+                }
+            };
+            break;
+        case '<=':
+            for (var i=0; i < DataCopy.length; i++){
+                if (DataCopy[i].dataX>value){
+                    DataCopy.splice(i,1);
+                }
+            };
+            break;
+        case '>=':
+            for (var i=0; i < DataCopy.length; i++){
+                if (DataCopy[i].dataX<value){
                     DataCopy.splice(i,1);
                 }
             };
@@ -96,7 +110,7 @@ function yFilter(fil, DataCopy) {
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataY>value){
+                if (!DataCopy[i].dataY>value || DataCopy[i].dataY==value){
                     DataCopy.splice(i,1);
                 }
             };
@@ -110,8 +124,22 @@ function yFilter(fil, DataCopy) {
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
-                if (!Number(DataCopy[i].dataY<value)){
+                if (!DataCopy[i].dataY<value || DataCopy[i].dataY==value){
                     // Delete that object
+                    DataCopy.splice(i,1);
+                }
+            };
+            break;
+        case '<=':
+            for (var i=0; i < DataCopy.length; i++){
+                if (DataCopy[i].dataY>value){
+                    DataCopy.splice(i,1);
+                }
+            };
+            break;
+        case '>=':
+            for (var i=0; i < DataCopy.length; i++){
+                if (DataCopy[i].dataY<value){
                     DataCopy.splice(i,1);
                 }
             };

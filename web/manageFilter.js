@@ -24,7 +24,7 @@ $("#filterX").click(function(){
     var _html = '<div class="input-group filter" id='+ count +'> <span class="input-group-addon"> <input type="checkbox" class="check"> </span> ' +
         '<span class="input-group-addon" id="sizing-addon'+count+'">X</span> ';
     _html += '<select name="priceCondition" id="condition'+count+'"> <option value="<"><</option> <option value="=">=</option>' +
-        ' <option value=">">></option> </select>';
+        ' <option value=">">></option><option value="<="><=</option><option value=">=">>=</option> </select>';
 
     var date = '<input type="date" id="value'+count+'" value="0" size="4"><br>';
     var num = '<input type="number" id="value'+count+'" value="0" size="4"><br>';
@@ -41,7 +41,7 @@ $("#filterY").click(function(){
     var _html = '<div class="input-group filter" id='+ count +'> <span class="input-group-addon"> <input type="checkbox" class="check"> </span> ' +
         '<span class="input-group-addon" id="sizing-addon'+count+'">Y</span>';
     _html += '<select name="priceCondition" id="condition'+count+'"> <option value="<"><</option> <option value="=">=</option>' +
-        ' <option value=">">></option> </select> ';
+        ' <option value=">">></option><option value="<="><=</option><option value=">=">>=</option> </select> ';
 
     var date = '<input type="date" id="value'+count+'" value="0" size="4"><br>';
     var num = '<input type="number" id="value'+count+'" value="0" size="4"><br>';
