@@ -129,20 +129,7 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
 
     }//end of else
 
-//function from StackOverFlow user LiraNuna, edited by David Furlong
-//http://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
-    function arrayUnique(array) {
-        var a = array.concat();
-        for(var i=0; i<a.length; ++i) {
-            for(var j=i+1; j<a.length; ++j) {
-                if(a[i] === a[j])
-                    a.splice(j--, 1);
-            }
-        }
-
-        return a;
-    }
-
+//    callback(this);
 
    /* dray = Aggregate("X"); //aggregate on x axis for vertical BC
 console.log(dray);
@@ -159,4 +146,17 @@ console.log(dray);
 
     //scatterplot.normalscatterplot(GlobalDataArray.getArray());
 
+};
+
+//function from StackOverFlow user LiraNuna, edited by David Furlong
+//http://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
+function arrayUnique(array) {
+    var a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+    return a;
 }

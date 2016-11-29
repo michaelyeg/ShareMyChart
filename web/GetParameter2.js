@@ -33,6 +33,7 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
 
                 clearDrags(URL, reload_function);
                 clearGraph();
+                xymanager.clearManager();
                 GlobalDataArray.clear();
 
 
