@@ -34,6 +34,12 @@ var ParameterManager = function(){
     console.log("New Parameter manager created.");
 };
 
+
+
+ParameterManager.prototype.getType = function(index){
+    return $.pArray[index].type;
+};
+
 /*
 @method addParameter
 @param {Parameter} Parameter - A parameter to add to the parameter manager.

@@ -62,7 +62,33 @@ console.log(dragid);
                 $(".sortable").append(li);
                 $(".sortable").sortable('refresh');
             }
+            var dropArray = document.getElementsByClassName("dropMe");
+            console.log(dropArray);
+            //console.log("Child0 is:" + dropArray[0].children.length + "Child1 is: " + dropArray[1].children.length)
 
+            //check for if both parameters have been dropped - cue the visualizer!
+            if(dropArray[0].children.length >= 1 && dropArray[1].children.length >= 1){
+                //inside the if-statement for both parameters have been dropped
+                console.log("Both pams dropped - call visualizer for graphs here!");
+
+                //console.log( "This is: " + dropArray[0].attr('id') );
+
+                /*
+                 * FIRST call Landon's connection options thing, THEN call the graph visualizer!
+                 * Both for now are just going with their first option, if UI is possible for the S4.
+                 */
+                //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
+                //pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
+                var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
+                var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
+
+                if (xType == "nominal"){
+
+                }
+
+                initFilter();
+                getType(xType,yType);
+            }
         })
 
     } );
