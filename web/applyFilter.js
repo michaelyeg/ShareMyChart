@@ -54,7 +54,7 @@ function collectFilter(currentArray,count) {
  */
 function xFilter(fil, DataCopy){
     var condition=fil.condition;
-    var value=Number(fil.value);
+    var value=fil.value;
     console.log("Before:"+DataCopy.length);
     switch (condition){
         case '>':
@@ -79,6 +79,7 @@ function xFilter(fil, DataCopy){
             };
             break;
     }
+    console.log("After:"+DataCopy.length);
     return DataCopy;
 }
 
@@ -90,7 +91,7 @@ function xFilter(fil, DataCopy){
  */
 function yFilter(fil, DataCopy) {
     var condition=fil.condition;
-    var value=Number(fil.value);
+    var value=fil.value;
     console.log("Before:"+DataCopy.length);
     switch (condition){
         case '>':
