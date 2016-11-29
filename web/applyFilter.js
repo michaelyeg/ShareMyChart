@@ -22,7 +22,7 @@ function applyFilter() {
                 break;
         }
     }
-
+    // TODO: how to reapply data and refresh the graph
 
 }
 
@@ -64,7 +64,7 @@ function xFilter(filter, DataCopy){
             };
             break;
     }
-    return;
+    return DataCopy;
 }
 
 function yFilter(fil, DataCopy) {
@@ -95,7 +95,7 @@ function yFilter(fil, DataCopy) {
             };
             break;
     }
-    return;
+    return DataCopy;
 }
 /**
  * @description return selected value in dropdown list
