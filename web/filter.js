@@ -1,11 +1,11 @@
 /**
  * Created by michaelximac on 2016-11-20.
  */
-function filter(parameter,condition,number,date){
-    this.parameter=parameter;
+var filter=function(axis,condition,value){
+    // x or y
+    this.axis=axis;
     this.condition=condition;
-    this.number=number;
-    this.date=date;
+    this.value=value;
 }
 
 var filterArray=function(){
@@ -26,4 +26,8 @@ filterArray.prototype.getArray=function () {
 
 filterArray.prototype.clear=function () {
     this.Array=[];
+}
+
+filterArray.prototype.size=function () {
+    return this.Array.length;
 }

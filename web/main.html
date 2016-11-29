@@ -31,13 +31,27 @@
 
   <script src="http://malsup.github.com/jquery.form.js"></script>
 
-
   <link rel = "stylesheet" href = "dragndrop.css" type = "text/css">
 
 </head>
 
 
 <body>
+
+<div class="modal fade" id="dialog"  tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="background: #FFFFFF;">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="gridModalLabel">Pick A Graph</h4>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid" id="show-graph">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid" style="padding-top: 0.4em;">
   <div class="row">
     <div class="col-md-3">
@@ -110,7 +124,7 @@
                     </ul>
                   </div>
                   <br>
-                  <button class="btn btn-primary btn-lg btn-block" type="button" id="updatebutton" style="display: none">update</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="button" id="updatebutton" onclick="applyFilter()" style="display: none">update</button>
                 </div>
               </div>
             </div>
@@ -147,17 +161,6 @@
             </div> -->
           </div>
         </div>
-
-
-        <!--delete, share-->
-    <!--   <div class="container-fluid">
-          <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-            <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-          </button>
-        </div> -->
 
       </div>
 
@@ -282,8 +285,11 @@
     <link rel = "stylesheet" href = "scatterplot.css">
     <script type = 'text/javascript' src="./possibleGraphManager.js"></script>
     <script type = 'text/javascript' src="./graphPicker.js"></script>
+    <script type = 'text/javascript' src="./applyFilter.js"></script>
+    <script type = 'text/javascript' src="./filter.js"></script>
 
 
-  </body>
+
+</body>
 
 </html>
