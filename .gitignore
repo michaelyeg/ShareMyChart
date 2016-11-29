@@ -1,5 +1,4 @@
 ShareMyChart.iml
-/web/WEB-INF/
-/.idea/workspace.xml
-!/.idea/artifacts/ShareMyChart_war_exploded.xml
-!/.idea/copyright/profiles_settings.xml
+.idea/workspace.xml
+/web/WEB-INF/web.xml
+/.idea/copyright/profiles_settings.xml

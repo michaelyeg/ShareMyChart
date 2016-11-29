@@ -116,6 +116,7 @@ function yFilter(fil, DataCopy) {
             };
             break;
     }
+    console.log("After:"+DataCopy.length);
     return DataCopy;
 }
 /**
