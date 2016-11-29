@@ -1,6 +1,9 @@
 /**
  * Created by michaelximac on 2016-11-19.
  */
+/**
+ * @description apply filter to backend from frontend
+ */
 function applyFilter() {
     var c=count;
     var currentArray=new filterArray();
@@ -15,17 +18,22 @@ function applyFilter() {
         var ax=currentArray.Array[i].axis;
         switch (ax){
             case 'X':
-                xFilter(currentArray.Array[i], DataCopy);
+                DataCopy=xFilter(currentArray.Array[i], DataCopy);
                 break;
             case 'Y':
-                yFilter(currentArray.Array[i], DataCopy);
+                DataCopy=yFilter(currentArray.Array[i], DataCopy);
                 break;
         }
     }
     // TODO: how to reapply data and refresh the graph
 
 }
-
+/**
+ * @description collect filter objects from UI
+ * @param currentArray
+ * @param count
+ * @returns {*}
+ */
 function collectFilter(currentArray,count) {
     var axis, condition, value;
     axis=document.getElementById("sizing-addon"+count).innerHTML;
@@ -38,6 +46,12 @@ function collectFilter(currentArray,count) {
     return currentArray;
 }
 
+/**
+ * @description apply filter for x-axis
+ * @param fil
+ * @param DataCopy
+ * @returns {*}
+ */
 function xFilter(fil, DataCopy){
     var condition=fil.condition;
     var value=Number(fil.value);
@@ -68,6 +82,12 @@ function xFilter(fil, DataCopy){
     return DataCopy;
 }
 
+/**
+ * @description apply filter for y-axis
+ * @param fil
+ * @param DataCopy
+ * @returns {*}
+ */
 function yFilter(fil, DataCopy) {
     var condition=fil.condition;
     var value=Number(fil.value);
