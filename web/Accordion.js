@@ -5,6 +5,9 @@
  * create the accordions with the general names
  * @param array_of_params
  */
+
+var xymanager = new xyManager();
+
 function createAccordions(array_of_params){
     deletePlaceholder();
     var insertLocation =document.getElementById('putAccordionHere');
@@ -70,13 +73,13 @@ function addContents(array_of_parameters,classval){
             //put in x and y buttons
             btnx = document.createElement('button');
             btnx.appendChild(document.createTextNode("X"));
-            btnx.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name + "-x");
+            btnx.setAttribute('id', "x-" + name);
             btnx.setAttribute('class','xButton');
            // btnx.onclick = xClick;
 
             btny = document.createElement('button');
             btny.appendChild(document.createTextNode("Y"));
-            btny.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name + "-y");
+            btny.setAttribute('id',"y-" + name);
             btny.setAttribute('class','yButton');
            // btny.onclick = yClick;
 
@@ -101,7 +104,18 @@ function addContents(array_of_parameters,classval){
  */
 $(document).on('click',".xButton",function(event){
     button = document.getElementById(this.id);
-    button.style.backgroundColor='#337ab7';
+    var oldXid = xymanager.getX();
+    console.log(oldXid);
+    if(typeof oldXid == 'undefined'){
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setX(this.id);
+    }else if(oldXid!=(this.id)){
+        oldbutton = document.getElementById(oldXid);
+        oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setX(this.id);
+    }
+
 });
 
 /**
@@ -110,7 +124,16 @@ $(document).on('click',".xButton",function(event){
  */
 $(document).on('click',".yButton",function(event){
     button = document.getElementById(this.id);
-    button.style.backgroundColor='#337ab7';
+    var oldYid = xymanager.getY();
+    if(typeof oldYid == 'undefined'){
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setY(this.id);
+    }else if(oldYid!=(this.id)){
+        oldbutton = document.getElementById(oldYid);
+        oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setY(this.id);
+    }
 });
 
 /**
