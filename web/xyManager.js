@@ -75,6 +75,7 @@ xyManager.prototype.getYName = function(){
 };
 
 xyManager.prototype.startGraphing = function(){
+    GlobalDataArray.clear();
     GetLink(this.x_value, this.y_value, GlobalStore);
     pickGraphTypes(this.x_value, this.y_value);
     var xType = pManager.getType(this.x_value);

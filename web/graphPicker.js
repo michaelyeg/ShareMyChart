@@ -57,7 +57,7 @@ function pickGraphTypes(pam1, pam2) {
 
     testpG = pGMan;
     console.log("pG:" + testpG.getAll());
-    //visPG(pGMan);
+    visPG(pGMan);
     //if combo makes nothing
     if(pGMan.getLength() == 0){
         //alert("Parameters chosen do not make any valid graphs. Please try again.");
@@ -65,7 +65,7 @@ function pickGraphTypes(pam1, pam2) {
     }else{
         //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
         pGMan.prioritize(pam1, pam2);
-        visPG(pGMan);
+        //visPG(pGMan);
         //put UI option popup here!
         //*user makes a choice*
         //CALL GRAPH CREATION HERE!
