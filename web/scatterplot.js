@@ -17,7 +17,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var dray = GlobalDataArray.getArray();
+//var dray = GlobalDataArray.getArray();
 
 
 /**
@@ -37,23 +37,10 @@ Scatterplot.prototype.constructor = Scatterplot;
 
 
 /**
- * Listen for the click for the scatterplot graph
- *
- */
-$(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.normalscatterplot);
-})
-
-
-
-
-
-
-/**
  * prepare the settings for the normal scatterplot
  * clear the old graph if there is one in the way
  */
-Scatterplot.prototype.normalscatterplot = function(){
+Scatterplot.prototype.normalscatterplot = function(dray){
 
     if(dray.length ==0){
         alert("Please select data parameters");
@@ -62,13 +49,13 @@ Scatterplot.prototype.normalscatterplot = function(){
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            Scatterplot.prototype.setgraphType(8);
-            Scatterplot.prototype.makeGraph();
+            //Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            Scatterplot.prototype.setgraphType(8);
-            Scatterplot.prototype.makeGraph();
+           // Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph(dray);
 
         }
     }
@@ -78,7 +65,7 @@ Scatterplot.prototype.normalscatterplot = function(){
 /**
  * creates a scatterplot based on the user's data
  */
-Scatterplot.prototype.makeGraph = function() {
+Scatterplot.prototype.makeGraph = function(dray) {
 
 
  //if this works it needs to be refactored by sprint 5

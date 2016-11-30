@@ -119,23 +119,23 @@ function visPG(pGMan){
             switch (i) {
                 case 0:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="BarChart.prototype.caller1()"></a></div></div>';
+                    _html += '<img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="graphmanager.makeVBC(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 1:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="BarChart.prototype.caller2()"></a></div></div>';
+                    _html += '<img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="graphmanager.makeHBC(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 2:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="lineGraph.prototype.caller()"></a></div></div>';
+                    _html += '<img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 3:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="Scatterplot.prototype.normalscatterplot()"></a></div></div>';
+                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 4:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="Scatterplot.prototype.normalscatterplot()"></a></div></div>';
+                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 5:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';

@@ -26,7 +26,7 @@ Bar Chart on D3's examples. Modifications include accepting an array instead of 
  Landon Thys: lthys@ualberta.ca */
 
 
-var dray2 = GlobalDataArray.getArray();
+//var dray2 = GlobalDataArray.getArray();
 
 /**
  * Create a new BarChart that inherits from Graph
@@ -59,21 +59,6 @@ BarChart.prototype.constructor = BarChart;
 ];
 */
 
-/**
- * @description Listen for the click for the vertical bar chart
- *
- */
-$(document).ready(function(){
-    document.getElementById('verticalBarChart').addEventListener("click", BarChart.prototype.caller1);
-})
-
-/**
- * Listen for the click for the horizontal bar chart
- *
- */
-$(document).ready(function(){
-    document.getElementById('horizontalBarChart').addEventListener("click", BarChart.prototype.caller2);
-})
 
 /**
  * creates the aggregate and sets up graph-making
@@ -107,14 +92,14 @@ BarChart.prototype.verticalBC = function(dray){
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            BarChart.prototype.setgraphType(0);
+           // BarChart.prototype.setgraphType(0);
             BarChart.prototype.setHorizontal(false);
             //something about stacked
             BarChart.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            BarChart.prototype.setgraphType(0);
+           // BarChart.prototype.setgraphType(0);
             BarChart.prototype.setHorizontal(false);
             //something about stacked
             BarChart.prototype.makeGraph(dray);
@@ -131,17 +116,18 @@ BarChart.prototype.horizontalBC = function(dray){
     if(dray.length ==0){
         alert("Please select data parameters");
     }else {
-
+        var graphLocation = document.getElementById('graph');
+console.log(graphLocation);
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            BarChart.prototype.setgraphType(1);
+          //  BarChart.prototype.setgraphType(1);
             BarChart.prototype.setHorizontal(true);
             //something about stacked
             BarChart.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            BarChart.prototype.setgraphType(1);
+           // BarChart.prototype.setgraphType(1);
             BarChart.prototype.setHorizontal(true);
             //something about stacked
             BarChart.prototype.makeGraph(dray);

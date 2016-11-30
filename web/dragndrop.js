@@ -86,6 +86,11 @@ $(document).ready(function initDragnDrop(event, ui){
                 pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
                 var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
                 var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
+
+                if (xType == "nominal"){
+
+                }
+
                 initFilter();
                 getParaType(xType,yType);
             }
@@ -179,6 +184,7 @@ function clearDrags(URL, clear_callback){
     var d1=$(dropp[0]).find('.dragndropShape');
     var d2 = $(dropp[1]).find('.dragndropShape');
 
+
     //only does these if draggables dragged
     /*
     if(typeof d1 != 'undefined' ) {
@@ -188,6 +194,7 @@ function clearDrags(URL, clear_callback){
         d2[0].remove();
     }
    */
+
     clear_callback(URL);
     /*while (delLocation.hasChildNodes()) {
         delLocation.removeChild(delLocation.lastChild);

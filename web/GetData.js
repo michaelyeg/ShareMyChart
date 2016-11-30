@@ -174,7 +174,7 @@ function GetData(uri1, uri2, graph, link_path){
 
         pickGraphTypes(GlobalX, GlobalY);
 
-        console.log(Aggregate("X"));
+        //console.log(Aggregate("X"));
 
     });
 

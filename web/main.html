@@ -124,7 +124,7 @@
                     </ul>
                   </div>
                   <br>
-                  <button class="btn btn-primary btn-lg btn-block" type="button" id="updatebutton" style="display: none">update</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="button" id="updatebutton" onclick="applyFilter()" style="display: none">update</button>
                 </div>
               </div>
             </div>
@@ -162,16 +162,6 @@
           </div>
         </div>
 
-        <!--delete, share-->
-    <!--   <div class="container-fluid">
-          <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-default btn-block" aria-label="Left Align">
-            <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-          </button>
-        </div> -->
-
       </div>
 
 
@@ -208,9 +198,9 @@
                 <img src="icons/barChart.png" alt="" class="icon-default"/>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart"/></li>
+                <li><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart" onclick="graphmanager.makeVBC(GlobalDataArray.getArray())"/></li>
                 <li role="separator" class="divider"></li>
-                <li><img src="icons/horizontalBar.png" alt="" class="icon-default" id = "horizontalBarChart"/></li>
+                <li><img src="icons/horizontalBar.png" alt="" class="icon-default" id = "horizontalBarChart" onclick="graphmanager.makeHBC(GlobalDataArray.getArray())/></li>
                 <li role="separator" class="divider"></li>
                <!-- <li><a href="#"><img src="icons/stackedBar.png" alt="" class="icon-default"/></a></li> -->
               </ul>
@@ -222,7 +212,7 @@
                 <img src="icons/lineChart.png" alt="" class="icon-default"/>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><img src="icons/verticalLine.png" alt="" class="icon-default" id = "vlinegraph"/></li>
+                <li><img src="icons/verticalLine.png" alt="" class="icon-default" id = "vlinegraph" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"/></li>
                 <li role="separator" class="divider"></li>
                <!-- <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
                 <li role="separator" class="divider"></li>
@@ -233,7 +223,7 @@
           <li class="nav-item" style="padding-left: 1em">
             <div class="dropdown">
               <button class="btn btn-default" type="button" id="dropdownMenu1" >
-                <img src="icons/scatterPlot.png" alt="" class="icon-default" id = "scatterplot"/>
+                <img src="icons/scatterPlot.png" alt="" class="icon-default" id = "scatterplot" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"/>
               </button>
             </div>
           </li>
@@ -269,8 +259,8 @@
   </div>
 </div>
 
-
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type = "text/javascript" src="./graphType.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='./node_modules/rdfstore/dist/rdfstore.js'></script>
     <script type = "text/javascript" src ="xyManager.js"></script>
@@ -293,10 +283,12 @@
     <link rel = "stylesheet" href = "lineGraph.css">
     <script type = 'text/javascript' src="./scatterplot.js"></script>
     <link rel = "stylesheet" href = "scatterplot.css">
+<script type = "text/javascript" src="./graphManager.js"></script>
     <script type = 'text/javascript' src="./possibleGraphManager.js"></script>
     <script type = 'text/javascript' src="./graphPicker.js"></script>
+    <script type = 'text/javascript' src="./applyFilter.js"></script>
+    <script type = 'text/javascript' src="./filter.js"></script>
 
-
-  </body>
+</body>
 
 </html>
