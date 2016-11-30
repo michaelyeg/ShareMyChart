@@ -48,7 +48,6 @@ function reloadGraph(data) {
             graphmanager.makeLG(data);
             break;
         case 4:
-            console.log ("Scatterplot!");
             graphmanager.makeSP(data);
             break;
     }
