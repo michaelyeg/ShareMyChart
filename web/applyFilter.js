@@ -141,7 +141,9 @@ function yFilter(fil, DataCopy) {
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
+                console.log("Check");
                 if (!(DataCopy[i].dataY==value)){
+                    console.log(DataCopy[i].dataY);
                     DataCopy.splice(i,1);
                 }
             };

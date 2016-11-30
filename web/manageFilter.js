@@ -54,15 +54,21 @@ $("#filterY").click(function(){
 
 });
 
-
 function deleteFilter() {
     var filters = document.getElementsByClassName("filter");
     for (var i = 0; i <filters.length; i++){
         if (filters[i].getElementsByTagName("input")[0].checked == true){
-            console.log(i);
             var elem = filters[i];
             filters[i].parentNode.removeChild(elem);
         }
     }
+    count--;
+}
 
+function resetFilter(){
+    var filters = document.getElementsByClassName("filter");
+    for (var i=0; i<count; i++){
+        filters.parentNode.removeChild(filters[i]);
+    }
+    count=0;
 }
