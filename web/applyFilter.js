@@ -155,7 +155,6 @@ function yFilter(fil, DataCopy) {
             break;
         case  '=':
             for (var i=0; i < len; i++){
-                console.log("Check"+i);
                 if (!(DataCopy[i].dataY==value)){
                     DataCopy.splice(i,1);
                     i-=1;

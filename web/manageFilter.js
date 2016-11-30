@@ -54,6 +54,9 @@ $("#filterY").click(function(){
 
 });
 
+/**
+ * @description delete user selected filter UIs.
+ */
 function deleteFilter() {
     var filters = document.getElementsByClassName("filter");
     for (var i = 0; i <filters.length; i++){
@@ -65,10 +68,11 @@ function deleteFilter() {
     count--;
 }
 
-function resetFilter(){
-    var filters = document.getElementsByClassName("filter");
-    for (var i=0; i<count; i++){
-        filters.parentNode.removeChild(filters[i]);
-    }
+/**
+ * @description delete existing filter UIs.
+ */
+function resetFilterUI(){
+    var filters = document.getElementById("filterForm");
+    $(filters).empty();
     count=0;
 }
