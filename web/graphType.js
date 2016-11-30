@@ -3,7 +3,7 @@ Classify which graph is which
 *
  */
 
-    var graphType = {
+ /*   var graphType = {
         VBC: 0,//vertical bar chart
         HBC: 1,//horizontal bar chart
         SVBC: 2, //stacked vertical bar chart
@@ -14,7 +14,7 @@ Classify which graph is which
         MHLG: 7, //multi line horizontal line graph
         SP: 8 //scatterplot
         //add more as we make more charts
-    };
+    };*/
 
 /*
 graphType.prototype.setType = function(num){

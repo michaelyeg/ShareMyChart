@@ -14,9 +14,7 @@ function applyFilter() {
     while(c--){
         currentArray=collectFilter(currentArray,c);
     }
-    // Grab the data array and make a copy
-    //var Data=GlobalDataArray.getArray();
-    // Question for Landon: How am i supposed to get the ORIGINAL (unmodified) dataarray in case i want to reset the filter?
+
     var DataCopy=GlobalDataArray.duplicate();
     for (var i=0; i<currentArray.size();i++){
         var ax=currentArray.Array[i].axis;
@@ -29,26 +27,28 @@ function applyFilter() {
                 break;
         }
     }
-    // TODO: how to reapply data and refresh the graph
     reloadGraph(DataCopy);
 }
 
 function resetFilter(){
+    var Data=GlobalDataArray.getArray();
+    reloadGraph(Data);
 }
 
 function reloadGraph(data) {
     var type=graphmanager.getGraphType();
     switch (type){
-        case '1':
+        case 1:
             graphmanager.makeVBC(data);
             break;
-        case '2':
+        case 2:
             graphmanager.makeHBC(data);
             break;
-        case '3':
+        case 3:
             graphmanager.makeLG(data);
             break;
-        case '4':
+        case 4:
+            console.log ("Scatterplot!");
             graphmanager.makeSP(data);
             break;
     }
