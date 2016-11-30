@@ -21,7 +21,7 @@ function pickGraphTypes(pam1, pam2) {
     }
 
     //did this kinda quickly, might be wrong, very confusing
-    if ( (pam1.type=="numeric" || pam1.type=="date" || pam1.type=="nominal") && pam2.type=="nominal")
+    if ( (pam1.type=="numeric" || pam1.type=="date" ) && ( pam2.type=="nominal" || pam2.type=="date") )
     {
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
