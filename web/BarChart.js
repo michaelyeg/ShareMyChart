@@ -268,8 +268,15 @@ BarChart.prototype.setStacked = function(sbool){
          }*/
 
          if(dray[0].typeY == "date"){
+             y = d3.scaleBand().range([0, height]);
+             //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+             y.domain(dray.map(function(d) { return d.dataY; }));
+         /*
+           problem with date issue #10
              y = d3.scaleTime().range([0,height]);
              y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+         */
+
          }else{
              y = d3.scaleBand().range([0, height]);
              //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value

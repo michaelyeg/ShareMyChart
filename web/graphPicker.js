@@ -14,7 +14,7 @@ var testpG;
 function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
-
+    //**TODO: vertical and horizontal bar charts should be the same values possible, decide!
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
