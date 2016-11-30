@@ -4,6 +4,9 @@ var xyManager = function() {
     console.log("xymanager created");
     var x_value;
     var y_value;
+    var x_name;
+    var y_name;
+
 };
 
 
@@ -16,29 +19,39 @@ xyManager.prototype.getArray = function(){
 
 xyManager.prototype.setValue = function(button){
   if(button.indexOf('x') != -1){
-      this.setX( button.substring(button.lastIndexOf("-") + 1) );
-  }else this.setY( button.substring(button.lastIndexOf("-") + 1) );
+      this.setX( button );
+  }else this.setY( button );
 
 };
 
 xyManager.prototype.setX = function(xValue){
     //check if value is already at 0
-    this.x_value = xValue;
+    this.x_name = xValue;
+    var x_val = xValue.substring(xValue.lastIndexOf("-") + 1);
+
+    this.x_value = x_val;
 
     if(this.isSet()){
         //call something to create the graph
+        console.log("x=" + this.x_value + " y=" + this.y_value);
+        this.startGraphing();
     }
 };
 
 xyManager.prototype.setY = function(yValue){
-    this.y_value = yValue;
+    this.y_name = yValue;
+    var y_val = yValue.substring(yValue.lastIndexOf("-") + 1)
+
+    this.y_value = y_val;
     if(this.isSet()){
         //call something to create the graph
+        console.log("x=" + this.x_value + " y=" + this.y_value);
+        this.startGraphing();
     }
 };
 
 xyManager.prototype.isSet = function(){
-    if(typeof this.x_value == 'undefined' || typeof this.y_value == 'undefined'){
+    if(typeof this.x_value == 'undefined' || typeof this.y_value == 'undefined' || this.x_value == null || this.y_value ==null){
         return false;
     }else{
         return true;
@@ -50,6 +63,29 @@ xyManager.prototype.getY = function(){
 };
 
 xyManager.prototype.getX = function(){
-    console.log("made it");
     return this.x_value;
+};
+
+xyManager.prototype.getXName = function(){
+    return this.x_name;
+};
+
+xyManager.prototype.getYName = function(){
+  return this.y_name;
+};
+
+xyManager.prototype.startGraphing = function(){
+    GetLink(this.x_value, this.y_value, GlobalStore);
+    pickGraphTypes(this.x_value, this.y_value);
+    var xType = pManager.getType(this.x_value);
+    var yType = pManager.getType(this.y_value);
+    initFilter();
+    getParaType(xType,yType);
+};
+
+xyManager.prototype.clearManager = function(){
+  this.x_name =null;
+  this.y_name=null;
+  this.x_value=null;
+  this.y_value=null;
 };

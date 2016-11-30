@@ -30,9 +30,10 @@ describe("getParameter2 Tests", function() {
             });
         };
 
-        var new_Store = new GraphStore("URL");
+        var new_Store = new GraphStore("http://localhost:8080/superstore-small.ttl");
 
     });
+
 
     //doesnt test the one in-code at this time - cannot call it by itself currently
     //however, identical code in beforeEach shows correctness for code itself in this case
@@ -42,11 +43,36 @@ describe("getParameter2 Tests", function() {
 
     it("Tests getParameterQuery - check TypeArray correctness", function(){
         expect(GlobalStore).not.toBe(undefined);
-        //GetParameterQuery(GlobalStore.Store); //Error problem with: TypeError: graph_store.Store.execute is not a function in web/GetParameter2.js (line 47)
-        //I have no idea why it cannot find rdfstore's functions when it can find them for the above
+        //GetParameterQuery(GlobalStore.Store); //problems!
+        //I have no idea why it cannot find rdfstore's functions when it /can/ find them for the above
+        //expect(TypeArray.length).toBe(7);
+    });
+
+    it("Tests if a store is cleared, the reload_function()", function(){
+        //doesnt use my GlobalStore...
+        //reload_function("http://localhost:8080/superstore-small.ttl"); //similar to above, but I'm not sure how to inject variables like in Angular
+    });
+
+    it("Tests getDataType(oneResult, callback)", function(){
+        var anObject = {o:{token: 'literal', type: 'http://www.w3.org/2001/XMLSchema#decimal', value: '22.2'}
+                       };
+
+                var result = getDatatype(anObject, mine);
+                expect(result).toBe("decimal");
 
     });
 
+    it("Tests GetName(uri)", function(){
+        var result = GetName("http://schema.org/Order");
+        expect(result).toBe("Order");
 
+        var result2 = GetName("h/i/");
+        expect(result2).toBe("");
+    });
+
+    function mine(oneResult, type){
+        return type;
+
+    }
 
 });

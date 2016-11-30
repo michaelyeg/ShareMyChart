@@ -25,7 +25,7 @@ function createAccordions(array_of_params){
         //newdiv.id = array_of_params[name].name;
         //newdiv.className = 'dragndropShape';
         childrenList = $(newdiv).find('h3');//.children;
-        console.log(childrenList);
+        //console.log(childrenList);
         for(var p=0;p<childrenList.length;p++){
             //only create one heading for each type
             if(!(childrenList[p].textContent.localeCompare(array_of_params[name].value.getClassName()))){
@@ -104,9 +104,9 @@ function addContents(array_of_parameters,classval){
  */
 $(document).on('click',".xButton",function(event){
     button = document.getElementById(this.id);
-    var oldXid = xymanager.getX();
+    var oldXid = xymanager.getXName();
     console.log(oldXid);
-    if(typeof oldXid == 'undefined'){
+    if(typeof oldXid == 'undefined' || oldXid ==null){
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setX(this.id);
     }else if(oldXid!=(this.id)){
@@ -124,11 +124,12 @@ $(document).on('click',".xButton",function(event){
  */
 $(document).on('click',".yButton",function(event){
     button = document.getElementById(this.id);
-    var oldYid = xymanager.getY();
-    if(typeof oldYid == 'undefined'){
+    var oldYid = xymanager.getYName();
+    if(typeof oldYid == 'undefined' || oldYid == null){
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setY(this.id);
     }else if(oldYid!=(this.id)){
+        console.log(oldYid);
         oldbutton = document.getElementById(oldYid);
         oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
         button.style.backgroundColor='#337ab7';//change my background color to blue

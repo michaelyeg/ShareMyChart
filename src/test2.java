@@ -1,3 +1,4 @@
+/*
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,7 @@ public class test2 {
     @Test
     public void startWebDriver(){
 
-
+*/
         /* The following code is for the Marionette Driver
             this will work in v 2.53.1 and v 3.0.0 and 3.0.1 of WebDriver
             but is deprecated in v 3.0.1 of WebDriver so may not work in future versions
@@ -23,6 +24,7 @@ public class test2 {
         /* You can set the path to the actual file location of the driver */
         // String currentDir = System.getProperty("user.dir");
         // String marionetteDriverLocation = currentDir + "/tools/marionette/wires.exe";
+/*
          System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 
         //If you add the folder with geckodriver.exe (wires.exe) to the path then you only need the following line
@@ -51,3 +53,4 @@ public class test2 {
         driver.quit();
     }
 }
+*/

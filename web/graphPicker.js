@@ -18,9 +18,6 @@ function pickGraphTypes(pam1, pam2) {
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
-
-        //aggregate(pam2,pam1);
-        //displayBarchart(pam1,pam2);
     }
 
     //did this kinda quickly, might be wrong, very confusing
@@ -28,36 +25,31 @@ function pickGraphTypes(pam1, pam2) {
     {
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
-
-        //aggregate(pam2,pam1);
-        //displayBarchart(pam1,pam2);
     }
 
     if( (pam1.type=="numeric" || pam1.type=="date") && (pam2.type=="date" || pam2.type=="numeric") ){
         console.log("It's a line graph!");
         pGMan.addToManager(2);
-        //displayLineGraph(pam1,pam2);
+
     }
     if( (pam1.type=="numeric" || pam1.type == "date") && (pam2.type=="numeric" || pam2.type=="date") ){
-        //displayScatter(pam1,pam2);
-        console.log("It's a scatter graph - v2!");
+        console.log("It's a scatter graph A!");
         pGMan.addToManager(3);
     }
     if(pam1.type=="nominal" && pam2.type=="nominal"){
-        console.log("It's a scatter graph! Avoid prioritizing me because I look bad w/o jitter!");
+        console.log("It's a scatter graph B! Avoid prioritizing me because I look bad w/o jitter!");
         pGMan.addToManager(4);
         //needs to aggregate... something. I think apply to x axis a count.
-        //displayScatter(pam1,pam2);
     }
 
 
 
     //wrote these for the future idk
-    if( pam1.type=="lat" && pam1.type=="long"){
+    if( pam1.type=="lat" && pam2.type=="long"){
         console.log("It's a map!");
         pGMan.addToManager(5);
     }
-    if( pam1.type=="long" && pam1.type=="lat"){
+    if( pam1.type=="long" && pam2.type=="lat"){
         console.log("It's a map v2!");
         pGMan.addToManager(6);
     }
@@ -65,7 +57,7 @@ function pickGraphTypes(pam1, pam2) {
 
     testpG = pGMan;
     console.log("pG:" + testpG.getAll());
-    visPG(pGMan);
+    //visPG(pGMan);
     //if combo makes nothing
     if(pGMan.getLength() == 0){
         //alert("Parameters chosen do not make any valid graphs. Please try again.");
@@ -73,7 +65,7 @@ function pickGraphTypes(pam1, pam2) {
     }else{
         //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
         pGMan.prioritize(pam1, pam2);
-
+        visPG(pGMan);
         //put UI option popup here!
         //*user makes a choice*
         //CALL GRAPH CREATION HERE!
@@ -112,6 +104,8 @@ function visPG(pGMan){
     console.log("start picking graph");
     console.log(pGMan.getAll());
     var graph = pGMan.getAll();
+    console.log("graph");
+    console.log(graph.length);
     //graphArr = graph.split(",");
     var k = 0, i;
     var _html;
@@ -125,23 +119,23 @@ function visPG(pGMan){
             switch (i) {
                 case 0:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="BarChart.prototype.caller1()"></a></div></div>';
+                    _html += '<img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="graphmanager.makeVBC(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 1:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="BarChart.prototype.caller2()"></a></div></div>';
+                    _html += '<img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="graphmanager.makeHBC(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 2:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="lineGraph.prototype.caller()"></a></div></div>';
+                    _html += '<img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 3:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="Scatterplot.prototype.normalscatterplot()"></a></div></div>';
+                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 4:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="Scatterplot.prototype.normalscatterplot()"></a></div></div>';
+                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
                     break;
                 case 5:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
