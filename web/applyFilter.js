@@ -34,7 +34,6 @@ function applyFilter() {
 }
 
 function resetFilter(){
-    return;
 }
 
 function reloadGraph(data) {
@@ -151,7 +150,6 @@ function yFilter(fil, DataCopy) {
         case '<':
             for (var i=0; i < DataCopy.length; i++){
                 if (!(DataCopy[i].dataY<value)){
-                    // Delete that object
                     DataCopy.splice(i,1);
                 }
             };
