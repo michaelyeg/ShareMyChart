@@ -15,7 +15,7 @@ function applyFilter() {
         currentArray=collectFilter(currentArray,c);
     }
     // Grab the data array and make a copy
-    var Data=GlobalDataArray.getArray();
+    //var Data=GlobalDataArray.getArray();
     // Question for Landon: How am i supposed to get the ORIGINAL (unmodified) dataarray in case i want to reset the filter?
     var DataCopy=GlobalDataArray.duplicate();
     for (var i=0; i<currentArray.size();i++){
@@ -30,11 +30,29 @@ function applyFilter() {
         }
     }
     // TODO: how to reapply data and refresh the graph
-
+    reloadGraph(DataCopy);
 }
 
 function resetFilter(){
     return;
+}
+
+function reloadGraph(data) {
+    var type=graphmanager.getGraphType();
+    switch (type){
+        case '1':
+            graphmanager.makeVBC(data);
+            break;
+        case '2':
+            graphmanager.makeHBC(data);
+            break;
+        case '3':
+            graphmanager.makeLG(data);
+            break;
+        case '4':
+            graphmanager.makeSP(data);
+            break;
+    }
 }
 /**
  * @description collect filter objects from UI
@@ -67,21 +85,21 @@ function xFilter(fil, DataCopy){
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataX>value || DataCopy[i].dataX==value){
+                if (!(DataCopy[i].dataX>value)){
                     DataCopy.splice(i,1);
                 }
             };
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataX==value){
+                if (!(DataCopy[i].dataX==value)){
                     DataCopy.splice(i,1);
                 }
             };
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataX<value || DataCopy[i].dataX==value){
+                if (!(DataCopy[i].dataX<value)){
                     DataCopy.splice(i,1);
                 }
             };
@@ -118,21 +136,21 @@ function yFilter(fil, DataCopy) {
     switch (condition){
         case '>':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataY>value || DataCopy[i].dataY==value){
+                if (!(DataCopy[i].dataY>value)){
                     DataCopy.splice(i,1);
                 }
             };
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataY==value){
+                if (!(DataCopy[i].dataY==value)){
                     DataCopy.splice(i,1);
                 }
             };
             break;
         case '<':
             for (var i=0; i < DataCopy.length; i++){
-                if (!DataCopy[i].dataY<value || DataCopy[i].dataY==value){
+                if (!(DataCopy[i].dataY<value)){
                     // Delete that object
                     DataCopy.splice(i,1);
                 }
