@@ -48,7 +48,6 @@ function reloadGraph(data) {
             graphmanager.makeLG(data);
             break;
         case 4:
-            console.log ("Scatterplot!");
             graphmanager.makeSP(data);
             break;
     }
@@ -142,7 +141,9 @@ function yFilter(fil, DataCopy) {
             break;
         case  '=':
             for (var i=0; i < DataCopy.length; i++){
+                console.log("Check");
                 if (!(DataCopy[i].dataY==value)){
+                    console.log(DataCopy[i].dataY);
                     DataCopy.splice(i,1);
                 }
             };
