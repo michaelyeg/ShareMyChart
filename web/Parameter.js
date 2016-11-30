@@ -20,11 +20,14 @@ var Parameter = function(name, class_value){
         this.class_value = class_value;
         this.type = "Not known";
         this.real_name = name.substring(name.lastIndexOf("/") + 1);
-        this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1)
+       // this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1)
         //console.log("real_name is: " + this.real_name);
 
     };
 
+    Parameter.prototype.getClassName = function(){
+      return this.class_value.substring(this.class_value.lastIndexOf("/") + 1);
+    };
 /**
  *
  * @constructor
@@ -35,7 +38,11 @@ var ParameterManager = function(){
 };
 
 
-
+/**
+ * @description - Gets the type of the parameter at the specified index
+ * @param index
+ * @returns {*}
+ */
 ParameterManager.prototype.getType = function(index){
     return $.pArray[index].type;
 };
@@ -54,14 +61,16 @@ ParameterManager.prototype.addParameter = function(Parameter){
 };
 
 /**
-
+@description - Gets the class value of the parameter at the specified index
+ @param index - index of desired parameter
  */
 ParameterManager.prototype.getClass = function(index){
     return $.pArray[index].class_value;
 };
 
 /**
-
+@description - Gets the parameter at the specified index
+@param index - index of desired parameter
  */
 ParameterManager.prototype.getParameter = function(index){
   return $.pArray[index];
@@ -78,10 +87,9 @@ ParameterManager.prototype.getLength = function(){
 }
 
 
-//get the Parameters as an array of strings **TODO finish this for Nikki's parameters
 /**
- *
- * @returns {Array}
+ * @description - Return a dictionary of the parameter manager's array
+ * @returns {dictionary}
  */
 ParameterManager.prototype.getParameters = function(){
     var dict = [];
@@ -89,7 +97,7 @@ ParameterManager.prototype.getParameters = function(){
     for(var i=0; i < $.pArray.length; i++){
 
         dict.push({
-            name:   $.pArray[i].real_name+" - "+$.pArray[i].class_value.substring($.pArray[i].class_value.lastIndexOf("/") + 1),
+            name:   $.pArray[i].real_name,//+" - "+$.pArray[i].class_value.substring($.pArray[i].class_value.lastIndexOf("/") + 1),
             value: $.pArray[i]
         });
 
@@ -99,10 +107,9 @@ ParameterManager.prototype.getParameters = function(){
 
 };
 
-ParameterManager.prototype.getType = function(index){
-    return $.pArray[index].type;
-};
-
+/**
+ * @description - Clears the parameter manager's contents
+ */
 ParameterManager.prototype.clearManager = function(){
     $.pArray.splice(0, $.pArray.length);
 }
@@ -136,6 +143,21 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
 };
 
 /**
+ * @desc - Returns the index for a name and class of a parameter. -1 if not found.
+ * @param name
+ * @param class_val
+ */
+ParameterManager.prototype.getIndexForNC = function(name, class_val){
+    for(var i =0; i < $.pArray.length; i++){
+        if($.pArray[i].name.localeCompare(name) ==0 && $.pArray[i].class_value.localeCompare(class_val) ==0){
+            return i;
+        }
+    }
+    console.log("Parameter not found");
+    return -1;
+};
+
+/**
  *
  * @param index
  * @param dataType
@@ -143,10 +165,13 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
  */
 ParameterManager.prototype.addDatatype = function(index, dataType){
     //will only add the datatype if it is "not known" aka not set, or it has any value that is not nominal
+
     if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("nominal") != 0){
         $.pArray[index].type = dataType;
     }
-}
+};
+
+
 
 /**
  * @description Simplifies the types into what we need for our program - carefully
@@ -156,27 +181,17 @@ ParameterManager.prototype.addDatatype = function(index, dataType){
  * any numbers = numeric
  * in implementation, note that numeric should be considered ordinal, ie, kind of like date
  */
-ParameterManager.prototype.simplifyType = function(){
-
-    var index = $.pArray.length-1;
-
-   // console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
-     //   $.pArray[index].name);
-
+ParameterManager.prototype.simplifyType = function(index){
 
         //checks for lat/long
         if ($.pArray[index].name.indexOf("latitude") >=1 || $.pArray[index].name.indexOf("longitude") >= 1) {
             if ($.pArray[index].name.indexOf("latitude") >=1){
                 $.pArray[index].type = "lat";
 
-                //console.log("Assigned lat to" + $.pArray[index].name);
-
             }
 
             else if ($.pArray[index].name.indexOf("longitude") >=1 ) {
                 $.pArray[index].type = "long";
-
-                //console.log("Assigned long to" + $.pArray[index].name);
 
             }
 
@@ -188,8 +203,6 @@ ParameterManager.prototype.simplifyType = function(){
             || $.pArray[index].type == "nonPositiveInteger" || $.pArray[index].type == "negativeInteger"
             || $.pArray[index].type == "int" || $.pArray[index].type == "long" || $.pArray[index].type == "short" ){
             $.pArray[index].type = "numeric";
-
-            //console.log("Set " + $.pArray[index].name + "as " + $.pArray[index].type);
 
         }
         //any string values will be called nominal

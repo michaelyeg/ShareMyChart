@@ -63,7 +63,7 @@
             <ul class="nav nav-pills nav-justified">
               <li role="presentation" class="active"><a href="javascript:void(0)"
                                                         onclick="openCity(event, 'visualizer')" id="defaultOpen" >Visualizer</a></li>
-              <li role="presentation" ><a href="javascript:void(0)"
+              <li role="presentation" ><a href="javascript:void(0)" id="clicktab2"
                                           onclick="openCity(event, 'data')"> data </a></li>
             </ul>
           </div><!-- /.container-fluid -->
@@ -72,10 +72,14 @@
       <br>
 
       <div class="row tabcontent" id="visualizer"> <!--tab for visualizer-->
+        <div id = "putAccordionHere" class = "putAccordionHere">
+          <div id="placeholder">Please select a data file.</div>
+        </div>
         <div class="col-xs-6">
+
           <div class="row">
             <!--dimensions-->
-            <div class="container-fluid">
+     <!--      <div class="container-fluid">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title center" >dimensions </h3>
@@ -86,9 +90,9 @@
                 <div class="panel-body center" id="drag_parameters">
                   <!--Draggable objects are generated here-->
 
-                </div>
+                 <!-- </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
           <div class="row">
@@ -130,7 +134,7 @@
           <div class="row">
             <!--marks-->
 
-            <div class="container-fluid">
+        <!--    <div class="container-fluid">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title center">marks</h3>
@@ -141,11 +145,11 @@
                 </div>
               </div>
             </div>
-
+-->
           </div>
           <div class="row">
             <!--labels-->
-            <div class="container-fluid">
+         <!--  <div class="container-fluid">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title center">labels</h3>
@@ -154,7 +158,7 @@
 
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -172,7 +176,7 @@
             <div class="container-fluid">
               <form id="form-submit" action="#" method="post"
                     enctype="multipart/form-data"><!--post form-->
-                <input type="file" name="file"/>
+                <input type="file" id="myfile" name="file"/>
                 <br/>
                 <input id="submit" type="submit" class="btn btn-secondary btn-block" value="Upload File" />
               </form>
@@ -194,11 +198,11 @@
                 <img src="icons/barChart.png" alt="" class="icon-default"/>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart"/></li>
+                <li><img src="icons/vertricalBar.png" alt="" class="icon-default" id = "verticalBarChart" onclick="graphmanager.makeVBC(GlobalDataArray.getArray())"/></li>
                 <li role="separator" class="divider"></li>
-                <li><img src="icons/horizontalBar.png" alt="" class="icon-default" id = "horizontalBarChart"/></li>
+                <li><img src="icons/horizontalBar.png" alt="" class="icon-default" id = "horizontalBarChart" onclick="graphmanager.makeHBC(GlobalDataArray.getArray())/></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#"><img src="icons/stackedBar.png" alt="" class="icon-default"/></a></li>
+               <!-- <li><a href="#"><img src="icons/stackedBar.png" alt="" class="icon-default"/></a></li> -->
               </ul>
             </div>
           </li>
@@ -208,43 +212,44 @@
                 <img src="icons/lineChart.png" alt="" class="icon-default"/>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><img src="icons/verticalLine.png" alt="" class="icon-default" id = "vlinegraph"/></li>
+                <li><img src="icons/verticalLine.png" alt="" class="icon-default" id = "vlinegraph" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"/></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
+               <!-- <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#"><img src="icons/multiLine.png" alt="" class="icon-default"/></a></li>
+                <li><a href="#"><img src="icons/multiLine.png" alt="" class="icon-default"/></a></li> -->
               </ul>
             </div>
           </li>
           <li class="nav-item" style="padding-left: 1em">
             <div class="dropdown">
               <button class="btn btn-default" type="button" id="dropdownMenu1" >
-                <img src="icons/scatterPlot.png" alt="" class="icon-default" id = "scatterplot"/>
+                <img src="icons/scatterPlot.png" alt="" class="icon-default" id = "scatterplot" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"/>
               </button>
             </div>
           </li>
-          <li class="nav-item" style="padding-left: 1em">
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <img src="icons/northAmerica.png" alt="" class="icon-default"/>
-              </button>
+          <!--   <li class="nav-item" style="padding-left: 1em">
+              <div class="dropdown">
+               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <img src="icons/northAmerica.png" alt="" class="icon-default"/>
+                </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a href="#"><img src="icons/map.png" alt="" class="icon-default"/></a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#"><img src="icons/mapwithPie.png" alt="" class="icon-default"/></a></li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item" style="padding-left: 1em">
+          </li> -->
+         <!-- <li class="nav-item" style="padding-left: 1em">
             <div class="dropdown">
               <button class="btn btn-default" type="button" id="dropdownMenu1">
                 <img src="icons/slideshow.png" alt="" class="icon-default"/>
               </button>
             </div>
-          </li>
+          </li> -->
         </ul>
       </div>
       <div class="graphcontainer" id = "graph">
+        <!--<svg width ="960" height = "500" id ="placeholdersvg"></svg> -->
             <span>
               <div class="inner"></div>
               <!-- <img src="icons/multilinepic.png" class="img-fluid" alt="Responsive image"/> -->
@@ -255,9 +260,12 @@
 </div>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type = "text/javascript" src="./graphType.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='./node_modules/rdfstore/dist/rdfstore.js'></script>
-    <!--Handles drag and drop feature-->
+    <script type = "text/javascript" src ="xyManager.js"></script>
+    <script type = "text/javascript" src ="Accordion.js"></script>
+    <link rel = "stylesheet" href = "Accordion.css">
     <script type = "text/javascript" src="./Parameter.js"></script>
     <script type = "text/javascript" src="./GetParameter2.js"></script>
     <script type = "text/javascript" src="./QueryBuilders.js"></script>
@@ -275,6 +283,7 @@
     <link rel = "stylesheet" href = "lineGraph.css">
     <script type = 'text/javascript' src="./scatterplot.js"></script>
     <link rel = "stylesheet" href = "scatterplot.css">
+<script type = "text/javascript" src="./graphManager.js"></script>
     <script type = 'text/javascript' src="./possibleGraphManager.js"></script>
     <script type = 'text/javascript' src="./graphPicker.js"></script>
     <script type = 'text/javascript' src="./applyFilter.js"></script>

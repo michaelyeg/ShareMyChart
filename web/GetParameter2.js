@@ -32,7 +32,9 @@ var GraphStore = function(URL){ //**TODO - make this into an actual function, or
                 console.log(GlobalStore);
 
                 clearDrags(URL, reload_function);
-
+                clearGraph();
+                xymanager.clearManager();
+                GlobalDataArray.clear();
 
 
             }
@@ -123,7 +125,7 @@ function GetParameterQuery(graph_store) {
 
             }
             var dict = pManager.getParameters();
-            createDrags(dict);
+            createAccordions(dict);
         }
     );
 }
@@ -136,7 +138,6 @@ function GetParameterQuery(graph_store) {
  */
 function gotDatatype(d_type, results_type){
     var unknown=false;
-
     //if it's unknown, then it's a blank node. Ignore those ones (unknown stays false)
         if(!d_type.localeCompare("unknown")){
             unknown=true;
@@ -148,13 +149,14 @@ function gotDatatype(d_type, results_type){
                 var pam = new Parameter(results_type['p'].value, results_type['t'].value);
 
                 pManager.addParameter(pam);
-                pManager.addDatatype(pManager.getLength() -1, d_type);
-                pManager.simplifyType(); //used to be a callback for the above, but still didnt work
+                pManager.addDatatype(pManager.getIndexForNC(results_type['p'].value, results_type['t'].value), d_type);
+                pManager.simplifyType(pManager.getIndexForNC(results_type['p'].value, results_type['t'].value)); //used to be a callback for the above, but still didnt work
 
             }else{
                 //parameter already exists, but still want to try assigning the datatype if it's nominal
-                pManager.addDatatype(pManager.getLength() -1, d_type);
-                pManager.simplifyType();
+
+                pManager.addDatatype(pManager.getIndexForNC(results_type['p'].value, results_type['t'].value), d_type);
+                pManager.simplifyType(pManager.getIndexForNC(results_type['p'].value, results_type['t'].value));
             }
         }
 
@@ -187,10 +189,9 @@ console.log("Running Init!");
 
 //gets the data type associated with the predicate
 function getDatatype(oneResult, callback) {
-
                 var type = 'unknown';
-
                 if (oneResult['o']['token'] == 'literal'){
+
                     if (oneResult['o']['type'] && oneResult['o']['type'].match('^http://www.w3.org/2001/XMLSchema#')){
                         var prefix = 'http://www.w3.org/2001/XMLSchema#';
                         type = oneResult['o']['type'].substr(prefix.length);
@@ -203,6 +204,7 @@ function getDatatype(oneResult, callback) {
                         type = 'float';
 
                     }else{
+
 
                         //in here if it is a string literal
                         //could possibly be other things but I don't knoooow how you'd catch a string

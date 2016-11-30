@@ -18,7 +18,7 @@
      */
 
 
-var dray2 = GlobalDataArray.getArray();
+//var dray2 = GlobalDataArray.getArray();
 
     /**
      * Create a new lineGraph that inherits from Graph
@@ -78,13 +78,7 @@ var dray2 = GlobalDataArray.getArray();
         {meters: 59, engines: 5}
     ] */
 
-    /**
-     * Listen for the click for the vertical line graph
-     *
-     */
-    $(document).ready(function(){
-        document.getElementById('vlinegraph').addEventListener("click", lineGraph.prototype.caller);
-    })
+
 
 /**
  * creates the aggregate and sets up graph-making
@@ -124,13 +118,13 @@ lineGraph.prototype.horizontalLG = function(dray){
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            lineGraph.prototype.setgraphType(4);
+            //lineGraph.prototype.setgraphType(4);
             lineGraph.prototype.setHorizontal(false);
             lineGraph.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            lineGraph.prototype.setgraphType(4);
+           // lineGraph.prototype.setgraphType(4);
             lineGraph.prototype.setHorizontal(false);
             lineGraph.prototype.makeGraph(dray);
 

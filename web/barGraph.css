@@ -1,6 +1,6 @@
 /* CSS for the bar graph*/
 .bar {
-    fill: #6F257F;
+    fill: #337ab7;
 }
 .axis path,
 .axis line {
@@ -14,10 +14,5 @@
 }
 
 .bar:hover{
-fill: black;
+fill: #2e4354;
 }
-/*
-.axis--x path {
-    display: none;
-}
-*/

@@ -36,13 +36,7 @@ Scatterplot.prototype = new Graph();
 Scatterplot.prototype.constructor = Scatterplot;
 
 
-/**
- * Listen for the click for the scatterplot graph
- *
- */
-$(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.normalscatterplot);
-})
+
 
 
 
@@ -62,12 +56,12 @@ Scatterplot.prototype.normalscatterplot = function(){
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            Scatterplot.prototype.setgraphType(8);
+            //Scatterplot.prototype.setgraphType(8);
             Scatterplot.prototype.makeGraph();
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            Scatterplot.prototype.setgraphType(8);
+           // Scatterplot.prototype.setgraphType(8);
             Scatterplot.prototype.makeGraph();
 
         }
