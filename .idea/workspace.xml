@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7b3f218-2669-4920-bcac-39d79903caab" name="Default" comment="try to pull from Jill">
+    <list default="true" id="d7b3f218-2669-4920-bcac-39d79903caab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/applyFilter.js" afterPath="$PROJECT_DIR$/web/applyFilter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/manageFilter.js" afterPath="$PROJECT_DIR$/web/manageFilter.js" />
     </list>
     <list id="97409d97-28ea-433a-a962-eea0a4a23071" name="ignore" comment="" />
     <ignored path="ShareMyChart.iws" />
@@ -39,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manageFilter.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manageFilter.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/manageFilter.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="307">
@@ -59,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="applyFilter.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="applyFilter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/applyFilter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="143" column="37" lean-forward="false" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
+            <state relative-caret-position="394">
+              <caret line="82" column="28" lean-forward="false" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -149,6 +148,7 @@
       <find>filters</find>
       <find>filter</find>
       <find>proto</find>
+      <find>length</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -178,8 +178,8 @@
         <option value="$PROJECT_DIR$/web/main.html" />
         <option value="$PROJECT_DIR$/web/filter.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/web/applyFilter.js" />
         <option value="$PROJECT_DIR$/web/manageFilter.js" />
+        <option value="$PROJECT_DIR$/web/applyFilter.js" />
       </list>
     </option>
   </component>
@@ -299,6 +299,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareMyChart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareMyChart" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -932,7 +946,7 @@
       <workItem from="1480471971634" duration="126000" />
       <workItem from="1480534970678" duration="459000" />
       <workItem from="1480535586164" duration="17000" />
-      <workItem from="1480535792485" duration="3003000" />
+      <workItem from="1480535792485" duration="4487000" />
     </task>
     <task id="LOCAL-00001" summary="merge with master">
       <created>1478235142436</created>
@@ -1060,11 +1074,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480535382023</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="try to pull from Jill">
+      <created>1480538814000</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1480538814000</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42727000" />
+    <option name="totallyTimeSpent" value="44211000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1491,18 +1512,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/applyFilter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="143" column="37" lean-forward="false" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/manageFilter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
           <caret line="70" column="51" lean-forward="true" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/applyFilter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="82" column="28" lean-forward="false" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
           <folding />
         </state>
       </provider>
