@@ -9,31 +9,32 @@ function graphManager() {
     this.barChart = new BarChart();
     this.lineGraph = new lineGraph();
     this.scatterplot = new Scatterplot();
-    this.graphType = new graphType();
+    //this.graphType = new graphType();
+    this.graphType = 0; //empty
 
 };
 
 graphManager.prototype.makeVBC = function(values){
-    this.graphType = 0;
+    this.graphType = 1;
     var dray = Aggregate("X", values);
     this.barChart.verticalBC(dray);
 };
 
 graphManager.prototype.makeHBC = function(values){
-    this.graphType = 1;
+    this.graphType = 2;
     var dray = Aggregate("Y", values);
     this.barChart.horizontalBC(dray);
 };
 
 graphManager.prototype.makeLG = function(values){
     console.log(values);
-    this.graphType = 4;
+    this.graphType = 3;
     var dray = Aggregate("X", values);
     this.lineGraph.horizontalLG(dray);
 };
 
 graphManager.prototype.makeSP = function(values){
-    this.graphType = 8;
+    this.graphType = 4;
     this.scatterplot.normalscatterplot(values);
 };
 
@@ -43,8 +44,10 @@ graphManager.prototype.clearGraph = function(){
 };
 
 graphManager.prototype.getGraphType = function(){
-    return this.graphType.getType();
+    return this.graphType;
 };
+
+
 
 /**
  * @description Listen for the click for the vertical bar chart
