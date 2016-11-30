@@ -157,5 +157,16 @@ function deletePlaceholder(){
     var deleteLocation =document.getElementById('putAccordionHere');
     //var children = deleteLocation.children;
   $(deleteLocation).empty();
+};
 
-}
+function putTextBack(){
+    var newdiv = document.createElement('div');
+    var text = document.createTextNode("Please select a data file.");
+    newdiv.appendChild(text);
+    newdiv.setAttribute('id', 'placeholder');
+
+    var theSpot = document.getElementById('putAccordionHere');
+    theSpot.appendChild(newdiv);
+
+
+};
