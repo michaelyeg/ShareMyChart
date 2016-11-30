@@ -89,3 +89,18 @@ xyManager.prototype.clearManager = function(){
   this.x_value=null;
   this.y_value=null;
 };
+
+
+/**
+ * show the current x and y values at the top right part of the page
+ */
+xyManager.prototype.placeCoordinates = function(){
+
+};
+
+/**
+ * clear the x and y values shown at top right of the page
+ */
+xyManager.prototype.clearCoordinates = function(){
+
+};
