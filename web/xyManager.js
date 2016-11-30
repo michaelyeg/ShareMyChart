@@ -27,33 +27,44 @@ xyManager.prototype.setValue = function(button){
 xyManager.prototype.setX = function(xValue){
     //check if value is already at 0
     this.x_name = xValue;
-    var x_val = xValue.substring(xValue.lastIndexOf("-") + 1);
+    console.log(xValue);
+   // if(xValue == null){
+     //   return;
+    //}else {
+        var x_val = xValue.substring(xValue.lastIndexOf("-") + 1);
 
-    this.x_value = x_val;
+        this.x_value = x_val;
 
-    if(this.isSet()){
-        //call something to create the graph
-        console.log("x=" + this.x_value + " y=" + this.y_value);
-        this.startGraphing();
-    }
+        if (this.isSet()) {
+            //call something to create the graph
+            console.log("x=" + this.x_value + " y=" + this.y_value);
+            this.startGraphing();
+        }
+    //}
 };
 
 xyManager.prototype.setY = function(yValue){
     this.y_name = yValue;
-    var y_val = yValue.substring(yValue.lastIndexOf("-") + 1)
+   // if(yValue == null) {
+     //   return;
+    //}else{
+        var y_val = yValue.substring(yValue.lastIndexOf("-") + 1)
 
-    this.y_value = y_val;
-    if(this.isSet()){
-        //call something to create the graph
-        console.log("x=" + this.x_value + " y=" + this.y_value);
-        this.startGraphing();
-    }
+        this.y_value = y_val;
+        if (this.isSet()) {
+            //call something to create the graph
+            console.log("x=" + this.x_value + " y=" + this.y_value);
+            this.startGraphing();
+        }
+    //}
 };
 
 xyManager.prototype.isSet = function(){
     if(typeof this.x_value == 'undefined' || typeof this.y_value == 'undefined' || this.x_value == null || this.y_value ==null){
         return false;
     }else{
+        console.log(this.x_value);
+        console.log(this.y_value);
         return true;
     }
 };
