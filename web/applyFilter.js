@@ -6,6 +6,10 @@
  */
 function applyFilter() {
     var c=count;
+    if (c==0){
+        resetFilter();
+        return;
+    }
     var currentArray=new filterArray();
     while(c--){
         currentArray=collectFilter(currentArray,c);
@@ -27,6 +31,10 @@ function applyFilter() {
     }
     // TODO: how to reapply data and refresh the graph
 
+}
+
+function resetFilter(){
+    return;
 }
 /**
  * @description collect filter objects from UI
