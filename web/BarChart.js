@@ -86,9 +86,9 @@ BarChart.prototype.caller1 = function(){
  * clear the old graph if there is one in the way
  */
 BarChart.prototype.verticalBC = function(dray){
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
+   // if(dray.length ==0){
+   //     alert("Please select data parameters");
+   //}else {
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
@@ -105,7 +105,7 @@ BarChart.prototype.verticalBC = function(dray){
             BarChart.prototype.makeGraph(dray);
 
         }
-    }
+    //}
 }
 
 /**
@@ -113,9 +113,10 @@ BarChart.prototype.verticalBC = function(dray){
  * clear the old graph if there is one in the way
  */
 BarChart.prototype.horizontalBC = function(dray){
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
+
+   // if(dray.length ==0){
+   //     alert("Please select data parameters");
+   // }else {
         var graphLocation = document.getElementById('graph');
 console.log(graphLocation);
         if (($('#graph').find("svg").length) == 0) {
@@ -133,7 +134,7 @@ console.log(graphLocation);
             BarChart.prototype.makeGraph(dray);
 
         }
-    }
+    //}
 }
 
 

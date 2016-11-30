@@ -41,10 +41,9 @@ Scatterplot.prototype.constructor = Scatterplot;
  * clear the old graph if there is one in the way
  */
 Scatterplot.prototype.normalscatterplot = function(dray){
-
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
+    //if(dray.length ==0){
+    //    alert("Please select data parameters");
+    //}else {
 
 
         if (($('#graph').find("svg").length) == 0) {
@@ -58,7 +57,7 @@ Scatterplot.prototype.normalscatterplot = function(dray){
             Scatterplot.prototype.makeGraph(dray);
 
         }
-    }
+   // }
 
 }
 
