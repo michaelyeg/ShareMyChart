@@ -1,6 +1,12 @@
 /**
  * Created by michaelximac on 2016-11-20.
  */
+/**
+ * @description single filter object
+ * @param axis
+ * @param condition
+ * @param value
+ */
 var filter=function(axis,condition,value){
     // x or y
     this.axis=axis;
@@ -8,6 +14,9 @@ var filter=function(axis,condition,value){
     this.value=value;
 }
 
+/**
+ * @description store multiple filters into an array of objects
+ */
 var filterArray=function(){
     this.Array=[];
 }
