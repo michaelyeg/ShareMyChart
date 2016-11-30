@@ -112,9 +112,10 @@ lineGraph.prototype.setHorizontal = function(hbool){
  * clear the old graph if there is one in the way
  */
 lineGraph.prototype.horizontalLG = function(dray){
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
+
+  //  if(dray.length ==0){
+   //     alert("Please select data parameters");
+  //  }else {
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
@@ -129,7 +130,7 @@ lineGraph.prototype.horizontalLG = function(dray){
             lineGraph.prototype.makeGraph(dray);
 
         }
-    }
+   // }
 
 }
 

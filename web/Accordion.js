@@ -114,7 +114,15 @@ $(document).on('click',".xButton",function(event){
         oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setX(this.id);
-    }
+    } /*else { //you clicked on the same button that is already blue, so change it back to white
+        button.style.backgroundColor = '#FFFFFF';
+        xymanager.setX(null);
+        //TODO: clear the data when this happens
+        //TypeArray.splice(0,TypeArray.length);
+        //pManager.clearManager();
+        //clearGraph();
+        //GlobalDataArray.clear();
+    }*/
 
 });
 
@@ -134,7 +142,11 @@ $(document).on('click',".yButton",function(event){
         oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setY(this.id);
-    }
+    } /*else { //you clicked on the same button that is already blue, so change it back to white
+        button.style.backgroundColor = '#FFFFFF';
+        xymanager.setY(null);
+        //TODO: clear the data when this happens
+    }*/
 });
 
 /**
