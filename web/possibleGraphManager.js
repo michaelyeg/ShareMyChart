@@ -7,6 +7,7 @@
 //var linegraph = new lineGraph();
 
 var PossibleGraphManager = function(){
+    console.log("New graph manager created.");
     $.pG = [];
 };
 

@@ -57,15 +57,15 @@ function pickGraphTypes(pam1, pam2) {
 
     testpG = pGMan;
     console.log("pG:" + testpG.getAll());
-    visPG(pGMan);
+    //visPG(pGMan);
     //if combo makes nothing
     if(pGMan.getLength() == 0){
-        //alert("Parameters chosen do not make any valid graphs. Please try again.");
+        alert("Parameters chosen do not make any valid graphs. Please try again.");
         //would be nice to reset the parameters here, but I'm not sure if that'll clear their ids...
     }else{
         //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
         pGMan.prioritize(pam1, pam2);
-        //visPG(pGMan);
+        visPG(pGMan);
         //put UI option popup here!
         //*user makes a choice*
         //CALL GRAPH CREATION HERE!
@@ -110,44 +110,51 @@ function visPG(pGMan){
     var k = 0, i;
     var _html;
     $("#show-graph").empty();
-    for (i = 0; i < 6; i++){
-        if (i == graph[k]) {
+    for (i = 0; i < graph.length; i++){
+        //if (i == graph[k]) {
             _html = '<div class="row">';
             _html += '<div class="col-md-4 col-md-offset-4">';
-            k++;
-            console.log(i);
-            switch (i) {
+            //k++;
+            console.log(graph[i]);
+            switch (graph[i]) {
                 case 0:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="graphmanager.makeVBC(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 1:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="graphmanager.makeHBC(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 2:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 3:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 4:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 5:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map1"></a></div></div>';
+                    //k++;
                     break;
                 case 6:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map2"></a></div></div>';
+                    //k++;
                     break;
             }
             $("#show-graph").append(_html);
-        }
+        //}
     }
     $("#dialog").modal('show');
     console.log("finish picking graph");
