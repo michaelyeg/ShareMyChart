@@ -188,16 +188,22 @@ lineGraph.prototype.horizontalLG = function(dray){
 
         //check to see if the data is a date value and use scaletime if it is
         if(dray[0].typeX == "date"){
-            x = d3.scaleTime().rangeRound([0, width]);
-            x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+            //x = d3.scaleTime().rangeRound([0, width]);
+            //x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+            x = d3.scaleBand().range([0, width]);
+            //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+            x.domain(dray.map(function(d) { return d.dataX; }));
         } else{
             x = d3.scaleLinear().rangeRound([0, width]);
             x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
         }
 
         if(dray[0].typeY == "date"){
-            y = d3.scaleTime().rangeRound([height -20, 0]);
-            y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+            //y = d3.scaleTime().rangeRound([height -20, 0]);
+            //y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+            y = d3.scaleBand().range([0, height]);
+            //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+            y.domain(dray.map(function(d) { return d.dataY; }));
         }else{
             y = d3.scaleLinear().range([height -20, 0]);
             y.domain(d3.extent(dray, function(d) { return d.dataY; }));
@@ -216,20 +222,20 @@ lineGraph.prototype.horizontalLG = function(dray){
         if( (dray[0].typeX == "date") && (dray[0].typeY == "date") ){
             //if both are dates
             var line = d3.line()
-                .x(function(d) { return x(new Date(d.dataX)); })
-                .y(function(d) { return y(new Date(d.dataY)); });
+                .x(function(d) { return x(d.dataX); })
+                .y(function(d) { return y(d.dataY); });
 
         } else   if( (dray[0].typeX == "date") && (dray[0].typeY != "date") ){
             //if x is a date only
             var line = d3.line()
-                .x(function(d) { return x(new Date(d.dataX)); })
+                .x(function(d) { return x(d.dataX); })
                 .y(function(d) { return y(d.dataY); });
 
         }else   if( (dray[0].typeX != "date") && (dray[0].typeY == "date") ){
             //if y is a date only
             var line = d3.line()
                 .x(function(d) { return x(d.dataX); })
-                .y(function(d) { return y(new Date(d.dataY)); });
+                .y(function(d) { return y(d.dataY); });
 
 
         } else   if( (dray[0].typeX != "date") && (dray[0].typeY != "date") ){

@@ -15,27 +15,50 @@ function graphManager() {
 };
 
 graphManager.prototype.makeVBC = function(values){
-    this.graphType = 1;
-    var dray = Aggregate("X", values);
-    this.barChart.verticalBC(dray);
+    if(graphmanager.isData(values)){
+        this.graphType = 1;
+        var dray = Aggregate("X", values);
+        this.barChart.verticalBC(dray);
+    } else return;
+
+
+
 };
 
 graphManager.prototype.makeHBC = function(values){
-    this.graphType = 2;
-    var dray = Aggregate("Y", values);
-    this.barChart.horizontalBC(dray);
+    if(graphmanager.isData(values)) {
+
+        this.graphType = 2;
+        var dray = Aggregate("Y", values);
+        this.barChart.horizontalBC(dray);
+    } else return;
 };
 
 graphManager.prototype.makeLG = function(values){
-    console.log(values);
-    this.graphType = 3;
-    var dray = Aggregate("X", values);
-    this.lineGraph.horizontalLG(dray);
+    if(graphmanager.isData(values)) {
+        console.log(values);
+        this.graphType = 3;
+        var dray = Aggregate("X", values);
+        this.lineGraph.horizontalLG(dray);
+    } else return;
 };
 
 graphManager.prototype.makeSP = function(values){
-    this.graphType = 4;
-    this.scatterplot.normalscatterplot(values);
+    if(graphmanager.isData(values)) {
+        this.graphType = 4;
+        var agrDray;
+        //check if x or y is nominal to aggregate
+        if (values[0].typeX == "nominal" && values[0].typeY == "nominal") {
+            agrDray = Aggregate("X", values);
+            this.scatterplot.normalscatterplot(agrDray);
+
+        } else {
+//if neither value is nominal
+            this.scatterplot.normalscatterplot(values);
+        }
+
+    }else return;
+
 };
 
 graphManager.prototype.clearGraph = function(){
@@ -48,7 +71,13 @@ graphManager.prototype.getGraphType = function(){
 };
 
 
-
+graphManager.prototype.isData = function(data){
+    if(data.length ==0) {
+        alert("Please select data parameters");
+        return false;
+    }
+    else return true;
+}
 /**
  * @description Listen for the click for the vertical bar chart
  *
