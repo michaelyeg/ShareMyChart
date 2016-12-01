@@ -62,7 +62,7 @@ $(document).ready(function initDragnDrop(event, ui){
             }
 
             var dropArray = document.getElementsByClassName("dropMe");
-            console.log(dropArray);
+            //console.log(dropArray);
             //console.log("Child0 is:" + dropArray[0].children.length + "Child1 is: " + dropArray[1].children.length)
 
             //check for if both parameters have been dropped - cue the visualizer!
@@ -83,14 +83,16 @@ $(document).ready(function initDragnDrop(event, ui){
                 * Both for now are just going with their first option, if UI is possible for the S4.
                 */
                 //console.log("First: " + dropArray[0].children[0].attributes[0].nodeValue + "Second: " + dropArray[1].children[0].attributes[0].nodeValue)
-                //pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
-
-
-
+                pickGraphTypes(dropArray[0].children[0].attributes[0].nodeValue, dropArray[1].children[0].attributes[0].nodeValue);
                 var xType = ParameterManager.prototype.getType(dropArray[0].children[0].attributes[0].nodeValue);
                 var yType = ParameterManager.prototype.getType(dropArray[1].children[0].attributes[0].nodeValue);
+
+                if (xType == "nominal"){
+
+                }
+
                 initFilter();
-                getType(xType,yType);
+                getParaType(xType,yType);
             }
 
         })
@@ -156,7 +158,6 @@ function createDrags(array_of_params){ //document.ready
  * @description - clears the UI parameters shown
  */
 function clearDrags(URL, clear_callback){
-console.log("call on meeeee");
 
     //console.log(document.getElementById('sortable'));
     //var p = document.getElementById('sortable');
@@ -165,7 +166,7 @@ console.log("call on meeeee");
     //console.log(c);
 
     //var delLocation =document.getElementById('drag_parameters');
-    console.log(document.getElementsByClassName('sortable'));
+    //console.log(document.getElementsByClassName('sortable'));
     $('.sortable').empty(); //**TODO make this clear the draggables again!! Somehow it was lost
     //console.log($(delLocation).find(".sortable").length);
      //console.log(delLocation);
@@ -179,18 +180,32 @@ console.log("call on meeeee");
     droppedPams2[1].remove();
 */
   var dropp = document.getElementsByClassName("dropMe");
-    console.log(dropp);
+    //console.log(dropp);
     var d1=$(dropp[0]).find('.dragndropShape');
     var d2 = $(dropp[1]).find('.dragndropShape');
 
-    console.log(d1);
-//        d1[0].remove();
- //   d2[0].remove();
+
+    //only does these if draggables dragged
+    /*
+    if(typeof d1 != 'undefined' ) {
+        d1[0].remove();
+    }
+    if( typeof d2 != 'undefined'){
+        d2[0].remove();
+    }
+   */
 
     clear_callback(URL);
     /*while (delLocation.hasChildNodes()) {
         delLocation.removeChild(delLocation.lastChild);
     }*/
 
+}
+
+/**
+ * @description - clears the graph from the UI
+ */
+function clearGraph(){
+    d3.select("svg").remove();
 }
 

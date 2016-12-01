@@ -5,6 +5,9 @@
  * create the accordions with the general names
  * @param array_of_params
  */
+
+var xymanager = new xyManager();
+
 function createAccordions(array_of_params){
     deletePlaceholder();
     var insertLocation =document.getElementById('putAccordionHere');
@@ -22,7 +25,7 @@ function createAccordions(array_of_params){
         //newdiv.id = array_of_params[name].name;
         //newdiv.className = 'dragndropShape';
         childrenList = $(newdiv).find('h3');//.children;
-        console.log(childrenList);
+        //console.log(childrenList);
         for(var p=0;p<childrenList.length;p++){
             //only create one heading for each type
             if(!(childrenList[p].textContent.localeCompare(array_of_params[name].value.getClassName()))){
@@ -70,13 +73,13 @@ function addContents(array_of_parameters,classval){
             //put in x and y buttons
             btnx = document.createElement('button');
             btnx.appendChild(document.createTextNode("X"));
-            btnx.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name + "-x");
+            btnx.setAttribute('id', "x-" + name);
             btnx.setAttribute('class','xButton');
            // btnx.onclick = xClick;
 
             btny = document.createElement('button');
             btny.appendChild(document.createTextNode("Y"));
-            btny.setAttribute('id', classval + "-" + array_of_parameters[name].value.real_name + "-y");
+            btny.setAttribute('id',"y-" + name);
             btny.setAttribute('class','yButton');
            // btny.onclick = yClick;
 
@@ -101,7 +104,28 @@ function addContents(array_of_parameters,classval){
  */
 $(document).on('click',".xButton",function(event){
     button = document.getElementById(this.id);
-    button.style.backgroundColor='#337ab7';
+    var oldXid = xymanager.getXName();
+    console.log(oldXid);
+    if(typeof oldXid == 'undefined' || oldXid ==null){
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setX(this.id);
+        xymanager.placeCoordinateX();
+    }else if(oldXid!=(this.id)){
+        oldbutton = document.getElementById(oldXid);
+        oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setX(this.id);
+        xymanager.placeCoordinateX()
+    } /*else { //you clicked on the same button that is already blue, so change it back to white
+        button.style.backgroundColor = '#FFFFFF';
+        xymanager.setX(null);
+        //TODO: clear the data when this happens
+        //TypeArray.splice(0,TypeArray.length);
+        //pManager.clearManager();
+        //clearGraph();
+        //GlobalDataArray.clear();
+    }*/
+
 });
 
 /**
@@ -110,7 +134,23 @@ $(document).on('click',".xButton",function(event){
  */
 $(document).on('click',".yButton",function(event){
     button = document.getElementById(this.id);
-    button.style.backgroundColor='#337ab7';
+    var oldYid = xymanager.getYName();
+    if(typeof oldYid == 'undefined' || oldYid == null){
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setY(this.id);
+        xymanager.placeCoordinateY();
+    }else if(oldYid!=(this.id)){
+        console.log(oldYid);
+        oldbutton = document.getElementById(oldYid);
+        oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
+        button.style.backgroundColor='#337ab7';//change my background color to blue
+        xymanager.setY(this.id);
+        xymanager.placeCoordinateY();
+    } /*else { //you clicked on the same button that is already blue, so change it back to white
+        button.style.backgroundColor = '#FFFFFF';
+        xymanager.setY(null);
+        //TODO: clear the data when this happens
+    }*/
 });
 
 /**
@@ -121,5 +161,16 @@ function deletePlaceholder(){
     var deleteLocation =document.getElementById('putAccordionHere');
     //var children = deleteLocation.children;
   $(deleteLocation).empty();
+};
 
-}
+function putTextBack(){
+    var newdiv = document.createElement('div');
+    var text = document.createTextNode("Please select a data file.");
+    newdiv.appendChild(text);
+    newdiv.setAttribute('id', 'placeholder');
+
+    var theSpot = document.getElementById('putAccordionHere');
+    theSpot.appendChild(newdiv);
+
+
+};

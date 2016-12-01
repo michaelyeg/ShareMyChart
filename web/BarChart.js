@@ -26,7 +26,7 @@ Bar Chart on D3's examples. Modifications include accepting an array instead of 
  Landon Thys: lthys@ualberta.ca */
 
 
-var dray2 = GlobalDataArray.getArray();
+//var dray2 = GlobalDataArray.getArray();
 
 /**
  * Create a new BarChart that inherits from Graph
@@ -59,21 +59,6 @@ BarChart.prototype.constructor = BarChart;
 ];
 */
 
-/**
- * @description Listen for the click for the vertical bar chart
- *
- */
-$(document).ready(function(){
-    document.getElementById('verticalBarChart').addEventListener("click", BarChart.prototype.caller1);
-})
-
-/**
- * Listen for the click for the horizontal bar chart
- *
- */
-$(document).ready(function(){
-    document.getElementById('horizontalBarChart').addEventListener("click", BarChart.prototype.caller2);
-})
 
 /**
  * creates the aggregate and sets up graph-making
@@ -101,26 +86,26 @@ BarChart.prototype.caller1 = function(){
  * clear the old graph if there is one in the way
  */
 BarChart.prototype.verticalBC = function(dray){
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
+   // if(dray.length ==0){
+   //     alert("Please select data parameters");
+   //}else {
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            BarChart.prototype.setgraphType(0);
+           // BarChart.prototype.setgraphType(0);
             BarChart.prototype.setHorizontal(false);
             //something about stacked
             BarChart.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            BarChart.prototype.setgraphType(0);
+           // BarChart.prototype.setgraphType(0);
             BarChart.prototype.setHorizontal(false);
             //something about stacked
             BarChart.prototype.makeGraph(dray);
 
         }
-    }
+    //}
 }
 
 /**
@@ -128,26 +113,28 @@ BarChart.prototype.verticalBC = function(dray){
  * clear the old graph if there is one in the way
  */
 BarChart.prototype.horizontalBC = function(dray){
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
 
+   // if(dray.length ==0){
+   //     alert("Please select data parameters");
+   // }else {
+        var graphLocation = document.getElementById('graph');
+console.log(graphLocation);
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            BarChart.prototype.setgraphType(1);
+          //  BarChart.prototype.setgraphType(1);
             BarChart.prototype.setHorizontal(true);
             //something about stacked
             BarChart.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            BarChart.prototype.setgraphType(1);
+           // BarChart.prototype.setgraphType(1);
             BarChart.prototype.setHorizontal(true);
             //something about stacked
             BarChart.prototype.makeGraph(dray);
 
         }
-    }
+    //}
 }
 
 
@@ -256,7 +243,7 @@ BarChart.prototype.setStacked = function(sbool){
 
        //  var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
-         var x, y;
+         var y;
 
          //check to see if the data is a date value and use scaletime if it is
          /*if(dray[0].typeX == "date"){
@@ -268,8 +255,15 @@ BarChart.prototype.setStacked = function(sbool){
          }*/
 
          if(dray[0].typeY == "date"){
+             y = d3.scaleBand().range([0, height]);
+             //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+             y.domain(dray.map(function(d) { return d.dataY; }));
+         /*
+           problem with date issue #10
              y = d3.scaleTime().range([0,height]);
              y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+         */
+
          }else{
              y = d3.scaleBand().range([0, height]);
              //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
@@ -331,7 +325,7 @@ BarChart.prototype.setStacked = function(sbool){
              .attr('y', function(d){ y(d.letter)})
              .attr('width', y.bandwidth())
 */
-     } else {
+     } else { //vertical bar chart
          /*
 Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL v3 license.
  Copyright (C) 2016  Nicole Lovas, Jillian Lovas, Margaret Guo, Landon Thys, Michael Xi, and Diego Serrano Suarez.
@@ -354,8 +348,19 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
 
          //check to see if the data is a date value and use scaletime if it is
          if(dray[0].typeX == "date"){
+             //handling date as a nominal for now
+             x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
+             //x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+             x.domain(dray.map(function (d) { return d.dataX; }));
+
+             /*
+
+             problem with date in vertical bar graph noted in issue #10
+
+             var parseDate = d3.timeParse("%y-%m-%d");
              x = d3.scaleTime().range([0, width]);
-             x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+             x.domain(d3.extent(dray, function(d) { return parseDate(d.dataX); }));
+            */
          } else{
              x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
              //x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
@@ -411,22 +416,53 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
              .style("text-anchor", "middle")
              .text(dray[0].nameX);
 
+         console.log(width);
 
-         g.selectAll(".bar")
-             .data(dray)
-             .enter().append("rect")
-             .attr("class", "bar")
-             .attr("x", function (d) {
-                 return x(d.dataX);
-             })
-             .attr("y", function (d) {
-                 return y(d.dataY);
-             })
-             .attr("width", x.bandwidth())
-             .attr("height", function (d) {
-                 return height - y(d.dataY);
-             });
+         //if it's date, use your own made bandwidth bc d3's hates date
+         if(dray[0].typeX =="date") {
+             g.selectAll(".bar")
+                 .data(dray)
+                 .enter().append("rect")
+                 .attr("class", "bar")
+                 .attr("x", function (d) {
+                     //if (dray[0].typeX == "date") { //changed
+                     //    console.log("Me");
+                     //    return 13; //x(13)
+                     //} else {
+                     //    console.log("No, me");
+                         return x(d.dataX);
+                         //return x( parseDate(d.dataX) ); part of date not working on x axis
+                     //}
+                 })
+                 .attr("y", function (d) {
+                     return y(d.dataY);
+                 })
+                 .attr("width", width/dray.length)
+                 .attr("height", function (d) {
+                     return height - y(d.dataY);
+                 });
+         }else{
+            //use d3's bandwidth function bc it works
+             g.selectAll(".bar")
+                 .data(dray)
+                 .enter().append("rect")
+                 .attr("class", "bar")
+                 .attr("x", function (d) {
+                     if(dray[0].typeX =="date"){ //changed
+                         return x(13);
+                     }else{
+                         return x(d.dataX);
+                     }
+                 })
+                 .attr("y", function (d) {
+                     return y(d.dataY);
+                 })
+                 .attr("width", x.bandwidth())
+                 .attr("height", function (d) {
+                     return height - y(d.dataY);
+                 });
 
+         }
 
 
 

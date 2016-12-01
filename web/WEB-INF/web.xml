@@ -5,7 +5,10 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            C:\Users\User\IdeaProjects\ShareMyChart\web\data\
+
+            C:\Users\User\IdeaProjects\ShareMyChart\out\artifacts\ShareMyChart_war_exploded\data\
+
+
         </param-value>
     </context-param>
 

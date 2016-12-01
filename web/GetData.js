@@ -63,7 +63,7 @@ function GetLink(Param1, Param2, graph){
 
         }else{
             var specialArray = [{name:GlobalX.real_name, uri:GlobalX.name}, GlobalX, {name:GlobalY.real_name,uri:GlobalY.name}];
-            console.log(specialArray);
+            //console.log(specialArray);
             GetData(GlobalX.name, GlobalY.name, GlobalStore, specialArray);
             break;
 
@@ -80,10 +80,10 @@ function GetLink(Param1, Param2, graph){
 function GetLinkResult(err, results) {
 
 
-    console.log("Get One Link Results:");
-    console.log(results);
-    console.log(GlobalX);
-    console.log(GlobalY);
+    //console.log("Get One Link Results:");
+    //console.log(results);
+    //console.log(GlobalX);
+    //console.log(GlobalY);
     var temp_results = [{name:GlobalX.real_name,uri:GlobalX.name},
                           {name:GetName(GlobalX.class_value), uri:GlobalX.class_value}];
 
@@ -102,8 +102,8 @@ function GetLinkResult(err, results) {
         ListItem = {name:GlobalY.real_name, uri:GlobalY.name};
         temp_results.push(ListItem);
         GlobalLink.push(temp_results);
-        console.log("HERE:");
-        console.log(temp_results)
+        //console.log("HERE:");
+        //console.log(temp_results)
         //TODO: send data to the prompt instead of skipping and going right to GetData
         GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
 
@@ -112,8 +112,8 @@ function GetLinkResult(err, results) {
 
 function GetLinkResultFlipped(err, results) {
 
-    console.log("Get One Link Results:");
-    console.log(results);
+    //console.log("Get One Link Results:");
+    //console.log(results);
     var temp_results = [{name:GlobalY.real_name,uri:GlobalY.name},
         {name:GetName(GlobalY.class_value), uri:GlobalY.class_value}];
 
@@ -159,8 +159,8 @@ function GetData(uri1, uri2, graph, link_path){
     var query = QueryBuilderData(uri1, uri2, link_path );
 
     graph.execute(query,function(err, results) {
-        console.log("Results using query Builder:");
-        console.log(results);
+        //console.log("Results using query Builder:");
+        //console.log(results);
         for(var i = 0; i < results.length; i++){
             DataObject = {
                 nameX:GlobalX.real_name,
@@ -172,7 +172,7 @@ function GetData(uri1, uri2, graph, link_path){
             };
 
             //DataArray.push(DataObject);
-            console.log(DataObject);
+            //console.log(DataObject);
             GlobalDataArray.addData(DataObject);
 
         }
@@ -181,7 +181,7 @@ function GetData(uri1, uri2, graph, link_path){
 
         pickGraphTypes(GlobalX, GlobalY);
 
-        console.log(Aggregate("X"));
+        //console.log(Aggregate("X"));
 
     });
 

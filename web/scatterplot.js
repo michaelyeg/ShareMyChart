@@ -17,7 +17,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var dray = GlobalDataArray.getArray();
+//var dray = GlobalDataArray.getArray();
 
 
 /**
@@ -37,48 +37,34 @@ Scatterplot.prototype.constructor = Scatterplot;
 
 
 /**
- * Listen for the click for the scatterplot graph
- *
- */
-$(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", Scatterplot.prototype.normalscatterplot);
-})
-
-
-
-
-
-
-/**
  * prepare the settings for the normal scatterplot
  * clear the old graph if there is one in the way
  */
-Scatterplot.prototype.normalscatterplot = function(){
-
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
+Scatterplot.prototype.normalscatterplot = function(dray){
+    //if(dray.length ==0){
+    //    alert("Please select data parameters");
+    //}else {
 
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
-            Scatterplot.prototype.setgraphType(8);
-            Scatterplot.prototype.makeGraph();
+            //Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph(dray);
         } else {
             //otherwise, remove the old graph and build this one
             d3.select("svg").remove();
-            Scatterplot.prototype.setgraphType(8);
-            Scatterplot.prototype.makeGraph();
+           // Scatterplot.prototype.setgraphType(8);
+            Scatterplot.prototype.makeGraph(dray);
 
         }
-    }
+   // }
 
 }
 
 /**
  * creates a scatterplot based on the user's data
  */
-Scatterplot.prototype.makeGraph = function() {
+Scatterplot.prototype.makeGraph = function(dray) {
 
 
  //if this works it needs to be refactored by sprint 5
@@ -113,20 +99,48 @@ Scatterplot.prototype.makeGraph = function() {
 
     //check to see if the data is a date value and use scaletime if it is
     if(dray[0].typeX == "date"){
-        x = d3.scaleTime().range([0, width]);
-        x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+        //x = d3.scaleTime().range([0, width]);
+        //x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+
+        x = d3.scaleBand().range([0, width]);
+        //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+        x.domain(dray.map(function(d) { return d.dataX; }));
     } else{
-        x = d3.scaleLinear().range([0, width]);
-        x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+        //nominal:
+        if(dray[0].typeX == "nominal") {
+            x = d3.scaleLinear().range([0, width]);
+            x.domain(dray.map(function(d) { return d.dataY; }));
+            console.log("x domain:" + x.domain());
+        } else{
+            //other data types except date and nominal
+            x = d3.scaleLinear().range([0, width]);
+            x.domain([0, d3.max(dray, function (d) {
+                return d.dataX;
+            })]); //starts at 0, ends at max + a value
+            console.log("x domain:" + x.domain());
+        }
     }
 
     if(dray[0].typeY == "date"){
-        y = d3.scaleTime().range([height + 50, 0]);
-        y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+        //y = d3.scaleTime().range([height + 50, 0]);
+        //y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+        y = d3.scaleBand().range([height + 50, 0]);
+        //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+        y.domain(dray.map(function(d) { return d.dataY; }));
+
     }else{
+
+        if(dray[0].typeX == "nominal") {
+            //if the type is nominal
+            y = d3.scaleLinear().range([height + 50, 0]);
+            y.domain(dray.map(function(d) { return d.dataY; }));
+            console.log("y domain:" + y.domain());
+        } else{
+            //if the type is neither nominal nor date
         y = d3.scaleLinear().range([height + 50, 0]);
         y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
         console.log("y domain:" + y.domain());
+        }
     }
 
   /*  var x = d3.scaleTime().range([0, width]),
@@ -174,8 +188,8 @@ Scatterplot.prototype.makeGraph = function() {
             .attr('class', 'dot')
             .attr("r",5)
             .style("opacity", .5)
-            .attr("cx", function(d) { return x(new Date(d.dataX)); })
-            .attr("cy", function(d) { return y(new Date(d.dataY)); })
+            .attr("cx", function(d) { return x(d.dataX); })
+            .attr("cy", function(d) { return y(d.dataY); })
 
     } else   if( (dray[0].typeX == "date") && (dray[0].typeY != "date") ){
         //if x is a date only
@@ -185,7 +199,7 @@ Scatterplot.prototype.makeGraph = function() {
             .attr('class', 'dot')
             .attr("r",5)
             .style("opacity", .5)
-            .attr("cx", function(d) { return x(new Date(d.dataX)); })
+            .attr("cx", function(d) { return x(d.dataX); })
             .attr("cy", function(d) { return y(d.dataY); })
 
     }else   if( (dray[0].typeX != "date") && (dray[0].typeY == "date") ){
@@ -197,7 +211,7 @@ Scatterplot.prototype.makeGraph = function() {
             .attr("r",5)
             .style("opacity", .5)
             .attr("cx", function(d) { return x(d.dataX); })
-            .attr("cy", function(d) { return y(new Date(d.dataY)); })
+            .attr("cy", function(d) { return y(d.dataY); })
 
     } else   if( (dray[0].typeX != "date") && (dray[0].typeY != "date") ){
         //if neither are dates

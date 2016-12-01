@@ -1,8 +1,8 @@
 /**
  * Created by landon on 20/11/16.
  */
-function Aggregate(XY){
-    var data = GlobalDataArray.getArray();
+function Aggregate(XY, data){
+    //var data = GlobalDataArray.getArray();
     var NewArray = [];
     var tempOject = {};
     var ArrayFinal = [];
@@ -10,6 +10,7 @@ function Aggregate(XY){
     //Get distinct names
 
     if(XY == "X") {
+        console.log(data);
         for (var object = 0; object < data.length; object++) {
             Obj = new DataObject(data[object].dataX, 0, data[object].nameX, data[object].nameY, data[object].typeX, data[object].typeY);
 
