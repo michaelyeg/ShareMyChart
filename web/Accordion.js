@@ -109,11 +109,13 @@ $(document).on('click',".xButton",function(event){
     if(typeof oldXid == 'undefined' || oldXid ==null){
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setX(this.id);
+        xymanager.placeCoordinateX();
     }else if(oldXid!=(this.id)){
         oldbutton = document.getElementById(oldXid);
         oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setX(this.id);
+        xymanager.placeCoordinateX()
     } /*else { //you clicked on the same button that is already blue, so change it back to white
         button.style.backgroundColor = '#FFFFFF';
         xymanager.setX(null);
@@ -136,12 +138,14 @@ $(document).on('click',".yButton",function(event){
     if(typeof oldYid == 'undefined' || oldYid == null){
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setY(this.id);
+        xymanager.placeCoordinateY();
     }else if(oldYid!=(this.id)){
         console.log(oldYid);
         oldbutton = document.getElementById(oldYid);
         oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
         button.style.backgroundColor='#337ab7';//change my background color to blue
         xymanager.setY(this.id);
+        xymanager.placeCoordinateY();
     } /*else { //you clicked on the same button that is already blue, so change it back to white
         button.style.backgroundColor = '#FFFFFF';
         xymanager.setY(null);

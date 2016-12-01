@@ -38,6 +38,9 @@ graphManager.prototype.makeLG = function(values){
     if(graphmanager.isData(values)) {
         console.log(values);
         this.graphType = 3;
+        if(values[0].typeX == "numeric" && values[0].typeY == "numeric"){
+            this.lineGraph.horizontalLG(values);
+        }
         var dray = Aggregate("X", values);
         this.lineGraph.horizontalLG(dray);
     } else return;
