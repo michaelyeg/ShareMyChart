@@ -14,20 +14,20 @@ var testpG;
 function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
-
+    //**TODO: vertical and horizontal bar charts should be the same values possible, decide!
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
     }
 
     //did this kinda quickly, might be wrong, very confusing
-    if ( (pam1.type=="numeric" || pam1.type=="date" || pam1.type=="nominal") && pam2.type=="nominal")
+    if ( (pam1.type=="numeric" || pam1.type=="date" ) && ( pam2.type=="nominal" || pam2.type=="date") )
     {
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
     }
 
-    if( (pam1.type=="numeric" || pam1.type=="date") && (pam2.type=="date" || pam2.type=="numeric") ){
+    if( (pam1.type=="numeric" || pam1.type=="date") && ( pam2.type=="numeric") ){
         console.log("It's a line graph!");
         pGMan.addToManager(2);
 
@@ -36,28 +36,29 @@ function pickGraphTypes(pam1, pam2) {
         console.log("It's a scatter graph A!");
         pGMan.addToManager(3);
     }
-    if(pam1.type=="nominal" && pam2.type=="nominal"){
+    //Issue 11: cannot make nominal-nominal scatterplot
+   /* if(pam1.type=="nominal" && pam2.type=="nominal"){
         console.log("It's a scatter graph B! Avoid prioritizing me because I look bad w/o jitter!");
         pGMan.addToManager(4);
         //needs to aggregate... something. I think apply to x axis a count.
-    }
+    } */
 
 
 
     //wrote these for the future idk
-    if( pam1.type=="lat" && pam2.type=="long"){
+  /*  if( pam1.type=="lat" && pam2.type=="long"){
         console.log("It's a map!");
         pGMan.addToManager(5);
     }
     if( pam1.type=="long" && pam2.type=="lat"){
         console.log("It's a map v2!");
         pGMan.addToManager(6);
-    }
+    } */
     //idke about slideshow yet
 
     testpG = pGMan;
     console.log("pG:" + testpG.getAll());
-    //visPG(pGMan);
+    visPG(pGMan);
     //if combo makes nothing
     if(pGMan.getLength() == 0){
         //alert("Parameters chosen do not make any valid graphs. Please try again.");
@@ -65,7 +66,7 @@ function pickGraphTypes(pam1, pam2) {
     }else{
         //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
         pGMan.prioritize(pam1, pam2);
-        visPG(pGMan);
+        //visPG(pGMan);
         //put UI option popup here!
         //*user makes a choice*
         //CALL GRAPH CREATION HERE!

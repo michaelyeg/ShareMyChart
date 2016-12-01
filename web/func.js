@@ -80,6 +80,7 @@ function refreshData(){
            $("#list").html(_html);
        }
    });
+
 };
 
 
@@ -113,4 +114,20 @@ function deleteFile(){
         console.log(data);
     },'text');
     refreshData();
+    clearPrevInfo();
+}
+
+
+function clearPrevInfo(){
+    console.log("Cleared on delete");
+    TypeArray.splice(0,TypeArray.length);
+    pManager.clearManager();
+    deletePlaceholder();
+    putTextBack();
+    clearGraph();
+    xymanager.clearManager();
+    GlobalDataArray.clear();
+
+    //filter
+    
 }
