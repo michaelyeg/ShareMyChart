@@ -1,13 +1,14 @@
 /**
  * Accordions to organize all of the header sections
  */
-/**
- * create the accordions with the general names
- * @param array_of_params
- */
 
+//global variable to manage the chosen x and y values
 var xymanager = new xyManager();
 
+/**
+ * create the accordion of different data using the paramaters gathered from the user ttl file
+ * @param array_of_params
+ */
 function createAccordions(array_of_params){
     deletePlaceholder();
     var insertLocation =document.getElementById('putAccordionHere');
@@ -57,7 +58,7 @@ function createAccordions(array_of_params){
     });
 }
 /**
- * provide the accordions with their parameters
+ * provide the accordions with their parameters inside them with x and y buttons
  * @param array_of_parameters
  * @param index
  */
@@ -75,12 +76,14 @@ function addContents(array_of_parameters,classval){
             btnx.appendChild(document.createTextNode("X"));
             btnx.setAttribute('id', "x-" + name);
             btnx.setAttribute('class','xButton');
+            //btnx.setAttribute('clicked', 0);
            // btnx.onclick = xClick;
 
             btny = document.createElement('button');
             btny.appendChild(document.createTextNode("Y"));
             btny.setAttribute('id',"y-" + name);
             btny.setAttribute('class','yButton');
+           // btny.setAttribute('clicked', 0);
            // btny.onclick = yClick;
 
             //put in each parameter
@@ -103,28 +106,25 @@ function addContents(array_of_parameters,classval){
  * @param event
  */
 $(document).on('click',".xButton",function(event){
-    button = document.getElementById(this.id);
-    var oldXid = xymanager.getXName();
-    console.log(oldXid);
-    if(typeof oldXid == 'undefined' || oldXid ==null){
-        button.style.backgroundColor='#337ab7';//change my background color to blue
+
+  /*
+   How to make regular buttons behave like radio buttons:
+   kapantzak, Stack Overflow: http://stackoverflow.com/users/1221792/kapantzak
+   http://stackoverflow.com/a/37123070
+   */
+    if($(this).hasClass('active')){
+        $(this).removeClass('active');
+        xymanager.clearCoordinateX();
+        xymanager.clearX();
+
+    }else {
+        //Remove active class from all buttons
+        $('.xButton').removeClass('active');
+        //Add active class to the clicked button
+        $(this).addClass('active');
         xymanager.setX(this.id);
         xymanager.placeCoordinateX();
-    }else if(oldXid!=(this.id)){
-        oldbutton = document.getElementById(oldXid);
-        oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
-        button.style.backgroundColor='#337ab7';//change my background color to blue
-        xymanager.setX(this.id);
-        xymanager.placeCoordinateX()
-    } /*else { //you clicked on the same button that is already blue, so change it back to white
-        button.style.backgroundColor = '#FFFFFF';
-        xymanager.setX(null);
-        //TODO: clear the data when this happens
-        //TypeArray.splice(0,TypeArray.length);
-        //pManager.clearManager();
-        //clearGraph();
-        //GlobalDataArray.clear();
-    }*/
+    }
 
 });
 
@@ -133,24 +133,25 @@ $(document).on('click',".xButton",function(event){
  * @param event
  */
 $(document).on('click',".yButton",function(event){
-    button = document.getElementById(this.id);
-    var oldYid = xymanager.getYName();
-    if(typeof oldYid == 'undefined' || oldYid == null){
-        button.style.backgroundColor='#337ab7';//change my background color to blue
+
+   /*
+    How to make regular buttons behave like radio buttons:
+    kapantzak, Stack Overflow: http://stackoverflow.com/users/1221792/kapantzak
+    http://stackoverflow.com/a/37123070
+    */
+    if($(this).hasClass('active')){
+        $(this).removeClass('active');
+        xymanager.clearCoordinateY();
+        xymanager.clearY();
+    }else {
+        //Remove active class from all buttons
+        $('.yButton').removeClass('active');
+        //Add active class to the clicked button
+        $(this).addClass('active');
         xymanager.setY(this.id);
         xymanager.placeCoordinateY();
-    }else if(oldYid!=(this.id)){
-        console.log(oldYid);
-        oldbutton = document.getElementById(oldYid);
-        oldbutton.style.backgroundColor='#FFFFFF';//change old one's background color to white
-        button.style.backgroundColor='#337ab7';//change my background color to blue
-        xymanager.setY(this.id);
-        xymanager.placeCoordinateY();
-    } /*else { //you clicked on the same button that is already blue, so change it back to white
-        button.style.backgroundColor = '#FFFFFF';
-        xymanager.setY(null);
-        //TODO: clear the data when this happens
-    }*/
+    }
+
 });
 
 /**
@@ -162,7 +163,9 @@ function deletePlaceholder(){
     //var children = deleteLocation.children;
   $(deleteLocation).empty();
 };
-
+/**
+ * put the placeholder text back after a data clear
+ */
 function putTextBack(){
     var newdiv = document.createElement('div');
     var text = document.createTextNode("Please select a data file.");

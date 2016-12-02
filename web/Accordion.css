@@ -29,10 +29,10 @@
 }
 
 .yButton:hover{
-    background-color: #F1F1F1;
+    border-color: #000000;
 }
 
-.yButton:active{
+.yButton.active{
     background-color: #337ab7;
 }
 
@@ -49,10 +49,10 @@
 }
 
 .xButton:hover{
-    background-color: #F1F1F1;
+    border-color: #000000;
 }
 
-.xButton:active{
+.xButton.active{
     background-color: #337ab7;
 }
 

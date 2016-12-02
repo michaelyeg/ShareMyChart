@@ -57,4 +57,8 @@ Scatterplot in D3 (under GPL v3):
 http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 
+How to make regular buttons behave like radio buttons:
+kapantzak, Stack Overflow: http://stackoverflow.com/users/1221792/kapantzak
+http://stackoverflow.com/a/37123070
+
 
