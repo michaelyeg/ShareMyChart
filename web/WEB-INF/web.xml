@@ -5,7 +5,7 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            /Users/Margaret/Documents/workspace/ShareMyChart/out/artifacts/ShareMyChart_war_exploded/data/
+            /Users/Margaret/Documents/tomcat/webapps/ShareMyChart_war/data/
         </param-value>
     </context-param>
 

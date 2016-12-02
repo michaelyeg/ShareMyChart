@@ -45,7 +45,7 @@ document.getElementById("defaultOpen").click();
 $(document).ready(function(){
     $("#form-submit").ajaxForm({
         type:"post",
-        url:"/UploadServlet",
+        url:"/ShareMyChart_war/UploadServlet",
         success:function(data){
             console.log(data);
             refreshData();
@@ -66,7 +66,7 @@ $(document).ready(function(){
  */
 function refreshData(){
    $.ajax({
-       url:"/data",
+       url:"/ShareMyChart_war/data",
        dataType:"json",
        success:function (data) {
            console.log(data);
@@ -109,7 +109,7 @@ function deleteFile(){
             selected.push(checkbox[i].getAttribute('data-filename'));
         }
     }
-    $.post('/deleteFileServlet',{selected:selected.join(',')},function(data){
+    $.post('/ShareMyChart_war/deleteFileServlet',{selected:selected.join(',')},function(data){
         console.log(data);
     },'text');
     refreshData();
