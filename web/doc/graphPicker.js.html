@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: graphPicker.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: graphPicker.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Created by michaelximac on 2016-11-03.
+ */
+
+/**
+ * @description Pick graph based on their data type.
+ * @param pam1 - index of parameter one (x-axis)
+ * @param pam2 - index of parameter two (y-axis)
+ * Use the parameter manager to locate and figure out their types!
+ */
+
+var testpG;
+/**
+ *
+ * @param pam1
+ * @param pam2
+ * @param testThing - literally just for tests to not hit the UI part and not finish.
+ */
+function pickGraphTypes(pam1, pam2, testThing) {
+
+    var pGMan = new PossibleGraphManager();
+    //**TODO: vertical and horizontal bar charts should be the same values possible, decide!
+    if ((pam1.type=="nominal" || pam1.type =="date" )&amp;&amp; (pam2.type=="numeric")){
+        //console.log("It's a bar v chart!");
+        pGMan.addToManager(0);
+    }
+
+    //did this kinda quickly, might be wrong, very confusing
+    if ( (pam1.type=="numeric" || pam1.type=="date" ) &amp;&amp; ( pam2.type=="nominal" || pam2.type=="date") )
+    {
+        //console.log("It's a bar h chart!");
+        pGMan.addToManager(1);
+    }
+
+    if( (pam1.type=="numeric" || pam1.type=="date") &amp;&amp; ( pam2.type=="numeric") ){
+        //console.log("It's a line graph!");
+        pGMan.addToManager(2);
+
+    }
+    if( (pam1.type=="numeric" || pam1.type == "date") &amp;&amp; (pam2.type=="numeric" || pam2.type=="date") ){
+        //console.log("It's a scatter graph A!");
+        pGMan.addToManager(3);
+    }
+    //Issue 11: cannot make nominal-nominal scatterplot
+   /* if(pam1.type=="nominal" &amp;&amp; pam2.type=="nominal"){
+        console.log("It's a scatter graph B! Avoid prioritizing me because I look bad w/o jitter!");
+        pGMan.addToManager(4);
+        //needs to aggregate... something. I think apply to x axis a count.
+    } */
+
+
+
+    //wrote these for the future idk
+  /*  if( pam1.type=="lat" &amp;&amp; pam2.type=="long"){
+        console.log("It's a map!");
+        pGMan.addToManager(5);
+    }
+    if( pam1.type=="long" &amp;&amp; pam2.type=="lat"){
+        console.log("It's a map v2!");
+        pGMan.addToManager(6);
+    } */
+    //idke about slideshow yet
+
+    testpG = pGMan;
+    console.log("pG:" + testpG.getAll());
+
+    //if combo makes nothing
+    if(pGMan.getLength() == 0){
+        //TODO: have an error message properly pop up when there are no possible graphs
+        //alert("Parameters chosen do not make any valid graphs. Please try again.");
+        //would be nice to reset the parameters here
+    }else{
+        //UI for the user to choose best graph
+        pGMan.prioritize(pam1, pam2);
+
+        //put UI option popup here!
+        //*user makes a choice*
+        //CALL GRAPH CREATION HERE!
+        if(typeof testThing == 'undefined') {
+            visPG(pGMan);
+            disablePG(pGMan);
+        }
+    }
+
+
+}
+
+/**
+ * @description Aggregate counts of specified parameters.
+ * @returns {dictionary} Returns a dictionary of aggregateParameter: count.
+ */
+/*
+function aggregate(aggPar,par) {
+    // Initialize an associated Array, like dictionary in python.
+    var dictionary=new Array;
+    var count=new Number();
+    for (key in dictionary){
+        dictionary.key=value;
+    }
+
+    for (i in aggPar){
+        if (i in dictionary.key){
+            count=dictionary.key;
+            count+=1;
+            dictionary.key=count;
+        }else{
+            dictionary[i.toString()]=1;
+        }
+    }
+
+    return dictionary;
+}
+*/
+
+/**
+ * @description - Creates the UI for the user to choose the best graph possible for their chosen parameters.
+ * @param pGMan - an Object of possibleGraphManager that holds an array that has been sorted to show the best graph first.
+ */
+function visPG(pGMan){
+    //console.log("start picking graph");
+    //console.log(pGMan.getAll());
+    var graph = pGMan.getAll();
+    //console.log("graph");
+    //console.log(graph.length);
+    //graphArr = graph.split(",");
+    var k = 0, i;
+    var _html;
+    $("#show-graph").empty();
+    for (i = 0; i &lt; graph.length; i++){
+        //if (i == graph[k]) {
+            _html = '&lt;div class="row">';
+            _html += '&lt;div class="col-md-4 col-md-offset-4">';
+            //k++;
+            console.log(graph[i]);
+            switch (graph[i]) {
+                case 0:
+                    _html += '&lt;a href="javascript:void(0);" class="thumbnail">';
+                    _html += '&lt;img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="graphmanager.makeVBC(GlobalDataArray.getArray())">&lt;/a>&lt;/div>&lt;/div>';
+                    //k++;
+                    break;
+                case 1:
+                    _html += '&lt;a href="javascript:void(0);" class="thumbnail">';
+                    _html += '&lt;img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="graphmanager.makeHBC(GlobalDataArray.getArray())">&lt;/a>&lt;/div>&lt;/div>';
+                    //k++;
+                    break;
+                case 2:
+                    _html += '&lt;a href="javascript:void(0);" class="thumbnail">';
+                    _html += '&lt;img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="graphmanager.makeLG(GlobalDataArray.getArray())">&lt;/a>&lt;/div>&lt;/div>';
+                    //k++;
+                    break;
+                case 3:
+                    _html += '&lt;a href="javascript:void(0);" class="thumbnail">';
+                    _html += '&lt;img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="graphmanager.makeSP(GlobalDataArray.getArray())">&lt;/a>&lt;/div>&lt;/div>';
+                    //k++;
+                    break;
+                // case 4:
+                //     _html += '&lt;a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '&lt;img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())">&lt;/a>&lt;/div>&lt;/div>';
+                //     //k++;
+                //     break;
+                // case 5:
+                //     _html += '&lt;a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '&lt;img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map1">&lt;/a>&lt;/div>&lt;/div>';
+                //     //k++;
+                //     break;
+                // case 6:
+                //     _html += '&lt;a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '&lt;img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map2">&lt;/a>&lt;/div>&lt;/div>';
+                //     //k++;
+                //     break;
+            }
+            $("#show-graph").append(_html);
+        //}
+    }
+    $("#dialog").modal('show');
+    //console.log("finish picking graph");
+}
+
+/**
+ * @description To disable picking graph that is disabled
+ * @param pGMan an Object of possibleGraphManager that holds an array that has been sorted to show the best graph first.
+ */
+function disablePG(pGMan){
+    $("#verticalBarChart").attr("onclick","graphmanager.makeVBC(GlobalDataArray.getArray())").css('opacity',1);
+    $("#horizontalBarChart").attr("onclick","graphmanager.makeHBC(GlobalDataArray.getArray())").css('opacity',1);
+    $("#vlinegraph").attr("onclick","graphmanager.makeLG(GlobalDataArray.getArray())").css('opacity',1);
+    $("#scatterplot").attr("onclick", "graphmanager.makeSP(GlobalDataArray.getArray())").css('opacity',1);
+
+    var dis = [];
+    var i;
+    var graph = pGMan.getAll();
+    for (i = 0; i &lt; 4; i++){
+       dis[i] = 0;
+    }
+    for (i = 0; i &lt; 4; i++){
+        dis[graph[i]] = 1;
+    }
+    console.log(dis);
+    for (i = 0; i &lt; 4; i++){
+        if (dis[i] == 0){
+            switch (i){
+                case 0:
+                    $("#verticalBarChart").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 1:
+                    $("#horizontalBarChart").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 2:
+                    $("#vlinegraph").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 3:
+                    $("#scatterplot").prop("onclick", false).css('opacity',0.5);
+            }
+        }
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChart.html">BarChart</a></li><li><a href="GetLink.html">GetLink</a></li><li><a href="GetLinkResult.html">GetLinkResult</a></li><li><a href="GetLinkResultFlipped.html">GetLinkResultFlipped</a></li><li><a href="Graph.html">Graph</a></li><li><a href="graphManager.html">graphManager</a></li><li><a href="GraphSearch.html">GraphSearch</a></li><li><a href="GraphStore.html">GraphStore</a></li><li><a href="lineGraph.html">lineGraph</a></li><li><a href="MakeGraph.html">MakeGraph</a></li><li><a href="Parameter.html">Parameter</a></li><li><a href="ParameterManager.html">ParameterManager</a></li><li><a href="Scatterplot.html">Scatterplot</a></li><li><a href="UnDirGraph.html">UnDirGraph</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addContents">addContents</a></li><li><a href="global.html#Aggregate">Aggregate</a></li><li><a href="global.html#applyFilter">applyFilter</a></li><li><a href="global.html#backTrack">backTrack</a></li><li><a href="global.html#clearDrags">clearDrags</a></li><li><a href="global.html#clearGraph">clearGraph</a></li><li><a href="global.html#collectFilter">collectFilter</a></li><li><a href="global.html#containsObject">containsObject</a></li><li><a href="global.html#createAccordions">createAccordions</a></li><li><a href="global.html#createDrags">createDrags</a></li><li><a href="global.html#DataObject">DataObject</a></li><li><a href="global.html#dateSortY">dateSortY</a></li><li><a href="global.html#deleteFilter">deleteFilter</a></li><li><a href="global.html#deletePlaceholder">deletePlaceholder</a></li><li><a href="global.html#disablePG">disablePG</a></li><li><a href="global.html#DisplayLink">DisplayLink</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#filterArray">filterArray</a></li><li><a href="global.html#formatGraph">formatGraph</a></li><li><a href="global.html#GetData">GetData</a></li><li><a href="global.html#GetName">GetName</a></li><li><a href="global.html#GetParameterQuery">GetParameterQuery</a></li><li><a href="global.html#GetPredicateQuery">GetPredicateQuery</a></li><li><a href="global.html#GlobalLink">GlobalLink</a></li><li><a href="global.html#initFilter">initFilter</a></li><li><a href="global.html#Node">Node</a></li><li><a href="global.html#openCity">openCity</a></li><li><a href="global.html#pickGraphTypes">pickGraphTypes</a></li><li><a href="global.html#PossibleGraphManager">PossibleGraphManager</a></li><li><a href="global.html#putTextBack">putTextBack</a></li><li><a href="global.html#QueryBuilderData">QueryBuilderData</a></li><li><a href="global.html#QueryBuilderData_old">QueryBuilderData_old</a></li><li><a href="global.html#QueryBuilderLink">QueryBuilderLink</a></li><li><a href="global.html#refreshData">refreshData</a></li><li><a href="global.html#resetFilter">resetFilter</a></li><li><a href="global.html#resetFilterUI">resetFilterUI</a></li><li><a href="global.html#selectValue">selectValue</a></li><li><a href="global.html#sortData">sortData</a></li><li><a href="global.html#SpecialCase">SpecialCase</a></li><li><a href="global.html#testpG">testpG</a></li><li><a href="global.html#TypeArray">TypeArray</a></li><li><a href="global.html#visPG">visPG</a></li><li><a href="global.html#xFilter">xFilter</a></li><li><a href="global.html#xT">xT</a></li><li><a href="global.html#xymanager">xymanager</a></li><li><a href="global.html#xyManager">xyManager</a></li><li><a href="global.html#yFilter">yFilter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 02 2016 00:19:39 GMT-0700 (MST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
