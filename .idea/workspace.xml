@@ -7,27 +7,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7b3f218-2669-4920-bcac-39d79903caab" name="Default" comment="corrected some jsdoc, working on generating html file.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/ShareMyChart_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/deleteFileTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/loadDataTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/Tim_Berners-Lee.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/data/superstore-small.ttl" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShareMyChart/DataServlet.class" afterPath="$PROJECT_DIR$/out/production/ShareMyChart/DataServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/ShareMyChart_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ShareMyChart_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_fileupload_1_3_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_fileupload_1_3_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_io_2_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2_5.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_7.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_7.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_71.xml" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_71.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/httpunit_1_7.xml" afterPath="$PROJECT_DIR$/.idea/libraries/httpunit_1_7.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/jtidy_4aug2000r7_dev.xml" afterPath="$PROJECT_DIR$/.idea/libraries/jtidy_4aug2000r7_dev.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Bold-webfont.eot" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Bold-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Bold-webfont.woff" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Bold-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-BoldItalic-webfont.eot" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-BoldItalic-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-BoldItalic-webfont.woff" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-BoldItalic-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Italic-webfont.eot" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Italic-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Italic-webfont.woff" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Italic-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Light-webfont.eot" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Light-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Light-webfont.woff" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Light-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-LightItalic-webfont.eot" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-LightItalic-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-LightItalic-webfont.woff" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-LightItalic-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Regular-webfont.eot" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Regular-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Regular-webfont.woff" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Regular-webfont.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/pom.xml" afterPath="$PROJECT_DIR$/src/test/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/func.js" afterPath="$PROJECT_DIR$/web/func.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/node_modules/es6-promise/lib/es6-promise/-internal.js" afterPath="$PROJECT_DIR$/web/node_modules/es6-promise/lib/es6-promise/-internal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/BarChart.html" afterPath="$PROJECT_DIR$/web/doc/BarChart.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/BarChart.js.html" afterPath="$PROJECT_DIR$/web/doc/BarChart.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/GetData.js.html" afterPath="$PROJECT_DIR$/web/doc/GetData.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/GetLink.html" afterPath="$PROJECT_DIR$/web/doc/GetLink.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/GetParameter.js.html" afterPath="$PROJECT_DIR$/web/doc/GetParameter.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/GetParameter2.js.html" afterPath="$PROJECT_DIR$/web/doc/GetParameter2.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/Graph.html" afterPath="$PROJECT_DIR$/web/doc/Graph.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/Graph.js.html" afterPath="$PROJECT_DIR$/web/doc/Graph.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/GraphStore.html" afterPath="$PROJECT_DIR$/web/doc/GraphStore.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/Parameter.html" afterPath="$PROJECT_DIR$/web/doc/Parameter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/Parameter.js.html" afterPath="$PROJECT_DIR$/web/doc/Parameter.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/ParameterManager.html" afterPath="$PROJECT_DIR$/web/doc/ParameterManager.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/dragndrop.js.html" afterPath="$PROJECT_DIR$/web/doc/dragndrop.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Bold-webfont.svg" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Bold-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-BoldItalic-webfont.svg" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-BoldItalic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Italic-webfont.svg" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Italic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Light-webfont.svg" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Light-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-LightItalic-webfont.svg" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-LightItalic-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Regular-webfont.svg" afterPath="$PROJECT_DIR$/web/doc/fonts/OpenSans-Regular-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/func.js.html" afterPath="$PROJECT_DIR$/web/doc/func.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/global.html" afterPath="$PROJECT_DIR$/web/doc/global.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/index.html" afterPath="$PROJECT_DIR$/web/doc/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/scripts/linenumber.js" afterPath="$PROJECT_DIR$/web/doc/scripts/linenumber.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/scripts/prettify/Apache-License-2.0.txt" afterPath="$PROJECT_DIR$/web/doc/scripts/prettify/Apache-License-2.0.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/scripts/prettify/lang-css.js" afterPath="$PROJECT_DIR$/web/doc/scripts/prettify/lang-css.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/scripts/prettify/prettify.js" afterPath="$PROJECT_DIR$/web/doc/scripts/prettify/prettify.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/styles/jsdoc-default.css" afterPath="$PROJECT_DIR$/web/doc/styles/jsdoc-default.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/styles/prettify-jsdoc.css" afterPath="$PROJECT_DIR$/web/doc/styles/prettify-jsdoc.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/styles/prettify-tomorrow.css" afterPath="$PROJECT_DIR$/web/doc/styles/prettify-tomorrow.css" />
     </list>
     <ignored path="ShareMyChart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,8 +74,8 @@
       <file leaf-file-name="xyManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/xyManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="153" column="3" selection-start-line="153" selection-start-column="3" selection-end-line="153" selection-end-column="3" />
+            <state relative-caret-position="2295">
+              <caret line="153" column="3" lean-forward="false" selection-start-line="153" selection-start-column="3" selection-end-line="153" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -62,19 +84,32 @@
       <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="func.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="func.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/func.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="95" column="41" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="41" />
+            <state relative-caret-position="179">
+              <caret line="95" column="41" lean-forward="false" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="41" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="236">
+                <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -82,8 +117,8 @@
       <file leaf-file-name="loadDataTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/loadDataTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
+            <state relative-caret-position="435">
+              <caret line="29" column="2" lean-forward="false" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -92,8 +127,8 @@
       <file leaf-file-name="deleteFileTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/deleteFileTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+            <state relative-caret-position="300">
+              <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -102,8 +137,8 @@
       <file leaf-file-name="ShareMyChart_war_exploded.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/artifacts/ShareMyChart_war_exploded.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            <state relative-caret-position="195">
+              <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -112,8 +147,8 @@
       <file leaf-file-name="Aggregate.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/Aggregate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="96" column="40" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+            <state relative-caret-position="1440">
+              <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -122,8 +157,8 @@
       <file leaf-file-name="Accordion.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/Accordion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="124" column="32" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
+            <state relative-caret-position="1860">
+              <caret line="124" column="32" lean-forward="false" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -132,21 +167,11 @@
       <file leaf-file-name="UndirectedGraph.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/UndirectedGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state relative-caret-position="75">
+              <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BarChart.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/BarChart.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2431">
-              <caret line="168" column="63" selection-start-line="168" selection-start-column="63" selection-end-line="168" selection-end-column="63" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -218,6 +243,7 @@
         <option value="$PROJECT_DIR$/src/test/deleteFileTest.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/func.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -245,20 +271,12 @@
     <handled-path value="$PROJECT_DIR$/web/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="y" value="23" />
+    <option name="width" value="1600" />
+    <option name="height" value="873" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -275,164 +293,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
+              <option name="myItemId" value="ShareMyChart" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart_war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareMyChart - Copy dec 1 before masterM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
+              <option name="myItemId" value="ShareMyChart" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Default" />
       </pane>
     </panes>
   </component>
@@ -521,30 +397,7 @@
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
+      <predefined_log_file id="idea.log" enabled="true" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -566,7 +419,11 @@
       <option name="PREFERRED_AVD" value="" />
       <Java />
       <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
         <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
       <method />
     </configuration>
@@ -744,6 +601,7 @@
       <setting name="cmdLine" value="run-app" />
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
@@ -760,27 +618,6 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -811,12 +648,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
@@ -843,9 +674,6 @@
       <option name="workingDirectory" />
       <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -890,34 +718,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -932,19 +732,6 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
@@ -1033,10 +820,33 @@
         </option>
       </method>
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Karma.Karma Runner" />
-      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.cmput401" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.cmput401" />
     </list>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -1100,6 +910,7 @@
       <workItem from="1480563915718" duration="2804000" />
       <workItem from="1480620073829" duration="30869000" />
       <workItem from="1480656645238" duration="4032000" />
+      <workItem from="1480666795023" duration="262000" />
     </task>
     <task id="LOCAL-00001" summary="merge with master">
       <created>1478235142436</created>
@@ -1115,7 +926,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478237535483</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updated jsdoc">
+      <created>1480666868778</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1480666868778</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1151,38 +969,42 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246646000" />
+    <option name="totallyTimeSpent" value="246908000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="0" y="23" width="1600" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44901314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37223974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20790629" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1495507" sideWeight="0.50628364" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44901314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37223974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21052632" sideWeight="0.49371633" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1495507" sideWeight="0.50628364" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32730263" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1218,6 +1040,9 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
@@ -1230,9 +1055,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="merge with master" />
     <MESSAGE value="corrected some jsdoc, working on generating html file." />
-    <option name="LAST_COMMIT_MESSAGE" value="corrected some jsdoc, working on generating html file." />
+    <MESSAGE value="updated jsdoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated jsdoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1243,101 +1071,82 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/css/def.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/QueryBuilders.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
-          <caret line="84" column="6" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="6" />
+          <caret line="84" column="6" lean-forward="false" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/possibleGraphs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/acorn-jsx/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/rdfstore/frontend/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/rdfstore/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/rdfstore/lubm/browser/nodeunit.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/rdfstore/dist/rdfstore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/rdfstore/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2312">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/rdfstore/frontend/rdfstore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/ShareMyChart/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/ShareMyChart_war_exploded/possibleGraphManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/ShareMyChart/WEB-INF/web.xml" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/ShareMyChart_war_exploded/possibleGraphManager.js" />
     <entry file="file://$PROJECT_DIR$/src/test/uploadTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <caret line="9" column="2" lean-forward="false" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
-          <caret line="55" column="2" selection-start-line="55" selection-start-column="2" selection-end-line="55" selection-end-column="2" />
+          <caret line="55" column="2" lean-forward="false" selection-start-line="55" selection-start-column="2" selection-end-line="55" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1345,31 +1154,28 @@
     <entry file="file://$PROJECT_DIR$/web/scatterplot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="44" column="6" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="6" />
-          <folding />
+          <caret line="44" column="6" lean-forward="false" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/GetParameter2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-          <folding />
+          <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/dragndrop.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
-          <caret line="85" column="18" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
-          <folding />
+          <caret line="85" column="18" lean-forward="false" selection-start-line="85" selection-start-column="18" selection-end-line="85" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
-          <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+          <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1377,62 +1183,56 @@
     <entry file="file://$PROJECT_DIR$/web/Tim_Berners-Lee.ttl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/oldstuff.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/parameter.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/Parameter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="186" column="12" selection-start-line="186" selection-start-column="12" selection-end-line="186" selection-end-column="12" />
-          <folding />
+          <caret line="186" column="12" lean-forward="false" selection-start-line="186" selection-start-column="12" selection-end-line="186" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/possibleGraphManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
-          <caret line="124" column="10" selection-start-line="124" selection-start-column="10" selection-end-line="124" selection-end-column="10" />
-          <folding />
+          <caret line="124" column="10" lean-forward="false" selection-start-line="124" selection-start-column="10" selection-end-line="124" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/graphPicker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1510">
-          <caret line="107" column="2" selection-start-line="107" selection-start-column="2" selection-end-line="107" selection-end-column="2" />
-          <folding />
+          <caret line="107" column="2" lean-forward="false" selection-start-line="107" selection-start-column="2" selection-end-line="107" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/lineGraph.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="189" column="7" selection-start-line="189" selection-start-column="7" selection-end-line="189" selection-end-column="7" />
-          <folding />
+          <caret line="189" column="7" lean-forward="false" selection-start-line="189" selection-start-column="7" selection-end-line="189" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
-          <caret line="299" column="69" selection-start-line="299" selection-start-column="69" selection-end-line="299" selection-end-column="69" />
+          <caret line="299" column="69" lean-forward="false" selection-start-line="299" selection-start-column="69" selection-end-line="299" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -1440,7 +1240,7 @@
     <entry file="file://$PROJECT_DIR$/web/GetData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="205" column="4" selection-start-line="205" selection-start-column="4" selection-end-line="205" selection-end-column="4" />
+          <caret line="205" column="4" lean-forward="false" selection-start-line="205" selection-start-column="4" selection-end-line="205" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1448,57 +1248,49 @@
     <entry file="file://$PROJECT_DIR$/src/test/parameterManager.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-97">
-          <caret line="302" column="4" selection-start-line="302" selection-start-column="4" selection-end-line="302" selection-end-column="4" />
-          <folding />
+          <caret line="302" column="4" lean-forward="false" selection-start-line="302" selection-start-column="4" selection-end-line="302" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/graphPicker.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6259">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-          <folding />
+          <caret line="8" column="46" lean-forward="false" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/getParameter2.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-          <folding />
+          <caret line="60" column="10" lean-forward="false" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/DataArray.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-258">
-          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
-          <folding />
+          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/graphManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
-          <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
-          <folding />
+          <caret line="63" column="27" lean-forward="false" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/dataArray.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="7" column="46" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
+          <caret line="7" column="46" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manageFilter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="19" />
+          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1506,9 +1298,9 @@
     <entry file="file://$PROJECT_DIR$/web/applyFilter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
-          <caret line="67" column="53" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="53" />
+          <caret line="67" column="53" lean-forward="false" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="53" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1516,9 +1308,9 @@
     <entry file="file://$PROJECT_DIR$/web/filter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1526,66 +1318,60 @@
     <entry file="file://$PROJECT_DIR$/src/test/filter.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
-          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+          <caret line="62" column="33" lean-forward="false" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/aggregate.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="14" column="3" selection-start-line="4" selection-start-column="0" selection-end-line="14" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
+          <caret line="14" column="3" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="14" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/xyManager.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
-          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
+          <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/karma.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/BarChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="168" column="63" selection-start-line="168" selection-start-column="63" selection-end-line="168" selection-end-column="63" />
+        <state relative-caret-position="2145">
+          <caret line="168" column="63" lean-forward="false" selection-start-line="168" selection-start-column="63" selection-end-line="168" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/Aggregate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="96" column="40" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+        <state relative-caret-position="1440">
+          <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/Accordion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="124" column="32" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
+        <state relative-caret-position="1860">
+          <caret line="124" column="32" lean-forward="false" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/UndirectedGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        <state relative-caret-position="75">
+          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1594,49 +1380,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/xyManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="153" column="3" selection-start-line="153" selection-start-column="3" selection-end-line="153" selection-end-column="3" />
+        <state relative-caret-position="2295">
+          <caret line="153" column="3" lean-forward="false" selection-start-line="153" selection-start-column="3" selection-end-line="153" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/loadDataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
+        <state relative-caret-position="435">
+          <caret line="29" column="2" lean-forward="false" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/deleteFileTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        <state relative-caret-position="300">
+          <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/artifacts/ShareMyChart_war_exploded.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        <state relative-caret-position="195">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/func.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="95" column="41" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="41" />
+        <state relative-caret-position="179">
+          <caret line="95" column="41" lean-forward="false" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="236">
+            <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

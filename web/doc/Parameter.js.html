@@ -48,11 +48,14 @@ var Parameter = function(name, class_value){
         this.class_value = class_value;
         this.type = "Not known";
         this.real_name = name.substring(name.lastIndexOf("/") + 1);
-        this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1)
+       // this.real_name = this.real_name.charAt(0).toUpperCase() + this.real_name.slice(1)
         //console.log("real_name is: " + this.real_name);
 
     };
 
+    Parameter.prototype.getClassName = function(){
+      return this.class_value.substring(this.class_value.lastIndexOf("/") + 1);
+    };
 /**
  *
  * @constructor
@@ -60,6 +63,16 @@ var Parameter = function(name, class_value){
 var ParameterManager = function(){
     $.pArray = [];
     console.log("New Parameter manager created.");
+};
+
+
+/**
+ * @description - Gets the type of the parameter at the specified index
+ * @param index
+ * @returns {*}
+ */
+ParameterManager.prototype.getType = function(index){
+    return $.pArray[index].type;
 };
 
 /*
@@ -72,26 +85,61 @@ var ParameterManager = function(){
  */
 ParameterManager.prototype.addParameter = function(Parameter){
     $.pArray.push(Parameter);
-    //callback();
+
 };
 
-//get the Parameters as an array of strings **TODO finish this for Nikki's parameters
 /**
- *
- * @returns {Array}
+@description - Gets the class value of the parameter at the specified index
+ @param index - index of desired parameter
+ */
+ParameterManager.prototype.getClass = function(index){
+    return $.pArray[index].class_value;
+};
+
+/**
+@description - Gets the parameter at the specified index
+@param index - index of desired parameter
+ */
+ParameterManager.prototype.getParameter = function(index){
+  return $.pArray[index];
+};
+
+
+
+/*
+    @method getLength
+    @description Returns the length/number of items in the parameter manager
+ */
+ParameterManager.prototype.getLength = function(){
+    return $.pArray.length;
+}
+
+
+/**
+ * @description - Return a dictionary of the parameter manager's array
+ * @returns {dictionary}
  */
 ParameterManager.prototype.getParameters = function(){
     var dict = [];
+
     for(var i=0; i &lt; $.pArray.length; i++){
 
         dict.push({
-            name:   $.pArray[i].real_name+" - "+$.pArray[i].class_value.substring($.pArray[i].class_value.lastIndexOf("/") + 1),
+            name:   $.pArray[i].real_name,//+" - "+$.pArray[i].class_value.substring($.pArray[i].class_value.lastIndexOf("/") + 1),
             value: $.pArray[i]
         });
 
     }
 
     return dict;
+
+};
+
+/**
+ * @description - Clears the parameter manager's contents
+ */
+ParameterManager.prototype.clearManager = function(){
+    $.pArray.splice(0, $.pArray.length);
 }
 
 /**
@@ -100,7 +148,6 @@ ParameterManager.prototype.getParameters = function(){
  * @param class_val
  * @param d_type
  * @returns {boolean}
- * @todo make a getType for Michael's stuff, for a specific parameter
  * @description Checks if a predicate is already in the parameter manager. This is done by
  * checking the predicate, the class, and if there's a datatype already assigned.
  * If class and predicate are true and the datatype is anything but nominal,
@@ -114,8 +161,7 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
                 //datatype aspect - can overwrite anything but nominal
                 //if someone was dumb and wrote in one date in the wrong format, then too bad
                 //youve changed them all
-                this.addDatatype(j, d_type);
-                return true; //right?
+                return true;
             }
 
         }
@@ -125,17 +171,35 @@ ParameterManager.prototype.checkExists = function(pred, class_val, d_type){
 };
 
 /**
+ * @desc - Returns the index for a name and class of a parameter. -1 if not found.
+ * @param name
+ * @param class_val
+ */
+ParameterManager.prototype.getIndexForNC = function(name, class_val){
+    for(var i =0; i &lt; $.pArray.length; i++){
+        if($.pArray[i].name.localeCompare(name) ==0 &amp;&amp; $.pArray[i].class_value.localeCompare(class_val) ==0){
+            return i;
+        }
+    }
+    console.log("Parameter not found");
+    return -1;
+};
+
+/**
  *
  * @param index
  * @param dataType
  * @description Adds the datatype to the provided predicate
  */
 ParameterManager.prototype.addDatatype = function(index, dataType){
-    //will only add the datatype if it is "not know" aka not set, or it has any value that is not nominal
-    if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("string") != 0){
+    //will only add the datatype if it is "not known" aka not set, or it has any value that is not nominal
+
+    if($.pArray[index].type.localeCompare("Not known") == 0 || $.pArray[index].type.localeCompare("nominal") != 0){
         $.pArray[index].type = dataType;
     }
-}
+};
+
+
 
 /**
  * @description Simplifies the types into what we need for our program - carefully
@@ -145,24 +209,18 @@ ParameterManager.prototype.addDatatype = function(index, dataType){
  * any numbers = numeric
  * in implementation, note that numeric should be considered ordinal, ie, kind of like date
  */
-ParameterManager.prototype.simplifyType = function(){
-
-    //for(var i = 0; i &lt; $.pArray.length; i++) {
-
-    var index = $.pArray.length-1;
-    console.log("Adjsting: " + $.pArray[index].type + ". We here and pArray.length = " + $.pArray.length + "and name is: " +
-        $.pArray[index].name);
+ParameterManager.prototype.simplifyType = function(index){
 
         //checks for lat/long
         if ($.pArray[index].name.indexOf("latitude") >=1 || $.pArray[index].name.indexOf("longitude") >= 1) {
             if ($.pArray[index].name.indexOf("latitude") >=1){
                 $.pArray[index].type = "lat";
-                console.log("Assigned lat to" + $.pArray[index].name);
+
             }
 
             else if ($.pArray[index].name.indexOf("longitude") >=1 ) {
                 $.pArray[index].type = "long";
-                console.log("Assigned long to" + $.pArray[index].name);
+
             }
 
         }
@@ -173,7 +231,7 @@ ParameterManager.prototype.simplifyType = function(){
             || $.pArray[index].type == "nonPositiveInteger" || $.pArray[index].type == "negativeInteger"
             || $.pArray[index].type == "int" || $.pArray[index].type == "long" || $.pArray[index].type == "short" ){
             $.pArray[index].type = "numeric";
-            console.log("Set " + $.pArray[index].name + "as " + $.pArray[index].type);
+
         }
         //any string values will be called nominal
         //categorical variables like booleans and the like will also be typed as nominal
@@ -188,9 +246,15 @@ ParameterManager.prototype.simplifyType = function(){
             || $.pArray[index].type == "gMonthDay" || $.pArray[index].type == "gDate" || $.pArray[index].type == "gMonth"){
             $.pArray[index].type = "date";
         }
-    //}
 };
-</code></pre>
+
+/**
+ * get the real name
+ * @param index
+ */
+ParameterManager.prototype.getRealName = function(index){
+    return $.pArray[index].real_name;
+};</code></pre>
         </article>
     </section>
 
@@ -200,13 +264,13 @@ ParameterManager.prototype.simplifyType = function(){
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChart.html">BarChart</a></li><li><a href="GetLink.html">GetLink</a></li><li><a href="Graph.html">Graph</a></li><li><a href="GraphStore.html">GraphStore</a></li><li><a href="Parameter.html">Parameter</a></li><li><a href="ParameterManager.html">ParameterManager</a></li><li><a href="QueryBuilder.html">QueryBuilder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#array_of_paramnames">array_of_paramnames</a></li><li><a href="global.html#createDrags">createDrags</a></li><li><a href="global.html#GetData">GetData</a></li><li><a href="global.html#GetName">GetName</a></li><li><a href="global.html#GetParameterQuery">GetParameterQuery</a></li><li><a href="global.html#GetPredicateQuery">GetPredicateQuery</a></li><li><a href="global.html#GlobalLink">GlobalLink</a></li><li><a href="global.html#openCity">openCity</a></li><li><a href="global.html#refreshData">refreshData</a></li><li><a href="global.html#TypeArray">TypeArray</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChart.html">BarChart</a></li><li><a href="GetLink.html">GetLink</a></li><li><a href="GetLinkResult.html">GetLinkResult</a></li><li><a href="GetLinkResultFlipped.html">GetLinkResultFlipped</a></li><li><a href="Graph.html">Graph</a></li><li><a href="graphManager.html">graphManager</a></li><li><a href="GraphSearch.html">GraphSearch</a></li><li><a href="GraphStore.html">GraphStore</a></li><li><a href="lineGraph.html">lineGraph</a></li><li><a href="MakeGraph.html">MakeGraph</a></li><li><a href="Parameter.html">Parameter</a></li><li><a href="ParameterManager.html">ParameterManager</a></li><li><a href="Scatterplot.html">Scatterplot</a></li><li><a href="UnDirGraph.html">UnDirGraph</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addContents">addContents</a></li><li><a href="global.html#Aggregate">Aggregate</a></li><li><a href="global.html#applyFilter">applyFilter</a></li><li><a href="global.html#backTrack">backTrack</a></li><li><a href="global.html#clearDrags">clearDrags</a></li><li><a href="global.html#clearGraph">clearGraph</a></li><li><a href="global.html#collectFilter">collectFilter</a></li><li><a href="global.html#containsObject">containsObject</a></li><li><a href="global.html#createAccordions">createAccordions</a></li><li><a href="global.html#createDrags">createDrags</a></li><li><a href="global.html#DataObject">DataObject</a></li><li><a href="global.html#dateSortY">dateSortY</a></li><li><a href="global.html#deleteFilter">deleteFilter</a></li><li><a href="global.html#deletePlaceholder">deletePlaceholder</a></li><li><a href="global.html#disablePG">disablePG</a></li><li><a href="global.html#DisplayLink">DisplayLink</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#filterArray">filterArray</a></li><li><a href="global.html#formatGraph">formatGraph</a></li><li><a href="global.html#GetData">GetData</a></li><li><a href="global.html#GetName">GetName</a></li><li><a href="global.html#GetParameterQuery">GetParameterQuery</a></li><li><a href="global.html#GetPredicateQuery">GetPredicateQuery</a></li><li><a href="global.html#GlobalLink">GlobalLink</a></li><li><a href="global.html#initFilter">initFilter</a></li><li><a href="global.html#Node">Node</a></li><li><a href="global.html#openCity">openCity</a></li><li><a href="global.html#pickGraphTypes">pickGraphTypes</a></li><li><a href="global.html#PossibleGraphManager">PossibleGraphManager</a></li><li><a href="global.html#putTextBack">putTextBack</a></li><li><a href="global.html#QueryBuilderData">QueryBuilderData</a></li><li><a href="global.html#QueryBuilderData_old">QueryBuilderData_old</a></li><li><a href="global.html#QueryBuilderLink">QueryBuilderLink</a></li><li><a href="global.html#refreshData">refreshData</a></li><li><a href="global.html#resetFilter">resetFilter</a></li><li><a href="global.html#resetFilterUI">resetFilterUI</a></li><li><a href="global.html#selectValue">selectValue</a></li><li><a href="global.html#sortData">sortData</a></li><li><a href="global.html#SpecialCase">SpecialCase</a></li><li><a href="global.html#testpG">testpG</a></li><li><a href="global.html#TypeArray">TypeArray</a></li><li><a href="global.html#visPG">visPG</a></li><li><a href="global.html#xFilter">xFilter</a></li><li><a href="global.html#xT">xT</a></li><li><a href="global.html#xymanager">xymanager</a></li><li><a href="global.html#xyManager">xyManager</a></li><li><a href="global.html#yFilter">yFilter</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Thu Nov 03 2016 23:59:32 GMT-0600 (MDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 02 2016 00:19:39 GMT-0700 (MST)
 </footer>
 
 <script> prettyPrint(); </script>
