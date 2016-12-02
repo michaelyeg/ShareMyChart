@@ -26,8 +26,6 @@ Bar Chart on D3's examples. Modifications include accepting an array instead of 
  Landon Thys: lthys@ualberta.ca */
 
 
-//var dray2 = GlobalDataArray.getArray();
-
 /**
  * Create a new BarChart that inherits from Graph
  * @constructor
@@ -41,44 +39,6 @@ function BarChart() {
 BarChart.prototype = Object.create(Graph.prototype); //barchart inherits from Graph
 
 BarChart.prototype.constructor = BarChart;
-
-//hard-coded test data until we can access data from file
-/*var testDataBC = [
-    {letter: "A", frequency: 0.034},
-    {letter: "B", frequency: 0.55},
-    {letter: "C", frequency: 0.321},
-    {letter: "D", frequency: 0.567},
-    {letter: "E", frequency: 0.998},
-    {letter: "F", frequency: 0.0222},
-    {letter: "G", frequency: 0.445},
-    {letter: "H", frequency: 0.765},
-    {letter: "I", frequency: 0.533},
-    {letter: "J", frequency: 0.034},
-    {letter: "K", frequency: 0.034},
-    {letter: "L", frequency: 0.533}
-];
-*/
-
-
-/**
- * creates the aggregate and sets up graph-making
- */
-BarChart.prototype.caller2 = function(){
-    dray = Aggregate("Y");
-    console.log(dray);
-    BarChart.prototype.horizontalBC(dray);
-
-}
-
-/**
- * creates the aggregate and sets up graph-making
- */
-BarChart.prototype.caller1 = function(){
-    dray = Aggregate("X");
-    console.log(dray);
-    BarChart.prototype.verticalBC(dray);
-
-}
 
 
 /**

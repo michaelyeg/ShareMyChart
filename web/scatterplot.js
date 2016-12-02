@@ -17,8 +17,6 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//var dray = GlobalDataArray.getArray();
-
 
 /**
  * Create a new lineGraph that inherits from Graph
