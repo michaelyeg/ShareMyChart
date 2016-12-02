@@ -83,7 +83,7 @@ function sortData(XY, data){
         console.log(min);
 
         if(min.typeX == "date"){
-
+            return data;
 
 
         }else if(min.typeX =="numeric") {
@@ -193,6 +193,12 @@ function sortData(XY, data){
 
 }
 
+/**
+ * @description - checks if a given object already exists in the array of mimimum values.
+ * @param obj - object to check
+ * @param list - list to check if the object is in it
+ * @returns {boolean}
+ */
 //function from StackOverflow user cdhowie
 //http://stackoverflow.com/questions/4587061/how-to-determine-if-object-is-in-array
 function containsObject(obj, list) {

@@ -1,7 +1,8 @@
-
-
+/**
+ * @description - constructor for the xyManager, which manages which buttons are pushed
+ */
 var xyManager = function() {
-    console.log("xymanager created");
+    //console.log("xymanager created");
     var x_value;
     var y_value;
     var x_name;
@@ -9,7 +10,10 @@ var xyManager = function() {
 
 };
 
-
+/**
+ * @description - gets the value of x, y as an array (their id relates to their paramter)
+ * @returns {Array}
+ */
 xyManager.prototype.getArray = function(){
     var xy_array = [];
     xy_array.push(this.x_value);
@@ -17,17 +21,26 @@ xyManager.prototype.getArray = function(){
     return xy_array;
 };
 
-xyManager.prototype.setValue = function(button){
+/**
+ * @description - sets the value of the given x, y button pushed
+ * @param button - has a value in the form of x-3, y-4, etc
+ * @param testValue - literally only here so backendtest doesnt move forward
+ */
+xyManager.prototype.setValue = function(button, testValue){
   if(button.indexOf('x') != -1){
-      this.setX( button );
-  }else this.setY( button );
+      this.setX( button, testValue );
+  }else this.setY( button, testValue );
 
 };
-
-xyManager.prototype.setX = function(xValue){
+/**
+ * @description - sets the x_name and x_value
+ * @param xValue - the button's id to that parameter (x-0, etc)
+ * @param testValue - literally only there to prevent test from going to ui parts
+ */
+xyManager.prototype.setX = function(xValue, testValue){
     //check if value is already at 0
     this.x_name = xValue;
-    console.log(xValue);
+    //console.log(xValue);
    // if(xValue == null){
      //   return;
     //}else {
@@ -37,13 +50,17 @@ xyManager.prototype.setX = function(xValue){
 
         if (this.isSet()) {
             //call something to create the graph
-            console.log("x=" + this.x_value + " y=" + this.y_value);
-            this.startGraphing();
+            //console.log("x=" + this.x_value + " y=" + this.y_value);
+            if(typeof testValue=='undefined') this.startGraphing();
         }
     //}
 };
-
-xyManager.prototype.setY = function(yValue){
+/**
+ * @description - sets the y value
+ * @param yValue - the button's parameter id (y-0, etc)
+ * @param testValue - literally only there so tests don't go to ui parts
+ */
+xyManager.prototype.setY = function(yValue, testValue){
     this.y_name = yValue;
    // if(yValue == null) {
      //   return;
@@ -53,38 +70,59 @@ xyManager.prototype.setY = function(yValue){
         this.y_value = y_val;
         if (this.isSet()) {
             //call something to create the graph
-            console.log("x=" + this.x_value + " y=" + this.y_value);
-            this.startGraphing();
+            //console.log("x=" + this.x_value + " y=" + this.y_value);
+            if(typeof testValue=='undefined') this.startGraphing();
         }
     //}
 };
 
+/**
+ * @description - checks if both the x and y
+ * @returns {boolean}
+ */
 xyManager.prototype.isSet = function(){
     if(typeof this.x_value == 'undefined' || typeof this.y_value == 'undefined' || this.x_value == null || this.y_value ==null){
         return false;
     }else{
-        console.log(this.x_value);
-        console.log(this.y_value);
+        //console.log(this.x_value);
+        //console.log(this.y_value);
         return true;
     }
 };
-
+/**
+ * @description - Gets the y value
+ * @returns {string}
+ */
 xyManager.prototype.getY = function(){
     return this.y_value;
 };
-
+/**
+ * @description - Gets the x value
+ * @returns {string}
+ */
 xyManager.prototype.getX = function(){
     return this.x_value;
 };
-
+/**
+ * @description - Gets the x name
+ * @returns {string}
+ */
 xyManager.prototype.getXName = function(){
     return this.x_name;
 };
 
+/**
+ * @description - Gets the y name
+ * @returns {string}
+ */
 xyManager.prototype.getYName = function(){
   return this.y_name;
 };
 
+/**
+ * @description - Calls the functions to start graph ui things
+ *
+ */
 xyManager.prototype.startGraphing = function(){
     GlobalDataArray.clear();
     GetLink(this.x_value, this.y_value, GlobalStore);
@@ -95,6 +133,9 @@ xyManager.prototype.startGraphing = function(){
     getParaType(xType,yType);
 };
 
+/**
+ * @description - clears the xymanager
+ */
 xyManager.prototype.clearManager = function(){
   this.x_name =null;
   this.y_name=null;
@@ -104,7 +145,7 @@ xyManager.prototype.clearManager = function(){
 
 
 /**
- * show the current x value at the top right part of the page
+ * @description -show the current x value at the top right part of the page
  */
 xyManager.prototype.placeCoordinateX = function(){
     var place = document.getElementById("xCoordinate");
@@ -119,7 +160,7 @@ xyManager.prototype.placeCoordinateX = function(){
 };
 
 /**
- * show the current y value at the top right part of the page
+ * @description - show the current y value at the top right part of the page
  */
 xyManager.prototype.placeCoordinateY = function(){
     var place = document.getElementById("yCoordinate");
@@ -134,7 +175,7 @@ xyManager.prototype.placeCoordinateY = function(){
 };
 
 /**
- * clear the x value shown at top right of the page
+ * @description - clear the x value shown at top right of the page
  */
 xyManager.prototype.clearCoordinateX = function(){
     var place = document.getElementById("xCoordinate");
@@ -143,7 +184,7 @@ xyManager.prototype.clearCoordinateX = function(){
 };
 
 /**
- * clear the y value shown at top right of the page
+ * @description - clear the y value shown at top right of the page
  */
 xyManager.prototype.clearCoordinateY = function(){
     var place = document.getElementById("yCoordinate");
