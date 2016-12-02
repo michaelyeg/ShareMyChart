@@ -54,15 +54,25 @@ $("#filterY").click(function(){
 
 });
 
-
+/**
+ * @description delete user selected filter UIs.
+ */
 function deleteFilter() {
     var filters = document.getElementsByClassName("filter");
     for (var i = 0; i <filters.length; i++){
         if (filters[i].getElementsByTagName("input")[0].checked == true){
-            console.log(i);
             var elem = filters[i];
             filters[i].parentNode.removeChild(elem);
         }
     }
+    count--;
+}
 
+/**
+ * @description delete existing filter UIs.
+ */
+function resetFilterUI(){
+    var filters = document.getElementById("filterForm");
+    $(filters).empty();
+    count=0;
 }

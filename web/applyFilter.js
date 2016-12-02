@@ -48,7 +48,6 @@ function reloadGraph(data) {
             graphmanager.makeLG(data);
             break;
         case 4:
-            console.log ("Scatterplot!");
             graphmanager.makeSP(data);
             break;
     }
@@ -81,39 +80,50 @@ function xFilter(fil, DataCopy){
     var condition=fil.condition;
     var value=fil.value;
     console.log("Before:"+DataCopy.length);
+    var len=DataCopy.length;
     switch (condition){
         case '>':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (!(DataCopy[i].dataX>value)){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case  '=':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (!(DataCopy[i].dataX==value)){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case '<':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (!(DataCopy[i].dataX<value)){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case '<=':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (DataCopy[i].dataX>value){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case '>=':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (DataCopy[i].dataX<value){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
@@ -132,39 +142,50 @@ function yFilter(fil, DataCopy) {
     var condition=fil.condition;
     var value=fil.value;
     console.log("Before:"+DataCopy.length);
+    var len=DataCopy.length;
     switch (condition){
         case '>':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (!(DataCopy[i].dataY>value)){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case  '=':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (!(DataCopy[i].dataY==value)){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case '<':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (!(DataCopy[i].dataY<value)){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case '<=':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (DataCopy[i].dataY>value){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;
         case '>=':
-            for (var i=0; i < DataCopy.length; i++){
+            for (var i=0; i < len; i++){
                 if (DataCopy[i].dataY<value){
                     DataCopy.splice(i,1);
+                    i-=1;
+                    len-=1;
                 }
             };
             break;

@@ -14,14 +14,14 @@ var testpG;
 function pickGraphTypes(pam1, pam2) {
 
     var pGMan = new PossibleGraphManager();
-
+    //**TODO: vertical and horizontal bar charts should be the same values possible, decide!
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
         console.log("It's a bar v chart!");
         pGMan.addToManager(0);
     }
 
     //did this kinda quickly, might be wrong, very confusing
-    if ( (pam1.type=="numeric" || pam1.type=="date" || pam1.type=="nominal") && pam2.type=="nominal")
+    if ( (pam1.type=="numeric" || pam1.type=="date" ) && ( pam2.type=="nominal" || pam2.type=="date") )
     {
         console.log("It's a bar h chart!");
         pGMan.addToManager(1);
@@ -57,7 +57,7 @@ function pickGraphTypes(pam1, pam2) {
 
     testpG = pGMan;
     console.log("pG:" + testpG.getAll());
-    //visPG(pGMan);
+    visPG(pGMan);
     //if combo makes nothing
     if(pGMan.getLength() == 0){
         //alert("Parameters chosen do not make any valid graphs. Please try again.");
@@ -65,7 +65,7 @@ function pickGraphTypes(pam1, pam2) {
     }else{
         //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
         pGMan.prioritize(pam1, pam2);
-        visPG(pGMan);
+        //visPG(pGMan);
         //put UI option popup here!
         //*user makes a choice*
         //CALL GRAPH CREATION HERE!
