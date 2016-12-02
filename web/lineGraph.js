@@ -18,7 +18,7 @@
      */
 
 
-//var dray2 = GlobalDataArray.getArray();
+
 
     /**
      * Create a new lineGraph that inherits from Graph
@@ -33,51 +33,6 @@
     lineGraph.prototype = Object.create(Graph.prototype); //linegraph inherits from Graph
 
     lineGraph.prototype.constructor = lineGraph;
-
-//hard-coded test data until we can access data from file
- /*   var testDataLC = [
-        {date: "1990-10-01", money: 1000.15},
-        {date: "1990-10-01", money: 324.56},
-        {date: "1990-11-23", money: 44.55},
-        {date: "1990-11-27", money: 1000.15},
-        {date: "1994-03-14", money: 156000.15},
-        {date: "1994-18-08", money: 444.65},
-        {date: "1995-07-05", money: 3.00},
-        {date: "1995-10-31", money: 1.99},
-        {date: "2000-11-18", money: 10604.15},
-        {date: "2001-12-12", money: 1000234.42},
-        {date: "2002-04-02", money: 10.01},
-        {date: "2003-09-12", money: 223533.15},
-        {date: "2004-12-20", money: 100.16},
-        {date: "2005-05-14", money: 1000.15},
-        {date: "2006-04-04", money: 1043500.15},
-        {date: "2007-02-11", money: 5567000.15},
-        {date: "2008-01-05", money: 0.00},
-        {date: "2009-01-07", money: 5.99},
-        {date: "2010-01-05", money: 69420.00}
-
-    ];
-
-    var testDataLC2 = [
-        {meters: 14, engines: 1},
-        {meters: 14, engines: 1},
-        {meters: 16, engines: 1},
-        {meters: 15, engines: 1},
-        {meters: 20, engines: 2},
-        {meters: 21, engines: 2},
-        {meters: 14, engines: 2},
-        {meters: 30, engines: 2},
-        {meters: 19, engines: 2},
-        {meters: 32, engines: 3},
-        {meters: 26, engines: 3},
-        {meters: 37, engines: 3},
-        {meters: 28, engines: 3},
-        {meters: 35, engines: 3},
-        {meters: 43, engines: 4},
-        {meters: 44, engines: 4},
-        {meters: 59, engines: 5}
-    ] */
-
 
 
 /**
@@ -218,8 +173,6 @@ lineGraph.prototype.horizontalLG = function(dray){
 
     var y = d3.scaleLinear()
         .rangeRound([(height -20), 0]);*/
-
-
 
 
         if( (dray[0].typeX == "date") && (dray[0].typeY == "date") ){

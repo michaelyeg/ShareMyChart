@@ -14,6 +14,10 @@ function graphManager() {
 
 };
 
+/**
+ * make a vertical bar chart by calling from the barchart class
+ * @param values
+ */
 graphManager.prototype.makeVBC = function(values){
     if(graphmanager.isData(values)){
         this.graphType = 1;
@@ -27,6 +31,10 @@ graphManager.prototype.makeVBC = function(values){
 
 };
 
+/**
+ * make a horizontal barchart by calling from the barchart class
+ * @param values
+ */
 graphManager.prototype.makeHBC = function(values){
     if(graphmanager.isData(values)) {
 
@@ -38,6 +46,10 @@ graphManager.prototype.makeHBC = function(values){
     } else return;
 };
 
+/**
+ * make a line graph by calling from the linegraph class
+ * @param values
+ */
 graphManager.prototype.makeLG = function(values){
     if(graphmanager.isData(values)) {
         console.log(values);
@@ -53,6 +65,10 @@ graphManager.prototype.makeLG = function(values){
     } else return;
 };
 
+/**
+ * make a scatterplot by calling from the scatterplot class
+ * @param values
+ */
 graphManager.prototype.makeSP = function(values){
     if(graphmanager.isData(values)) {
         this.graphType = 4;
@@ -74,16 +90,19 @@ graphManager.prototype.makeSP = function(values){
 
 };
 
-graphManager.prototype.clearGraph = function(){
-    var graph = document.getElementById('graph');
-
-};
-
+/**
+ * retrieve the type of graph currently displayed
+ * @returns {number}
+ */
 graphManager.prototype.getGraphType = function(){
     return this.graphType;
 };
 
-
+/**
+ * are there currently data parameters selected?
+ * @param data
+ * @returns {boolean}
+ */
 graphManager.prototype.isData = function(data){
     if(data.length ==0) {
         alert("Please select data parameters");
@@ -91,57 +110,3 @@ graphManager.prototype.isData = function(data){
     }
     else return true;
 }
-/**
- * @description Listen for the click for the vertical bar chart
- *
- */
-/*$(document).ready(function(){
-    document.getElementById('verticalBarChart').addEventListener("click", graphManager.prototype.makeVBC(GlobalDataArray.getArray()));
-});
-*/
-/**
- * Listen for the click for the horizontal bar chart
- *
- */
-/*$(document).ready(function(){
-    document.getElementById('horizontalBarChart').addEventListener("click", graphManager.prototype.makeHBC(GlobalDataArray.getArray()));
-});
-*/
-/**
- * Listen for the click for the scatterplot graph
- *
- */
-/*$(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", graphManager.prototype.makeSP(GlobalDataArray.getArray()));
-});*/
-
-/**
- * Listen for the click for the vertical line graph
- *
- */
-/*$(document).ready(function(){
-    document.getElementById('vlinegraph').addEventListener("click", graphManager.prototype.makeLG(GlobalDataArray.getArray()));
-});*/
-
-
-/*
-
-The following are functions that call the functions in this class, since you cannot pass functions variables through button presses.
-this would be refactored if there was more time
-------------------------------------------------------------------------------------------------------------------------------------------------
- *//*
-graphManager.prototype.callVBC = function(){
-    graphmanager.makeVBC(GlobalDataArray.getArray());
-};
-
-graphManager.prototype.callHBC = function(){
-    graphmanager.makeHBC(GlobalDataArray.getArray());
-};
-
-graphManager.prototype.callLG = function(){
-    graphmanager.makeLG(GlobalDataArray.getArray());
-};
-
-graphManager.prototype.callSP = function(){
-    graphmanager.makeSP(GlobalDataArray.getArray());
-};*/
