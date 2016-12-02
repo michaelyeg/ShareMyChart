@@ -176,7 +176,10 @@ function visPG(pGMan){
     //console.log("finish picking graph");
 }
 
-
+/**
+ * @description To disable picking graph that is disabled
+ * @param pGMan an Object of possibleGraphManager that holds an array that has been sorted to show the best graph first.
+ */
 function disablePG(pGMan){
     $("#verticalBarChart").attr("onclick","graphmanager.makeVBC(GlobalDataArray.getArray())").css('opacity',1);
     $("#horizontalBarChart").attr("onclick","graphmanager.makeHBC(GlobalDataArray.getArray())").css('opacity',1);
