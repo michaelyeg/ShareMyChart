@@ -7,7 +7,7 @@
 //var linegraph = new lineGraph();
 
 var PossibleGraphManager = function(){
-    console.log("New graph manager created.");
+    //console.log("New graph manager created.");
     $.pG = [];
 };
 
@@ -91,8 +91,8 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
 
         //nominal/date is not possible with the current graphs we have
 
-        console.log("After: vBar: " + graphPoints[0].points + " hBar: " + graphPoints[1].points + " vline: " +
-            graphPoints[2].points + "scatterA: " + graphPoints[3].points + " scatterB: " + graphPoints[4].points);
+        //console.log("After: vBar: " + graphPoints[0].points + " hBar: " + graphPoints[1].points + " vline: " +
+        //    graphPoints[2].points + "scatterA: " + graphPoints[3].points + " scatterB: " + graphPoints[4].points);
 
         //now apply the priority to the possible graphs
         //just should swap the ordering around a bit for the ui part
@@ -111,7 +111,7 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
                 }
             }//end of inner loop
 
-            console.log("h: "+ highest + " result: " + result.name);
+            //console.log("h: "+ highest + " result: " + result.name);
 
             if( temp.indexOf(result.number) ==-1 ){
                 temp.push(result.number);
@@ -121,8 +121,8 @@ PossibleGraphManager.prototype.prioritize = function(pam1, pam2){
 
         }//end of outer loop
 
-        console.log("temp");
-        console.log(temp);
+        //console.log("temp");
+        //console.log(temp);
 
         //merge with pG - pG ignores the values already inserted
         $.pG = arrayUnique(temp.concat($.pG));

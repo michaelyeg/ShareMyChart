@@ -61,3 +61,152 @@ function Aggregate(XY, data){
     return ArrayFinal;
 
 }
+
+
+
+
+/**
+ * @description - Sorts the data for displaying in a graph
+ * @param XY - whether to sort the x or y axis
+ * @param data - the array to sort (more like an object)
+ */
+function sortData(XY, data){
+    var NewArray = [];
+    var tempOject = {};
+    var ArrayFinal = [];
+
+    //if x, sort the x values, else sort the y values
+    if(XY == "X"){
+        var min = data[0];
+        var minIndex=0;
+        console.log("min:");
+        console.log(min);
+
+        if(min.typeX == "date"){
+
+
+
+        }else if(min.typeX =="numeric") {
+            //for numeric data
+
+            var count = data.length;
+
+            while (count > 0) {
+                for (var object = 0; object < data.length; object++) {
+                    var result = containsObject(min, NewArray);
+                    console.log(result);
+                    if (min.dataX > data[object].dataX && !result ) {
+                        console.log("New min found!");
+                        min = data[object];
+                        //minIndex=object;
+                        console.log("The new min:");
+                        console.log(min);
+                    }
+
+                }
+
+                minIndex = data.indexOf(min);
+
+                console.log("A loop of the data complete");
+                var obj = new DataObject(min.dataX, min.dataY, min.nameX, min.nameY, min.typeX, min.typeY);
+                NewArray.push(obj);
+
+                //remove the one you just added to NewArray
+                data.splice(minIndex, 1);
+                count--;
+
+                //assign min to next value not in NewArray
+                for(var j=0; j < data.length; j++) {
+                    if( !containsObject(data[j], NewArray) ){
+                        min = data[j];
+                    }
+                }
+                console.log("New min for next loop around:");
+                console.log(min);
+
+            }
+        }else if(min.typeX == "nominal"){
+            return data;
+        }
+
+        return NewArray;
+
+    }else if (XY =="Y"){
+        var min = data[0];
+        var minIndex=0;
+        console.log("min:");
+        console.log(min);
+
+
+        if(min.typeY == "date"){
+
+
+
+        }else if(min.typeY =="numeric") {
+            //for numeric data
+
+            var count = data.length;
+
+            while (count > 0) {
+                for (var object = 0; object < data.length; object++) {
+                    var result = containsObject(min, NewArray);
+                    console.log(result);
+                    if (min.dataY > data[object].dataY && !result ) {
+                        console.log("New min found!");
+                        min = data[object];
+                        //minIndex=object;
+                        console.log("The new min:");
+                        console.log(min);
+                    }
+
+                }
+
+                minIndex = data.indexOf(min);
+
+                console.log("A loop of the data complete");
+                var obj = new DataObject(min.dataX, min.dataY, min.nameX, min.nameY, min.typeX, min.typeY);
+                NewArray.push(obj);
+
+                //remove the one you just added to NewArray
+                data.splice(minIndex, 1);
+                count--;
+
+                //assign min to next value not in NewArray
+                for(var j=0; j < data.length; j++) {
+                    if( !containsObject(data[j], NewArray) ){
+                        min = data[j];
+                    }
+                }
+                console.log("New min for next loop around:");
+                console.log(min);
+
+            }
+        }else if(min.typeY == "nominal"){
+            return data;
+        }
+
+        return NewArray;
+
+
+
+    }//end of else
+
+}
+
+//function from StackOverflow user cdhowie
+//http://stackoverflow.com/questions/4587061/how-to-determine-if-object-is-in-array
+function containsObject(obj, list) {
+    var i=0;
+
+    //console.log(list[0]);
+    //console.log(obj);
+    //console.log(list[1]);
+
+    for (i; i < list.length; i++) {
+        if (list[i].dataX == obj.dataX && list[i].dataY ==obj.dataY) {
+            return true;
+        }
+    }
+
+    return false;
+}
