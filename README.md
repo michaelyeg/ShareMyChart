@@ -66,3 +66,7 @@ jfriend, StackOverflow: http://stackoverflow.com/questions/16095301/finding-high
 
  How to Merge Two Arrays without Duplicates
  LiraNuna & David Furlong, StackOverflow: http://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
+ 
+ How to Determine if Object is in an Array
+ cdhowie, StackOverflow: http://stackoverflow.com/questions/4587061/how-to-determine-if-object-is-in-array
+ 

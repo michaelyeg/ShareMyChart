@@ -159,19 +159,22 @@ BarChart.prototype.setStacked = function(sbool){
       stackoverflow user Teodor http://stackoverflow.com/users/840453/teodor
       */
 
-     var svg = d3.select("svg"),
-         margin = {top: 20, right: 20, bottom: 50, left: 80},
-         width = +svg.attr("width") - margin.left - margin.right,
-         height = +svg.attr("height") - margin.top - margin.bottom;
 
-
-
-     var g = svg.append("g")
-         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
 
      if (this.isHorizontal) {
+
+         var svg = d3.select("svg"),
+             margin = {top: 20, right: 20, bottom: 50, left: 100},
+             width = +svg.attr("width") - margin.left - margin.right,
+             height = +svg.attr("height") - margin.top - margin.bottom;
+
+
+
+         var g = svg.append("g")
+             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
          //makes a horizontal bar chart
          /*
          The Horizontal bar chart code is from (http://bl.ocks.org/alandunning/7008d0332cc28a826b37b3cf6e7bd998) under the MIT licence,
@@ -286,6 +289,17 @@ BarChart.prototype.setStacked = function(sbool){
              .attr('width', y.bandwidth())
 */
      } else { //vertical bar chart
+
+         var svg = d3.select("svg"),
+             margin = {top: 20, right: 20, bottom: 80, left: 80},
+             width = +svg.attr("width") - margin.left - margin.right,
+             height = +svg.attr("height") - margin.top - margin.bottom;
+
+
+
+         var g = svg.append("g")
+             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
          /*
 Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL v3 license.
  Copyright (C) 2016  Nicole Lovas, Jillian Lovas, Margaret Guo, Landon Thys, Michael Xi, and Diego Serrano Suarez.
@@ -349,7 +363,13 @@ Vertical bar chart code from (http://bl.ocks.org/mbostock/3885304) under the GPL
          g.append("g")
              .attr("class", "axis axis--x")
              .attr("transform", "translate(0," + height + ")")
-             .call(d3.axisBottom(x));
+             .call(d3.axisBottom(x))
+             .style("font", "10px")
+             .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", "rotate(-65)");
 
          g.append("g")
              .attr("class", "axis axis--y")

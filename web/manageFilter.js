@@ -12,7 +12,7 @@ function getParaType(xType, yType){
 
 
 function initFilter (){
-    console.log("~~~~~~~~~~~block");
+    //console.log("~~~~~~~~~~~block");
     document.getElementById("dropup1").style.display = "block";
     document.getElementById("delete1").style.display = "block";
     document.getElementById("updatebutton").style.display = "block";
