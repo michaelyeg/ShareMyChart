@@ -22,14 +22,14 @@ describe("ParameterManager Test", function() {
         var returned_pam = [];
         returned_pam =  testPMan.getParameters();
 
-        expect(returned_pam[0].name).toBe("Name - Class");
+        expect(returned_pam[0].name).toBe("Name");
         expect(returned_pam[0].value.name).toBe("Name");
         expect(returned_pam[0].value.class_value).toBe("Class");
         expect(returned_pam[0].value.type).toBe("Not known");
         expect(returned_pam[0].value.real_name).toBe("Name");
     });
 
-
+    //fails for now, should probably turn this into a singleton!
     it("Makes sure the Manager is created only once", function(){
         var testPMan = new ParameterManager();
 
@@ -126,6 +126,7 @@ describe("ParameterManager Test", function() {
 
     });
 
+    //passes, but may want to make a better decision on what to do for overwriting non-nominal values
     it("Tests the ParameterManager's 'addDatatype' - not nominal type", function(){
         var testPMan = new ParameterManager();
 
@@ -145,7 +146,7 @@ describe("ParameterManager Test", function() {
         testPMan.addDatatype(0, "date");
         var returned_pam2 = [];
         returned_pam2 =  testPMan.getParameters();
-        expect(returned_pam2[0].value.type).toBe("numeric"); //fails for now, I have to make a decision on what I want it to do, it's not technically wrong
+        expect(returned_pam2[0].value.type).toBe("date");
     });
 
     it("Tests the ParameterManager's 'addDatatype' - nominal type", function(){
@@ -208,14 +209,14 @@ describe("ParameterManager Test", function() {
         expect(testPMan.getLength()).toBe(1);
 
         testPMan.addDatatype(0, "latitude");
-        testPMan.simplifyType();
+        testPMan.simplifyType(0);
 
         var pam2 = new Parameter("Name2", "Class2");
         testPMan.addParameter(pam2);
         expect(testPMan.getLength()).toBe(2);
 
         testPMan.addDatatype(1, "longitude");
-        testPMan.simplifyType();
+        testPMan.simplifyType(1);
 
         var returned_pam = [];
         returned_pam =  testPMan.getParameters();
@@ -234,7 +235,7 @@ describe("ParameterManager Test", function() {
         expect(testPMan.getLength()).toBe(1);
 
         testPMan.addDatatype(0, "dateTime");
-        testPMan.simplifyType();
+        testPMan.simplifyType(0);
 
         var returned_pam = [];
         returned_pam =  testPMan.getParameters();
@@ -253,7 +254,7 @@ describe("ParameterManager Test", function() {
         expect(testPMan.getLength()).toBe(1);
 
         testPMan.addDatatype(0, "integer");
-        testPMan.simplifyType();
+        testPMan.simplifyType(0);
 
         var returned_pam = [];
         returned_pam =  testPMan.getParameters();
@@ -272,7 +273,7 @@ describe("ParameterManager Test", function() {
         expect(testPMan.getLength()).toBe(1);
 
         testPMan.addDatatype(0, "string");
-        testPMan.simplifyType();
+        testPMan.simplifyType(0);
 
         var returned_pam = [];
         returned_pam =  testPMan.getParameters();
@@ -290,7 +291,7 @@ describe("ParameterManager Test", function() {
         testPMan.addParameter(pam);
         expect(testPMan.getLength()).toBe(1);
 
-        testPMan.simplifyType();
+        testPMan.simplifyType(0);
 
         var returned_pam = [];
         returned_pam =  testPMan.getParameters();
@@ -309,7 +310,7 @@ describe("ParameterManager Test", function() {
         expect(testPMan.getLength()).toBe(1);
 
         testPMan.addDatatype(0, "");
-        testPMan.simplifyType();
+        testPMan.simplifyType(0);
 
         var returned_pam = [];
         returned_pam =  testPMan.getParameters();

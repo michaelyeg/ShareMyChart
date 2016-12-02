@@ -18,7 +18,7 @@
      */
 
 
-//var dray2 = GlobalDataArray.getArray();
+
 
     /**
      * Create a new lineGraph that inherits from Graph
@@ -33,51 +33,6 @@
     lineGraph.prototype = Object.create(Graph.prototype); //linegraph inherits from Graph
 
     lineGraph.prototype.constructor = lineGraph;
-
-//hard-coded test data until we can access data from file
- /*   var testDataLC = [
-        {date: "1990-10-01", money: 1000.15},
-        {date: "1990-10-01", money: 324.56},
-        {date: "1990-11-23", money: 44.55},
-        {date: "1990-11-27", money: 1000.15},
-        {date: "1994-03-14", money: 156000.15},
-        {date: "1994-18-08", money: 444.65},
-        {date: "1995-07-05", money: 3.00},
-        {date: "1995-10-31", money: 1.99},
-        {date: "2000-11-18", money: 10604.15},
-        {date: "2001-12-12", money: 1000234.42},
-        {date: "2002-04-02", money: 10.01},
-        {date: "2003-09-12", money: 223533.15},
-        {date: "2004-12-20", money: 100.16},
-        {date: "2005-05-14", money: 1000.15},
-        {date: "2006-04-04", money: 1043500.15},
-        {date: "2007-02-11", money: 5567000.15},
-        {date: "2008-01-05", money: 0.00},
-        {date: "2009-01-07", money: 5.99},
-        {date: "2010-01-05", money: 69420.00}
-
-    ];
-
-    var testDataLC2 = [
-        {meters: 14, engines: 1},
-        {meters: 14, engines: 1},
-        {meters: 16, engines: 1},
-        {meters: 15, engines: 1},
-        {meters: 20, engines: 2},
-        {meters: 21, engines: 2},
-        {meters: 14, engines: 2},
-        {meters: 30, engines: 2},
-        {meters: 19, engines: 2},
-        {meters: 32, engines: 3},
-        {meters: 26, engines: 3},
-        {meters: 37, engines: 3},
-        {meters: 28, engines: 3},
-        {meters: 35, engines: 3},
-        {meters: 43, engines: 4},
-        {meters: 44, engines: 4},
-        {meters: 59, engines: 5}
-    ] */
-
 
 
 /**
@@ -112,9 +67,10 @@ lineGraph.prototype.setHorizontal = function(hbool){
  * clear the old graph if there is one in the way
  */
 lineGraph.prototype.horizontalLG = function(dray){
-    if(dray.length ==0){
-        alert("Please select data parameters");
-    }else {
+
+  //  if(dray.length ==0){
+   //     alert("Please select data parameters");
+  //  }else {
 
         if (($('#graph').find("svg").length) == 0) {
             //no graph currently exists, build this one
@@ -129,7 +85,7 @@ lineGraph.prototype.horizontalLG = function(dray){
             lineGraph.prototype.makeGraph(dray);
 
         }
-    }
+   // }
 
 }
 
@@ -187,19 +143,28 @@ lineGraph.prototype.horizontalLG = function(dray){
 
         //check to see if the data is a date value and use scaletime if it is
         if(dray[0].typeX == "date"){
-            x = d3.scaleTime().rangeRound([0, width]);
-            x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+            //x = d3.scaleTime().rangeRound([0, width]);
+            //x.domain(d3.extent(dray, function(d) { return new Date(d.dataX); }));
+            x = d3.scaleBand().range([0, width]);
+            //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+            x.domain(dray.map(function(d) { return d.dataX; }));
         } else{
             x = d3.scaleLinear().rangeRound([0, width]);
             x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+            console.log("x domain:" + x.domain());
         }
 
         if(dray[0].typeY == "date"){
-            y = d3.scaleTime().rangeRound([height -20, 0]);
-            y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+            //y = d3.scaleTime().rangeRound([height -20, 0]);
+            //y.domain(d3.extent(dray, function(d) { return new Date(d.dataY); }));
+            y = d3.scaleBand().range([0, height]);
+            //y.domain([0, d3.max(dray, function(d) { return d.dataY; })]); //starts at 0, ends at max + a value
+            y.domain(dray.map(function(d) { return d.dataY; }));
         }else{
             y = d3.scaleLinear().range([height -20, 0]);
             y.domain(d3.extent(dray, function(d) { return d.dataY; }));
+            //y.domain(dray.map(function(d) { return d.dataY; }));
+            console.log("y domain:" + y.domain());
         }
 
 
@@ -210,25 +175,23 @@ lineGraph.prototype.horizontalLG = function(dray){
         .rangeRound([(height -20), 0]);*/
 
 
-
-
         if( (dray[0].typeX == "date") && (dray[0].typeY == "date") ){
             //if both are dates
             var line = d3.line()
-                .x(function(d) { return x(new Date(d.dataX)); })
-                .y(function(d) { return y(new Date(d.dataY)); });
+                .x(function(d) { return x(d.dataX); })
+                .y(function(d) { return y(d.dataY); });
 
         } else   if( (dray[0].typeX == "date") && (dray[0].typeY != "date") ){
             //if x is a date only
             var line = d3.line()
-                .x(function(d) { return x(new Date(d.dataX)); })
+                .x(function(d) { return x(d.dataX); })
                 .y(function(d) { return y(d.dataY); });
 
         }else   if( (dray[0].typeX != "date") && (dray[0].typeY == "date") ){
             //if y is a date only
             var line = d3.line()
                 .x(function(d) { return x(d.dataX); })
-                .y(function(d) { return y(new Date(d.dataY)); });
+                .y(function(d) { return y(d.dataY); });
 
 
         } else   if( (dray[0].typeX != "date") && (dray[0].typeY != "date") ){

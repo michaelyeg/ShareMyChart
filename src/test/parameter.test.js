@@ -18,7 +18,7 @@ describe("Parameter Test", function() {
 
         expect(testPam.name).toBe("stuuuff/myName2");
         expect(testPam.class_value).toBe("stuff/stuffstuff/desks");
-        expect(testPam.real_name).toBe("MyName2");
+        expect(testPam.real_name).toBe("myName2");
         expect(testPam.type).toBe("Not known");
     });
 
