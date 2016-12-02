@@ -57,4 +57,8 @@ Scatterplot in D3 (under GPL v3):
 http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 
+Finding Highest Values Amongst Javascript Variables
+jfriend, StackOverflow: http://stackoverflow.com/questions/16095301/finding-highest-values-amongst-javascript-variables
 
+ How to Merge Two Arrays without Duplicates
+ LiraNuna & David Furlong, StackOverflow: http://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items
