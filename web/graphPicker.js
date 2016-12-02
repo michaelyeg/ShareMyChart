@@ -72,9 +72,14 @@ function pickGraphTypes(pam1, pam2, testThing) {
     }else{
         //UI for the user to choose best graph
         pGMan.prioritize(pam1, pam2);
-        if(typeof testThing == 'undefined') visPG(pGMan);
 
-
+        //put UI option popup here!
+        //*user makes a choice*
+        //CALL GRAPH CREATION HERE!
+        if(typeof testThing == 'undefined') {
+            visPG(pGMan);
+            disablePG(pGMan);
+        }
     }
 
 
@@ -148,25 +153,61 @@ function visPG(pGMan){
                     _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
                     //k++;
                     break;
-                case 4:
-                    _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
-                    //k++;
-                    break;
-                case 5:
-                    _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map1"></a></div></div>';
-                    //k++;
-                    break;
-                case 6:
-                    _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map2"></a></div></div>';
-                    //k++;
-                    break;
+                // case 4:
+                //     _html += '<a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
+                //     //k++;
+                //     break;
+                // case 5:
+                //     _html += '<a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map1"></a></div></div>';
+                //     //k++;
+                //     break;
+                // case 6:
+                //     _html += '<a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map2"></a></div></div>';
+                //     //k++;
+                //     break;
             }
             $("#show-graph").append(_html);
         //}
     }
     $("#dialog").modal('show');
     //console.log("finish picking graph");
+}
+
+
+function disablePG(pGMan){
+    $("#verticalBarChart").attr("onclick","graphmanager.makeVBC(GlobalDataArray.getArray())").css('opacity',1);
+    $("#horizontalBarChart").attr("onclick","graphmanager.makeHBC(GlobalDataArray.getArray())").css('opacity',1);
+    $("#vlinegraph").attr("onclick","graphmanager.makeLG(GlobalDataArray.getArray())").css('opacity',1);
+    $("#scatterplot").attr("onclick", "graphmanager.makeSP(GlobalDataArray.getArray())").css('opacity',1);
+
+    var dis = [];
+    var i;
+    var graph = pGMan.getAll();
+    for (i = 0; i < 4; i++){
+       dis[i] = 0;
+    }
+    for (i = 0; i < 4; i++){
+        dis[graph[i]] = 1;
+    }
+    console.log(dis);
+    for (i = 0; i < 4; i++){
+        if (dis[i] == 0){
+            switch (i){
+                case 0:
+                    $("#verticalBarChart").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 1:
+                    $("#horizontalBarChart").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 2:
+                    $("#vlinegraph").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 3:
+                    $("#scatterplot").prop("onclick", false).css('opacity',0.5);
+            }
+        }
+    }
 }
