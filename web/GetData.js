@@ -282,11 +282,11 @@ function GraphSearch(Graph, param1, param2){
 }
 
 /**
- * A helper function to back track and create the link path from the found node back to the root
+ * @description A helper function to back track and create the link path from the found node back to the root
  * @param node
  * @param root
  * @param Graph
- * @return {*[]} - Array of 2 arrays, array[0]: is the link path, array[1]: the position array
+ * @returns Array of 2 arrays, array[0]: is the link path, array[1]: the position array
  */
 function backTrack(node, root, Graph){
     /*

@@ -30,41 +30,50 @@
  * Created by M.Guo on 21/10/2016.
  */
 
-//file button clicking
+/**
+ * file button clicking
+ */
+
 $('#my-button').click(function(){
     $('#my-file').click();
 });
 
-//tab clicking
-$('li > a').click(function() {
 
+/**
+ * tab clicking
+ */
+$('li > a').click(function() {
         $('li').removeClass();
         $(this).parent().addClass('active');
-
 });
 
-//http://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_open
 /**
- * @description change tab
+ * change tab
  * @param evt
- * @param cityName
+ * @param Name
+ * http://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_open
  */
-function openCity(evt, cityName) {
+
+function openCity(evt, Name) {
+
     var i, tabcontent;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i &lt; tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(Name).style.display = "block";
     // Get the element with id="defaultOpen" and click on it
 
 }
 document.getElementById("defaultOpen").click();
 
+/**
+ * submit form with ajax
+ */
 $(document).ready(function(){
     $("#form-submit").ajaxForm({
         type:"post",
-        url:"UploadServlet",
+        url:"/UploadServlet",
         success:function(data){
             console.log(data);
             refreshData();
@@ -75,12 +84,13 @@ $(document).ready(function(){
             console.log(errorThrown);
         }
     });
-
     refreshData();
 });
 
+
+
 /**
- *
+ * refresh the list of files
  */
 function refreshData(){
    $.ajax({
@@ -88,15 +98,67 @@ function refreshData(){
        dataType:"json",
        success:function (data) {
            console.log(data);
-           $("#list").html("&lt;ul>");
+           var _html = "&lt;ul>";
            $.each(data, function (key,value) {
-                $("#list").append("&lt;li>"+value+"&lt;/li>");
+               _html += "&lt;li>&lt;input type='checkbox' name='checkfile'  data-filename='"+value+"'>" +
+                   "&lt;a href='javascript:void(0);' onclick='load(this)' data-filename='"+value+"'> "+ value +" &lt;/a>&lt;/li>";
+               //$("#list").append("&lt;li> &lt;a id="+value+" href='javascript:void(0);' onclick='load(this.parentNode.getAttribute(id))'>"+value+"&lt;/a>&lt;/li>");
            });
-           $("#list").append("&lt;/ul>");
+           _html += "&lt;/ul>";
+           $("#list").html(_html);
        }
    });
+
 };
-</code></pre>
+
+
+//
+// function getContextPath() {
+//     var contextPath =window.location.protocol + "//"  + window.location.host + "" + window.location.pathname;
+//     console.log(contextPath);
+// }
+
+function load(value){
+    //var path = "/Users/Margaret/Documents/workspace/ShareMyChart/data/" + $(value).data("filename");
+    var path = window.location.protocol + "//"  + window.location.host +"/" + "data/" + $(value).data("filename");
+    // $.get(path,null,function(content){
+    //     console.log(content);
+    // },'text');
+    //console.log(path);
+
+    var new_Store = new GraphStore(path);
+
+}
+
+function deleteFile(){
+    var selected = [];
+    var checkbox = document.getElementsByName("checkfile");
+    for (var i = 0; i &lt;checkbox.length; i++){
+        if (checkbox[i].checked){
+            selected.push(checkbox[i].getAttribute('data-filename'));
+        }
+    }
+    $.post('/deleteFileServlet',{selected:selected.join(',')},function(data){
+        console.log(data);
+    },'text');
+    refreshData();
+    clearPrevInfo();
+}
+
+
+function clearPrevInfo(){
+    console.log("Cleared on delete");
+    TypeArray.splice(0,TypeArray.length);
+    pManager.clearManager();
+    deletePlaceholder();
+    putTextBack();
+    clearGraph();
+    xymanager.clearManager();
+    GlobalDataArray.clear();
+
+    //filter
+    resetFilterUI();
+}</code></pre>
         </article>
     </section>
 
@@ -106,13 +168,13 @@ function refreshData(){
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChart.html">BarChart</a></li><li><a href="GetLink.html">GetLink</a></li><li><a href="Graph.html">Graph</a></li><li><a href="GraphStore.html">GraphStore</a></li><li><a href="Parameter.html">Parameter</a></li><li><a href="ParameterManager.html">ParameterManager</a></li><li><a href="QueryBuilder.html">QueryBuilder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#array_of_paramnames">array_of_paramnames</a></li><li><a href="global.html#createDrags">createDrags</a></li><li><a href="global.html#GetData">GetData</a></li><li><a href="global.html#GetName">GetName</a></li><li><a href="global.html#GetParameterQuery">GetParameterQuery</a></li><li><a href="global.html#GetPredicateQuery">GetPredicateQuery</a></li><li><a href="global.html#GlobalLink">GlobalLink</a></li><li><a href="global.html#openCity">openCity</a></li><li><a href="global.html#refreshData">refreshData</a></li><li><a href="global.html#TypeArray">TypeArray</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChart.html">BarChart</a></li><li><a href="GetLink.html">GetLink</a></li><li><a href="GetLinkResult.html">GetLinkResult</a></li><li><a href="GetLinkResultFlipped.html">GetLinkResultFlipped</a></li><li><a href="Graph.html">Graph</a></li><li><a href="graphManager.html">graphManager</a></li><li><a href="GraphSearch.html">GraphSearch</a></li><li><a href="GraphStore.html">GraphStore</a></li><li><a href="lineGraph.html">lineGraph</a></li><li><a href="MakeGraph.html">MakeGraph</a></li><li><a href="Parameter.html">Parameter</a></li><li><a href="ParameterManager.html">ParameterManager</a></li><li><a href="Scatterplot.html">Scatterplot</a></li><li><a href="UnDirGraph.html">UnDirGraph</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addContents">addContents</a></li><li><a href="global.html#Aggregate">Aggregate</a></li><li><a href="global.html#applyFilter">applyFilter</a></li><li><a href="global.html#backTrack">backTrack</a></li><li><a href="global.html#clearDrags">clearDrags</a></li><li><a href="global.html#clearGraph">clearGraph</a></li><li><a href="global.html#collectFilter">collectFilter</a></li><li><a href="global.html#containsObject">containsObject</a></li><li><a href="global.html#createAccordions">createAccordions</a></li><li><a href="global.html#createDrags">createDrags</a></li><li><a href="global.html#DataObject">DataObject</a></li><li><a href="global.html#dateSortY">dateSortY</a></li><li><a href="global.html#deleteFilter">deleteFilter</a></li><li><a href="global.html#deletePlaceholder">deletePlaceholder</a></li><li><a href="global.html#disablePG">disablePG</a></li><li><a href="global.html#DisplayLink">DisplayLink</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#filterArray">filterArray</a></li><li><a href="global.html#formatGraph">formatGraph</a></li><li><a href="global.html#GetData">GetData</a></li><li><a href="global.html#GetName">GetName</a></li><li><a href="global.html#GetParameterQuery">GetParameterQuery</a></li><li><a href="global.html#GetPredicateQuery">GetPredicateQuery</a></li><li><a href="global.html#GlobalLink">GlobalLink</a></li><li><a href="global.html#initFilter">initFilter</a></li><li><a href="global.html#Node">Node</a></li><li><a href="global.html#openCity">openCity</a></li><li><a href="global.html#pickGraphTypes">pickGraphTypes</a></li><li><a href="global.html#PossibleGraphManager">PossibleGraphManager</a></li><li><a href="global.html#putTextBack">putTextBack</a></li><li><a href="global.html#QueryBuilderData">QueryBuilderData</a></li><li><a href="global.html#QueryBuilderData_old">QueryBuilderData_old</a></li><li><a href="global.html#QueryBuilderLink">QueryBuilderLink</a></li><li><a href="global.html#refreshData">refreshData</a></li><li><a href="global.html#resetFilter">resetFilter</a></li><li><a href="global.html#resetFilterUI">resetFilterUI</a></li><li><a href="global.html#selectValue">selectValue</a></li><li><a href="global.html#sortData">sortData</a></li><li><a href="global.html#SpecialCase">SpecialCase</a></li><li><a href="global.html#testpG">testpG</a></li><li><a href="global.html#TypeArray">TypeArray</a></li><li><a href="global.html#visPG">visPG</a></li><li><a href="global.html#xFilter">xFilter</a></li><li><a href="global.html#xT">xT</a></li><li><a href="global.html#xymanager">xymanager</a></li><li><a href="global.html#xyManager">xyManager</a></li><li><a href="global.html#yFilter">yFilter</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Thu Nov 03 2016 23:59:32 GMT-0600 (MDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 02 2016 00:19:39 GMT-0700 (MST)
 </footer>
 
 <script> prettyPrint(); </script>

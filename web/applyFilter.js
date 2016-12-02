@@ -30,6 +30,9 @@ function applyFilter() {
     reloadGraph(DataCopy);
 }
 
+/**
+ * @description reset filter backend when no filter exists in UI. Then reload graph.
+ */
 function resetFilter(){
     var Data=GlobalDataArray.getArray();
     reloadGraph(Data);
@@ -52,6 +55,7 @@ function reloadGraph(data) {
             break;
     }
 }
+
 /**
  * @description collect filter objects from UI
  * @param currentArray

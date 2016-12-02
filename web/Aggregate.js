@@ -255,6 +255,11 @@ function dateSortX(data){
     return results;
 }
 
+/**
+ *
+ * @param data
+ * @returns {Array}
+ */
 function dateSortY(data){
     console.log("here! :)");
     var results = [];

@@ -87,7 +87,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line32">line 32</a>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -249,7 +249,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line105">line 105</a>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line166">line 166</a>
     </li></ul></dd>
     
 
@@ -371,7 +371,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line45">line 45</a>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -533,7 +533,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line82">line 82</a>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line129">line 129</a>
     </li></ul></dd>
     
 
@@ -541,13 +541,6 @@
 
     
 
-    
-    <dt class="tag-todo">To Do:</dt>
-    <dd class="tag-todo">
-        <ul>
-            <li>make a getType for Michael's stuff, for a specific parameter</li>
-        </ul>
-    </dd>
     
 </dl>
 
@@ -589,11 +582,15 @@
 
     
 
-    <h4 class="name" id="getParameters"><span class="type-signature"></span>getParameters<span class="signature">()</span><span class="type-signature"> &rarr; {Array}</span></h4>
+    <h4 class="name" id="clearManager"><span class="type-signature"></span>clearManager<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    - Clears the parameter manager's contents
+</div>
 
 
 
@@ -636,7 +633,485 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line55">line 55</a>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getClass"><span class="type-signature"></span>getClass<span class="signature">(index)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    - Gets the class value of the parameter at the specified index
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">index of desired parameter</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getIndexForNC"><span class="type-signature"></span>getIndexForNC<span class="signature">(name, class_val)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    - Returns the index for a name and class of a parameter. -1 if not found.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>class_val</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line150">line 150</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getParameter"><span class="type-signature"></span>getParameter<span class="signature">(index)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    - Gets the parameter at the specified index
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">index of desired parameter</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getParameters"><span class="type-signature"></span>getParameters<span class="signature">()</span><span class="type-signature"> &rarr; {dictionary}</span></h4>
+
+    
+
+
+
+<div class="description">
+    - Return a dictionary of the parameter manager's array
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -670,7 +1145,277 @@
     </dt>
     <dd>
         
-<span class="param-type">Array</span>
+<span class="param-type">dictionary</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getRealName"><span class="type-signature"></span>getRealName<span class="signature">(index)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    get the real name
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line227">line 227</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getType"><span class="type-signature"></span>getType<span class="signature">(index)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+    
+
+
+
+<div class="description">
+    - Gets the type of the parameter at the specified index
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
 
 
     </dd>
@@ -736,7 +1481,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line120">line 120</a>
+        <a href="Parameter.js.html">Parameter.js</a>, <a href="Parameter.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -778,13 +1523,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChart.html">BarChart</a></li><li><a href="GetLink.html">GetLink</a></li><li><a href="Graph.html">Graph</a></li><li><a href="GraphStore.html">GraphStore</a></li><li><a href="Parameter.html">Parameter</a></li><li><a href="ParameterManager.html">ParameterManager</a></li><li><a href="QueryBuilder.html">QueryBuilder</a></li></ul><h3>Global</h3><ul><li><a href="global.html#array_of_paramnames">array_of_paramnames</a></li><li><a href="global.html#createDrags">createDrags</a></li><li><a href="global.html#GetData">GetData</a></li><li><a href="global.html#GetName">GetName</a></li><li><a href="global.html#GetParameterQuery">GetParameterQuery</a></li><li><a href="global.html#GetPredicateQuery">GetPredicateQuery</a></li><li><a href="global.html#GlobalLink">GlobalLink</a></li><li><a href="global.html#openCity">openCity</a></li><li><a href="global.html#refreshData">refreshData</a></li><li><a href="global.html#TypeArray">TypeArray</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BarChart.html">BarChart</a></li><li><a href="GetLink.html">GetLink</a></li><li><a href="GetLinkResult.html">GetLinkResult</a></li><li><a href="GetLinkResultFlipped.html">GetLinkResultFlipped</a></li><li><a href="Graph.html">Graph</a></li><li><a href="graphManager.html">graphManager</a></li><li><a href="GraphSearch.html">GraphSearch</a></li><li><a href="GraphStore.html">GraphStore</a></li><li><a href="lineGraph.html">lineGraph</a></li><li><a href="MakeGraph.html">MakeGraph</a></li><li><a href="Parameter.html">Parameter</a></li><li><a href="ParameterManager.html">ParameterManager</a></li><li><a href="Scatterplot.html">Scatterplot</a></li><li><a href="UnDirGraph.html">UnDirGraph</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addContents">addContents</a></li><li><a href="global.html#Aggregate">Aggregate</a></li><li><a href="global.html#applyFilter">applyFilter</a></li><li><a href="global.html#backTrack">backTrack</a></li><li><a href="global.html#clearDrags">clearDrags</a></li><li><a href="global.html#clearGraph">clearGraph</a></li><li><a href="global.html#collectFilter">collectFilter</a></li><li><a href="global.html#containsObject">containsObject</a></li><li><a href="global.html#createAccordions">createAccordions</a></li><li><a href="global.html#createDrags">createDrags</a></li><li><a href="global.html#DataObject">DataObject</a></li><li><a href="global.html#dateSortY">dateSortY</a></li><li><a href="global.html#deleteFilter">deleteFilter</a></li><li><a href="global.html#deletePlaceholder">deletePlaceholder</a></li><li><a href="global.html#disablePG">disablePG</a></li><li><a href="global.html#DisplayLink">DisplayLink</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#filterArray">filterArray</a></li><li><a href="global.html#formatGraph">formatGraph</a></li><li><a href="global.html#GetData">GetData</a></li><li><a href="global.html#GetName">GetName</a></li><li><a href="global.html#GetParameterQuery">GetParameterQuery</a></li><li><a href="global.html#GetPredicateQuery">GetPredicateQuery</a></li><li><a href="global.html#GlobalLink">GlobalLink</a></li><li><a href="global.html#initFilter">initFilter</a></li><li><a href="global.html#Node">Node</a></li><li><a href="global.html#openCity">openCity</a></li><li><a href="global.html#pickGraphTypes">pickGraphTypes</a></li><li><a href="global.html#PossibleGraphManager">PossibleGraphManager</a></li><li><a href="global.html#putTextBack">putTextBack</a></li><li><a href="global.html#QueryBuilderData">QueryBuilderData</a></li><li><a href="global.html#QueryBuilderData_old">QueryBuilderData_old</a></li><li><a href="global.html#QueryBuilderLink">QueryBuilderLink</a></li><li><a href="global.html#refreshData">refreshData</a></li><li><a href="global.html#resetFilter">resetFilter</a></li><li><a href="global.html#resetFilterUI">resetFilterUI</a></li><li><a href="global.html#selectValue">selectValue</a></li><li><a href="global.html#sortData">sortData</a></li><li><a href="global.html#SpecialCase">SpecialCase</a></li><li><a href="global.html#testpG">testpG</a></li><li><a href="global.html#TypeArray">TypeArray</a></li><li><a href="global.html#visPG">visPG</a></li><li><a href="global.html#xFilter">xFilter</a></li><li><a href="global.html#xT">xT</a></li><li><a href="global.html#xymanager">xymanager</a></li><li><a href="global.html#xyManager">xyManager</a></li><li><a href="global.html#yFilter">yFilter</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Thu Nov 03 2016 23:59:32 GMT-0600 (MDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 02 2016 00:19:39 GMT-0700 (MST)
 </footer>
 
 <script> prettyPrint(); </script>
