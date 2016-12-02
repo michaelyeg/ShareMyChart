@@ -61,4 +61,8 @@ How to make regular buttons behave like radio buttons:
 kapantzak, Stack Overflow: http://stackoverflow.com/users/1221792/kapantzak
 http://stackoverflow.com/a/37123070
 
+Finding Highest Values Amongst Javascript Variables
+jfriend, StackOverflow: http://stackoverflow.com/questions/16095301/finding-highest-values-amongst-javascript-variables
 
+ How to Merge Two Arrays without Duplicates
+ LiraNuna & David Furlong, StackOverflow: http://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items

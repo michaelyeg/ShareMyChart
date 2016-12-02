@@ -18,6 +18,8 @@ graphManager.prototype.makeVBC = function(values){
     if(graphmanager.isData(values)){
         this.graphType = 1;
         var dray = Aggregate("X", values);
+        dray = sortData("X", dray);
+        console.log(dray);
         this.barChart.verticalBC(dray);
     } else return;
 
@@ -30,6 +32,8 @@ graphManager.prototype.makeHBC = function(values){
 
         this.graphType = 2;
         var dray = Aggregate("Y", values);
+        console.log(dray);
+        dray = sortData("Y", dray);
         this.barChart.horizontalBC(dray);
     } else return;
 };
@@ -42,6 +46,9 @@ graphManager.prototype.makeLG = function(values){
             this.lineGraph.horizontalLG(values);
         }
         var dray = Aggregate("X", values);
+        console.log(dray);
+        dray = sortData("X", dray);
+        //console.log(dray2);
         this.lineGraph.horizontalLG(dray);
     } else return;
 };
@@ -53,6 +60,9 @@ graphManager.prototype.makeSP = function(values){
         //check if x or y is nominal to aggregate
         if (values[0].typeX == "nominal" && values[0].typeY == "nominal") {
             agrDray = Aggregate("X", values);
+            console.log(agrDray);
+            agrDray = sortData("X", agrDray);
+            //console.log(dray2);
             this.scatterplot.normalscatterplot(agrDray);
 
         } else {

@@ -181,9 +181,10 @@
                     enctype="multipart/form-data"><!--post form-->
                 <input type="file" id="myfile" name="file"/>
                 <br/>
-                <input id="submit" type="submit" class="btn btn-secondary btn-block" value="Upload File" />
+                <input id="submit" type="submit" class="btn btn-primary btn-block" value="Upload File" />
               </form>
-              <input id="delete" type="submit" class="btn btn-secondary btn-block" value="Delete" onclick="deleteFile()" />
+                <br/>
+              <input id="delete" type="submit" class="btn btn-primary btn-danger btn-block" value="Delete" onclick="deleteFile()" />
             </div>
           </div>
         </div>
@@ -211,21 +212,21 @@
           </li>
           <li class="nav-item"style="padding-left: 1em">
             <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <img src="icons/lineChart.png" alt="" class="icon-default"/>
+              <button class="btn btn-default" type="button" >
+                <img src="icons/lineChart.png" alt="" class="icon-default" id = "vlinegraph" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"/>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><img src="icons/verticalLine.png" alt="" class="icon-default" id = "vlinegraph" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"/></li>
-                <li role="separator" class="divider"></li>
-               <!-- <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#"><img src="icons/multiLine.png" alt="" class="icon-default"/></a></li> -->
-              </ul>
+                <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><img src="icons/verticalLine.png" alt="" class="icon-default" id = "vlinegraph" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"/></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#"><img src="icons/horizontalLine.png" alt="" class="icon-default"/></a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#"><img src="icons/multiLine.png" alt="" class="icon-default"/></a></li>
+              </ul>-->
             </div>
           </li>
           <li class="nav-item" style="padding-left: 1em">
             <div class="dropdown">
-              <button class="btn btn-default" type="button" id="dropdownMenu1" >
+              <button class="btn btn-default" type="button"  >
                 <img src="icons/scatterPlot.png" alt="" class="icon-default" id = "scatterplot" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"/>
               </button>
             </div>
@@ -297,6 +298,7 @@
     <script type = "text/javascript" src="./QueryBuilders.js"></script>
     <script type = "text/javascript" src="./DataArray.js"></script>
     <script type = "text/javascript" src="./Aggregate.js"></script>
+    <script type = "text/javascript" src="./UndirectedGraph.js"></script>
     <script type = "text/javascript" src="./GetData.js"></script>
     <!-- <script type = "text/javascript" src="./GetParameter.js"></script> -->
     <script type = "text/javascript" src="./dragndrop.js"></script>
@@ -309,11 +311,14 @@
     <link rel = "stylesheet" href = "lineGraph.css">
     <script type = 'text/javascript' src="./scatterplot.js"></script>
     <link rel = "stylesheet" href = "scatterplot.css">
-<script type = "text/javascript" src="./graphManager.js"></script>
+    <script type = "text/javascript" src="./graphManager.js"></script>
     <script type = 'text/javascript' src="./possibleGraphManager.js"></script>
     <script type = 'text/javascript' src="./graphPicker.js"></script>
+
+
     <script type = 'text/javascript' src="./applyFilter.js"></script>
     <script type = 'text/javascript' src="./filter.js"></script>
+
 
 </body>
 

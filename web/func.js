@@ -129,5 +129,5 @@ function clearPrevInfo(){
     GlobalDataArray.clear();
 
     //filter
-    
+    resetFilterUI();
 }
