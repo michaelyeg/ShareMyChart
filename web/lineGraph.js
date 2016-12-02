@@ -196,6 +196,7 @@ lineGraph.prototype.horizontalLG = function(dray){
         } else{
             x = d3.scaleLinear().rangeRound([0, width]);
             x.domain([0, d3.max(dray, function(d) { return d.dataX; })]); //starts at 0, ends at max + a value
+            console.log("x domain:" + x.domain());
         }
 
         if(dray[0].typeY == "date"){
@@ -207,6 +208,8 @@ lineGraph.prototype.horizontalLG = function(dray){
         }else{
             y = d3.scaleLinear().range([height -20, 0]);
             y.domain(d3.extent(dray, function(d) { return d.dataY; }));
+            //y.domain(dray.map(function(d) { return d.dataY; }));
+            console.log("y domain:" + y.domain());
         }
 
 

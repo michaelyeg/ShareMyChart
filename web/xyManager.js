@@ -104,15 +104,50 @@ xyManager.prototype.clearManager = function(){
 
 
 /**
- * show the current x and y values at the top right part of the page
+ * show the current x value at the top right part of the page
  */
-xyManager.prototype.placeCoordinates = function(){
-
+xyManager.prototype.placeCoordinateX = function(){
+    var place = document.getElementById("xCoordinate");
+    if(place.hasChildNodes()){
+        xymanager.clearCoordinateX();
+    }
+    var index = this.getX();
+    var text = pManager.getRealName(index);
+    text = "X | " + text.charAt(0).toUpperCase() + text.slice(1);
+    var name = document.createTextNode(text);
+    $(name).appendTo(place);
 };
 
 /**
- * clear the x and y values shown at top right of the page
+ * show the current y value at the top right part of the page
  */
-xyManager.prototype.clearCoordinates = function(){
+xyManager.prototype.placeCoordinateY = function(){
+    var place = document.getElementById("yCoordinate");
+    if(place.hasChildNodes()){
+        xymanager.clearCoordinateY();
+    }
+    var index = this.getY();
+    var text = pManager.getRealName(index);
+    text = "Y | " + text.charAt(0).toUpperCase() + text.slice(1);
+    var name = document.createTextNode(text);
+    $(name).appendTo(place);
+};
 
+/**
+ * clear the x value shown at top right of the page
+ */
+xyManager.prototype.clearCoordinateX = function(){
+    var place = document.getElementById("xCoordinate");
+    var child = place.lastChild;
+    place.removeChild(child);
+};
+
+/**
+ * clear the y value shown at top right of the page
+ */
+xyManager.prototype.clearCoordinateY = function(){
+    var place = document.getElementById("yCoordinate");
+    var child = place.lastChild;
+    place.removeChild(child);
+    //$(place).empty();
 };

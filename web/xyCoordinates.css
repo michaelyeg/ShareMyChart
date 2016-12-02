@@ -1,0 +1,14 @@
+/* CSS for the two boxes that keep track of your x and y values on the top right corner.
+ edited slightly from the bootstrap for the right look*/
+.panel-default > .boxes {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+.boxes {
+    padding: 5px 5px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}

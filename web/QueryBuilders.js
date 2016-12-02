@@ -9,7 +9,7 @@
  * @param {string} uri2 - used for the second uri in the query.
  * @return {string} - completed query to be used in sparql that connects all the links
  */
-function QueryBuilderData(uri1, uri2, link_path){
+function QueryBuilderData_old(uri1, uri2, link_path){
 
     var X = link_path[0].uri;
     var Y = link_path[link_path.length-1].uri;
@@ -35,6 +35,38 @@ function QueryBuilderData(uri1, uri2, link_path){
         //console.log(string1);
     }
     //console.log(string1);
+    return string1;
+}
+
+function QueryBuilderData(uri1, uri2, path){
+    var link_path = path[0];
+
+    var X = link_path[0];
+    var Y = link_path[link_path.length-1];
+
+    if(link_path.length == 3) {
+        string1 = SpecialCase(X,Y,link_path);
+    }else {
+        var position = path[1];
+
+        var string1 = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+                   PREFIX : <http://example.org/>\
+                   select  ?data1  ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
+                   ?link1 <' + X + '> ?data1.  ';
+        for (var i = 3; i < link_path.length - 1; i++) {
+            console.log("i%2: " + (i % 2));
+            if ((i % 2) == 1) {
+                if(position[i]==2) {
+                    string1 += '?link' + (i - 2) + ' <' + link_path[i - 1] + '> ?link' + i + '.';
+                }else{
+                    string1 += '?link' + i + ' <' + link_path[i - 1] + '> ?link' + (i-2) + '.';
+                }
+            }
+        }
+
+        string1 += '?link' + (i - 1) + ' <' + Y + '> ?data2.}}';
+    }
+    console.log(string1);
     return string1;
 }
 
@@ -86,7 +118,7 @@ function SpecialCase(X, Y, link_path){
     var string = 'PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
                    PREFIX : <http://example.org/>\
                    select ?subject1 ?data1 ?data2 FROM NAMED :rdfGraph {GRAPH ?g { \
-                   ?subject1 rdf:type <' + link_path[1].class_value + '>;\
+                   ?subject1 rdf:type <' + link_path[1] + '>;\
                     <' + X + '> ?data1;\
                     <' + Y + '> ?data2.\
                    }}'
