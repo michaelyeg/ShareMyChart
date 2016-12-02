@@ -45,7 +45,7 @@ document.getElementById("defaultOpen").click();
 $(document).ready(function(){
     $("#form-submit").ajaxForm({
         type:"post",
-        url:"/UploadServlet",
+        url:"/ShareMyChart_war/UploadServlet",
         success:function(data){
             console.log(data);
             refreshData();
@@ -66,14 +66,14 @@ $(document).ready(function(){
  */
 function refreshData(){
    $.ajax({
-       url:"/data",
+       url:"/ShareMyChart_war/data",
        dataType:"json",
        success:function (data) {
            console.log(data);
            var _html = "<ul>";
            $.each(data, function (key,value) {
-               _html += "<li><input type='checkbox' name='checkfile'  data-filename='"+value+"'>" +
-                   "<a href='javascript:void(0);' onclick='load(this)' data-filename='"+value+"'> "+ value +" </a></li>";
+               _html += "<li><input type='checkbox' name='checkfile'  data-filename='"+value+"' id='"+value+"'>" +
+                   "<a href='javascript:void(0);' onclick='load(this)' data-filename='"+value+"' id='file"+value+"'> "+ value +" </a></li>";
                //$("#list").append("<li> <a id="+value+" href='javascript:void(0);' onclick='load(this.parentNode.getAttribute(id))'>"+value+"</a></li>");
            });
            _html += "</ul>";
@@ -92,7 +92,7 @@ function refreshData(){
 
 function load(value){
     //var path = "/Users/Margaret/Documents/workspace/ShareMyChart/data/" + $(value).data("filename");
-    var path = window.location.protocol + "//"  + window.location.host +"/" + "data/" + $(value).data("filename");
+    var path = window.location.protocol + "//"  + window.location.host +"/" + "ShareMyChart_war/data/" + $(value).data("filename");
     // $.get(path,null,function(content){
     //     console.log(content);
     // },'text');
@@ -110,7 +110,7 @@ function deleteFile(){
             selected.push(checkbox[i].getAttribute('data-filename'));
         }
     }
-    $.post('/deleteFileServlet',{selected:selected.join(',')},function(data){
+    $.post('/ShareMyChart_war/deleteFileServlet',{selected:selected.join(',')},function(data){
         console.log(data);
     },'text');
     refreshData();
