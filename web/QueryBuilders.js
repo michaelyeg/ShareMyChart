@@ -4,9 +4,11 @@
 
 
 /**
+ * Out of date Function
  * Builds a Query bases off the size of the GlobalLink array. It will fill in all the links between uri1 and uri2
  * @param {string} uri1 - used for the first uri in the query.
  * @param {string} uri2 - used for the second uri in the query.
+ * @param [Array, Array] link_path
  * @return {string} - completed query to be used in sparql that connects all the links
  */
 function QueryBuilderData_old(uri1, uri2, link_path){
@@ -38,6 +40,18 @@ function QueryBuilderData_old(uri1, uri2, link_path){
     return string1;
 }
 
+/**
+ * Takes a list of uri's of the format: [ParameterX, TypeX, link1, Type2, link2,...., TypeY, ParameterY] in path[0]
+ * path[1] needs to be a parallel list of poitions, 1 and 2. The list is generated in the Make graph
+ * function during backtracking
+ *
+ * The function Takes this list of nested arrays and creates a dynamic query that will retrive the data for the given path.
+ *
+ * @param uri1 - unsed Parameter lol
+ * @param uri2 - I dont use this one either
+ * @param [Array, Array] path - a list of all the nodes and edges along the path
+ * @return {string}
+ */
 function QueryBuilderData(uri1, uri2, path){
     var link_path = path[0];
 
@@ -71,10 +85,13 @@ function QueryBuilderData(uri1, uri2, path){
 }
 
 /**
+ * Out of Date function, no longer used
+ *
  *Creates a query to get the links given two uris and a the distance to search for. checks only the exact distance not up to the distance
  * entered.
  * @param uri1
  * @param uri2
+ * @param link_distance
  * @return {string} returns the query as a string
  */
 function QueryBuilderLink(uri1, uri2, link_distance){
@@ -111,6 +128,14 @@ function QueryBuilderLink(uri1, uri2, link_distance){
     return query;
 }
 
+/**
+ * This functon takes a list path that must be of length 3. the path needs to be of format [parameterX, type, parameterY]
+ * it is an edge case when both parameters have the same type
+ * @param X: uri of parameter X
+ * @param Y: uri of parameter Y
+ * @param link_path: format
+ * @return {string}: a query to be executed
+ */
 function SpecialCase(X, Y, link_path){
     //console.log("special:");
     //console.log(X+"-----"+Y);
@@ -121,6 +146,6 @@ function SpecialCase(X, Y, link_path){
                    ?subject1 rdf:type <' + link_path[1] + '>;\
                     <' + X + '> ?data1;\
                     <' + Y + '> ?data2.\
-                   }}'
+                   }}';
     return string;
 }

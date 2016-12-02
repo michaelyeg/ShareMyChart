@@ -21,13 +21,12 @@ var GlobalY;
 var GlobalDataArray = new DataArray();
 //TODO: update all the Javadocs ive changed alot of parameters
 //TODO: Attempt using data with more then one possible path to the data type. Will they be in order in the global list?
-//TODO: indicate that the Data has been Flipped and return the data back unflipped
 /**
  * @description This function Discovers the Link between two Parameters and then Retrieves the data from the Path discovered
  * Global Parameters created for testing in the console
  * @param Param1 - The X variable for the chart
  * @param Param2 - The Y variable for the chart
- * @param graph - The already made Store.
+ * @param graph - The Store object
  * @constructor
  */
 function GetLink(Param1, Param2, graph){
@@ -75,8 +74,12 @@ function GetLink(Param1, Param2, graph){
 }
 
 
-
-
+/**
+ * Out of Date Function
+ * @param err
+ * @param results
+ * @constructor
+ */
 function GetLinkResult(err, results) {
 
 
@@ -109,7 +112,12 @@ function GetLinkResult(err, results) {
 
     }
 }
-
+/**
+ * Out Of Date Function
+ * @param err
+ * @param results
+ * @constructor
+ */
 function GetLinkResultFlipped(err, results) {
 
     //console.log("Get One Link Results:");
@@ -134,33 +142,28 @@ function GetLinkResultFlipped(err, results) {
         //TODO: send data to the prompt instead of skipping and going right to GetData
         GlobalDataArray.flipper();
         GetData(GlobalX.name, GlobalY.name, GlobalStore, temp_results);
-
-
     }
-
 }
 
 
 
 /**
- * @description Takes Two uri's for the X and Y variables respectively. And grabs the data from the Path defined in the GlobalLink
+ * @description Takes Two uri's for the X and Y parameters respectively. And grabs the data from the Path defined in the GlobalLink
  * Pushed data as an array of pairs, representing the X,Y data points. The Array is currently Stored in the GlobalData array
  *
  * @param uri1
  * @param uri2
  * @param graph
- * @todo Why does the function only work one way? try a reverse of the above function.
+ * @param Why does the function only work one way? try a reverse of the above function.
  */
 //TODO: Update the GetData to use the new link format.
 function GetData(uri1, uri2, graph, link_path){
-
 
     var DataObject;
     var query = QueryBuilderData(uri1, uri2, link_path );
 
     graph.execute(query,function(err, results) {
-        //console.log("Results using query Builder:");
-        //console.log(results);
+
         for(var i = 0; i < results.length; i++){
             DataObject = {
                 nameX:GlobalX.real_name,
@@ -170,28 +173,20 @@ function GetData(uri1, uri2, graph, link_path){
                 dataY:results[i].data2.value,
                 typeY:GlobalY.type
             };
-
-            //DataArray.push(DataObject);
-            //console.log(DataObject);
             GlobalDataArray.addData(DataObject);
-
         }
-        console.log(GlobalDataArray);
-
-
         pickGraphTypes(GlobalX, GlobalY);
-
-        //console.log(Aggregate("X"));
-
     });
-
 
 }
 
 
-
+/**
+ * The fucntion creates and Undirected graph of the data so that link paths can be found.
+ * @param store - Rdf store object
+ * @constructor
+ */
 function MakeGraph(store){
-    console.log("executing make graph query");
     var query  = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
                   PREFIX : <http://example.org/> \
                   SELECT DISTINCT ?type1 ?type2 ?link1 FROM NAMED :rdfGraph { GRAPH ?g { \
@@ -199,13 +194,18 @@ function MakeGraph(store){
                   ?x2 rdf:type ?type2.\
                   ?x1 ?link1 ?x2.\
                   } }"
-
     store.execute(query, formatGraph);
 }
 
+/**
+ * This function is called from within the Make Graph to handle the results of the query.
+ * it passes the data to the Get data function
+ * @param err
+ * @param results
+ */
 function formatGraph(err, results){
     var UnGraph = new UnDirGraph();
-    console.log(results);
+
     for (var i = 0; i < results.length; i++){
         var node1 = results[i].type1.value;
         var node2 = results[i].type2.value;
@@ -225,16 +225,23 @@ function formatGraph(err, results){
         index = UnGraph.getIndex(NewNode)
         UnGraph.nodeList[index].addNeighbour(node1, 1, path);
     }
-
-    console.log(UnGraph);
     GraphSearch(UnGraph, GlobalX.class_value, GlobalY.class_value);
 }
 
+
+
+/**
+ * This uses BFS to find all paths from a root to a node in the undirected graph
+ * @param Graph - and undirected graph of parameters
+ * @param param1 - a uri of the choosen X parameter type
+ * @param param2 - a uri of the choosen Y parameter type
+ * @constructor
+ */
 function GraphSearch(Graph, param1, param2){
     var root = new Node(param1);
     var index1 = Graph.getIndex(root);
     Graph.nodeList[index1].distance = 0;
-    //TODO:
+
     //Check special edge case where they are from the same type
     if(param1 == param2){
         //make a list of length three following the same format that the link result would follow otherwise
@@ -254,7 +261,6 @@ function GraphSearch(Graph, param1, param2){
                 var tempNode = new Node(current.neighbours[i].node);
                 var tempIndex = Graph.getIndex(tempNode);
                 var node = Graph.nodeList[tempIndex];
-                //getIndex takes a node object but the neighbours.node is just a string
 
                 if (node.distance == -1) {
                     var path = current.neighbours[i].path;
@@ -262,7 +268,6 @@ function GraphSearch(Graph, param1, param2){
                     node.parentPath.push(path);
                     toSearch.push(node);
 
-                    //console.log("Distance:"+current.distance+"  pushed:"+node.name);
                     if (node.name == param2) {
 
                         var list = backTrack(node, root, Graph);
@@ -272,14 +277,17 @@ function GraphSearch(Graph, param1, param2){
             }
             toSearch.splice(0, 1);
         }
-        console.log("GRAPH AFTER SEARCH");
-        console.log(Graph);
-        console.log(found);
         GetData(GlobalX.name, GlobalY.name, GlobalStore, found[0]);
     }
 }
 
-
+/**
+ * A helper function to back track and create the link path from the found node back to the root
+ * @param node
+ * @param root
+ * @param Graph
+ * @return {*[]} - Array of 2 arrays, array[0]: is the link path, array[1]: the position array
+ */
 function backTrack(node, root, Graph){
     /*
     Need to make the link path in the desired form for display
@@ -288,11 +296,11 @@ function backTrack(node, root, Graph){
 
     There is also a parallel list for the position. The query builder needs to know the order of each triple.
      */
+
     //because we push things to the list it will be backwards so Y must be added first and it will be flipped at the end
-    var linkPath = [GlobalY.name,];
+    var linkPath = [GlobalY.name];
     var parlinkPath = [2];
     var current = node;
-    var next;
     var emerg = 0;
 
     //Once we find the root node we know we have looped back far enough
