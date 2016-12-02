@@ -10,66 +10,76 @@
  */
 
 var testpG;
-
-function pickGraphTypes(pam1, pam2) {
+/**
+ *
+ * @param pam1
+ * @param pam2
+ * @param testThing - literally just for tests to not hit the UI part and not finish.
+ */
+function pickGraphTypes(pam1, pam2, testThing) {
 
     var pGMan = new PossibleGraphManager();
     //**TODO: vertical and horizontal bar charts should be the same values possible, decide!
     if ((pam1.type=="nominal" || pam1.type =="date" )&& (pam2.type=="numeric")){
-        console.log("It's a bar v chart!");
+        //console.log("It's a bar v chart!");
         pGMan.addToManager(0);
     }
 
     //did this kinda quickly, might be wrong, very confusing
     if ( (pam1.type=="numeric" || pam1.type=="date" ) && ( pam2.type=="nominal" || pam2.type=="date") )
     {
-        console.log("It's a bar h chart!");
+        //console.log("It's a bar h chart!");
         pGMan.addToManager(1);
     }
 
-    if( (pam1.type=="numeric" || pam1.type=="date") && (pam2.type=="date" || pam2.type=="numeric") ){
-        console.log("It's a line graph!");
+    if( (pam1.type=="numeric" || pam1.type=="date") && ( pam2.type=="numeric") ){
+        //console.log("It's a line graph!");
         pGMan.addToManager(2);
 
     }
     if( (pam1.type=="numeric" || pam1.type == "date") && (pam2.type=="numeric" || pam2.type=="date") ){
-        console.log("It's a scatter graph A!");
+        //console.log("It's a scatter graph A!");
         pGMan.addToManager(3);
     }
-    if(pam1.type=="nominal" && pam2.type=="nominal"){
+    //Issue 11: cannot make nominal-nominal scatterplot
+   /* if(pam1.type=="nominal" && pam2.type=="nominal"){
         console.log("It's a scatter graph B! Avoid prioritizing me because I look bad w/o jitter!");
         pGMan.addToManager(4);
         //needs to aggregate... something. I think apply to x axis a count.
-    }
+    } */
 
 
 
     //wrote these for the future idk
-    if( pam1.type=="lat" && pam2.type=="long"){
+  /*  if( pam1.type=="lat" && pam2.type=="long"){
         console.log("It's a map!");
         pGMan.addToManager(5);
     }
     if( pam1.type=="long" && pam2.type=="lat"){
         console.log("It's a map v2!");
         pGMan.addToManager(6);
-    }
+    } */
     //idke about slideshow yet
 
     testpG = pGMan;
     console.log("pG:" + testpG.getAll());
-    visPG(pGMan);
+
     //if combo makes nothing
     if(pGMan.getLength() == 0){
+        //TODO: have an error message properly pop up when there are no possible graphs
         //alert("Parameters chosen do not make any valid graphs. Please try again.");
-        //would be nice to reset the parameters here, but I'm not sure if that'll clear their ids...
+        //would be nice to reset the parameters here
     }else{
-        //for now, make first choice, but I'm writing something to make an ordering of the choices to give the user
+        //UI for the user to choose best graph
         pGMan.prioritize(pam1, pam2);
-        //visPG(pGMan);
+
         //put UI option popup here!
         //*user makes a choice*
         //CALL GRAPH CREATION HERE!
-
+        if(typeof testThing == 'undefined') {
+            visPG(pGMan);
+            disablePG(pGMan);
+        }
     }
 
 
@@ -79,6 +89,7 @@ function pickGraphTypes(pam1, pam2) {
  * @description Aggregate counts of specified parameters.
  * @returns {dictionary} Returns a dictionary of aggregateParameter: count.
  */
+/*
 function aggregate(aggPar,par) {
     // Initialize an associated Array, like dictionary in python.
     var dictionary=new Array;
@@ -99,56 +110,107 @@ function aggregate(aggPar,par) {
 
     return dictionary;
 }
+*/
 
+/**
+ * @description - Creates the UI for the user to choose the best graph possible for their chosen parameters.
+ * @param pGMan - an Object of possibleGraphManager that holds an array that has been sorted to show the best graph first.
+ */
 function visPG(pGMan){
-    console.log("start picking graph");
-    console.log(pGMan.getAll());
+    //console.log("start picking graph");
+    //console.log(pGMan.getAll());
     var graph = pGMan.getAll();
-    console.log("graph");
-    console.log(graph.length);
+    //console.log("graph");
+    //console.log(graph.length);
     //graphArr = graph.split(",");
     var k = 0, i;
     var _html;
     $("#show-graph").empty();
-    for (i = 0; i < 6; i++){
-        if (i == graph[k]) {
+    for (i = 0; i < graph.length; i++){
+        //if (i == graph[k]) {
             _html = '<div class="row">';
             _html += '<div class="col-md-4 col-md-offset-4">';
-            k++;
-            console.log(i);
-            switch (i) {
+            //k++;
+            console.log(graph[i]);
+            switch (graph[i]) {
                 case 0:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/vertricalBar.png"  data-dismiss="modal" class="icon-default" id="vertiBar" onclick="graphmanager.makeVBC(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 1:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/horizontalBar.png"  data-dismiss="modal" class="icon-default" id="horiBar" onclick="graphmanager.makeHBC(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 2:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/lineChart.png" data-dismiss="modal" class="icon-default" id="lineCha" onclick="graphmanager.makeLG(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
                 case 3:
                     _html += '<a href="javascript:void(0);" class="thumbnail">';
                     _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo1" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
+                    //k++;
                     break;
-                case 4:
-                    _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
-                    break;
-                case 5:
-                    _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map1"></a></div></div>';
-                    break;
-                case 6:
-                    _html += '<a href="javascript:void(0);" class="thumbnail">';
-                    _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map2"></a></div></div>';
-                    break;
+                // case 4:
+                //     _html += '<a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '<img src="icons/scatterPlot.png" data-dismiss="modal" class="icon-default" id="scatPlo2" onclick="graphmanager.makeSP(GlobalDataArray.getArray())"></a></div></div>';
+                //     //k++;
+                //     break;
+                // case 5:
+                //     _html += '<a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map1"></a></div></div>';
+                //     //k++;
+                //     break;
+                // case 6:
+                //     _html += '<a href="javascript:void(0);" class="thumbnail">';
+                //     _html += '<img src="icons/map.png" data-dismiss="modal" class="icon-default" id="map2"></a></div></div>';
+                //     //k++;
+                //     break;
             }
             $("#show-graph").append(_html);
-        }
+        //}
     }
     $("#dialog").modal('show');
-    console.log("finish picking graph");
+    //console.log("finish picking graph");
+}
+
+/**
+ * @description To disable picking graph that is disabled
+ * @param pGMan an Object of possibleGraphManager that holds an array that has been sorted to show the best graph first.
+ */
+function disablePG(pGMan){
+    $("#verticalBarChart").attr("onclick","graphmanager.makeVBC(GlobalDataArray.getArray())").css('opacity',1);
+    $("#horizontalBarChart").attr("onclick","graphmanager.makeHBC(GlobalDataArray.getArray())").css('opacity',1);
+    $("#vlinegraph").attr("onclick","graphmanager.makeLG(GlobalDataArray.getArray())").css('opacity',1);
+    $("#scatterplot").attr("onclick", "graphmanager.makeSP(GlobalDataArray.getArray())").css('opacity',1);
+
+    var dis = [];
+    var i;
+    var graph = pGMan.getAll();
+    for (i = 0; i < 4; i++){
+       dis[i] = 0;
+    }
+    for (i = 0; i < 4; i++){
+        dis[graph[i]] = 1;
+    }
+    console.log(dis);
+    for (i = 0; i < 4; i++){
+        if (dis[i] == 0){
+            switch (i){
+                case 0:
+                    $("#verticalBarChart").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 1:
+                    $("#horizontalBarChart").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 2:
+                    $("#vlinegraph").prop("onclick", false).css('opacity',0.5);
+                    break;
+                case 3:
+                    $("#scatterplot").prop("onclick", false).css('opacity',0.5);
+            }
+        }
+    }
 }

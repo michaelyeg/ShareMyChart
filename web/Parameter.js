@@ -219,3 +219,11 @@ ParameterManager.prototype.simplifyType = function(index){
             $.pArray[index].type = "date";
         }
 };
+
+/**
+ * get the real name
+ * @param index
+ */
+ParameterManager.prototype.getRealName = function(index){
+    return $.pArray[index].real_name;
+};

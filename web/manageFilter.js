@@ -74,5 +74,15 @@ function deleteFilter() {
 function resetFilterUI(){
     var filters = document.getElementById("filterForm");
     $(filters).empty();
+    /*var parent=document.getElementById("dropup1").style.display = "block";
+    $(parent).empty();
+    var parent2 = document.getElementById("delete1").style.display = "block";
+    $(parent2).empty();
+    var parent3 = document.getElementById("updatebutton").style.display = "block";
+    $(parent3).empty(); */
+    document.getElementById("dropup1").style.display = "none";
+    document.getElementById("delete1").style.display = "none";
+    document.getElementById("updatebutton").style.display = "none";
+
     count=0;
 }

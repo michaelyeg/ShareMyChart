@@ -14,92 +14,99 @@ function graphManager() {
 
 };
 
+/**
+ * make a vertical bar chart by calling from the barchart class
+ * @param values
+ */
 graphManager.prototype.makeVBC = function(values){
-    this.graphType = 1;
-    var dray = Aggregate("X", values);
-    this.barChart.verticalBC(dray);
+    if(graphmanager.isData(values)){
+        this.graphType = 1;
+        var dray = Aggregate("X", values);
+        dray = sortData("X", dray);
+        console.log(dray);
+        this.barChart.verticalBC(dray);
+    } else return;
+
+
+
 };
 
+/**
+ * make a horizontal barchart by calling from the barchart class
+ * @param values
+ */
 graphManager.prototype.makeHBC = function(values){
-    this.graphType = 2;
-    var dray = Aggregate("Y", values);
-    this.barChart.horizontalBC(dray);
+    if(graphmanager.isData(values)) {
+
+        this.graphType = 2;
+        var dray = Aggregate("Y", values);
+        console.log(dray);
+        dray = sortData("Y", dray);
+        this.barChart.horizontalBC(dray);
+    } else return;
 };
 
+/**
+ * make a line graph by calling from the linegraph class
+ * @param values
+ */
 graphManager.prototype.makeLG = function(values){
-    console.log(values);
-    this.graphType = 3;
-    var dray = Aggregate("X", values);
-    this.lineGraph.horizontalLG(dray);
+    if(graphmanager.isData(values)) {
+        console.log(values);
+        this.graphType = 3;
+        if(values[0].typeX == "numeric" && values[0].typeY == "numeric"){
+            this.lineGraph.horizontalLG(values);
+        }
+        var dray = Aggregate("X", values);
+        console.log(dray);
+        dray = sortData("X", dray);
+        //console.log(dray2);
+        this.lineGraph.horizontalLG(dray);
+    } else return;
 };
 
+/**
+ * make a scatterplot by calling from the scatterplot class
+ * @param values
+ */
 graphManager.prototype.makeSP = function(values){
-    this.graphType = 4;
-    this.scatterplot.normalscatterplot(values);
+    if(graphmanager.isData(values)) {
+        this.graphType = 4;
+        var agrDray;
+        //check if x or y is nominal to aggregate
+        if (values[0].typeX == "nominal" && values[0].typeY == "nominal") {
+            agrDray = Aggregate("X", values);
+            console.log(agrDray);
+            agrDray = sortData("X", agrDray);
+            //console.log(dray2);
+            this.scatterplot.normalscatterplot(agrDray);
+
+        } else {
+//if neither value is nominal
+            this.scatterplot.normalscatterplot(values);
+        }
+
+    }else return;
+
 };
 
-graphManager.prototype.clearGraph = function(){
-    var graph = document.getElementById('graph');
-
-};
-
+/**
+ * retrieve the type of graph currently displayed
+ * @returns {number}
+ */
 graphManager.prototype.getGraphType = function(){
     return this.graphType;
 };
 
-
-
 /**
- * @description Listen for the click for the vertical bar chart
- *
+ * are there currently data parameters selected?
+ * @param data
+ * @returns {boolean}
  */
-/*$(document).ready(function(){
-    document.getElementById('verticalBarChart').addEventListener("click", graphManager.prototype.makeVBC(GlobalDataArray.getArray()));
-});
-*/
-/**
- * Listen for the click for the horizontal bar chart
- *
- */
-/*$(document).ready(function(){
-    document.getElementById('horizontalBarChart').addEventListener("click", graphManager.prototype.makeHBC(GlobalDataArray.getArray()));
-});
-*/
-/**
- * Listen for the click for the scatterplot graph
- *
- */
-/*$(document).ready(function(){
-    document.getElementById('scatterplot').addEventListener("click", graphManager.prototype.makeSP(GlobalDataArray.getArray()));
-});*/
-
-/**
- * Listen for the click for the vertical line graph
- *
- */
-/*$(document).ready(function(){
-    document.getElementById('vlinegraph').addEventListener("click", graphManager.prototype.makeLG(GlobalDataArray.getArray()));
-});*/
-
-
-/*
-
-The following are functions that call the functions in this class, since you cannot pass functions variables through button presses.
-this would be refactored if there was more time
-------------------------------------------------------------------------------------------------------------------------------------------------
- *//*
-graphManager.prototype.callVBC = function(){
-    graphmanager.makeVBC(GlobalDataArray.getArray());
-};
-
-graphManager.prototype.callHBC = function(){
-    graphmanager.makeHBC(GlobalDataArray.getArray());
-};
-
-graphManager.prototype.callLG = function(){
-    graphmanager.makeLG(GlobalDataArray.getArray());
-};
-
-graphManager.prototype.callSP = function(){
-    graphmanager.makeSP(GlobalDataArray.getArray());
-};*/
+graphManager.prototype.isData = function(data){
+    if(data.length ==0) {
+        alert("Please select data parameters");
+        return false;
+    }
+    else return true;
+}

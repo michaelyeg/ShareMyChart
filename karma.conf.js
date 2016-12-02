@@ -39,6 +39,11 @@ module.exports = function(config) {
         'web/lineGraph.js',
         'web/scatterplot.js',
         'web/dragndrop.js',
+        'web/Accordion.js',
+        'web/Tim_Berners-Lee.ttl',
+        'web/oldstuff.js',
+        'web/graphManager.js',
+        //for easier testing experience
         'src/test/graphPicker.test.js',
         'src/test/parameter.test.js',
         'src/test/parameterManager.test.js'
