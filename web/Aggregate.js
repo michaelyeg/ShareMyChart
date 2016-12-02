@@ -83,8 +83,8 @@ function sortData(XY, data){
         console.log(min);
 
         if(min.typeX == "date"){
-
-
+           NewArray = dateSortX(data);
+            return NewArray;
 
         }else if(min.typeX =="numeric") {
             //for numeric data
@@ -139,8 +139,8 @@ function sortData(XY, data){
 
 
         if(min.typeY == "date"){
-
-
+            NewArray = dateSortY(data);
+            return NewArray;
 
         }else if(min.typeY =="numeric") {
             //for numeric data
@@ -209,4 +209,79 @@ function containsObject(obj, list) {
     }
 
     return false;
+}
+
+
+function dateSortX(data){
+    console.log("here! :)");
+    var results = [];
+    var Dateformat = [];
+    var size = data.length;
+    var index = 0;
+    var min;
+
+    //Convet the type of the Dateformat array
+    for(var i = 0; i < data.length; i++){
+        Dateformat.push( new Date(data[i].dataX));
+    }
+    console.log(Dateformat);
+
+    while(index < size){
+        min = 0;
+        for(var i = 0; i < data.length ; i++){
+            if (Dateformat[i]< Dateformat[min]){
+               min = i
+
+            }
+        }
+        console.log("pushing");
+        console.log(data[min]);
+        results.push(data[min]);
+        data.splice(min,1);
+        Dateformat.splice(min, 1);
+        console.log(data);
+        console.log(Dateformat);
+        index++;
+    }
+    console.log("here :)");
+    console.log(results);
+
+    return results;
+}
+
+function dateSortY(data){
+    console.log("here! :)");
+    var results = [];
+    var Dateformat = [];
+    var size = data.length;
+    var index = 0;
+    var min;
+
+    //Convet the type of the Dateformat array
+    for(var i = 0; i < data.length; i++){
+        Dateformat.push( new Date(data[i].dataY));
+    }
+    console.log(Dateformat);
+
+    while(index < size){
+        min = 0;
+        for(var i = 0; i < data.length ; i++){
+            if (Dateformat[i]< Dateformat[min]){
+                min = i
+
+            }
+        }
+        console.log("pushing");
+        console.log(data[min]);
+        results.push(data[min]);
+        data.splice(min,1);
+        Dateformat.splice(min, 1);
+        console.log(data);
+        console.log(Dateformat);
+        index++;
+    }
+    console.log("here :)");
+    console.log(results);
+
+    return results;
 }
