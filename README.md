@@ -41,9 +41,6 @@ https://bl.ocks.org/mbostock/3883245
 Scatterplot in D3 (under GPL v3):
 http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
 
-**Jsdoc Location:**
-/web/doc/
-
 Vertical Bar Chart in D3(under GPL v3):
 http://bl.ocks.org/mbostock/3885304
 
